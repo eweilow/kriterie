@@ -7,11 +7,11 @@ export default () => (
       <a>all programmes</a>
     </Link>
     <br />
-    <Link href="/gy11/courses/a">
+    <Link href="/gy11/courses/[letter]" as="/gy11/courses/a">
       <a>all courses on a</a>
     </Link>
     <br />
-    <Link href="/gy11/subjects/b">
+    <Link href="/gy11/subjects/[letter]" as="/gy11/subjects/b">
       <a>all subjects on b</a>
     </Link>
     <br />
