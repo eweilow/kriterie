@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "alias": ["kriterie.now.sh"],
+  "name": "kriterie",
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "routes": [
+    {
+      "src": "/gy11/c/(.)",
+      "status": 301,
+      "headers": { "Location": "/gy11/courses/$1" }
+    },
+    {
+      "src": "/gy11/c/(.{3,})",
+      "status": 301,
+      "headers": { "Location": "/gy11/course/$1" }
+    },
+    {
+      "continue": true,
+      "src": "/(.*)",
+      "headers": { "cache-control": "s-maxage=60, stale-while-revalidate" }
+    },
+    {
+      "continue": true,
+      "src": "/api(.*)",
+      "headers": { "cache-control": "s-maxage=3600, stale-while-revalidate" }
+    }
+  ]
+}
