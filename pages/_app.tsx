@@ -9,6 +9,8 @@ import { GlobalFooter } from "../components/globalFooter";
 import { TrackingQuestion } from "../components/cookieQuestion";
 
 import Icons from "../generated/icons";
+import { LayoutStyle } from "../components/layoutStyle";
+import { Column } from "../components/column";
 
 if (process.env.NODE_ENV === "production") {
   configureAnalytics(process.env.ANALYTICS_ID);
@@ -25,10 +27,13 @@ export default class KriterieApp extends App {
           <Icons />
         </Head>
         <GlobalNavbar />
-        <Component {...pageProps} />
+        <Column>
+          <Component {...pageProps} />
+        </Column>
         <GlobalFooter />
         {typeof window !== "undefined" && <TrackingQuestion />}
         {typeof window !== "undefined" && <PageTracking />}
+        <LayoutStyle />
       </>
     );
   }
