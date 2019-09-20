@@ -4,7 +4,8 @@ export const Column: React.FC = ({ children }) => (
     <style jsx>{`
       .column {
         display: block;
-        box-sizing: border-box;
+        padding: 0 8px;
+        box-sizing: content-box;
         max-width: 800px;
         margin: 0 auto;
       }
