@@ -8,6 +8,8 @@ import { GlobalFooter } from "../components/globalFooter";
 
 import { TrackingQuestion } from "../components/cookieQuestion";
 
+import Icons from "../generated/icons";
+
 if (process.env.NODE_ENV === "production") {
   configureAnalytics(process.env.ANALYTICS_ID);
 }
@@ -20,6 +22,7 @@ export default class KriterieApp extends App {
       <>
         <Head>
           <title>kriterie.se</title>
+          <Icons />
         </Head>
         <GlobalNavbar />
         <Component {...pageProps} />
