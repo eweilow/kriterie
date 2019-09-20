@@ -2,8 +2,18 @@
   "version": 2,
   "alias": ["kriterie.now.sh"],
   "name": "kriterie",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "builds": [
+    { "src": "/static/**/*", "use": "@now/static" },
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
   "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, s-maxage=86400"
+      },
+      "dest": "/static/$1"
+    },
     {
       "src": "/gy11/c/(.)",
       "status": 301,
@@ -20,7 +30,6 @@
       "headers": { "cache-control": "s-maxage=60, stale-while-revalidate" }
     },
     {
-      "continue": true,
       "src": "/api(.*)",
       "headers": { "cache-control": "s-maxage=3600, stale-while-revalidate" }
     }
