@@ -48,8 +48,12 @@ const CookieToggleContainer: React.FC<{ enter: boolean }> = ({
 };
 
 export const CookieToggle: React.FC = () => {
+  if (typeof window === "undefined") {
+    return <CookieToggleContainer enter={false} />;
+  }
+
   return (
-    <CookieToggleContainer enter={typeof window !== "undefined"}>
+    <CookieToggleContainer enter>
       <LongTermTrackingOptIn>
         {(trackingState, setTrackingEnabled, trackingPossible) =>
           trackingPossible ? (
