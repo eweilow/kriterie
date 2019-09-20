@@ -7,7 +7,10 @@ import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
 
 import { TrackingQuestion } from "../components/cookieQuestion";
-configureAnalytics(process.env.ANALYTICS_ID);
+
+if (process.env.NODE_ENV === "production") {
+  configureAnalytics(process.env.ANALYTICS_ID);
+}
 
 export default class KriterieApp extends App {
   render() {
