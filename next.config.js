@@ -1,12 +1,24 @@
-module.exports = {
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.node = {
-        fs: "empty",
-        path: "empty"
-      };
-    }
+const withPlugins = require("next-compose-plugins");
+const withTM = require("next-transpile-modules");
 
-    return config;
+module.exports = withPlugins(
+  [
+    [
+      withTM,
+      {
+        transpileModules: ["@excitare/analytics"]
+      }
+    ]
+  ],
+  {
+    webpack: (config, { isServer }) => {
+      if (!isServer) {
+        config.node = {
+          fs: "empty",
+          path: "empty"
+        };
+      }
+      return config;
+    }
   }
-};
+);
