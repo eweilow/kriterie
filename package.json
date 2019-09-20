@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "ikon-dev": "ikon dev --file icon/icon.tsx",
+    "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.3",
@@ -23,9 +25,11 @@
     "styled-jsx": "^3.2.2"
   },
   "devDependencies": {
+    "@eweilow/ikon-cli": "^0.0.1-alpha.3",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "puppeteer": "^1.20.0",
     "typescript": "^3.6.3"
   },
   "resolutions": {
