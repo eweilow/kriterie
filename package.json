@@ -16,6 +16,7 @@
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.3",
     "@excitare/analytics": "^0.0.1-alpha.195",
+    "clsx": "^1.0.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.0.5",
     "next-compose-plugins": "^2.2.0",
