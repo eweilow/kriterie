@@ -12,15 +12,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@education-data/swedish-gymnasium": "0.0.1-alpha.3",
+    "@excitare/analytics": "^0.0.1-alpha.195",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.0.5",
+    "next-compose-plugins": "^2.2.0",
+    "next-transpile-modules": "^2.3.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "@education-data/swedish-gymnasium": "0.0.1-alpha.3"
+    "styled-jsx": "^3.2.2"
   },
   "devDependencies": {
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "typescript": "^3.6.3"
+  },
+  "resolutions": {
+    "**/styled-jsx": "3.2.2"
   }
 }

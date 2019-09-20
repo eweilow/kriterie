@@ -1,8 +1,16 @@
 import App from "next/app";
 import Head from "next/head";
 
+import { configureAnalytics, PageTracking } from "@excitare/analytics";
+
 import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
+
+import { TrackingQuestion } from "../components/cookieQuestion";
+
+if (process.env.NODE_ENV === "production") {
+  configureAnalytics(process.env.ANALYTICS_ID);
+}
 
 export default class KriterieApp extends App {
   render() {
@@ -16,6 +24,8 @@ export default class KriterieApp extends App {
         <GlobalNavbar />
         <Component {...pageProps} />
         <GlobalFooter />
+        {typeof window !== "undefined" && <TrackingQuestion />}
+        {typeof window !== "undefined" && <PageTracking />}
       </>
     );
   }
