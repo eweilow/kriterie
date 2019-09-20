@@ -20,8 +20,8 @@ module.exports = withPlugins(
       }
       return config;
     },
-    publicRuntimeConfig: {
-      analyticsId: "UA-44812680-6"
+    env: {
+      ANALYTICS_ID: "UA-44812680-6"
     }
   }
 );

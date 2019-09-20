@@ -6,10 +6,8 @@ import { configureAnalytics, PageTracking } from "@excitare/analytics";
 import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
 
-import getConfig from "next/config";
 import { TrackingQuestion } from "../components/cookieQuestion";
-const { publicRuntimeConfig } = getConfig();
-configureAnalytics(publicRuntimeConfig.analyticsId);
+configureAnalytics(process.env.ANALYTICS_ID);
 
 export default class KriterieApp extends App {
   render() {
