@@ -158,7 +158,9 @@ export const SearchBox: React.FC<{
           <ComboboxList persistSelection aria-label="Innehållssök">
             {searchResults.map((result, index) => (
               <ComboboxOption key={index} value={`${result.title}`}>
-                {result.type}
+                {result.type === "subject" && <i>ämne:</i>}
+                {result.type === "course" && <i>kurs:</i>}
+                {result.type === "program" && <i>program:</i>}
                 <br />
                 <ComboboxOptionText />
               </ComboboxOption>
