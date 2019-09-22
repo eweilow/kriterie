@@ -11,7 +11,7 @@ import { TrackingQuestion } from "../components/cookieQuestion";
 import Icons from "../generated/icons";
 import { LayoutStyle } from "../components/layoutStyle";
 import { Column } from "../components/column";
-import { LoadingBar } from "../components/layoutIndicator/bar";
+import { LoadingBar } from "../components/loadingIndicator/bar";
 
 if (process.env.NODE_ENV === "production") {
   configureAnalytics(process.env.ANALYTICS_ID);
