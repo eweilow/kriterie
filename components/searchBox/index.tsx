@@ -28,6 +28,10 @@ export const SearchBox: React.FC<{
   const nextString = useRef(searchString);
   useEffect(() => {
     worker.current = new (ExampleWorker as any)();
+    worker.current.postMessage({
+      type: "url",
+      url: window.location.origin + "/api/search"
+    });
     worker.current.addEventListener("message", msg => {
       if (nextString.current === msg.data.str) {
         setSearchResults(
@@ -47,7 +51,7 @@ export const SearchBox: React.FC<{
       setSearchString("");
       nextString.current = "";
     } else {
-      worker.current.postMessage(searchString);
+      worker.current.postMessage({ type: "search", searchString });
       nextString.current = searchString;
     }
   }, [searchString]);

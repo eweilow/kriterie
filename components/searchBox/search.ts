@@ -11,10 +11,10 @@ class Search {
     return [];
   });
 
-  constructor(private maxResults: number) {}
+  constructor(private maxResults: number, private url: string) {}
 
   async fetchItems() {
-    const res = await fetch("http://localhost:3000/api/search");
+    const res = await fetch(this.url);
     const data = await res.json();
     return data.map((el: any) => ({
       keywords: [
@@ -100,15 +100,20 @@ class Search {
 }
 
 export function run() {
-  const search = new Search(10);
+  let search: Search;
 
   self.addEventListener("message", event => {
-    setTimeout(() => {
-      search.enqueue(event.data.toString());
-    }, 0);
+    if (event.data.type === "url") {
+      if (search != null) {
+        search.onResults = null;
+      }
+      search = new Search(10, event.data.url);
+      search.onResults = (str, results) => {
+        (self.postMessage as any)({ str, results });
+      };
+    }
+    if (event.data.type === "search") {
+      search.enqueue(event.data.searchString.toString());
+    }
   });
-
-  search.onResults = (str, results) => {
-    (self.postMessage as any)({ str, results });
-  };
 }
