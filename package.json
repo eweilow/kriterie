@@ -28,6 +28,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-jsx": "^3.2.2",
+    "use-resize-observer": "^4.0.0",
     "worker-loader": "^2.0.0"
   },
   "devDependencies": {
