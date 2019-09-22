@@ -16,6 +16,7 @@
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.3",
     "@excitare/analytics": "^0.0.1-alpha.195",
+    "@zeit/next-workers": "^1.0.1-canary.1",
     "clsx": "^1.0.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.0.5",
@@ -24,6 +25,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-jsx": "^3.2.2"
+    "worker-loader": "^2.0.0"
   },
   "devDependencies": {
     "@eweilow/ikon-cli": "^0.0.1-alpha.3",

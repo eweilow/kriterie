@@ -1,5 +1,6 @@
 const withPlugins = require("next-compose-plugins");
 const withTM = require("next-transpile-modules");
+const withWorkers = require("@zeit/next-workers");
 
 module.exports = withPlugins(
   [
@@ -7,6 +8,12 @@ module.exports = withPlugins(
       withTM,
       {
         transpileModules: ["@excitare/analytics"]
+      }
+    ],
+    [
+      withWorkers,
+      {
+        workerLoaderOptions: { inline: true }
       }
     ]
   ],
