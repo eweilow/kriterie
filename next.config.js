@@ -13,7 +13,12 @@ module.exports = withPlugins(
     [
       withWorkers,
       {
-        workerLoaderOptions: { inline: true }
+        workerLoaderOptions: {
+          name: "static/[hash].worker.js",
+          publicPath: "/_next/",
+          inline: false,
+          fallback: true
+        }
       }
     ]
   ],
