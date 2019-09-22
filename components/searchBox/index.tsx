@@ -144,6 +144,8 @@ export const SearchBox: React.FC<{
       <div data-size={boxHeight} ref={boxRef} className="box right">
         <div className="box left">
           <ComboboxInput
+            autoComplete="off"
+            type="text"
             onFocus={setFocused}
             onBlur={setUnfocused}
             selectOnClick
