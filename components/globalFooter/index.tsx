@@ -12,6 +12,10 @@ export const GlobalFooter: React.FC = () => {
         <Column>
           foot foot foot {humanizedFetchTime}
           <br />
+          <Link href="/info">
+            <a>info</a>
+          </Link>
+          <br />
           <Link href="/cookies">
             <a>cookie usage</a>
           </Link>
