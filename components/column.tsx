@@ -6,7 +6,7 @@ export const Column: React.FC = ({ children }) => (
         display: block;
         padding: 0 8px;
         box-sizing: content-box;
-        max-width: 800px;
+        max-width: 1000px;
         margin: 0 auto;
       }
     `}</style>
