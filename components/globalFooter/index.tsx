@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Column } from "../column";
 
+import { humanizedFetchTime } from "@education-data/swedish-gymnasium/out/meta.json";
+
 export const GlobalFooterHeight = 140;
 
 export const GlobalFooter: React.FC = () => {
@@ -8,7 +10,11 @@ export const GlobalFooter: React.FC = () => {
     <>
       <footer>
         <Column>
-          foot foot foot
+          foot foot foot {humanizedFetchTime}
+          <br />
+          <Link href="/info">
+            <a>info</a>
+          </Link>
           <br />
           <Link href="/cookies">
             <a>cookie usage</a>

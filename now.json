@@ -30,8 +30,16 @@
       "headers": { "cache-control": "s-maxage=60, stale-while-revalidate" }
     },
     {
+      "src": "/_next/static/worker\\.(.*)\\.js",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable, s-maxage=3600, stale-while-revalidate"
+      }
+    },
+    {
       "src": "/api(.*)",
-      "headers": { "cache-control": "s-maxage=3600, stale-while-revalidate" }
+      "headers": {
+        "cache-control": "public, max-age=10, s-maxage=3600, stale-while-revalidate"
+      }
     }
   ]
 }

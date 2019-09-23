@@ -2,32 +2,11 @@ import Link, { LinkProps } from "next/link";
 import { Column } from "../column";
 import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import { TouchResponseShape } from "../touchResponder/response";
+import { SearchBox } from "../searchBox";
 
 const RowHeight = 40;
 export const GlobalNavbarHeight = RowHeight * 3;
 
-const SearchBox: React.FC = () => (
-  <div>
-    sök
-    <style jsx>{`
-      div {
-        display: flex;
-        width: 240px;
-        margin-left: auto;
-        background: #eb7031;
-        border-radius: 8px;
-        box-shadow: 0px 2px 8px #0000002b;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 4px 16px;
-        box-sizing: border-box;
-        color: #4d1a00;
-        border: 2px solid #ff9d6b;
-        font-weight: bold;
-      }
-    `}</style>
-  </div>
-);
 const Navlink: React.FC<LinkProps> = props => {
   const [responderProps, responder] = useTouchResponder<HTMLAnchorElement>(
     "#fff",
@@ -51,6 +30,10 @@ const Navlink: React.FC<LinkProps> = props => {
             padding: 4px 12px;
             text-decoration: none;
             color: inherit;
+
+            font-weight: bold;
+
+            border-radius: 8px;
           }
         `}</style>
       </a>
@@ -64,11 +47,13 @@ export const GlobalNavbar: React.FC = () => {
         <Column>
           <section className="row"></section>
           <section className="row">
-            <SearchBox />
+            <div className="searchBox">
+              <SearchBox zIndex={20} id="searchBox2" initialSize={240} />
+            </div>
           </section>
           <section className="row">
-            <Navlink href="/info" as="/info">
-              info
+            <Navlink href="/" as="/">
+              hem
             </Navlink>
             <Navlink href="/gy11/courses/[letter]" as="/gy11/courses/a">
               kurser
@@ -81,6 +66,12 @@ export const GlobalNavbar: React.FC = () => {
             </Navlink>
           </section>
         </Column>
+        <style jsx>{`
+          .searchBox {
+            max-width: 340px;
+            width: 100%;
+          }
+        `}</style>
         <style jsx>{`
           nav {
             position: absolute;
@@ -102,6 +93,7 @@ export const GlobalNavbar: React.FC = () => {
             display: flex;
             justify-content: flex-end;
             height: ${RowHeight}px;
+            box-sizing: border-box;
           }
 
           :global(body) {

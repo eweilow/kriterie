@@ -11,7 +11,7 @@ import { TrackingQuestion } from "../components/cookieQuestion";
 import Icons from "../generated/icons";
 import { LayoutStyle } from "../components/layoutStyle";
 import { Column } from "../components/column";
-import { LoadingBar } from "../components/layoutIndicator/bar";
+import { LoadingBar } from "../components/loadingIndicator/bar";
 
 if (process.env.NODE_ENV === "production") {
   configureAnalytics(process.env.ANALYTICS_ID);
@@ -26,6 +26,9 @@ export default class KriterieApp extends App {
         <Head>
           <title>kriterie.se</title>
           <Icons />
+          {process.env.NODE_ENV === "production" && (
+            <link rel="preload" as="fetch" href="/api/search" />
+          )}
         </Head>
         <GlobalNavbar />
         <Column>

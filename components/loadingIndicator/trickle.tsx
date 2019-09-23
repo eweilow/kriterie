@@ -3,6 +3,7 @@ import React from "react";
 interface IProps {
   children: (progress: number) => JSX.Element;
   trickleTime: number;
+  factor: number;
 }
 
 interface IState {
@@ -11,6 +12,10 @@ interface IState {
 }
 
 export class LoadingTrickle extends React.PureComponent<IProps, IState> {
+  static defaultProps = {
+    factor: 0.1
+  };
+
   state: IState = {
     progress: 0,
     trickleTime: this.props.trickleTime // Copy at init
@@ -33,7 +38,8 @@ export class LoadingTrickle extends React.PureComponent<IProps, IState> {
       state => {
         const remainder = 1 - state.progress;
         return {
-          progress: state.progress + Math.random() * remainder * 0.1
+          progress:
+            state.progress + Math.random() * remainder * this.props.factor
         };
       },
       () => {

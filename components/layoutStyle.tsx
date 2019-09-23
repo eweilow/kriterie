@@ -105,7 +105,6 @@ export const LayoutStyle: React.FC = () => (
       body {
         padding: 0;
         position: relative;
-        overflow-x: hidden;
       }
     `}</style>
   </>

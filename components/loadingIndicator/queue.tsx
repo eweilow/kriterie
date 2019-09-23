@@ -7,6 +7,7 @@ const waitForTime = (time: number) =>
 interface IProps {
   loading: boolean;
   transitionTime: number;
+  portal?: boolean;
   children: (loading: boolean, transitionTime: number) => React.ReactNode;
 }
 
@@ -21,6 +22,10 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
     loading: false,
     nodeAdded: false,
     transitionTime: this.props.transitionTime // Copy at initialization
+  };
+
+  static defaultProps = {
+    portal: true
   };
 
   currentlyRunning = Promise.resolve();
@@ -95,9 +100,20 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
     if (!this.state.nodeAdded) {
       return null;
     }
-    return ReactDOM.createPortal(
-      <>{this.props.children(this.state.loading, this.state.transitionTime)}</>,
-      document.body
-    );
+
+    if (this.props.portal) {
+      return ReactDOM.createPortal(
+        <>
+          {this.props.children(this.state.loading, this.state.transitionTime)}
+        </>,
+        document.body
+      );
+    } else {
+      return (
+        <>
+          {this.props.children(this.state.loading, this.state.transitionTime)}
+        </>
+      );
+    }
   }
 }
