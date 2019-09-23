@@ -15,6 +15,22 @@ import { useRouter } from "next/router";
 import clsx from "clsx";
 import { SearchLoadingBar } from "../loadingIndicator/searchBar";
 
+const workerCache = new Map<string, any>();
+function getWorkerByUrl(url: string) {
+  if (workerCache.has(url)) {
+    return workerCache.get(url);
+  }
+
+  const worker = new (ExampleWorker as any)();
+  worker.postMessage({
+    type: "url",
+    url
+  });
+  workerCache.set(url, worker);
+
+  return worker;
+}
+
 export const SearchBox: React.FC<{
   zIndex?: number;
   id: string;
@@ -28,12 +44,9 @@ export const SearchBox: React.FC<{
   const worker = useRef<Worker>(null);
   const nextString = useRef(searchString);
   useEffect(() => {
-    worker.current = new (ExampleWorker as any)();
-    worker.current.postMessage({
-      type: "url",
-      url: window.location.origin + "/api/search"
-    });
-    worker.current.addEventListener("message", msg => {
+    worker.current = getWorkerByUrl(window.location.origin + "/api/search");
+
+    function listener(msg: any) {
       if (nextString.current === msg.data.str) {
         setSearchResults(
           msg.data.results.map(el => ({
@@ -43,7 +56,12 @@ export const SearchBox: React.FC<{
           }))
         );
       }
-    });
+    }
+    worker.current.addEventListener("message", listener);
+
+    return () => {
+      worker.current.removeEventListener("message", listener);
+    };
   }, []);
 
   useEffect(() => {
