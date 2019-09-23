@@ -22,6 +22,7 @@ export const SearchBox: React.FC<{
 }> = ({ id, initialSize = null, zIndex = 1 }) => {
   const [searchDisabled, setSearchDisabled] = useState(false);
   const [searchString, setSearchString] = useState("");
+  const [loadingString, setLoadingString] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>(null);
 
   const worker = useRef<Worker>(null);
@@ -46,12 +47,17 @@ export const SearchBox: React.FC<{
   }, []);
 
   useEffect(() => {
-    if (!searchString) {
+    if (searchString.trim() === "") {
       setSearchResults(null);
-      setSearchString("");
+      if (searchString !== "") {
+        setSearchString("");
+      }
       nextString.current = "";
     } else {
-      worker.current.postMessage({ type: "search", searchString });
+      worker.current.postMessage({
+        type: "search",
+        searchString: searchString.trim()
+      });
       nextString.current = searchString;
     }
   }, [searchString]);
@@ -74,6 +80,9 @@ export const SearchBox: React.FC<{
   const handleSelect = useCallback(
     value => {
       function start() {
+        setSearchResults(null);
+        setSearchString("");
+        setLoadingString(value);
         setActive(true);
         setLoading(true);
         setSearchDisabled(true);
@@ -82,9 +91,10 @@ export const SearchBox: React.FC<{
         promise.then(() => {
           if (mountedRef.current) {
             setLoading(false);
-            setSearchString("");
             setActive(false);
             setSearchDisabled(false);
+            setSearchResults(null);
+            setSearchString("");
           }
         });
       }
@@ -140,16 +150,17 @@ export const SearchBox: React.FC<{
       className={clsx({ active, hasResults: searchResults })}
       id={id}
       onSelect={handleSelect}
+      value={searchString}
     >
       <div data-size={boxHeight} ref={boxRef} className="box right">
         <div className="box left">
           <ComboboxInput
             autoComplete="off"
+            name="search"
             type="text"
             onFocus={setFocused}
             onBlur={setUnfocused}
-            selectOnClick
-            value={searchString}
+            value={loading ? loadingString : searchString}
             disabled={searchDisabled}
             aria-label="Innehållssök"
             onChange={handleChange}
