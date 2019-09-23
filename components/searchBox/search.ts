@@ -26,7 +26,12 @@ class Search {
     }));
   }
 
-  private executeSearch(str: string, data: any[]) {
+  private data: any[];
+
+  private executeSearch(str: string) {
+    if (this.cache.has(str)) {
+      return this.cache.get(str);
+    }
     console.time(`Search '${str}'`);
     const searchStr = str.trim().toLowerCase();
 
@@ -45,7 +50,7 @@ class Search {
       }
     }
 
-    for (let { keywords, obj } of data) {
+    for (let { keywords, obj } of this.data) {
       let score = 0;
       for (let keyword of keywords) {
         score = Math.max(score, averageDistance(keyword, searchStr));
@@ -68,11 +73,12 @@ class Search {
     result.sort((a, b) => b.score - a.score);
     console.timeEnd(`Search '${str}'`);
 
+    this.cache.set(str, result);
     return result;
   }
 
   private isRunning: boolean = false;
-  private searchLoop(data: any[]) {
+  private searchLoop() {
     if (this.isRunning) {
       return;
     }
@@ -81,7 +87,7 @@ class Search {
     while (this.queued.length > 0) {
       const next = this.queued.shift();
 
-      const results = this.executeSearch(next, data);
+      const results = this.executeSearch(next);
       this.onResults && this.onResults(next, results);
     }
 
@@ -95,7 +101,10 @@ class Search {
       this.queued[0] = str;
     }
 
-    this.searchItems.then(data => this.searchLoop(data));
+    this.searchItems.then(data => {
+      this.data = data;
+      this.searchLoop();
+    });
   }
 }
 
