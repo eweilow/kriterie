@@ -14,21 +14,32 @@
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
   },
   "dependencies": {
-    "@education-data/swedish-gymnasium": "0.0.1-alpha.3",
+    "@education-data/swedish-gymnasium": "0.0.1-alpha.4",
     "@excitare/analytics": "^0.0.1-alpha.195",
+    "@reach/combobox": "^0.1.1",
+    "@zeit/next-workers": "^1.0.1-canary.1",
+    "clsx": "^1.0.4",
+    "dice-coefficient": "^1.0.4",
     "isomorphic-unfetch": "^3.0.0",
+    "jaro-winkler": "^0.2.8",
     "next": "^9.0.5",
     "next-compose-plugins": "^2.2.0",
     "next-transpile-modules": "^2.3.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "styled-jsx": "^3.2.2"
+    "styled-jsx": "^3.2.2",
+    "use-resize-observer": "^4.0.0",
+    "worker-loader": "^2.0.0",
+    "seedrandom": "^3.0.5",
+    "date-fns": "^2.2.1"
   },
   "devDependencies": {
     "@eweilow/ikon-cli": "^0.0.1-alpha.3",
     "@types/node": "^12.7.5",
+    "@types/reach__combobox": "^0.1.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "@types/seedrandom": "^2.4.28",
     "puppeteer": "^1.20.0",
     "typescript": "^3.6.3"
   },
