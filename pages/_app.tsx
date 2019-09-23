@@ -31,7 +31,7 @@ export default class KriterieApp extends App {
           )}
         </Head>
         <GlobalNavbar />
-        <Column>
+        <Column className="root">
           <Component {...pageProps} />
         </Column>
         <LoadingBar.Wrapped />

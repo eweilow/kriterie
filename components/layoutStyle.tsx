@@ -106,6 +106,59 @@ export const LayoutStyle: React.FC = () => (
         padding: 0;
         position: relative;
       }
+
+      p {
+        color: #262626;
+      }
+
+      a {
+        color: inherit;
+      }
+      a:hover {
+        opacity: 0.9;
+      }
+      a:active {
+        opacity: 0.8;
+      }
+
+      .column.root {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      pre {
+        max-width: 100%;
+        overflow: scroll;
+        background: #efefef;
+        padding: 4px;
+        border-radius: 8px;
+        border: 1px solid #c7c7c7;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin-top: 0.75em;
+        margin-bottom: 0.45em;
+      }
+      h1 {
+        font-size: 32px;
+        color: #280d00;
+      }
+      h2 {
+        font-size: 28px;
+        color: #3b271d;
+      }
+      h3 {
+        font-size: 24px;
+        color: #523b31;
+      }
+      h4 {
+        font-size: 20px;
+        color: #523b31;
+      }
     `}</style>
   </>
 );

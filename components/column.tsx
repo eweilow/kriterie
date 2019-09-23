@@ -1,5 +1,10 @@
-export const Column: React.FC = ({ children }) => (
-  <section className="column">
+import clsx from "clsx";
+
+export const Column: React.FC<{ className?: string }> = ({
+  children,
+  className
+}) => (
+  <section className={clsx("column", className)}>
     {children}
     <style jsx>{`
       .column {
