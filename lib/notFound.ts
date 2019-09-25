@@ -37,5 +37,8 @@ export async function fetchAndParseJson<T>(
     throwNotFound(message);
   }
   const json = await res.json();
+  if (res.status === 500) {
+    throw new Error(json.error || "An unknown error has occurred");
+  }
   return json as T;
 }

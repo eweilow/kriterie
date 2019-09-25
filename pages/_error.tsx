@@ -11,6 +11,11 @@ const KriterieError: NextPage<
     Sentry.captureException(err);
   }
 
+  console.log({
+    err: (err && err.statusCode) || null,
+    statusCode
+  });
+
   return <NextError statusCode={statusCode} />;
 };
 
@@ -21,8 +26,17 @@ KriterieError.getInitialProps = async ctx => {
 
   const initialProps = {
     ...errorInitialProps,
+    statusCode:
+      err && err.statusCode == 404 ? 404 : errorInitialProps.statusCode,
     hasGetInitialPropsRun: true
   };
+
+  console.log({
+    resS: (res && res.statusCode) || null,
+    err,
+    errS: (err && err.statusCode) || null,
+    errorInitialProps
+  });
 
   if (res) {
     if (res.statusCode === 404) {
