@@ -1,4 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 export const diceCoefficient: (
-  a: String,
+  a: string,
   b: string
 ) => number = require("dice-coefficient");

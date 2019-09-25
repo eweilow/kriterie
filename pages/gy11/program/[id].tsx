@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import { NextPage } from "next";
 
-import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 
 type Props = { data: any };
-const Page: NextPage<Props> = props => {
+const ProgramPage: NextPage<Props> = props => {
   const router = useRouter();
 
   return (
@@ -17,7 +16,7 @@ const Page: NextPage<Props> = props => {
   );
 };
 
-Page.getInitialProps = wrappedInitialProps<Props>(async ctx => {
+ProgramPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const id = (ctx.query.id as string).toLowerCase();
   const url = getSafeUrl(`/api/program/${id}`, ctx.req);
   const data = await fetchAndParseJson(`Program '${id}' not found`, url);
@@ -26,4 +25,4 @@ Page.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   };
 });
 
-export default Page;
+export default ProgramPage;

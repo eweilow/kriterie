@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 let courseCodeToNameMappingCache: Map<string, string> | null = null;
 function getCourseCodeToNameMapping() {
   if (courseCodeToNameMappingCache != null) {

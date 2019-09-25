@@ -1,5 +1,5 @@
 import { loadSubjectData, loadCourseData } from "./load";
-import { getSortableCode, getCourseData } from "./course";
+import { getSortableCode } from "./course";
 
 export function getSubjectData(id: string) {
   const subject = loadSubjectData(id);

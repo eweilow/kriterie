@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getCourseData } from "../../../api/course";
 import { isNotFoundError, sendError, catchError } from "../../../api/helpers";
 import { getProgramData } from "../../../api/program";
 
