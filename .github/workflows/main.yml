@@ -20,11 +20,11 @@ jobs:
         run: yarn
         env:
           CI: true
-     - name: yarn build
+      - name: yarn build
         run: yarn build
         env:
           CI: true
-     - name: yarn test
+      - name: yarn test
         run: yarn test
         env:
           CI: true
