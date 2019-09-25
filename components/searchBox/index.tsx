@@ -158,7 +158,7 @@ export const SearchBox: React.FC<{
     setActive(false);
   }, []);
 
-  const [boxRef, boxWidth, boxHeight] = useResizeObserver({
+  const [boxRef, , boxHeight] = useResizeObserver({
     defaultHeight: 40
   });
 

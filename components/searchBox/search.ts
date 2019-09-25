@@ -35,9 +35,9 @@ class Search {
     console.time(`Search '${str}'`);
     const searchStr = str.trim().toLowerCase();
 
-    let result = [];
-    var worstScore = 1;
-    var worstScoreIndex = -1;
+    const result = [];
+    let worstScore = 1;
+    let worstScoreIndex = -1;
 
     function updateScore() {
       worstScore = 1;
@@ -50,13 +50,13 @@ class Search {
       }
     }
 
-    for (let { keywords, obj } of this.data) {
+    for (const { keywords, obj } of this.data) {
       let score = 0;
-      for (let keyword of keywords) {
+      for (const keyword of keywords) {
         score = Math.max(score, averageDistance(keyword, searchStr));
       }
 
-      let scoreObject = { score: score, obj };
+      const scoreObject = { score: score, obj };
       if (result.length < this.maxResults) {
         result.push(scoreObject);
         if (score < worstScore) {
@@ -77,7 +77,7 @@ class Search {
     return result;
   }
 
-  private isRunning: boolean = false;
+  private isRunning = false;
   private searchLoop() {
     if (this.isRunning) {
       return;

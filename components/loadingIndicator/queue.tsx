@@ -84,7 +84,7 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
     });
   }
 
-  componentDidUpdate(prevProps: IProps, prevState: IState) {
+  componentDidUpdate(prevProps: IProps) {
     if (this.props.loading && !prevProps.loading) {
       this.startWhenLoadingFinished();
     } else if (!this.props.loading && prevProps.loading) {

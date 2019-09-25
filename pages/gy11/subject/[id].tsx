@@ -6,7 +6,7 @@ import { getSafeUrl } from "../../../lib/safeUrl";
 import { fetchAndParseJson, wrappedInitialProps } from "../../../lib/notFound";
 
 type Props = { data: any };
-const Page: NextPage<Props> = props => {
+const SubjectPage: NextPage<Props> = props => {
   const router = useRouter();
 
   return (
@@ -24,7 +24,7 @@ const Page: NextPage<Props> = props => {
   );
 };
 
-Page.getInitialProps = wrappedInitialProps<Props>(async ctx => {
+SubjectPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const id = (ctx.query.id as string).toLowerCase();
   const url = getSafeUrl(`/api/subject/${id}`, ctx.req);
   const data = await fetchAndParseJson(`Subject '${id}' not found`, url);
@@ -33,4 +33,4 @@ Page.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   };
 });
 
-export default Page;
+export default SubjectPage;
