@@ -6,7 +6,7 @@ const withSourcemaps = require("@zeit/next-source-maps");
 
 module.exports = withPlugins(
   [
-    [withSourcemaps],
+    withSourcemaps,
     [
       withTM,
       {
