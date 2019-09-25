@@ -1161,6 +1161,18 @@
   resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.2.3.tgz#820f6a6af4301b4c5065cfc04bb89e6a3d1d723f"
   integrity sha512-zM9rA8jDchr05giMhL95dPeYkK67cBQnIhCVrOKKqgWGsv+2GE/HZqeptvU4zqs0BvIqsThwov+YxVNVh5csTQ==
 
+"@sentry/cli@^1.47.2":
+  version "1.47.2"
+  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.47.2.tgz#75a23d2816300b333d4e34163c85feeef93bc062"
+  integrity sha512-bUJGyxZQzB8mqnCL3RoeLl169XleoLnn2a1w/xqc8IOBt70IEtpVQQ86jgpZfpY1HqPZlczqEkm1U5kfjCaqLw==
+  dependencies:
+    fs-copy-file-sync "^1.1.1"
+    https-proxy-agent "^2.2.1"
+    mkdirp "^0.5.1"
+    node-fetch "^2.1.2"
+    progress "2.0.0"
+    proxy-from-env "^1.0.0"
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -4786,7 +4798,7 @@ node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
-node-fetch@2.6.0, node-fetch@^2.2.0:
+node-fetch@2.6.0, node-fetch@^2.1.2, node-fetch@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
@@ -5444,6 +5456,11 @@ process@~0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/process/-/process-0.5.2.tgz#1638d8a8e34c2f440a91db95ab9aeb677fc185cf"
   integrity sha1-FjjYqONML0QKkduVq5rrZ3/Bhc8=
+
+progress@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
+  integrity sha1-ihvjZr+Pwj2yvSPxDG/pILQ4nR8=
 
 progress@^2.0.0, progress@^2.0.1:
   version "2.0.3"

@@ -14,7 +14,8 @@
     "test-formatting": "prettier -v && prettier -c '**/*.{ts,tsx}'",
     "test": "yarn test-lint",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
-    "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
+    "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated",
+    "sentry-release": "node releases.js"
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.4",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@eweilow/ikon-cli": "^0.0.1-alpha.3",
+    "@sentry/cli": "^1.47.2",
     "@types/node": "^12.7.5",
     "@types/reach__combobox": "^0.1.0",
     "@types/react": "^16.9.2",
