@@ -7,6 +7,7 @@ const KriterieError: NextPage<
   ErrorProps & { hasGetInitialPropsRun: boolean; err: any }
 > = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
+    Sentry.setExtra("statusCode", err.statusCode);
     Sentry.captureException(err);
   }
 
@@ -29,12 +30,14 @@ KriterieError.getInitialProps = async ctx => {
     }
 
     if (err) {
+      Sentry.setExtra("statusCode", err.statusCode);
       Sentry.captureException(err);
 
       return initialProps;
     }
   } else {
     if (err) {
+      Sentry.setExtra("statusCode", err.statusCode);
       Sentry.captureException(err);
 
       return initialProps;
