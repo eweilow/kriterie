@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start",
     "test-lint": "eslint **/*.ts **/*.tsx",
+    "test-formatting": "prettier -c **/*.ts **/*.tsx",
     "test": "yarn test-lint",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
@@ -47,6 +48,7 @@
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
     "puppeteer": "^1.20.0",
     "typescript": "^3.6.3"
   },
