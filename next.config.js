@@ -2,9 +2,11 @@
 const withPlugins = require("next-compose-plugins");
 const withTM = require("next-transpile-modules");
 const withWorkers = require("@zeit/next-workers");
+const withSourcemaps = require("@zeit/next-source-maps");
 
 module.exports = withPlugins(
   [
+    [withSourcemaps],
     [
       withTM,
       {
