@@ -24,7 +24,11 @@ jobs:
         run: yarn build
         env:
           CI: true
-      - name: yarn test
-        run: yarn test
+      - name: yarn test-lint
+        run: yarn test-lint
+        env:
+          CI: true
+      - name: yarn test-formatting
+        run: yarn test-formatting
         env:
           CI: true
