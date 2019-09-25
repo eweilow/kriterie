@@ -10,7 +10,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test-lint": "eslint **/*.ts **/*.tsx",
+    "test-lint": "eslint --ext .tsx,.ts .",
     "test-formatting": "prettier -c **/*.ts **/*.tsx",
     "test": "yarn test-lint",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
