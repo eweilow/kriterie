@@ -15,8 +15,7 @@
     "test": "yarn test-lint",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated",
-    "sentry-release": "node releases.js",
-    "now-build": "next build && yarn sentry-release"
+    "now-build": "next build && node releases.js"
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.4",
