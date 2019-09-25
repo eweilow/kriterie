@@ -6,7 +6,7 @@ const SENTRY_ORG = "personal-yl";
 const SENTRY_PROJECT = "kriterie";
 const SENTRY_LOG_LEVEL = "";
 
-const VERSION = execSync("yarn --silent sentry-cli releases propose-version", {
+const VERSION = execSync("sentry-cli releases propose-version", {
   env: {
     SENTRY_PROJECT,
     SENTRY_ORG,
@@ -25,7 +25,7 @@ if (!/^[A-z0-9]+$/.test(VERSION)) {
 console.log("Using version: '" + VERSION + "'");
 
 console.log("Starting release");
-execSync(`yarn --silent sentry-cli releases new "${VERSION}"`, {
+execSync(`sentry-cli releases new "${VERSION}"`, {
   env: {
     SENTRY_PROJECT,
     SENTRY_ORG,
@@ -34,7 +34,7 @@ execSync(`yarn --silent sentry-cli releases new "${VERSION}"`, {
 });
 
 console.log("Assigning commits");
-execSync(`yarn --silent sentry-cli releases set-commits "${VERSION}" --auto`, {
+execSync(`sentry-cli releases set-commits "${VERSION}" --auto`, {
   env: {
     SENTRY_PROJECT,
     SENTRY_ORG,
@@ -44,7 +44,7 @@ execSync(`yarn --silent sentry-cli releases set-commits "${VERSION}" --auto`, {
 
 console.log("Uploading sourcemaps");
 execSync(
-  `yarn --silent sentry-cli releases files "${VERSION}" upload-sourcemaps --rewrite --strip-common-prefix ./.next`,
+  `sentry-cli releases files "${VERSION}" upload-sourcemaps --rewrite --strip-common-prefix ./.next`,
   {
     env: {
       SENTRY_PROJECT,
@@ -55,7 +55,7 @@ execSync(
 );
 
 console.log("Creating deployment");
-execSync(`yarn --silent sentry-cli releases deploys "${VERSION}" new -e NOW`, {
+execSync(`sentry-cli releases deploys "${VERSION}" new -e NOW`, {
   env: {
     SENTRY_PROJECT,
     SENTRY_ORG,
@@ -64,7 +64,7 @@ execSync(`yarn --silent sentry-cli releases deploys "${VERSION}" new -e NOW`, {
 });
 
 console.log("Finalizing release");
-execSync(`yarn --silent sentry-cli releases finalize "${VERSION}"`, {
+execSync(`sentry-cli releases finalize "${VERSION}"`, {
   env: {
     SENTRY_PROJECT,
     SENTRY_ORG,
