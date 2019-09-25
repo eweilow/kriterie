@@ -47,3 +47,5 @@ KriterieError.getInitialProps = async ctx => {
 
   return initialProps;
 };
+
+export default KriterieError;

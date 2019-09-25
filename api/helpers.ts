@@ -24,5 +24,5 @@ export function sendError(
 }
 
 export function isNotFoundError(err: any) {
-  return err.notFound === true;
+  return err.statusCode === 404;
 }
