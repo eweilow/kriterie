@@ -42,6 +42,28 @@ execSync(`yarn --silent sentry-cli releases set-commits "${VERSION}" --auto`, {
   }
 });
 
+console.log("Uploading sourcemaps");
+execSync(
+  `yarn --silent sentry-cli releases files "${VERSION}" upload-sourcemaps --rewrite --strip-common-prefix ./.next`,
+  {
+    env: {
+      SENTRY_PROJECT,
+      SENTRY_ORG,
+      SENTRY_LOG_LEVEL
+    }
+  }
+);
+
+console.log("Creating deployment");
+execSync(`yarn --silent sentry-cli releases deploys "${VERSION}" new -e NOW`, {
+  env: {
+    SENTRY_PROJECT,
+    SENTRY_ORG,
+    SENTRY_LOG_LEVEL
+  }
+});
+
+console.log("Finalizing release");
 execSync(`yarn --silent sentry-cli releases finalize "${VERSION}"`, {
   env: {
     SENTRY_PROJECT,
