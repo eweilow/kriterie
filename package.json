@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "test-lint": "eslint --ext .tsx,.ts .",
-    "test-formatting": "prettier -c **/*.ts **/*.tsx",
+    "test-formatting": "prettier -v && prettier -c **/*.ts **/*.tsx",
     "test": "yarn test-lint",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
