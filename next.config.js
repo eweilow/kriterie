@@ -32,6 +32,8 @@ module.exports = withPlugins(
           fs: "empty",
           path: "empty"
         };
+        // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/next.config.js
+        config.resolve.alias["@sentry/node"] = "@sentry/browser";
       }
       return config;
     },
