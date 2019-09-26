@@ -1,6 +1,7 @@
 import NextError, { ErrorProps } from "next/error";
 import * as Sentry from "@sentry/node";
 import { NextPage } from "next";
+import { NextSeo } from "next-seo";
 
 function captureEvent(err: any, req?: any) {
   Sentry.setTag(
@@ -25,7 +26,16 @@ const KriterieError: NextPage<
     captureEvent(err);
   }
 
-  return <NextError statusCode={statusCode} />;
+  return (
+    <>
+      <NextSeo
+        title={
+          statusCode === 404 ? "Sidan kan inte hittas" : "Ett fel har uppstått"
+        }
+      />
+      <NextError statusCode={statusCode} />
+    </>
+  );
 };
 
 KriterieError.getInitialProps = async ctx => {

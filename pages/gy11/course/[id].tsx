@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
+import { NextSeo } from "next-seo";
 
 type Props = { data: any };
 const CoursePage: NextPage<Props> = props => {
@@ -11,6 +12,7 @@ const CoursePage: NextPage<Props> = props => {
 
   return (
     <>
+      <NextSeo title={props.data.title} />
       <Link
         href="/gy11/subject/[id]"
         as={`/gy11/subject/${props.data.subject.code}`}
