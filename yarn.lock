@@ -4800,6 +4800,11 @@ next-compose-plugins@^2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
+next-seo@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.1.0.tgz#e35f287654f3ff824d46353bed71dd1aee5939f6"
+  integrity sha512-GWYUBHRgbYj8oL3wB3Lcrjx/Mpgeq5gI56LDkoKQDra8aiKLadEE8kUsXW58sqOXF8FROEDbdhQFGC6KBS6dbA==
+
 next-transpile-modules@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-2.3.1.tgz#8977c070912fbc3e927c662431fc4e91ae335b43"

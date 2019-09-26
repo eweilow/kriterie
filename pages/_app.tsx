@@ -1,5 +1,6 @@
 import App from "next/app";
 import Head from "next/head";
+import { DefaultSeo } from "next-seo";
 
 import { configureAnalytics, PageTracking } from "@excitare/analytics";
 
@@ -13,6 +14,7 @@ import { LayoutStyle } from "../components/layoutStyle";
 import { Column } from "../components/column";
 import { LoadingBar } from "../components/loadingIndicator/bar";
 import * as Sentry from "@sentry/node";
+import { defaultSeoConfiguration } from "../lib/next-seo.config";
 
 if (process.env.NODE_ENV === "production") {
   configureAnalytics(process.env.ANALYTICS_ID);
@@ -31,12 +33,12 @@ export default class KriterieApp extends App {
     return (
       <>
         <Head>
-          <title>kriterie.se</title>
           <Icons />
           {process.env.NODE_ENV === "production" && (
             <link rel="preload" as="fetch" href="/api/search" />
           )}
         </Head>
+        <DefaultSeo {...defaultSeoConfiguration} />
         <GlobalNavbar />
         <Column className="root">
           <Component {...{ ...pageProps, err: (this.props as any).err }} />
