@@ -1,3 +1,5 @@
+import { throwNotFound } from "../lib/notFound";
+
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 let courseCodeToNameMappingCache: Map<string, string> | null = null;
@@ -24,6 +26,9 @@ export function loadCourses(): any[] {
 
 export function loadCourseData(id: string): any {
   const name = getCourseCodeToNameMapping().get(id.toLowerCase());
+  if (name == null) {
+    throwNotFound(`Course with id '${id}' could not be found`);
+  }
   const data = require("@education-data/swedish-gymnasium/out/" + name);
   return data;
 }
@@ -52,6 +57,9 @@ export function loadSubjects(): any[] {
 
 export function loadSubjectData(id: string): any {
   const name = getSubjectCodeToNameMapping().get(id.toLowerCase());
+  if (name == null) {
+    throwNotFound(`Subject with id '${id}' could not be found`);
+  }
   const data = require("@education-data/swedish-gymnasium/out/" + name);
   return data;
 }
@@ -80,6 +88,9 @@ export function loadProgrammes(): any[] {
 
 export function loadProgramData(id: string): any {
   const name = getProgramCodeToNameMapping().get(id.toLowerCase());
+  if (name == null) {
+    throwNotFound(`Program with id '${id}' could not be found`);
+  }
   const data = require("@education-data/swedish-gymnasium/out/" + name);
   return data;
 }

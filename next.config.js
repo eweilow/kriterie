@@ -2,9 +2,11 @@
 const withPlugins = require("next-compose-plugins");
 const withTM = require("next-transpile-modules");
 const withWorkers = require("@zeit/next-workers");
+const withSourcemaps = require("@zeit/next-source-maps");
 
 module.exports = withPlugins(
   [
+    withSourcemaps,
     [
       withTM,
       {
@@ -30,11 +32,14 @@ module.exports = withPlugins(
           fs: "empty",
           path: "empty"
         };
+        // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/next.config.js
+        config.resolve.alias["@sentry/node"] = "@sentry/browser";
       }
       return config;
     },
     env: {
-      ANALYTICS_ID: "UA-44812680-6"
+      ANALYTICS_ID: "UA-44812680-6",
+      SENTRY_DSN: "https://d7ba9b78b3dc4897a4cdfc8d98142cce@sentry.io/1761526"
     }
   }
 );
