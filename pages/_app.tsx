@@ -37,11 +37,6 @@ export default class KriterieApp extends App {
             <link rel="preload" as="fetch" href="/api/search" />
           )}
         </Head>
-        <button
-          onClick={() => {
-            throw new Error("Error!");
-          }}
-        />
         <GlobalNavbar />
         <Column className="root">
           <Component {...{ ...pageProps, err: (this.props as any).err }} />
