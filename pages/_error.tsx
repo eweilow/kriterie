@@ -2,11 +2,15 @@ import NextError, { ErrorProps } from "next/error";
 import * as Sentry from "@sentry/node";
 import { NextPage } from "next";
 
-function captureEvent(err: any) {
+function captureEvent(err: any, req?: any) {
   Sentry.setTag(
     "environment",
     typeof window === "undefined" ? "frontend:server" : "frontend:browser"
   );
+  if (req != null) {
+    Sentry.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
+    Sentry.setExtra("now-trace", req.headers["x-now-trace"]);
+  }
   if (err.statusCode != null) {
     Sentry.setExtra("statusCode", err.statusCode);
   }
@@ -25,7 +29,7 @@ const KriterieError: NextPage<
 };
 
 KriterieError.getInitialProps = async ctx => {
-  const { res, err, asPath } = ctx;
+  const { res, req, err, asPath } = ctx;
 
   const errorInitialProps = await NextError.getInitialProps(ctx);
 
@@ -42,7 +46,7 @@ KriterieError.getInitialProps = async ctx => {
     }
   }
   if (err) {
-    captureEvent(err);
+    captureEvent(err, req);
     return initialProps;
   }
 

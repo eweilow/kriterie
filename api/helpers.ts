@@ -10,6 +10,8 @@ export function catchError(
     dsn: process.env.SENTRY_DSN,
     enabled: process.env.NODE_ENV === "production"
   });
+  Sentry.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
+  Sentry.setExtra("now-trace", req.headers["x-now-trace"]);
   Sentry.setTag("environment", "api");
   Sentry.captureException(err);
 
