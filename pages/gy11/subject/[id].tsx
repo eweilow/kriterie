@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { fetchAndParseJson, wrappedInitialProps } from "../../../lib/notFound";
+import { NextSeo } from "next-seo";
 
 type Props = { data: any };
 const SubjectPage: NextPage<Props> = props => {
@@ -11,6 +12,7 @@ const SubjectPage: NextPage<Props> = props => {
 
   return (
     <>
+      <NextSeo title={props.data.title} />
       <h1>subject?? {router.query.id}</h1>
       {props.data.courses.map(el => (
         <div key={el.code}>

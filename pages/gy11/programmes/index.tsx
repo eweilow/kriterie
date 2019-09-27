@@ -1,10 +1,12 @@
 import { NextPage } from "next";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { getSafeUrl } from "../../../lib/safeUrl";
+import { NextSeo } from "next-seo";
 
 type Props = { data: any };
 const ProgrammesPage: NextPage<Props> = props => (
   <>
+    <NextSeo title={`Program`} />
     <h1>all programmes??</h1>
     <pre>{JSON.stringify(props.data, null, "  ")}</pre>
   </>

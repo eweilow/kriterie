@@ -1,6 +1,7 @@
 import { CookieUsage } from "@excitare/analytics";
 import { CookieToggle } from "../components/cookieToggle";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 const translations = {
   ganalytics: {
@@ -19,6 +20,7 @@ const translations = {
 export default function CookiePage() {
   return (
     <>
+      <NextSeo noindex={true} title="Kakanvändning" />
       <Head>
         <title>Kakanvändning på kriterie.se</title>
       </Head>

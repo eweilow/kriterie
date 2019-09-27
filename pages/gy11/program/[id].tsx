@@ -3,6 +3,7 @@ import { NextPage } from "next";
 
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
+import { NextSeo } from "next-seo";
 
 type Props = { data: any };
 const ProgramPage: NextPage<Props> = props => {
@@ -10,6 +11,7 @@ const ProgramPage: NextPage<Props> = props => {
 
   return (
     <>
+      <NextSeo title={props.data.title} />
       <h1>program?? {router.query.id}</h1>
       <pre>{JSON.stringify(props.data, null, "  ")}</pre>
     </>
