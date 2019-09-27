@@ -15,6 +15,11 @@
       "dest": "/static/$1"
     },
     {
+      "src": "/gr11/(.+)",
+      "status": 302,
+      "headers": { "Location": "/gr11" }
+    },
+    {
       "src": "/gy11/c/(.)",
       "status": 301,
       "headers": { "Location": "/gy11/courses/$1" }
