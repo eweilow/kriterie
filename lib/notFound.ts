@@ -38,11 +38,6 @@ export async function fetchAndParseJson<T>(
   if (res.status === 404) {
     try {
       const json = await res.json();
-      console.log({
-        json: json.error,
-        message,
-        final: json.error != null ? json.error : message
-      });
       throwNotFound(json.error != null ? json.error : message);
     } catch (err) {
       if (isNotFoundError(err)) {
