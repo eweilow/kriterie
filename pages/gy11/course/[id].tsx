@@ -10,6 +10,7 @@ import { getCourseData } from "../../../api/course";
 import { SimpleControls } from "../../../components/purposeControls";
 import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
+import { FavoritesButton } from "../../../components/favorites/button";
 
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
@@ -21,6 +22,10 @@ const CoursePage: NextPage<Props> = props => {
 
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
+      <FavoritesButton
+        storageKey="kriterie:favorites:course"
+        code={props.data.code}
+      />
       <section className="summary">
         <div>
           <div>kurs</div>

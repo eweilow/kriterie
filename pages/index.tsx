@@ -3,6 +3,8 @@ import { SearchBox } from "../components/searchBox";
 import { NextPage } from "next";
 import { fetchAndParseJson, wrappedInitialProps } from "../lib/notFound";
 import { getSafeUrl } from "../lib/safeUrl";
+import { FavoritesList } from "../components/favorites/list";
+import { Suspense } from "react";
 
 type Props = { data: any };
 const Page: NextPage<Props> = props => (
@@ -70,6 +72,15 @@ const Page: NextPage<Props> = props => (
       Du har ännu inte lagt till något som dina favoriter. Detta gör du genom
       att trycka på stjärnan på sidorna för kurser, ämnen och program!
     </p>
+    {typeof window !== "undefined" ? (
+      <Suspense fallback={<span>Loading...</span>}>
+        <FavoritesList title="kurs" type="course" />
+        <FavoritesList title="ämne" type="subject" />
+        <FavoritesList title="program" type="program" />
+      </Suspense>
+    ) : (
+      <span>Loading...</span>
+    )}
   </>
 );
 

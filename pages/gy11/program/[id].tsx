@@ -6,6 +6,7 @@ import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { CourseList } from "../../../components/courseList";
+import { FavoritesButton } from "../../../components/favorites/button";
 
 const parseOptions: HTMLReactParserOptions = {
   replace({ name, attribs, children }) {
@@ -24,6 +25,10 @@ const ProgramPage: NextPage<Props> = props => {
     <>
       <NextSeo title={props.data.title} />
       <h1>{props.data.title}</h1>
+      <FavoritesButton
+        storageKey="kriterie:favorites:program"
+        code={props.data.code}
+      />
       <section className="summary">
         <div>
           <div>{props.data.type}</div>
