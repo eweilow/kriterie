@@ -72,6 +72,9 @@ const CoursePage: NextPage<Props> = props => {
           ))}
         </div>
       ))}
+      <h2>Kunskapskrav</h2>
+      <CourseCriteria criteria={props.data.criteria} />
+
       <pre>{JSON.stringify(props.data, null, "  ")}</pre>
     </>
   );
