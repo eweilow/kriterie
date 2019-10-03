@@ -5,44 +5,15 @@ import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
-import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { Fragment } from "react";
-import { jaroWinklerDistance } from "../../../components/searchBox/stringSearch/jaroWinkler";
-import { levenshteinDistance } from "../../../components/searchBox/stringSearch/levenshtein";
-import { diceCoefficient } from "../../../components/searchBox/stringSearch/diceCoefficient";
+import { CourseCriteria } from "../../../components/criteria";
 import { getCourseData } from "../../../api/course";
-import { averageDistance } from "../../../components/searchBox/stringSearch/averageDistance";
-
-const Bold: React.FC = ({ children }) => <b>{children}</b>;
-
-const Line: React.FC = ({ children }) => (
-  <div>
-    {children}
-    <style jsx>{`
-      div {
-        display: block;
-      }
-      div::after {
-        content: " ";
-      }
-    `}</style>
-  </div>
-);
-
-const parseOptions: HTMLReactParserOptions = {
-  replace({ name, attribs, children }) {
-    if (!attribs) return;
-
-    if (name === "strong") {
-      return <Bold>{domToReact(children, parseOptions)}</Bold>;
-    }
-    return <Fragment>{domToReact(children, parseOptions)}</Fragment>;
-  }
-};
 
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
   const router = useRouter();
+
+  // Convert this to local storage based later?
 
   return (
     <>
@@ -54,28 +25,40 @@ const CoursePage: NextPage<Props> = props => {
         <a>to subject {props.data.subject.title}</a>
       </Link>
       <h1>{props.data.title}</h1>
-
-      <h2>Criteria</h2>
-      {props.data.criteria.map((el, i) => (
-        <div key={i}>
-          <h3>E</h3>
-          {el.E.map(el2 => (
-            <Line key={el2}>{parse(el2, parseOptions)}</Line>
-          ))}
-          <h3>C</h3>
-          {el.C.map(el2 => (
-            <Line key={el2}>{parse(el2, parseOptions)}</Line>
-          ))}
-          <h3>A</h3>
-          {el.A.map(el2 => (
-            <Line key={el2}>{parse(el2, parseOptions)}</Line>
-          ))}
-        </div>
+      <h2>Kursens omfattning av ämnets syfte</h2>
+      <p>Dessa är [...]</p>
+      {props.data.subjectPurposes.map(el => (
+        <p key={el}>{el}</p>
       ))}
+
+      <h2>Centralt innehåll</h2>
+      <p>Dessa är [...]</p>
+      {props.data.centralContent.map(el => (
+        <Fragment key={el[0]}>
+          {el[0] && <header>{el[0]}</header>}
+          <ul>
+            {el[1].map(el => (
+              <li key={el}>{el}</li>
+            ))}
+          </ul>
+        </Fragment>
+      ))}
+
       <h2>Kunskapskrav</h2>
       <CourseCriteria criteria={props.data.criteria} />
 
       <pre>{JSON.stringify(props.data, null, "  ")}</pre>
+
+      <style jsx>{`
+        h2 {
+          border-bottom: 4px solid #d44700;
+          padding-bottom: 8px;
+          margin-left: -8px;
+          margin-right: -8px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      `}</style>
     </>
   );
 };

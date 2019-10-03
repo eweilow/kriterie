@@ -148,15 +148,15 @@ export const LayoutStyle: React.FC = () => (
         color: #280d00;
       }
       h2 {
-        font-size: 28px;
+        font-size: 24px;
         color: #3b271d;
       }
       h3 {
-        font-size: 24px;
+        font-size: 21px;
         color: #523b31;
       }
       h4 {
-        font-size: 20px;
+        font-size: 18px;
         color: #523b31;
       }
     `}</style>
