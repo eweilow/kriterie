@@ -19,7 +19,11 @@ export function getCourseData(id: string) {
       i => subject.developmentPurposes[i]
     ),
     centralContent: course.centralContent,
-    criteria: course.criteria,
+    criteria: course.criteria.E.map((el, i) => ({
+      E: course.criteria.E[i],
+      C: course.criteria.C[i],
+      A: course.criteria.A[i]
+    })),
     rest: course
   };
 }
