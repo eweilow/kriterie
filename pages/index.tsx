@@ -3,6 +3,7 @@ import { SearchBox } from "../components/searchBox";
 import { NextPage } from "next";
 import { fetchAndParseJson, wrappedInitialProps } from "../lib/notFound";
 import { getSafeUrl } from "../lib/safeUrl";
+import { averageDistance } from "../components/searchBox/stringSearch/averageDistance";
 
 type Props = { data: any };
 const Page: NextPage<Props> = props => (

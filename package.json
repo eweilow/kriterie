@@ -17,7 +17,7 @@
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
   },
   "dependencies": {
-    "@education-data/swedish-gymnasium": "0.0.1-alpha.4",
+    "@education-data/swedish-gymnasium": "0.0.1-alpha.6",
     "@excitare/analytics": "^0.0.1-alpha.195",
     "@reach/combobox": "^0.1.1",
     "@sentry/browser": "^5.6.3",
@@ -27,6 +27,7 @@
     "clsx": "^1.0.4",
     "date-fns": "^2.2.1",
     "dice-coefficient": "^1.0.4",
+    "html-react-parser": "^0.9.1",
     "isomorphic-unfetch": "^3.0.0",
     "jaro-winkler": "^0.2.8",
     "next": "^9.0.6",

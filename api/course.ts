@@ -10,12 +10,16 @@ export function getCourseData(id: string) {
   return {
     title: course.title,
     code: course.code,
-    description: course.description,
     points: course.points,
     subject: {
       title: subject.title,
       code: subject.code
     },
+    subjectPurposes: course.applicableSubjectPurposes.map(
+      i => subject.developmentPurposes[i]
+    ),
+    centralContent: course.centralContent,
+    criteria: course.criteria,
     rest: course
   };
 }
