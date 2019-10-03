@@ -85,7 +85,7 @@ export const LayoutStyle: React.FC = () => (
         box-sizing: border-box;
         font-family: "GlacialIndifference", "Roboto", -apple-system,
           "Trebuchet MS", Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 16px;
 
         background: #fffcfa;
         background-color: #fffcfa;

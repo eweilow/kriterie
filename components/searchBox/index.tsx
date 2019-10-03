@@ -291,7 +291,7 @@ export const SearchBox: React.FC<{
         :global(#${id} [data-reach-combobox-input]),
         :global(#${id} [data-reach-combobox-input])::placeholder {
           color: #4d1a00;
-          font-size: 18px;
+          font-size: 16px;
           font-family: "GlacialIndifference", "Roboto", -apple-system,
             "Trebuchet MS", Helvetica, sans-serif;
           font-weight: bold;
