@@ -21,8 +21,8 @@ export function getAllCoursesData(letter: string) {
     .filter((course: any) => course.title.toLowerCase().startsWith(letter))
     .map((course: any) => ({
       title: course.title,
-      code: course.code,
-      rest: course
+      code: course.code
+      // rest: course
     }));
 
   data.sort((a: any, b: any) =>

@@ -53,7 +53,7 @@ export function getCourseData(id: string) {
       E: course.criteria.E[i],
       C: course.criteria.C[i],
       A: course.criteria.A[i]
-    })),
-    rest: course
+    }))
+    // rest: course
   };
 }
