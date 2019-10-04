@@ -14,9 +14,15 @@ export function getSubjectData(id: string) {
       ...program.education.mandatory.courses,
       ...program.education.program.courses,
       ...program.education.specialization.courses,
-      ...program.education.orientations.flatMap(el => el.courses),
-      ...program.education.professionalDegrees.flatMap(el => el.courses),
-      ...program.education.profiles.flatMap(el => el.courses)
+      ...([] as string[]).concat(
+        ...program.education.orientations.map(el => el.courses)
+      ),
+      ...([] as string[]).concat(
+        ...program.education.professionalDegrees.map(el => el.courses)
+      ),
+      ...([] as string[]).concat(
+        ...program.education.profiles.map(el => el.courses)
+      )
     ]);
 
     applicableProgrammes.push({
