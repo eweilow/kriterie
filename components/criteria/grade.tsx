@@ -11,7 +11,7 @@ export const CriteriaGrade: React.FC<{ grade: string }> = ({
       }
 
       .criteriaGrade + .criteriaGrade {
-        margin-top: 12px;
+        margin-top: 16px;
       }
 
       header {

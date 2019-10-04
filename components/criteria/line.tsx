@@ -7,7 +7,7 @@ export const CriteriaLine: React.FC<{ dense: boolean }> = ({
     <style jsx>{`
       div {
         display: block;
-        line-height: 1.2;
+        line-height: 1.15;
       }
       div.dense {
         display: inline;

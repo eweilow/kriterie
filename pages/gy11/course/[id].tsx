@@ -14,7 +14,6 @@ const CoursePage: NextPage<Props> = props => {
   const router = useRouter();
 
   // Convert this to local storage based later?
-
   return (
     <>
       <NextSeo title={props.data.title} />

@@ -16,8 +16,8 @@ export const PartialGrade: React.FC<{
       </CriteriaLine>
       <CriteriaLine dense={dense}>
         <i>
-          Kommentar från kriterie.se - till övervägande del är inte
-          nödvändigtvis ekvivalent med en kvantitativ jämförelse!
+          Kommentar från kriterie.se: till övervägande del är inte nödvändigtvis
+          ekvivalent med en kvantitativ jämförelse!
         </i>
       </CriteriaLine>
       <CriteriaLine dense={dense}>

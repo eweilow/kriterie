@@ -25,7 +25,7 @@ export const CourseCriteria: React.FC<{
   criteria: ReturnType<typeof getCourseData>["criteria"];
 }> = ({ criteria }) => {
   const [dense, setDense] = useState(false);
-  const [filter, setFilter] = useState<"E" | "C" | "A" | null>(null);
+  const [filter, setFilter] = useState<"E" | "C" | "A" | "alla">("alla");
 
   const parts: Array<"E" | "C" | "A"> = ["E", "C", "A"];
   return (
@@ -40,7 +40,7 @@ export const CourseCriteria: React.FC<{
         <CriteriaGroup key={i}>
           {parts.map(part => (
             <Fragment key={part}>
-              {(filter === part || filter == null) && (
+              {(filter === part || filter == "alla") && (
                 <CriteriaGrade grade={part}>
                   {el[part].map(line => (
                     <CriteriaLine dense={dense} key={line}>
@@ -53,8 +53,12 @@ export const CourseCriteria: React.FC<{
           ))}
         </CriteriaGroup>
       ))}
-      <PartialGrade dense={dense} grade="B" lower="C" upper="A" />
-      <PartialGrade dense={dense} grade="D" lower="C" upper="A" />
+      {filter == "alla" && (
+        <>
+          <PartialGrade dense={dense} grade="B" lower="C" upper="A" />
+          <PartialGrade dense={dense} grade="D" lower="C" upper="A" />
+        </>
+      )}
     </>
   );
 };
