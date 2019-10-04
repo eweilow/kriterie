@@ -10,7 +10,42 @@ import { CourseCriteria } from "../../../components/criteria";
 import { getCourseData } from "../../../api/course";
 import { PurposeControls } from "../../../components/purposeControls";
 import clsx from "clsx";
+import { useTouchResponder } from "../../../components/touchResponder/useTouchResponder";
 
+const ProgramLink: React.FC<{ code: string; applicable: boolean }> = ({
+  code,
+  applicable
+}) => {
+  const [props, element] = useTouchResponder<HTMLAnchorElement>("#d44700", 0.2);
+  return (
+    <Link href="/gy11/program/[id]" as={`/gy11/program/${code}`}>
+      <a {...props} className={clsx({ applicable })}>
+        {code}
+        {element}
+        <style jsx>{`
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            height: 40px;
+            width: 100%;
+            color: #d44700;
+            font-weight: bold;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+          }
+          a:not(.applicable) {
+            color: #d4470048;
+          }
+        `}</style>
+      </a>
+    </Link>
+  );
+};
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
   const router = useRouter();
@@ -20,16 +55,90 @@ const CoursePage: NextPage<Props> = props => {
   return (
     <>
       <NextSeo title={props.data.title} />
-      <Link
-        href="/gy11/subject/[id]"
-        as={`/gy11/subject/${props.data.subject.code}`}
-      >
-        <a>to subject {props.data.subject.title}</a>
-      </Link>
-      <h1>
-        {props.data.title} ({props.data.points}p)
-      </h1>
+      <section className="programmes">
+        <ul>
+          {props.data.applicableProgrammes.map(el => (
+            <li key={el.code}>
+              <ProgramLink {...el} />
+            </li>
+          ))}
+        </ul>
+      </section>
+      <h1>{props.data.title}</h1>
+      <style jsx>{`
+        .programmes ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+        }
 
+        .programmes ul li {
+          flex-grow: 1;
+          list-style: none;
+          margin: 0;
+          min-width: 40px;
+        }
+        .programmes ul li::before {
+          display: none;
+        }
+      `}</style>
+      <section className="summary">
+        <div>
+          <div>kurs</div>
+        </div>
+        <div>
+          <header>Ämne</header>
+          <div>
+            <Link
+              href="/gy11/subject/[id]"
+              as={`/gy11/subject/${props.data.subject.code}`}
+            >
+              <a>{props.data.subject.title}</a>
+            </Link>
+          </div>
+        </div>
+        <div>
+          <header>Kurskod</header>
+          <div>{props.data.code}</div>
+        </div>
+        <div>
+          <header>Poäng</header>
+          <div>{props.data.points}p</div>
+        </div>
+      </section>
+      <style jsx>{`
+        .summary {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .summary > div {
+          display: flex;
+        }
+
+        .summary > div header::after {
+          content: ":";
+          padding-right: 0.5em;
+        }
+        .summary > div + div::before {
+          content: "|";
+          padding: 0 1em;
+        }
+        .summary > div > div {
+          font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+          .summary > div {
+            flex-direction: column;
+            flex-grow: 1;
+          }
+          .summary > div + div::before {
+            display: none;
+          }
+        }
+      `}</style>
       <h2>Kursens omfattning av ämnets syfte</h2>
       <PurposeControls
         disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
@@ -57,7 +166,7 @@ const CoursePage: NextPage<Props> = props => {
       </ul>
       <h2>Centralt innehåll</h2>
       <p>
-        Dessa är det innehåll som bör läras ut inom ramarna för kursen{" "}
+        Detta är det innehåll som bör läras ut inom ramarna för kursen{" "}
         {props.data.title}.
       </p>
       {props.data.centralContent.map(el => (

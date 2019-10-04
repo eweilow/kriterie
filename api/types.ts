@@ -52,11 +52,13 @@ export interface ProgramData {
       courses: string[];
       subjects: SubjectArray;
     };
-    orientations: {
+    orientations: Array<{
+      name: string;
+      code: string;
       courses: string[];
       points: number;
       subjects: SubjectArray;
-    };
+    }>;
     profiles: Array<{
       name: string;
       code: string;
