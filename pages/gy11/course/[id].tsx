@@ -171,7 +171,7 @@ const CoursePage: NextPage<Props> = props => {
       </p>
       {props.data.centralContent.map(el => (
         <Fragment key={el[0]}>
-          {el[0] && <header>{el[0]}</header>}
+          {el[0] && <h4>{el[0]}</h4>}
           <ul>
             {el[1].map(el => (
               <li key={el}>{el}</li>
