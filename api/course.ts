@@ -1,5 +1,4 @@
 import { loadCourseData, loadSubjectData, loadProgrammes } from "./load";
-import { ProgramData } from "./types";
 
 export function getSortableCode(code: string) {
   return code.replace("00S", "0S0");

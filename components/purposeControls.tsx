@@ -1,22 +1,24 @@
 import { mdiClose } from "@mdi/js";
 import { Checkbox } from "./checkbox";
 
-export const PurposeControls: React.FC<{
+export const SimpleControls: React.FC<{
   disabled?: boolean;
-  showAll: boolean;
-  setShowAll: (val: boolean) => void;
-}> = ({ disabled, showAll, setShowAll }) =>
+  value: boolean;
+  label: string;
+  name: string;
+  setValue: (val: boolean) => void;
+}> = ({ disabled, value, setValue, label, name }) =>
   !disabled && (
     <section className="controls">
       <aside>inställningar:</aside>
-      <div className="dense">
+      <div>
         <Checkbox
-          checked={showAll}
+          checked={value}
           value="enabled"
-          onChange={val => setShowAll(val)}
+          onChange={val => setValue(val)}
           color="#d44700"
-          label="visa hela ämnets omfattning"
-          name="dense"
+          label={label}
+          name={name}
           icon={mdiClose}
         />
       </div>

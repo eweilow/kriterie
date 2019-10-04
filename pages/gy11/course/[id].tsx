@@ -8,44 +8,10 @@ import { NextSeo } from "next-seo";
 import { Fragment, useState } from "react";
 import { CourseCriteria } from "../../../components/criteria";
 import { getCourseData } from "../../../api/course";
-import { PurposeControls } from "../../../components/purposeControls";
+import { SimpleControls } from "../../../components/purposeControls";
 import clsx from "clsx";
-import { useTouchResponder } from "../../../components/touchResponder/useTouchResponder";
+import { ApplicableProgrammesList } from "../../../components/programmes";
 
-const ProgramLink: React.FC<{ code: string; applicable: boolean }> = ({
-  code,
-  applicable
-}) => {
-  const [props, element] = useTouchResponder<HTMLAnchorElement>("#d44700", 0.2);
-  return (
-    <Link href="/gy11/program/[id]" as={`/gy11/program/${code}`}>
-      <a {...props} className={clsx({ applicable })}>
-        {code}
-        {element}
-        <style jsx>{`
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            height: 40px;
-            width: 100%;
-            color: #d44700;
-            font-weight: bold;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-          }
-          a:not(.applicable) {
-            color: #d4470048;
-          }
-        `}</style>
-      </a>
-    </Link>
-  );
-};
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
   const router = useRouter();
@@ -55,34 +21,9 @@ const CoursePage: NextPage<Props> = props => {
   return (
     <>
       <NextSeo title={props.data.title} />
-      <section className="programmes">
-        <ul>
-          {props.data.applicableProgrammes.map(el => (
-            <li key={el.code}>
-              <ProgramLink {...el} />
-            </li>
-          ))}
-        </ul>
-      </section>
-      <h1>{props.data.title}</h1>
-      <style jsx>{`
-        .programmes ul {
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-wrap: wrap;
-        }
 
-        .programmes ul li {
-          flex-grow: 1;
-          list-style: none;
-          margin: 0;
-          min-width: 40px;
-        }
-        .programmes ul li::before {
-          display: none;
-        }
-      `}</style>
+      <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
+      <h1>{props.data.title}</h1>
       <section className="summary">
         <div>
           <div>kurs</div>
@@ -107,43 +48,13 @@ const CoursePage: NextPage<Props> = props => {
           <div>{props.data.points}p</div>
         </div>
       </section>
-      <style jsx>{`
-        .summary {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        .summary > div {
-          display: flex;
-        }
-
-        .summary > div header::after {
-          content: ":";
-          padding-right: 0.5em;
-        }
-        .summary > div + div::before {
-          content: "|";
-          padding: 0 1em;
-        }
-        .summary > div > div {
-          font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-          .summary > div {
-            flex-direction: column;
-            flex-grow: 1;
-          }
-          .summary > div + div::before {
-            display: none;
-          }
-        }
-      `}</style>
       <h2>Kursens omfattning av ämnets syfte</h2>
-      <PurposeControls
+      <SimpleControls
         disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
-        showAll={showAllPurposes}
-        setShowAll={setShowAllPurposes}
+        value={showAllPurposes}
+        setValue={setShowAllPurposes}
+        label="visa hela ämnets omfattning"
+        name="dense"
       />
       <p>
         Den omfattning som listas här är en insikt i hur kursen{" "}
@@ -183,6 +94,37 @@ const CoursePage: NextPage<Props> = props => {
       <p>Dessa är kraven för olika betyg i kursen {props.data.title}.</p>
       <CourseCriteria criteria={props.data.criteria} />
       <style jsx>{`
+        .summary {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .summary > div {
+          display: flex;
+        }
+
+        .summary > div header::after {
+          content: ":";
+          padding-right: 0.5em;
+        }
+        .summary > div + div::before {
+          content: "|";
+          padding: 0 1em;
+        }
+        .summary > div > div {
+          font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+          .summary > div {
+            flex-direction: column;
+            flex-grow: 1;
+          }
+          .summary > div + div::before {
+            display: none;
+          }
+        }
+
         h2 {
           border-bottom: 4px solid #d44700;
           padding-bottom: 8px;
