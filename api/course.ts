@@ -15,9 +15,12 @@ export function getCourseData(id: string) {
       title: subject.title,
       code: subject.code
     },
-    subjectPurposes: course.applicableSubjectPurposes.map(
-      i => subject.developmentPurposes[i]
-    ),
+    subjectPurposes: subject.developmentPurposes.map((el, i) => {
+      return {
+        value: el[0].toLocaleUpperCase() + el.slice(1),
+        applicable: course.applicableSubjectPurposes.includes(i)
+      };
+    }),
     centralContent: course.centralContent,
     criteria: course.criteria.E.map((el, i) => ({
       E: course.criteria.E[i],

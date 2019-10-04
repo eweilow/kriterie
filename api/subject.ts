@@ -7,6 +7,9 @@ export function getSubjectData(id: string) {
     title: subject.title,
     code: subject.code,
     description: subject.description,
+    purposes: subject.developmentPurposes.map(
+      el => el[0].toLocaleUpperCase() + el.slice(1)
+    ),
     courses: subject.courses.map(code => {
       const course = loadCourseData(code);
 
