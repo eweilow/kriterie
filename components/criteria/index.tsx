@@ -56,7 +56,7 @@ export const CourseCriteria: React.FC<{
       {filter == "alla" && (
         <>
           <PartialGrade dense={dense} grade="B" lower="C" upper="A" />
-          <PartialGrade dense={dense} grade="D" lower="C" upper="A" />
+          <PartialGrade dense={dense} grade="D" lower="E" upper="C" />
         </>
       )}
     </>
