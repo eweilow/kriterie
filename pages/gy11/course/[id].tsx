@@ -10,6 +10,7 @@ import { getCourseData } from "../../../api/course";
 import { SimpleControls } from "../../../components/purposeControls";
 import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
+import { FavoritesButton } from "../../../components/favorites/button";
 
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
@@ -45,6 +46,10 @@ const CoursePage: NextPage<Props> = props => {
           <div>{props.data.points}p</div>
         </div>
       </section>
+      <FavoritesButton
+        storageKey="kriterie:favorites:course"
+        code={props.data.code}
+      />
       <h2>Kursens omfattning av ämnets syfte</h2>
       <SimpleControls
         disabled={!props.data.subjectPurposes.find(el => !el.applicable)}

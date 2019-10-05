@@ -9,6 +9,7 @@ import { getSubjectData } from "../../../api/subject";
 import { SimpleControls } from "../../../components/purposeControls";
 import { useState } from "react";
 import clsx from "clsx";
+import { FavoritesButton } from "../../../components/favorites/button";
 
 type Props = { data: ReturnType<typeof getSubjectData> };
 const SubjectPage: NextPage<Props> = props => {
@@ -19,6 +20,10 @@ const SubjectPage: NextPage<Props> = props => {
       <NextSeo title={props.data.title} />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
+      <FavoritesButton
+        storageKey="kriterie:favorites:subject"
+        code={props.data.code}
+      />
       <p>{props.data.description}</p>
       <h2>Kurser inom ämnet</h2>
       <SimpleControls

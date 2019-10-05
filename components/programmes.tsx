@@ -50,6 +50,9 @@ export const ApplicableProgrammesList: React.FC<{
             <ProgramLink {...el} />
           </li>
         ))}
+        {programmes.map(el => (
+          <li key={el.code}></li>
+        ))}
       </ul>
       <style jsx>{`
         .programmes ul {

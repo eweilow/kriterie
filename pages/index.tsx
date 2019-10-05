@@ -3,6 +3,11 @@ import { SearchBox } from "../components/searchBox";
 import { NextPage } from "next";
 import { fetchAndParseJson, wrappedInitialProps } from "../lib/notFound";
 import { getSafeUrl } from "../lib/safeUrl";
+import {
+  FavoritesList,
+  FavoritesListFallback
+} from "../components/favorites/list";
+import { Suspense } from "react";
 
 type Props = { data: any };
 const Page: NextPage<Props> = props => (
@@ -66,10 +71,13 @@ const Page: NextPage<Props> = props => (
       </div>
     ))}
     <h2>Dina favoriter</h2>
-    <p>
-      Du har ännu inte lagt till något som dina favoriter. Detta gör du genom
-      att trycka på stjärnan på sidorna för kurser, ämnen och program!
-    </p>
+    {typeof window !== "undefined" ? (
+      <Suspense fallback={<FavoritesListFallback />}>
+        <FavoritesList />
+      </Suspense>
+    ) : (
+      <FavoritesListFallback />
+    )}
   </>
 );
 
