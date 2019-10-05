@@ -78,7 +78,6 @@ export const FavoritesList: React.FC = () => {
           margin: 16px 0;
           padding: 0 0 0 20px;
         }
-
         li {
           list-style: none;
           position: relative;

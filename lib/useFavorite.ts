@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { sendCustomEvent } from "@excitare/analytics";
 
@@ -7,25 +7,20 @@ export function useFavorite(key: string, code: string) {
     Array.isArray(val) ? val : []
   );
 
-  const isFavorited = Array.isArray(state) && state.includes(code);
+  const stateRef = useRef(state);
+  stateRef.current = state;
+
+  const isFavorited = state.includes(code);
 
   const doFavorite = useCallback(() => {
     sendCustomEvent(code, "doFavorite");
-    if (!Array.isArray(state)) {
-      setState([code]);
-    } else {
-      setState([...state, code]);
-    }
-  }, [state]);
+    setState([...stateRef.current, code]);
+  }, []);
 
   const doUnfavorite = useCallback(() => {
     sendCustomEvent(code, "doUnfavorite");
-    if (!Array.isArray(state)) {
-      setState([]);
-    } else {
-      setState(state.filter(el => el !== code));
-    }
-  }, [state]);
+    setState(stateRef.current.filter(el => el !== code));
+  }, []);
 
   return [isFavorited, doFavorite, doUnfavorite, state] as [
     boolean,
