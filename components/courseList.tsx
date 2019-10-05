@@ -70,6 +70,12 @@ export const CourseList: React.FC<{
       .courseList {
         columns: 2;
       }
+      @media (max-width: 500px) {
+        .courseList {
+          columns: 1;
+        }
+      }
+
       .courseList header {
         font-size: 16px;
         color: #6b615d;
