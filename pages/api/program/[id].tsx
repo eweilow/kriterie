@@ -8,11 +8,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(data);
   } catch (err) {
     if (isNotFoundError(err)) {
-      return sendError(
-        res,
-        404,
-        `Program with id '${req.query.id}' was not found`
-      );
+      return sendError(res, 404, err.message);
     } else {
       catchError(err, req, res);
     }
