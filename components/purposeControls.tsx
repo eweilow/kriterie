@@ -23,7 +23,7 @@ export const SimpleControls: React.FC<{
   !disabled && (
     <section className="controls">
       <aside>{title}:</aside>
-      <div>
+      <div className="toggle">
         <ToggleControl
           checked={value}
           value="enabled"
@@ -37,16 +37,8 @@ export const SimpleControls: React.FC<{
       <style jsx>{`
         .controls {
           display: flex;
-          flex-wrap: wrap;
           align-items: center;
           margin-bottom: 16px;
-        }
-
-        @media (max-width: 400px) {
-          aside {
-            flex-basis: 100%;
-            padding-bottom: 12px;
-          }
         }
 
         aside {
