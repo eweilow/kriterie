@@ -104,8 +104,13 @@ const CoursePage: NextPage<Props> = props => {
           flex-wrap: wrap;
         }
 
+        .summary > div > header {
+          color: #777;
+        }
+
         .summary > div {
           display: flex;
+          justify-content: center;
         }
 
         .summary > div header::after {
