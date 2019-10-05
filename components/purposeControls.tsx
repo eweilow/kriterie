@@ -1,5 +1,5 @@
 import { mdiClose } from "@mdi/js";
-import { Checkbox } from "./checkbox";
+import { ToggleControl } from "./checkbox";
 
 export const SimpleControls: React.FC<{
   disabled?: boolean;
@@ -24,7 +24,7 @@ export const SimpleControls: React.FC<{
     <section className="controls">
       <aside>{title}:</aside>
       <div>
-        <Checkbox
+        <ToggleControl
           checked={value}
           value="enabled"
           onChange={val => setValue(val)}

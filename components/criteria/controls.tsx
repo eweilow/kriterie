@@ -1,4 +1,4 @@
-import { Checkbox } from "../checkbox";
+import { ToggleControl } from "../checkbox";
 import { mdiClose } from "@mdi/js";
 
 const filterTypes: Array<"E" | "C" | "A" | "alla"> = ["E", "C", "A", "alla"];
@@ -12,7 +12,7 @@ export const CriteriaControls: React.FC<{
   <section className="controls">
     <aside>inställningar:</aside>
     <div className="dense">
-      <Checkbox
+      <ToggleControl
         checked={dense}
         value="enabled"
         onChange={val => setDense(val)}
@@ -25,7 +25,7 @@ export const CriteriaControls: React.FC<{
     <div className="grades">
       {filterTypes.map(el => (
         <div key={el}>
-          <Checkbox
+          <ToggleControl
             checked={filter === el}
             value={el || "null"}
             onChange={val => val && setFilter(el)}

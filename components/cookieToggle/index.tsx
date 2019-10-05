@@ -3,6 +3,8 @@ import {
   LongTermTrackingState
 } from "@excitare/analytics";
 import { useState, useLayoutEffect } from "react";
+import { ToggleControl } from "../checkbox";
+import { mdiGoogleAnalytics, mdiCircle, mdiCircleMedium } from "@mdi/js";
 
 const CookieToggleContainer: React.FC<{ enter: boolean }> = ({
   enter,
@@ -70,21 +72,44 @@ export const CookieToggle: React.FC = () => {
                   användaren.
                 </>
               )}
-              <br />
-              <button
-                disabled={trackingState === LongTermTrackingState.Enabled}
-                onClick={() => setTrackingEnabled(true)}
-              >
-                godkänn långtidsspårning
-              </button>
-              <button
-                disabled={trackingState === LongTermTrackingState.Disabled}
-                onClick={() => setTrackingEnabled(false)}
-              >
-                {trackingState === LongTermTrackingState.Disabled
-                  ? "stäng av långtidsspårning"
-                  : "behåll långtidsspårning avstängt"}
-              </button>
+
+              <div className="control">
+                <ToggleControl
+                  type="radio"
+                  checked={trackingState === LongTermTrackingState.Enabled}
+                  value="enabled"
+                  onChange={val => {
+                    if (val) {
+                      setTrackingEnabled(true);
+                    }
+                  }}
+                  label={"godkänn långtidsspårning"}
+                  color="#004400"
+                  name={"trackingConsent"}
+                  icon={mdiCircle}
+                />
+              </div>
+              <div className="control">
+                <ToggleControl
+                  type="radio"
+                  checked={trackingState === LongTermTrackingState.Disabled}
+                  value="disabled"
+                  onChange={val => {
+                    if (val) {
+                      setTrackingEnabled(false);
+                    }
+                  }}
+                  label={"behåll långtidsspårning avstängt"}
+                  color="#940022"
+                  name={"trackingConsent"}
+                  icon={mdiCircle}
+                />
+              </div>
+              <style jsx>{`
+                .control {
+                  margin-top: 12px;
+                }
+              `}</style>
             </>
           ) : (
             <>
