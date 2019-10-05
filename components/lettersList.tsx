@@ -68,7 +68,7 @@ export const LettersList: React.FC<{
           </li>
         ))}
         {letters.map(el => (
-          <li key={el}></li>
+          <li key={el + "2"}></li>
         ))}
       </ul>
       <style jsx>{`

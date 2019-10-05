@@ -65,7 +65,7 @@ const ProgramPage: NextPage<Props> = props => {
           {props.data.info.orientation.isOrientations &&
             props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
           {props.data.education.orientations.map(orie => (
-            <Fragment key={orie.code}>
+            <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
               </h4>
@@ -89,7 +89,7 @@ const ProgramPage: NextPage<Props> = props => {
           {props.data.info.orientation.isProfiles &&
             props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
           {props.data.education.profiles.map(orie => (
-            <Fragment key={orie.code}>
+            <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
               </h4>
@@ -102,7 +102,7 @@ const ProgramPage: NextPage<Props> = props => {
         <>
           <h3>Yrkesutgångar</h3>
           {props.data.education.professionalDegrees.map(orie => (
-            <Fragment key={orie.code}>
+            <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code})
               </h4>
