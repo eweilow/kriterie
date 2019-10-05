@@ -132,8 +132,13 @@ const ProgramPage: NextPage<Props> = props => {
           flex-wrap: wrap;
         }
 
+        .summary > div > header {
+          color: #777;
+        }
+
         .summary > div {
           display: flex;
+          justify-content: center;
         }
 
         .summary > div header::after {
@@ -152,6 +157,12 @@ const ProgramPage: NextPage<Props> = props => {
           .summary > div {
             flex-direction: column;
             flex-grow: 1;
+            flex-basis: 50%;
+            box-sizing: border-box;
+            padding: 4px 8px;
+          }
+          .summary {
+            margin: -4px -8px;
           }
           .summary > div + div::before {
             display: none;

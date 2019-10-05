@@ -126,6 +126,31 @@ export const LayoutStyle: React.FC = () => (
         padding-bottom: 64px;
       }
 
+      @media (max-width: 1000px) {
+        .column.root {
+          padding-top: 48px;
+          padding-bottom: 48px;
+        }
+        .column.root > h1:first-child {
+          margin-top: 0.375em;
+        }
+      }
+      @media (max-width: 750px) {
+        .column.root {
+          padding-top: 32px;
+          padding-bottom: 32px;
+        }
+        .column.root > h1:first-child {
+          margin-top: 0;
+        }
+      }
+      @media (max-width: 500px) {
+        .column.root {
+          padding-top: 24px;
+          padding-bottom: 32px;
+        }
+      }
+
       pre {
         max-width: 100%;
         overflow: scroll;
@@ -162,6 +187,29 @@ export const LayoutStyle: React.FC = () => (
       h5 {
         font-size: 16px;
         color: #6b615d;
+      }
+
+      @media (max-width: 750px) {
+        h1 {
+          font-size: 26px;
+          color: #280d00;
+        }
+        h2 {
+          font-size: 23px;
+          color: #3b271d;
+        }
+        h3 {
+          font-size: 20px;
+          color: #523b31;
+        }
+        h4 {
+          font-size: 18px;
+          color: #832b05;
+        }
+        h5 {
+          font-size: 16px;
+          color: #6b615d;
+        }
       }
     `}</style>
   </>
