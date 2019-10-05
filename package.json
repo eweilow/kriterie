@@ -40,7 +40,6 @@
     "react-dom": "^16.9.0",
     "seedrandom": "^3.0.5",
     "styled-jsx": "^3.2.2",
-    "use-persisted-state": "^0.3.0",
     "use-resize-observer": "^4.0.0",
     "worker-loader": "^2.0.0"
   },

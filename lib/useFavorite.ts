@@ -1,26 +1,10 @@
-import createPersistedState from "use-persisted-state";
-import { useEffect, useCallback } from "react";
-
-const hookCache = new Map<string, ReturnType<typeof createPersistedState>>();
-function getHook(key: string) {
-  if (hookCache.has(key)) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return hookCache.get(key)!;
-  }
-  const value = createPersistedState(key);
-  hookCache.set(key, value);
-  return value;
-}
+import { useCallback } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 export function useFavorite(key: string, code: string) {
-  const useFavoritesState = getHook(key);
-
-  const [state, setState] = useFavoritesState(() => []);
-  useEffect(() => {
-    if (!Array.isArray(state)) {
-      setState([]);
-    }
-  }, [state]);
+  const [state, setState] = useLocalStorage(key, val =>
+    Array.isArray(val) ? val : []
+  );
 
   const isFavorited = Array.isArray(state) && state.includes(code);
 
@@ -40,10 +24,10 @@ export function useFavorite(key: string, code: string) {
     }
   }, [state]);
 
-  return [
-    isFavorited,
-    doFavorite,
-    doUnfavorite,
-    Array.isArray(state) ? state : []
-  ] as [boolean, () => void, () => void, any[]];
+  return [isFavorited, doFavorite, doUnfavorite, state] as [
+    boolean,
+    () => void,
+    () => void,
+    any[]
+  ];
 }
