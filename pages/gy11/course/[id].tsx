@@ -22,10 +22,6 @@ const CoursePage: NextPage<Props> = props => {
 
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
-      <FavoritesButton
-        storageKey="kriterie:favorites:course"
-        code={props.data.code}
-      />
       <section className="summary">
         <div>
           <div>kurs</div>
@@ -50,6 +46,10 @@ const CoursePage: NextPage<Props> = props => {
           <div>{props.data.points}p</div>
         </div>
       </section>
+      <FavoritesButton
+        storageKey="kriterie:favorites:course"
+        code={props.data.code}
+      />
       <h2>Kursens omfattning av ämnets syfte</h2>
       <SimpleControls
         disabled={!props.data.subjectPurposes.find(el => !el.applicable)}

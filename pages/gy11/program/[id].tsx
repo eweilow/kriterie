@@ -4,20 +4,9 @@ import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
-import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
-
-const parseOptions: HTMLReactParserOptions = {
-  replace({ name, attribs, children }) {
-    if (!attribs) return;
-
-    if (name === "p") {
-      return <p>{domToReact(children, parseOptions)}</p>;
-    }
-    return <>{domToReact(children, parseOptions)}</>;
-  }
-};
+import { Fragment } from "react";
 
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = props => {
@@ -25,10 +14,6 @@ const ProgramPage: NextPage<Props> = props => {
     <>
       <NextSeo title={props.data.title} />
       <h1>{props.data.title}</h1>
-      <FavoritesButton
-        storageKey="kriterie:favorites:program"
-        code={props.data.code}
-      />
       <section className="summary">
         <div>
           <div>{props.data.type}</div>
@@ -38,6 +23,10 @@ const ProgramPage: NextPage<Props> = props => {
           <div>{props.data.code}</div>
         </div>
       </section>
+      <FavoritesButton
+        storageKey="kriterie:favorites:program"
+        code={props.data.code}
+      />
       <h2>Mål med examen inom programmet</h2>
       {props.data.info.degreeObjectives.map(el => (
         <p key={el}>{el}</p>
@@ -76,7 +65,7 @@ const ProgramPage: NextPage<Props> = props => {
           {props.data.info.orientation.isOrientations &&
             props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
           {props.data.education.orientations.map(orie => (
-            <>
+            <Fragment key={orie.code}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
               </h4>
@@ -90,7 +79,7 @@ const ProgramPage: NextPage<Props> = props => {
                 subjects={orie.subjects}
                 aliasSubjects={orie.aliasSubjects}
               />
-            </>
+            </Fragment>
           ))}
         </>
       )}
@@ -100,12 +89,12 @@ const ProgramPage: NextPage<Props> = props => {
           {props.data.info.orientation.isProfiles &&
             props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
           {props.data.education.profiles.map(orie => (
-            <>
+            <Fragment key={orie.code}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
               </h4>
               <CourseList subjects={orie.subjects} />
-            </>
+            </Fragment>
           ))}
         </>
       )}
@@ -113,12 +102,12 @@ const ProgramPage: NextPage<Props> = props => {
         <>
           <h3>Yrkesutgångar</h3>
           {props.data.education.professionalDegrees.map(orie => (
-            <>
+            <Fragment key={orie.code}>
               <h4>
                 {orie.name} ({orie.code})
               </h4>
               <CourseList subjects={orie.subjects} />
-            </>
+            </Fragment>
           ))}
         </>
       )}

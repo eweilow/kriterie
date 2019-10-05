@@ -6,20 +6,32 @@ export const SimpleControls: React.FC<{
   value: boolean;
   label: string;
   name: string;
+  icon?: string;
+  title?: string;
+  color?: string;
   setValue: (val: boolean) => void;
-}> = ({ disabled, value, setValue, label, name }) =>
+}> = ({
+  disabled,
+  value,
+  setValue,
+  label,
+  name,
+  color = "#d44700",
+  icon = mdiClose,
+  title = "inställningar"
+}) =>
   !disabled && (
     <section className="controls">
-      <aside>inställningar:</aside>
+      <aside>{title}:</aside>
       <div>
         <Checkbox
           checked={value}
           value="enabled"
           onChange={val => setValue(val)}
-          color="#d44700"
+          color={color}
           label={label}
           name={name}
-          icon={mdiClose}
+          icon={icon}
         />
       </div>
       <style jsx>{`
