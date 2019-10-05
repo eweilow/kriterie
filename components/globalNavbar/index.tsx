@@ -97,6 +97,7 @@ export const GlobalNavbar: React.FC = () => {
             max-width: 320px;
             width: 100%;
             height: 40px;
+            margin-left: 4px;
           }
 
           .rows {
