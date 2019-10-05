@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { NextPage } from "next";
 
 import Link from "next/link";
@@ -14,8 +13,6 @@ import { ApplicableProgrammesList } from "../../../components/programmes";
 
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
-  const router = useRouter();
-
   const [showAllPurposes, setShowAllPurposes] = useState(false);
   // Convert this to local storage based later?
   return (

@@ -14,7 +14,7 @@ const CoursesPage: NextPage<Props> = props => (
       letters={props.data.letters}
       activeLetter={props.letter}
       formatAs={s => `/gy11/courses/${s}`}
-      formatHref={s => "/gy11/courses/[letter]"}
+      formatHref={() => "/gy11/courses/[letter]"}
     />
     <h1>Kurser som börjar på {props.letter}</h1>
     <CourseList

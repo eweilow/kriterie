@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { NextPage } from "next";
 
 import Link from "next/link";
@@ -13,8 +12,6 @@ import clsx from "clsx";
 
 type Props = { data: ReturnType<typeof getSubjectData> };
 const SubjectPage: NextPage<Props> = props => {
-  const router = useRouter();
-
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
   return (

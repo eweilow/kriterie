@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { NextPage } from "next";
 
 import { getSafeUrl } from "../../../lib/safeUrl";
@@ -6,7 +5,6 @@ import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
-import Link from "next/link";
 import { CourseList } from "../../../components/courseList";
 
 const parseOptions: HTMLReactParserOptions = {
@@ -22,8 +20,6 @@ const parseOptions: HTMLReactParserOptions = {
 
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = props => {
-  const router = useRouter();
-
   return (
     <>
       <NextSeo title={props.data.title} />

@@ -14,7 +14,7 @@ const SubjectsPage: NextPage<Props> = props => (
       letters={props.data.letters}
       activeLetter={props.letter}
       formatAs={s => `/gy11/subjects/${s}`}
-      formatHref={s => "/gy11/subjects/[letter]"}
+      formatHref={() => "/gy11/subjects/[letter]"}
     />
     <h1>Ämnen som börjar på {props.letter}</h1>
     <ul>
