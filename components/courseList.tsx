@@ -12,7 +12,13 @@ export const CourseList: React.FC<{
       points: number;
     }[];
   }[];
-}> = ({ subjects }) => (
+  aliasSubjects?: {
+    name: string;
+    code: string;
+    minPoints: boolean;
+    optional: boolean;
+  }[];
+}> = ({ subjects, aliasSubjects }) => (
   <section className="courseList">
     {subjects.map(subj => (
       <div key={subj.code}>
@@ -44,6 +50,22 @@ export const CourseList: React.FC<{
         )}
       </div>
     ))}
+    {aliasSubjects != null &&
+      aliasSubjects.map(subj => (
+        <div key={subj.code}>
+          <header>
+            {subj.minPoints != null && (
+              <>
+                {subj.name} ({subj.minPoints}p)
+              </>
+            )}
+            {subj.minPoints == null && <>{subj.name}</>}
+          </header>
+          <div className="choice">
+            Valfrihet på normalt sett {subj.minPoints} poäng finns inom området.
+          </div>
+        </div>
+      ))}
     <style jsx>{`
       .courseList {
         columns: 2;

@@ -33,13 +33,20 @@ const ProgramPage: NextPage<Props> = props => {
           <div>{props.data.code}</div>
         </div>
       </section>
-
       <h2>Mål med examen inom programmet</h2>
-      <>{parse(props.data.info.degreeObjective.html, parseOptions)}</>
-
-      <h2>{props.data.info.educationObjective.title}</h2>
-      <>{parse(props.data.info.educationObjective.html, parseOptions)}</>
-
+      {props.data.info.degreeObjectives.map(el => (
+        <p key={el}>{el}</p>
+      ))}
+      <h2>Mål med gymnasiearbetet</h2>
+      <p>
+        Gymnasiearbetet är det arbetet som görs mot slutet av utbildningen, för
+        att bland annat demonstrera att en elev har tagit till sig utbildningen.
+      </p>
+      <ul>
+        {props.data.info.educationObjectives.map(el => (
+          <li key={el}>{el}</li>
+        ))}
+      </ul>
       <h2>Programmets struktur</h2>
       <h3>Gymnasiegemensamma ämnen</h3>
       <p>
@@ -58,25 +65,35 @@ const ProgramPage: NextPage<Props> = props => {
         läses på.
       </p>
       <CourseList subjects={props.data.education.program} />
-      <h3>Inriktningar</h3>
-      <>{parse(props.data.info.orientation.html, parseOptions)}</>
-      {props.data.education.orientations.map(orie => (
+      {props.data.education.orientations.length > 0 && (
         <>
-          <h4>
-            {orie.name} ({orie.code}, {orie.points}p)
-          </h4>
-          {orie.code === "NANAS" && (
-            <p>
-              Utöver följande ämnen läses också 100 poäng inom ett valfritt
-              naturvetenskapligt ämne.
-            </p>
-          )}
-          <CourseList subjects={orie.subjects} />
+          <h3>Inriktningar</h3>
+          {props.data.info.orientation.isOrientations &&
+            props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
+          {props.data.education.orientations.map(orie => (
+            <>
+              <h4>
+                {orie.name} ({orie.code}, {orie.points}p)
+              </h4>
+              {orie.code === "NANAS" && (
+                <p>
+                  Utöver följande ämnen läses också 100 poäng inom ett valfritt
+                  naturvetenskapligt ämne.
+                </p>
+              )}
+              <CourseList
+                subjects={orie.subjects}
+                aliasSubjects={orie.aliasSubjects}
+              />
+            </>
+          ))}
         </>
-      ))}
+      )}
       {props.data.education.profiles.length > 0 && (
         <>
           <h3>Profiler</h3>
+          {props.data.info.orientation.isProfiles &&
+            props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
           {props.data.education.profiles.map(orie => (
             <>
               <h4>
@@ -145,6 +162,37 @@ const ProgramPage: NextPage<Props> = props => {
           .summary > div + div::before {
             display: none;
           }
+        }
+        ul {
+          margin: 16px 0;
+          padding: 0 0 0 20px;
+        }
+
+        li {
+          list-style: none;
+          position: relative;
+          line-height: 20px;
+        }
+
+        li + li {
+          margin-top: 10px;
+        }
+
+        li.nonApplicable {
+          color: #666;
+        }
+
+        li::before {
+          content: "";
+          position: absolute;
+          left: -10px;
+          top: 10px;
+          -khtml-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 4px;
+          height: 4px;
+          background: #d44700;
         }
       `}</style>
     </>

@@ -67,15 +67,12 @@ export function getProgramData(id: string) {
     code: program.code,
     type,
     info: {
-      degreeObjective: {
-        html: program.info.degreeObjective.html
-      },
-      educationObjective: {
-        title: program.info.educationObjective.title,
-        html: program.info.educationObjective.html
-      },
+      degreeObjectives: program.info.degreeObjectives,
+      educationObjectives: program.info.educationObjectives,
       orientation: {
-        html: program.info.orientation.html
+        isOrientations: program.info.orientation.title === "Inriktningar",
+        isProfiles: program.info.orientation.title === "Profiler",
+        lines: program.info.orientation.lines
       }
     },
     education: {
@@ -89,7 +86,8 @@ export function getProgramData(id: string) {
         name: el.name,
         code: el.code,
         points: el.points,
-        subjects: mapSubjects(el.subjects, true)
+        subjects: mapSubjects(el.subjects, true),
+        aliasSubjects: el.aliasSubjects
       })),
       professionalDegrees: program.education.professionalDegrees.map(el => ({
         name: el.name,

@@ -27,17 +27,12 @@ export interface ProgramData {
   typeOfProgram: string;
   applicableFrom: string;
   info: {
-    degreeObjective: {
-      html: string;
-    };
+    degreeObjectives: string[];
     orientation: {
       title: string;
-      html: string;
+      lines: string[];
     };
-    educationObjective: {
-      title: string;
-      html: string;
-    };
+    educationObjectives: string[];
   };
   education: {
     mandatory: {
@@ -58,6 +53,12 @@ export interface ProgramData {
       courses: string[];
       points: number;
       subjects: SubjectArray;
+      aliasSubjects: Array<{
+        name: string;
+        code: string;
+        minPoints: boolean;
+        optional: boolean;
+      }>;
     }>;
     profiles: Array<{
       name: string;
