@@ -28,16 +28,16 @@ const Page: NextPage<Props> = props => (
       `}</style>
     </div>
     <p>eller:</p>
-    <Link href="/gy11/programmes">
-      <a>alla program</a>
-    </Link>
-    <br />
     <Link href="/gy11/courses/[letter]" as="/gy11/courses/a">
       <a>alla kurser</a>
     </Link>
     <br />
     <Link href="/gy11/subjects/[letter]" as="/gy11/subjects/b">
       <a>alla ämnen</a>
+    </Link>
+    <br />
+    <Link href="/gy11/programmes">
+      <a>alla program</a>
     </Link>
 
     <h2>Dagens slumpmässiga urval</h2>

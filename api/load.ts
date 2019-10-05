@@ -1,4 +1,5 @@
 import { throwNotFound } from "../lib/notFound";
+import { CourseData, ProgramData, SubjectData } from "./types";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 
@@ -19,12 +20,12 @@ function getCourseCodeToNameMapping() {
   return courseCodeToNameMappingCache;
 }
 
-export function loadCourses(): any[] {
+export function loadCourses(): CourseData[] {
   const codes = Array.from(getCourseCodeToNameMapping().keys());
   return codes.map((el: any) => loadCourseData(el));
 }
 
-export function loadCourseData(id: string): any {
+export function loadCourseData(id: string): CourseData {
   const name = getCourseCodeToNameMapping().get(id.toLowerCase());
   if (name == null) {
     throwNotFound(`Course with id '${id}' could not be found`);
@@ -50,12 +51,12 @@ function getSubjectCodeToNameMapping() {
   return subjectCodeToNameMappingCache;
 }
 
-export function loadSubjects(): any[] {
+export function loadSubjects(): SubjectData[] {
   const codes = Array.from(getSubjectCodeToNameMapping().keys());
   return codes.map((el: any) => loadSubjectData(el));
 }
 
-export function loadSubjectData(id: string): any {
+export function loadSubjectData(id: string): SubjectData {
   const name = getSubjectCodeToNameMapping().get(id.toLowerCase());
   if (name == null) {
     throwNotFound(`Subject with id '${id}' could not be found`);
@@ -81,12 +82,12 @@ function getProgramCodeToNameMapping() {
   return programCodeToNameMappingCache;
 }
 
-export function loadProgrammes(): any[] {
+export function loadProgrammes(): ProgramData[] {
   const codes = Array.from(getProgramCodeToNameMapping().keys());
   return codes.map((el: any) => loadProgramData(el));
 }
 
-export function loadProgramData(id: string): any {
+export function loadProgramData(id: string): ProgramData {
   const name = getProgramCodeToNameMapping().get(id.toLowerCase());
   if (name == null) {
     throwNotFound(`Program with id '${id}' could not be found`);

@@ -85,7 +85,7 @@ export const LayoutStyle: React.FC = () => (
         box-sizing: border-box;
         font-family: "GlacialIndifference", "Roboto", -apple-system,
           "Trebuchet MS", Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 16px;
 
         background: #fffcfa;
         background-color: #fffcfa;
@@ -148,16 +148,20 @@ export const LayoutStyle: React.FC = () => (
         color: #280d00;
       }
       h2 {
-        font-size: 28px;
+        font-size: 25px;
         color: #3b271d;
       }
       h3 {
-        font-size: 24px;
+        font-size: 22px;
         color: #523b31;
       }
       h4 {
-        font-size: 20px;
-        color: #523b31;
+        font-size: 19px;
+        color: #832b05;
+      }
+      h5 {
+        font-size: 16px;
+        color: #6b615d;
       }
     `}</style>
   </>

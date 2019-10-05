@@ -14,7 +14,8 @@ export function averageDistance(a: string, b: string) {
   if (a === b) return 1;
 
   const start = startPosition(a, b);
-  const levensthein = Math.min(1.0 / (levenshteinDistance(a, b) + 1), 1.0);
+  const levensthein =
+    1 - levenshteinDistance(a, b) / (0.5 * (a.length + b.length));
   const jaro = jaroWinklerDistance(a, b);
   const dice = diceCoefficient(a, b);
 

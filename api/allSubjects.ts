@@ -20,8 +20,8 @@ export function getAllSubjectsData(letter: string) {
     .filter((subject: any) => subject.title.toLowerCase().startsWith(letter))
     .map((subject: any) => ({
       title: subject.title,
-      code: subject.code,
-      rest: subject
+      code: subject.code
+      // rest: subject
     }));
 
   data.sort((a: any, b: any) => a.code.localeCompare(b.code));
