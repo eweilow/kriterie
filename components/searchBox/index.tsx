@@ -246,8 +246,7 @@ export const SearchBox: React.FC<{
         .box.right {
           border-top-right-radius: 8px;
           border-bottom-right-radius: 8px;
-          filter: drop-shadow(0px 4px 8px #0000002b)
-            drop-shadow(0px 2px 2px #00000000);
+          filter: drop-shadow(0px 2px 4px #0000002b) drop-shadow(0px 0px 2px #0000001b);
           transition: filter 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 

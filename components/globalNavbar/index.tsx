@@ -115,6 +115,10 @@ export const GlobalNavbar: React.FC = () => {
             justify-content: space-between;
           }
 
+          .row + .row {
+            margin-top: 8px;
+          }
+
           .row.links {
             flex-grow: 0;
             margin: 0 -2px;
