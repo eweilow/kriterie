@@ -51,7 +51,7 @@ export const ApplicableProgrammesList: React.FC<{
           </li>
         ))}
         {programmes.map(el => (
-          <li key={el.code}></li>
+          <li key={el.code + "2"}></li>
         ))}
       </ul>
       <style jsx>{`
