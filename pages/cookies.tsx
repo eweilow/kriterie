@@ -21,9 +21,6 @@ export default function CookiePage() {
   return (
     <>
       <NextSeo noindex={true} title="Kakanvändning" />
-      <Head>
-        <title>Kakanvändning på kriterie.se</title>
-      </Head>
       <h1>Kakanvändning på kriterie.se</h1>
       {CookieUsage.filter(el => translations[el.name] != null).map(el => (
         <div key={el.name}>
