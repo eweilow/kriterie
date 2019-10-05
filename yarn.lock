@@ -804,10 +804,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@education-data/swedish-gymnasium@0.0.1-alpha.6":
-  version "0.0.1-alpha.6"
-  resolved "https://registry.yarnpkg.com/@education-data/swedish-gymnasium/-/swedish-gymnasium-0.0.1-alpha.6.tgz#506eeec0f98720a84c5b62e5a5ca437be3dd5327"
-  integrity sha512-BZwAwZYvLrkM6jnKOJpBYnLMjm++ZO/9zXVqoKJ0bYWtzv0+hHC94X7Rd+0Hcgg5YS0z5VHDRIZPhEB/9aeW3A==
+"@education-data/swedish-gymnasium@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@education-data/swedish-gymnasium/-/swedish-gymnasium-0.0.1-alpha.8.tgz#8f62b77ecf45cd4f888561ac0103e7ebeff457ac"
+  integrity sha512-ypVcLcN4ZlB6Iva33sD0tKVFe/05tH8ahr1xK9iHwRgq0BSW52si8etqWtUtsbuKdm0f9JdsUNcAkMN4ue6qRg==
 
 "@eweilow/ikon-cli@^0.0.1-alpha.3":
   version "0.0.1-alpha.3"
