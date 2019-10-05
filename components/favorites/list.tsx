@@ -108,6 +108,12 @@ export const FavoritesList: React.FC = () => {
 
         .favorites {
           animation: enter 200ms forwards;
+          min-height: 200px;
+        }
+
+        p {
+          padding-top: 0.5em;
+          margin: 0;
         }
 
         @keyframes enter {
@@ -123,4 +129,6 @@ export const FavoritesList: React.FC = () => {
   );
 };
 
-export const FavoritesListFallback: React.FC = () => null;
+export const FavoritesListFallback: React.FC = () => (
+  <div style={{ height: 200 }} />
+);
