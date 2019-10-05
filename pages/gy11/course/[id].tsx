@@ -129,6 +129,12 @@ const CoursePage: NextPage<Props> = props => {
           .summary > div {
             flex-direction: column;
             flex-grow: 1;
+            flex-basis: 50%;
+            box-sizing: border-box;
+            padding: 4px 8px;
+          }
+          .summary {
+            margin: -4px -8px;
           }
           .summary > div + div::before {
             display: none;
