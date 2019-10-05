@@ -52,8 +52,8 @@ const SubjectPage: NextPage<Props> = props => {
       ))}
       <h2>Elevens utvecklingsmöjligheter inom ämnet</h2>
       <p>
-        Genom undervisning inom ämnet {props.data.title} bör en elev få
-        möjlighet att utveckla följande:
+        Genom undervisning inom ämnet {props.data.title.toLowerCase()} bör en
+        elev få möjlighet att utveckla följande:
       </p>
       <ul>
         {props.data.developmentPurposes.map(el => (

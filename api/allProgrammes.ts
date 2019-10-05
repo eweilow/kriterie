@@ -1,8 +1,6 @@
 import { loadProgrammes } from "./load";
 import { getSortableCode } from "./course";
 
-type ArrayType<T> = T extends Array<infer U> ? U : never;
-
 function getData() {
   const programmes = loadProgrammes();
 
@@ -40,6 +38,9 @@ function getData() {
 
   return data;
 }
+
+type ArrayType<T> = T extends Array<infer U> ? U : never;
+
 export function getAllProgrammesData() {
   const programmes = getData();
 

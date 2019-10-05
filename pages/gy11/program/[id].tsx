@@ -7,6 +7,7 @@ import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import Link from "next/link";
+import { CourseList } from "../../../components/courseList";
 
 const parseOptions: HTMLReactParserOptions = {
   replace({ name, attribs, children }) {
@@ -18,92 +19,6 @@ const parseOptions: HTMLReactParserOptions = {
     return <>{domToReact(children, parseOptions)}</>;
   }
 };
-
-const CourseList: React.FC<{
-  subjects: {
-    title: string;
-    minPoints: number | null;
-    code: string;
-    freeChoice: number | null;
-    courses: {
-      title: string;
-      code: string;
-      points: number;
-    }[];
-  }[];
-}> = ({ subjects }) => (
-  <section className="courseList">
-    {subjects.map(subj => (
-      <div key={subj.code}>
-        <header>
-          {subj.minPoints != null && (
-            <>
-              {subj.title} ({subj.minPoints}p)
-            </>
-          )}
-          {subj.minPoints == null && <>{subj.title}</>}
-        </header>
-        {subj.courses.length > 0 && (
-          <ul>
-            {subj.courses.map(cour => (
-              <li key={cour.code}>
-                <Link href="/gy11/course/[id]" as={`/gy11/course/${cour.code}`}>
-                  <a>
-                    {cour.title} ({cour.points}p)
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-        {subj.freeChoice > 0 && (
-          <div className="choice">
-            Valfrihet på normalt sett {subj.freeChoice} poäng finns inom ämnet.
-          </div>
-        )}
-      </div>
-    ))}
-    <style jsx>{`
-      .courseList {
-        columns: 2;
-      }
-      .courseList header {
-        font-size: 16px;
-        color: #6b615d;
-        font-weight: bold;
-      }
-
-      .courseList > div {
-        break-inside: avoid-column;
-      }
-      ul {
-        margin: 4px 0 12px 0;
-        padding: 0 0 0 20px;
-      }
-      li {
-        list-style: none;
-        position: relative;
-        line-height: 20px;
-      }
-      li::before {
-        content: "";
-        position: absolute;
-        left: -10px;
-        top: 10px;
-        -khtml-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        width: 4px;
-        height: 4px;
-        background: #d44700;
-      }
-
-      .choice {
-        margin: 0.2em 0;
-      }
-    `}</style>
-  </section>
-);
 
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = props => {
@@ -143,7 +58,8 @@ const ProgramPage: NextPage<Props> = props => {
       <h3>Programgemensamma ämnen</h3>
       <p>
         Dessa ämnen och kurser är de som typiskt sett är gemensamma på{" "}
-        {props.data.title}, oberoende av vilken skola programmet läses på.
+        {props.data.title.toLowerCase()}, oberoende av vilken skola programmet
+        läses på.
       </p>
       <CourseList subjects={props.data.education.program} />
       <h3>Inriktningar</h3>
@@ -191,7 +107,7 @@ const ProgramPage: NextPage<Props> = props => {
       <h2>Programfördjupningskurser</h2>
       <p>
         Dessa kurser är typiskt sett de som får erbjudas som programfördjupning
-        inom {props.data.title}.
+        inom {props.data.title.toLowerCase()}.
       </p>
       <CourseList subjects={props.data.education.specialization} />
       <style jsx>{`

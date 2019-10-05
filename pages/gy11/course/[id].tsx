@@ -58,9 +58,9 @@ const CoursePage: NextPage<Props> = props => {
       />
       <p>
         Den omfattning som listas här är en insikt i hur kursen{" "}
-        {props.data.title} relaterar till syftet med ämnet{" "}
-        {props.data.subject.title}, samt vilka förmågor en elev som läser kursen
-        bör utveckla under dess gång.
+        {props.data.title.toLowerCase()} relaterar till syftet med ämnet{" "}
+        {props.data.subject.title.toLowerCase()}, samt vilka förmågor en elev
+        som läser kursen bör utveckla under dess gång.
       </p>
       <ul>
         {props.data.subjectPurposes
@@ -78,7 +78,7 @@ const CoursePage: NextPage<Props> = props => {
       <h2>Centralt innehåll</h2>
       <p>
         Detta är det innehåll som bör läras ut inom ramarna för kursen{" "}
-        {props.data.title}.
+        {props.data.title.toLowerCase()}.
       </p>
       {props.data.centralContent.map(el => (
         <Fragment key={el[0]}>
@@ -91,7 +91,10 @@ const CoursePage: NextPage<Props> = props => {
         </Fragment>
       ))}
       <h2>Kunskapskrav</h2>
-      <p>Dessa är kraven för olika betyg i kursen {props.data.title}.</p>
+      <p>
+        Dessa är kraven för olika betyg i kursen{" "}
+        {props.data.title.toLowerCase()}.
+      </p>
       <CourseCriteria criteria={props.data.criteria} />
       <style jsx>{`
         .summary {
