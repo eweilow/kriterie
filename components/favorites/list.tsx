@@ -1,7 +1,7 @@
 import { useFavorite } from "../../lib/useFavorite";
 import { getSafeUrl } from "../../lib/safeUrl";
 import { useFetch } from "../../lib/useFetch";
-import { useMemo } from "react";
+import { useMemo, useLayoutEffect } from "react";
 import { getSearchData } from "../../api/search";
 import Link from "next/link";
 
@@ -45,7 +45,7 @@ export const FavoritesList: React.FC = () => {
   mapped.sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <>
+    <div className="favorites">
       {mapped.length === 0 && (
         <p key="info">
           Du har ännu inte lagt till något som dina favoriter. Detta gör du
@@ -105,8 +105,21 @@ export const FavoritesList: React.FC = () => {
           height: 4px;
           background: #d44700;
         }
+
+        .favorites {
+          animation: enter 200ms forwards;
+        }
+
+        @keyframes enter {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
       `}</style>
-    </>
+    </div>
   );
 };
 
