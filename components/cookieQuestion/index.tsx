@@ -64,12 +64,15 @@ export const TrackingQuestion = () => (
               left: 0;
               right: 0;
               bottom: 8px;
-              background: #ff0077;
-              color: white;
+              font-weight: bold;
+              background: #ff9e6d;
+              color: #6d2500;
               height: 56px;
               margin: 0 auto;
               max-width: 1000px;
               font-size: 16px;
+              box-shadow: 0px 4px 16px #00000045;
+              border-radius: 8px;
             }
 
             .tracking .text {
@@ -79,6 +82,7 @@ export const TrackingQuestion = () => (
               right: 0;
               bottom: 0;
               display: flex;
+              flex-wrap: wrap;
               align-items: center;
               padding: 0 12px;
               opacity: 0;
@@ -87,11 +91,62 @@ export const TrackingQuestion = () => (
 
               user-select: none;
             }
+            @media (max-width: 900px) {
+              .tracking {
+                max-width: 900px;
+                height: 70px;
+              }
+              .tracking .text .textContent {
+                padding-right: 12px;
+              }
+            }
+            @media (max-width: 800px) {
+              .tracking {
+                max-width: 600px;
+                height: 96px;
+              }
+              .tracking .text {
+                flex-direction: column;
+              }
+              .tracking .text .textContent {
+                padding-right: 0;
+              }
+              .buttonContent {
+                margin-top: 4px;
+              }
+            }
+            @media (max-width: 600px) {
+              .tracking {
+                max-width: 400px;
+                height: 116px;
+              }
+            }
+
+            @media (max-width: 1000px) {
+              .tracking {
+                font-size: 15px;
+                justify-content: center;
+                bottom: 0;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+              }
+              .tracking .text {
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
 
             .textContent {
+              min-width: 300px;
               flex: 1;
+              flex-grow: 1;
+              flex-shrink: 0;
+              vertical-align: middle;
             }
             .buttonContent {
+              flex-shrink: 0;
               flex-grow: 0;
               margin: -4px;
             }
@@ -141,6 +196,15 @@ export const TrackingQuestion = () => (
                 opacity: 0;
                 transform: translate3d(0, 32px, 0);
               }
+            }
+
+            button {
+              background: white;
+              border: none;
+              border-radius: 4px;
+              padding: 8px 12px;
+              font-weight: bold;
+              color: #7b2a00;
             }
           `}</style>
         </section>,
