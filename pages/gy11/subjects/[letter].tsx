@@ -49,6 +49,9 @@ const SubjectsPage: NextPage<Props> = props => (
         position: relative;
         line-height: 20px;
       }
+      li + li {
+        margin-top: 10px;
+      }
       li::before {
         content: "";
         position: absolute;
