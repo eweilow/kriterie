@@ -49,7 +49,7 @@ export function getCourseData(id: string) {
     applicableProgrammes,
     subjectPurposes: subject.developmentPurposes.map((el, i) => {
       return {
-        value: el[0].toLocaleUpperCase() + el.slice(1),
+        value: el,
         applicable: course.applicableSubjectPurposes.includes(i)
       };
     }),

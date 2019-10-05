@@ -38,12 +38,8 @@ export function getSubjectData(id: string) {
     title: subject.title,
     code: subject.code,
     description: subject.description,
-    purposes: subject.purposes.map(
-      el => el[0].toLocaleUpperCase() + el.slice(1)
-    ),
-    developmentPurposes: subject.developmentPurposes.map(
-      el => el[0].toLocaleUpperCase() + el.slice(1)
-    ),
+    purposes: subject.purposes,
+    developmentPurposes: subject.developmentPurposes,
     applicableProgrammes,
     courses: subject.courses.map(code => {
       const course = loadCourseData(code);
