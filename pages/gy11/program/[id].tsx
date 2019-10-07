@@ -206,7 +206,7 @@ const ProgramPage: NextPage<Props> = props => {
 
 ProgramPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/program/${id}`, ctx.req);
+  const url = getSafeUrl(`/api/program/${encodeURIComponent(id)}`, ctx.req);
   const data = await fetchAndParseJson<any>(`Program '${id}' not found`, url);
   return {
     data

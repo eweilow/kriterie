@@ -188,7 +188,7 @@ const CoursePage: NextPage<Props> = props => {
 
 CoursePage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/course/${id}`, ctx.req);
+  const url = getSafeUrl(`/api/course/${encodeURIComponent(id)}`, ctx.req);
   const data = await fetchAndParseJson<any>(`Course '${id}' not found`, url);
   return {
     data

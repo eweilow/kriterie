@@ -29,7 +29,7 @@ const CoursesPage: NextPage<Props> = props => (
 
 CoursesPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const letter = (ctx.query.letter as string).toLowerCase();
-  const url = getSafeUrl(`/api/courses/${letter}`, ctx.req);
+  const url = getSafeUrl(`/api/courses/${encodeURIComponent(letter)}`, ctx.req);
   const data = await fetchAndParseJson<any>("Courses not found", url);
   return {
     data,

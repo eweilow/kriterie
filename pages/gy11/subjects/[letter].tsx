@@ -70,7 +70,10 @@ const SubjectsPage: NextPage<Props> = props => (
 
 SubjectsPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const letter = (ctx.query.letter as string).toLowerCase();
-  const url = getSafeUrl(`/api/subjects/${letter}`, ctx.req);
+  const url = getSafeUrl(
+    `/api/subjects/${encodeURIComponent(letter)}`,
+    ctx.req
+  );
   const data = await fetchAndParseJson<any>("Subjects not found", url);
   return {
     data,

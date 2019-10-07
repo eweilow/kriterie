@@ -126,7 +126,7 @@ const SubjectPage: NextPage<Props> = props => {
 
 SubjectPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
   const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/subject/${id}`, ctx.req);
+  const url = getSafeUrl(`/api/subject/${encodeURIComponent(id)}`, ctx.req);
   const data = await fetchAndParseJson<any>(`Subject '${id}' not found`, url);
   return {
     data
