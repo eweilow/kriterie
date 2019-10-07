@@ -13,7 +13,9 @@ function captureEvent(err: any, req?: any) {
       scope.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
       scope.setExtra("now-trace", req.headers["x-now-trace"]);
       scope.addEventProcessor(function(event) {
-        return Sentry.Handlers.parseRequest(event, req);
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const { Handlers } = require("@sentry/node");
+        return Handlers.parseRequest(event, req);
       });
     }
     if (err.statusCode != null) {
