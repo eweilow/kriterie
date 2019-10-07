@@ -2,7 +2,6 @@ import NextError, { ErrorProps } from "next/error";
 import * as Sentry from "@sentry/node";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { parseRequest } from "@sentry/node/dist/handlers";
 
 function captureEvent(err: any, req?: any) {
   Sentry.withScope(scope => {
@@ -13,7 +12,9 @@ function captureEvent(err: any, req?: any) {
     if (req != null) {
       scope.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
       scope.setExtra("now-trace", req.headers["x-now-trace"]);
-      scope.addEventProcessor(ev => parseRequest(ev, req));
+      scope.addEventProcessor(function(event) {
+        return Sentry.Handlers.parseRequest(event, req);
+      });
     }
     if (err.statusCode != null) {
       scope.setExtra("statusCode", err.statusCode);
