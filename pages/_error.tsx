@@ -2,8 +2,7 @@ import NextError, { ErrorProps } from "next/error";
 import * as Sentry from "@sentry/node";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { parseRequest, Integrations } from "@sentry/node";
-import { parseRequest, Integrations } from "@sentry/integrations";
+import { parseRequest } from "@sentry/node/dist/handlers";
 
 function captureEvent(err: any, req?: any) {
   Sentry.withScope(scope => {
