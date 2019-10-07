@@ -11,12 +11,12 @@ function getFirstNonNull(...values: string[]) {
 
 export function getSafeUrl(url: string, req?: IncomingMessage) {
   const host = getFirstNonNull(
-    req.headers["now-deployment-url"] as string,
-    req.headers.host
+    req.headers != null ? (req.headers["now-deployment-url"] as string) : null,
+    req.headers != null ? req.headers.host : null
   );
 
   return `${
-    req
+    host != null
       ? `${
           host.split(":")[0] === "localhost" ||
           host.split(":")[0].startsWith("192.168.")
