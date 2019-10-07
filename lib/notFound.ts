@@ -47,9 +47,15 @@ export async function fetchAndParseJson<T>(
     }
   }
 
-  const json = await res.json();
-  if (res.status === 500) {
-    throw new Error(json.error || "An unknown error has occurred");
+  if (res.headers.get("content-type").includes("application/json")) {
+    const json = await res.json();
+    if (!res.ok) {
+      throw new Error(json.error || "An unknown error has occurred");
+    }
+    return json as T;
   }
-  return json as T;
+
+  throw new Error(
+    `An unexpected error has occurred fetching JSON from '${url}': ${res.status} ${res.statusText}`
+  );
 }
