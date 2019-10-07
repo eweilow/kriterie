@@ -2,20 +2,25 @@ import NextError, { ErrorProps } from "next/error";
 import * as Sentry from "@sentry/node";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { parseRequest, Integrations } from "@sentry/node";
+import { parseRequest, Integrations } from "@sentry/integrations";
 
 function captureEvent(err: any, req?: any) {
-  Sentry.setTag(
-    "environment",
-    typeof window === "undefined" ? "frontend:server" : "frontend:browser"
-  );
-  if (req != null) {
-    Sentry.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
-    Sentry.setExtra("now-trace", req.headers["x-now-trace"]);
-  }
-  if (err.statusCode != null) {
-    Sentry.setExtra("statusCode", err.statusCode);
-  }
-  Sentry.captureException(err);
+  Sentry.withScope(scope => {
+    scope.setTag(
+      "environment",
+      typeof window === "undefined" ? "frontend:server" : "frontend:browser"
+    );
+    if (req != null) {
+      scope.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
+      scope.setExtra("now-trace", req.headers["x-now-trace"]);
+      scope.addEventProcessor(ev => parseRequest(ev, req));
+    }
+    if (err.statusCode != null) {
+      scope.setExtra("statusCode", err.statusCode);
+    }
+    Sentry.captureException(err);
+  });
 }
 
 // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/pages/_error.js
@@ -50,11 +55,16 @@ KriterieError.getInitialProps = async ctx => {
     hasGetInitialPropsRun: true
   };
 
+  if (initialProps.statusCode === 404) {
+    return initialProps;
+  }
+
   if (res) {
     if (res.statusCode === 404) {
       return { statusCode: 404, hasGetInitialPropsRun: true } as any;
     }
   }
+
   if (err) {
     captureEvent(err, req);
     return initialProps;
