@@ -9,7 +9,7 @@ import Link from "next/link";
 type Props = { data: ReturnType<typeof getAllProgrammesData> };
 const ProgrammesPage: NextPage<Props> = props => (
   <>
-    <NextSeo title={`Program`} />
+    <NextSeo noindex={true} title={`Program`} />
     <h1>Alla program</h1>
     {props.data.programmes.map(data => (
       <Fragment key={data.type}>

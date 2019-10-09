@@ -26,7 +26,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     pushPage(`https://kriterie.se/`, 0.9);
-    pushPage(`https://kriterie.se/gy11/programmes`, 0.8);
 
     const fetchDate = new Date(fetchTime);
 
