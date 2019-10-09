@@ -12,6 +12,13 @@
       "dest": "/static/$1"
     },
     {
+      "src": "/sitemap.xml",
+      "headers": {
+        "cache-control": "public, max-age=3600, s-maxage=31536000, stale-while-revalidate"
+      },
+      "dest": "/api/sitemap"
+    },
+    {
       "src": "/gr11/(.+)",
       "status": 302,
       "headers": { "Location": "/gr11" }
@@ -29,7 +36,12 @@
     {
       "continue": true,
       "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=60, stale-while-revalidate" }
+      "headers": { "cache-control": "s-maxage=86400, stale-while-revalidate" }
+    },
+    {
+      "continue": true,
+      "src": "/",
+      "headers": { "cache-control": "s-maxage=3600, stale-while-revalidate" }
     },
     {
       "src": "/_next/static/worker\\.(.*)\\.js",
@@ -40,7 +52,7 @@
     {
       "src": "/api(.*)",
       "headers": {
-        "cache-control": "public, max-age=10, s-maxage=3600, stale-while-revalidate"
+        "cache-control": "public, max-age=10, s-maxage=86400, stale-while-revalidate"
       }
     }
   ]
