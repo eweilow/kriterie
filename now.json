@@ -34,6 +34,26 @@
       "headers": { "Location": "/gy11/course/$1" }
     },
     {
+      "src": "/gy11/s/(.)",
+      "status": 301,
+      "headers": { "Location": "/gy11/subjects/$1" }
+    },
+    {
+      "src": "/gy11/s/(.{3,})",
+      "status": 301,
+      "headers": { "Location": "/gy11/subject/$1" }
+    },
+    {
+      "src": "/gy11/p",
+      "status": 301,
+      "headers": { "Location": "/gy11/programmes" }
+    },
+    {
+      "src": "/gy11/p/(.{2,})",
+      "status": 301,
+      "headers": { "Location": "/gy11/program/$1" }
+    },
+    {
       "continue": true,
       "src": "/(.*)",
       "headers": { "cache-control": "s-maxage=86400, stale-while-revalidate" }
