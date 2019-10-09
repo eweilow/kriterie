@@ -8,7 +8,7 @@ import { catchError } from "../../api/helpers";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    let xml: string[] = [];
+    const xml: string[] = [];
 
     const pushPage = (
       url: string,
