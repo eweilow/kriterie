@@ -9,7 +9,7 @@ import Link from "next/link";
 type Props = { data: ReturnType<typeof getAllSubjectsData>; letter: string };
 const SubjectsPage: NextPage<Props> = props => (
   <>
-    <NextSeo title={`Ämnen som börjar på '${props.letter}'`} />
+    <NextSeo noindex={true} title={`Ämnen som börjar på '${props.letter}'`} />
     <LettersList
       letters={props.data.letters}
       activeLetter={props.letter}
