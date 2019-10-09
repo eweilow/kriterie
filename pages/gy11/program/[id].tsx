@@ -6,13 +6,21 @@ import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
 import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = props => {
+  const description = useMemo(() => {
+    return `${props.data.info.degreeObjectives[0]}`;
+  }, [props.data]);
+
   return (
     <>
-      <NextSeo title={props.data.title} />
+      <NextSeo
+        openGraph={{ description }}
+        description={description}
+        title={props.data.title}
+      />
       <h1>{props.data.title}</h1>
       <section className="summary">
         <div>

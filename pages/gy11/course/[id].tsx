@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useMemo } from "react";
 import { CourseCriteria } from "../../../components/criteria";
 import { getCourseData } from "../../../api/course";
 import { SimpleControls } from "../../../components/purposeControls";
@@ -15,11 +15,25 @@ import { FavoritesButton } from "../../../components/favorites/button";
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
   const [showAllPurposes, setShowAllPurposes] = useState(false);
-  // Convert this to local storage based later?
+
+  const description = useMemo(() => {
+    const content =
+      "\n - " +
+      props.data.centralContent.map(el => el[1].join("\n - ")).join("\n");
+    return `Gymnasiekursen ${props.data.title.toLowerCase()} (${
+      props.data.points
+    }p) är en kurs inom ämnet ${props.data.subject.title.toLowerCase()} (${
+      props.data.subject.code
+    }). Kursens innehåll är: ${content}`;
+  }, [props.data]);
+
   return (
     <>
-      <NextSeo title={props.data.title} />
-
+      <NextSeo
+        openGraph={{ description }}
+        description={description}
+        title={props.data.title}
+      />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
       <section className="summary">

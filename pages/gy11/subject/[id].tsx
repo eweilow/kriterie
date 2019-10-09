@@ -7,7 +7,7 @@ import { NextSeo } from "next-seo";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { getSubjectData } from "../../../api/subject";
 import { SimpleControls } from "../../../components/purposeControls";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { FavoritesButton } from "../../../components/favorites/button";
 
@@ -15,9 +15,17 @@ type Props = { data: ReturnType<typeof getSubjectData> };
 const SubjectPage: NextPage<Props> = props => {
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
+  const description = useMemo(() => {
+    return `${props.data.description}`;
+  }, [props.data]);
+
   return (
     <>
-      <NextSeo title={props.data.title} />
+      <NextSeo
+        openGraph={{ description }}
+        description={description}
+        title={props.data.title}
+      />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
       <FavoritesButton

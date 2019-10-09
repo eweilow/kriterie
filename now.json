@@ -2,17 +2,21 @@
   "version": 2,
   "alias": ["kriterie.now.sh"],
   "name": "kriterie",
-  "builds": [
-    { "src": "/static/**/*", "use": "@now/static" },
-    { "src": "next.config.js", "use": "@now/next" }
-  ],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
   "routes": [
     {
       "src": "/static/(.*)",
       "headers": {
-        "cache-control": "public, max-age=31536000, s-maxage=86400"
+        "cache-control": "public, max-age=31536000, s-maxage=86400, stale-while-revalidate"
       },
       "dest": "/static/$1"
+    },
+    {
+      "src": "/sitemap.xml",
+      "headers": {
+        "cache-control": "public, max-age=3600, s-maxage=31536000, stale-while-revalidate"
+      },
+      "dest": "/api/sitemap"
     },
     {
       "src": "/gr11/(.+)",
@@ -30,9 +34,34 @@
       "headers": { "Location": "/gy11/course/$1" }
     },
     {
+      "src": "/gy11/s/(.)",
+      "status": 301,
+      "headers": { "Location": "/gy11/subjects/$1" }
+    },
+    {
+      "src": "/gy11/s/(.{3,})",
+      "status": 301,
+      "headers": { "Location": "/gy11/subject/$1" }
+    },
+    {
+      "src": "/gy11/p",
+      "status": 301,
+      "headers": { "Location": "/gy11/programmes" }
+    },
+    {
+      "src": "/gy11/p/(.{2,})",
+      "status": 301,
+      "headers": { "Location": "/gy11/program/$1" }
+    },
+    {
       "continue": true,
       "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=60, stale-while-revalidate" }
+      "headers": { "cache-control": "s-maxage=86400, stale-while-revalidate" }
+    },
+    {
+      "continue": true,
+      "src": "/",
+      "headers": { "cache-control": "s-maxage=3600, stale-while-revalidate" }
     },
     {
       "src": "/_next/static/worker\\.(.*)\\.js",
@@ -43,7 +72,7 @@
     {
       "src": "/api(.*)",
       "headers": {
-        "cache-control": "public, max-age=10, s-maxage=3600, stale-while-revalidate"
+        "cache-control": "public, max-age=10, s-maxage=86400, stale-while-revalidate"
       }
     }
   ]
