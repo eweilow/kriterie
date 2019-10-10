@@ -31,7 +31,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     for (const course of courses) {
       pushPage(
-        `https://kriterie.se/gy11/course/${course.code.toLowerCase()}`,
+        `https://kriterie.se/gy11/course/${course.code}`,
         0.6,
         fetchDate
       );
@@ -39,7 +39,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     for (const subject of subjects) {
       pushPage(
-        `https://kriterie.se/gy11/subject/${subject.code.toLowerCase()}`,
+        `https://kriterie.se/gy11/subject/${subject.code}`,
         0.6,
         fetchDate
       );
@@ -47,7 +47,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     for (const program of programs) {
       pushPage(
-        `https://kriterie.se/gy11/program/${program.code.toLowerCase()}`,
+        `https://kriterie.se/gy11/program/${program.code}`,
         0.6,
         fetchDate
       );

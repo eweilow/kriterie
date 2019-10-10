@@ -19,7 +19,7 @@ const ProgramPage: NextPage<Props> = props => {
       <NextSeo
         openGraph={{ description }}
         description={description}
-        canonical={`https://kriterie.se/gy11/program/${props.data.code.toLowerCase()}`}
+        canonical={`https://kriterie.se/gy11/program/${props.data.code}`}
         title={props.data.title}
       />
       <h1>{props.data.title}</h1>

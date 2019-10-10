@@ -51,10 +51,7 @@ const Page: NextPage<Props> = props => (
     <h3>Kurser</h3>
     {props.data.courses.map(el => (
       <div key={el.code}>
-        <Link
-          href="/gy11/course/[id]"
-          as={`/gy11/course/${el.code.toLowerCase()}`}
-        >
+        <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
           <a>{el.title}</a>
         </Link>
       </div>
@@ -62,10 +59,7 @@ const Page: NextPage<Props> = props => (
     <h3>Ämnen</h3>
     {props.data.subjects.map(el => (
       <div key={el.code}>
-        <Link
-          href="/gy11/subject/[id]"
-          as={`/gy11/subject/${el.code.toLowerCase()}`}
-        >
+        <Link href="/gy11/subject/[id]" as={`/gy11/subject/${el.code}`}>
           <a>{el.title}</a>
         </Link>
       </div>
@@ -73,10 +67,7 @@ const Page: NextPage<Props> = props => (
     <h3>Program</h3>
     {props.data.programmes.map(el => (
       <div key={el.code}>
-        <Link
-          href="/gy11/program/[id]"
-          as={`/gy11/program/${el.code.toLowerCase()}`}
-        >
+        <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
           <a>{el.title}</a>
         </Link>
       </div>
