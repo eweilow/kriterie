@@ -8,10 +8,12 @@ import {
   FavoritesListFallback
 } from "../components/favorites/list";
 import { Suspense } from "react";
+import { NextSeo } from "next-seo";
 
 type Props = { data: any };
 const Page: NextPage<Props> = props => (
   <>
+    <NextSeo canonical="https://kriterie.se" />
     <h1>Välkommen till kriterie.se!</h1>
     <p>
       Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser,

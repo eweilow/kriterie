@@ -24,6 +24,7 @@ const SubjectPage: NextPage<Props> = props => {
       <NextSeo
         openGraph={{ description }}
         description={description}
+        canonical={`https://kriterie.se/gy11/subject/${props.data.code}`}
         title={props.data.title}
       />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />

@@ -4,7 +4,11 @@ import Link from "next/link";
 export default function Gr11Page() {
   return (
     <>
-      <NextSeo noindex={true} title="Grundskolan" />
+      <NextSeo
+        noindex={true}
+        canonical="https://kriterie.se/gr11"
+        title="Grundskolan"
+      />
       <h1>Grundskolan på kriterie.se</h1>
       <p>
         Om du har hamnat på denna sida betyder det att du kanske klickat på en

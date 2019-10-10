@@ -1,6 +1,5 @@
 import { CookieUsage } from "@excitare/analytics";
 import { CookieToggle } from "../components/cookieToggle";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 const translations = {
@@ -20,7 +19,11 @@ const translations = {
 export default function CookiePage() {
   return (
     <>
-      <NextSeo noindex={true} title="Kakanvändning" />
+      <NextSeo
+        noindex={true}
+        canonical="https://kriterie.se/cookies"
+        title="Kakanvändning"
+      />
       <h1>Kakanvändning på kriterie.se</h1>
       {CookieUsage.filter(el => translations[el.name] != null).map(el => (
         <div key={el.name}>

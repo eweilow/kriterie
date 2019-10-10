@@ -9,11 +9,15 @@ import Link from "next/link";
 type Props = { data: ReturnType<typeof getAllSubjectsData>; letter: string };
 const SubjectsPage: NextPage<Props> = props => (
   <>
-    <NextSeo noindex={true} title={`Ämnen som börjar på '${props.letter}'`} />
+    <NextSeo
+      noindex={true}
+      canonical={`https://kriterie.se/gy11/subjects/${props.letter.toLowerCase()}`}
+      title={`Ämnen som börjar på '${props.letter}'`}
+    />
     <LettersList
       letters={props.data.letters}
       activeLetter={props.letter}
-      formatAs={s => `/gy11/subjects/${s}`}
+      formatAs={s => `/gy11/subjects/${s.toLowerCase()}`}
       formatHref={() => "/gy11/subjects/[letter]"}
     />
     <h1>Ämnen som börjar på {props.letter}</h1>

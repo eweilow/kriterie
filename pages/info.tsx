@@ -3,7 +3,11 @@ import { NextSeo } from "next-seo";
 export default function InfoPage() {
   return (
     <>
-      <NextSeo noindex={true} title="Information" />
+      <NextSeo
+        noindex={true}
+        canonical="https://kriterie.se/info"
+        title="Information"
+      />
       <h1>Info</h1>
 
       <h2>Kort historik</h2>

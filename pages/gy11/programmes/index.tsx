@@ -9,7 +9,11 @@ import Link from "next/link";
 type Props = { data: ReturnType<typeof getAllProgrammesData> };
 const ProgrammesPage: NextPage<Props> = props => (
   <>
-    <NextSeo noindex={true} title={`Program`} />
+    <NextSeo
+      noindex={true}
+      canonical="https://kriterie.se/gy11/programmes"
+      title={`Program`}
+    />
     <h1>Alla program</h1>
     {props.data.programmes.map(data => (
       <Fragment key={data.type}>

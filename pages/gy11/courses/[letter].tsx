@@ -9,11 +9,15 @@ import { LettersList } from "../../../components/lettersList";
 type Props = { data: ReturnType<typeof getAllCoursesData>; letter: string };
 const CoursesPage: NextPage<Props> = props => (
   <>
-    <NextSeo noindex={true} title={`Kurser som börjar på '${props.letter}'`} />
+    <NextSeo
+      noindex={true}
+      canonical={`https://kriterie.se/gy11/courses/${props.letter.toLowerCase()}`}
+      title={`Kurser som börjar på '${props.letter}'`}
+    />
     <LettersList
       letters={props.data.letters}
       activeLetter={props.letter}
-      formatAs={s => `/gy11/courses/${s}`}
+      formatAs={s => `/gy11/courses/${s.toLowerCase()}`}
       formatHref={() => "/gy11/courses/[letter]"}
     />
     <h1>Kurser som börjar på {props.letter}</h1>
