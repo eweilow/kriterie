@@ -1,6 +1,7 @@
 import { getCourseData } from "../../api/course";
 import { useState, Fragment } from "react";
 import { CriteriaControls } from "./controls";
+import { useAmp } from "next/amp";
 
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { CriteriaGroup } from "./group";
@@ -28,14 +29,19 @@ export const CourseCriteria: React.FC<{
   const [filter, setFilter] = useState<"E" | "C" | "A" | "alla">("alla");
 
   const parts: Array<"E" | "C" | "A"> = ["E", "C", "A"];
+
+  const isAmp = useAmp();
+
   return (
     <>
-      <CriteriaControls
-        dense={dense}
-        setDense={setDense}
-        filter={filter}
-        setFilter={setFilter}
-      />
+      {!isAmp && (
+        <CriteriaControls
+          dense={dense}
+          setDense={setDense}
+          filter={filter}
+          setFilter={setFilter}
+        />
+      )}
       {criteria.map((el, i) => (
         <CriteriaGroup key={i}>
           {parts.map(part => (

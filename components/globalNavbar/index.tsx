@@ -1,4 +1,6 @@
 import Link, { LinkProps } from "next/link";
+import { useAmp } from "next/amp";
+
 import { Column } from "../column";
 import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import { TouchResponseShape } from "../touchResponder/response";
@@ -49,6 +51,7 @@ const Navlink: React.FC<LinkProps> = props => {
   );
 };
 export const GlobalNavbar: React.FC = () => {
+  const isAmp = useAmp();
   return (
     <>
       <nav>
@@ -56,9 +59,11 @@ export const GlobalNavbar: React.FC = () => {
           <div className="rows">
             <section className="row">
               <Logo />
-              <div className="searchBox">
-                <SearchBox zIndex={20} id="searchBox2" initialSize={200} />
-              </div>
+              {!isAmp && (
+                <div className="searchBox">
+                  <SearchBox zIndex={20} id="searchBox2" initialSize={200} />
+                </div>
+              )}
             </section>
             <section className="row links">
               <Navlink href="/" as="/">
