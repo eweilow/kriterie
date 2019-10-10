@@ -71,8 +71,8 @@ export const GlobalFooter: React.FC = () => {
             margin: 0.05em 0;
           }
 
-          :global(body) {
-            padding-bottom: ${GlobalFooterHeight}px !important;
+          :global(html) :global(body) {
+            padding-bottom: ${GlobalFooterHeight}px;
           }
         `}</style>
       </footer>

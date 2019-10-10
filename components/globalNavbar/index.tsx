@@ -41,8 +41,8 @@ const Navlink: React.FC<LinkProps> = props => {
             height: ${RowHeight}px;
             box-sizing: border-box;
 
-            opacity: 1 !important;
-            transform: none !important;
+            opacity: 1;
+            transform: none;
             z-index: 1;
           }
         `}</style>
@@ -135,8 +135,8 @@ export const GlobalNavbar: React.FC = () => {
             margin: 0 2px;
           }
 
-          :global(body) {
-            padding-top: ${GlobalNavbarHeight + 4 + 16}px !important;
+          :global(html) :global(body) {
+            padding-top: ${GlobalNavbarHeight + 4 + 16}px;
           }
         `}</style>
       </nav>

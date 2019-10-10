@@ -52,8 +52,8 @@ export const LayoutStyle: React.FC = () => (
       html,
       body,
       * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-        -webkit-tap-highlight-color: transparent !important; /* For some Androids */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent; /* For some Androids */
       }
       body,
       html {
