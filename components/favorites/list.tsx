@@ -23,19 +23,19 @@ export const FavoritesList: React.FC = () => {
       ...courseFavorites.map(el => ({
         type: "kurs",
         href: "/gy11/course/[id]",
-        as: `/gy11/course/${el}`,
+        as: `/gy11/course/${el.toLowerCase()}`,
         title: data.find(dEl => dEl.code === el).title as string
       })),
       ...subjectFavorites.map(el => ({
         type: "ämne",
         href: "/gy11/subject/[id]",
-        as: `/gy11/subject/${el}`,
+        as: `/gy11/subject/${el.toLowerCase()}`,
         title: data.find(dEl => dEl.code === el).title as string
       })),
       ...programFavorites.map(el => ({
         type: "program",
         href: "/gy11/program/[id]",
-        as: `/gy11/program/${el}`,
+        as: `/gy11/program/${el.toLowerCase()}`,
         title: data.find(dEl => dEl.code === el).title as string
       }))
     ],

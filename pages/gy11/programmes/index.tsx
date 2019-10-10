@@ -21,7 +21,10 @@ const ProgrammesPage: NextPage<Props> = props => (
         <ul>
           {data.programmes.map(el => (
             <li key={el.code}>
-              <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
+              <Link
+                href="/gy11/program/[id]"
+                as={`/gy11/program/${el.code.toLowerCase()}`}
+              >
                 <a>
                   {el.title} ({el.code})
                 </a>

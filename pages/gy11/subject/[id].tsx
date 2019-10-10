@@ -24,7 +24,7 @@ const SubjectPage: NextPage<Props> = props => {
       <NextSeo
         openGraph={{ description }}
         description={description}
-        canonical={`https://kriterie.se/gy11/subject/${props.data.code}`}
+        canonical={`https://kriterie.se/gy11/subject/${props.data.code.toLowerCase()}`}
         title={props.data.title}
       />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
@@ -44,7 +44,10 @@ const SubjectPage: NextPage<Props> = props => {
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
         {props.data.courses.map(el => (
           <li key={el.code}>
-            <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
+            <Link
+              href="/gy11/course/[id]"
+              as={`/gy11/course/${el.code.toLowerCase()}`}
+            >
               <a>
                 {showAllCourseInfo && props.data.courseInfo[el.code]}
                 {!showAllCourseInfo && (

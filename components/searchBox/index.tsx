@@ -122,19 +122,28 @@ export const SearchBox: React.FC<{
         const found = searchResults.find(el => el.title === value);
         if (found.type === "program") {
           waitForPromise(
-            router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
+            router.push(
+              "/gy11/program/[id]",
+              "/gy11/program/" + found.code.toLowerCase()
+            )
           );
           start();
         }
         if (found.type === "course") {
           waitForPromise(
-            router.push("/gy11/course/[id]", "/gy11/course/" + found.code)
+            router.push(
+              "/gy11/course/[id]",
+              "/gy11/course/" + found.code.toLowerCase()
+            )
           );
           start();
         }
         if (found.type === "subject") {
           waitForPromise(
-            router.push("/gy11/subject/[id]", "/gy11/subject/" + found.code)
+            router.push(
+              "/gy11/subject/[id]",
+              "/gy11/subject/" + found.code.toLowerCase()
+            )
           );
           start();
         }

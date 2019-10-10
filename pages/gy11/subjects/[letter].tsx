@@ -24,7 +24,10 @@ const SubjectsPage: NextPage<Props> = props => (
     <ul>
       {props.data.subjects.map(subj => (
         <li key={subj.code}>
-          <Link href="/gy11/subject/[id]" as={`/gy11/subject/${subj.code}`}>
+          <Link
+            href="/gy11/subject/[id]"
+            as={`/gy11/subject/${subj.code.toLowerCase()}`}
+          >
             <a>{subj.title}</a>
           </Link>
         </li>

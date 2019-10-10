@@ -10,7 +10,7 @@ const ProgramLink: React.FC<{ code: string; applicable: boolean }> = ({
 }) => {
   const [props, element] = useTouchResponder<HTMLAnchorElement>("#d44700", 0.2);
   return (
-    <Link href="/gy11/program/[id]" as={`/gy11/program/${code}`}>
+    <Link href="/gy11/program/[id]" as={`/gy11/program/${code.toLowerCase()}`}>
       <a {...props} className={clsx({ applicable })}>
         {code}
         {element}

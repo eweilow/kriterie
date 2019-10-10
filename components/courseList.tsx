@@ -34,7 +34,10 @@ export const CourseList: React.FC<{
           <ul>
             {subj.courses.map(cour => (
               <li key={cour.code}>
-                <Link href="/gy11/course/[id]" as={`/gy11/course/${cour.code}`}>
+                <Link
+                  href="/gy11/course/[id]"
+                  as={`/gy11/course/${cour.code.toLowerCase()}`}
+                >
                   <a>
                     {cour.title} ({cour.points}p)
                   </a>
