@@ -2,7 +2,8 @@ import courses from "@education-data/swedish-gymnasium/out/courses.json";
 import subjects from "@education-data/swedish-gymnasium/out/subjects.json";
 import programs from "@education-data/swedish-gymnasium/out/programmes.json";
 
-import { fetchTime } from "@education-data/swedish-gymnasium/out/meta.json";
+// import { fetchTime } from "@education-data/swedish-gymnasium/out/meta.json";
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { catchError } from "../../api/helpers";
 
@@ -27,7 +28,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     pushPage(`https://kriterie.se/`, 0.9);
 
-    const fetchDate = new Date(fetchTime);
+    // const fetchDate = new Date(fetchTime);
+    const fetchDate = undefined;
 
     for (const course of courses) {
       pushPage(
