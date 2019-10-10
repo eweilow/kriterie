@@ -1,4 +1,5 @@
-import { NextPage } from "next";
+import { NextPage, PageConfig } from "next";
+import { useAmp } from "next/amp";
 
 import Link from "next/link";
 import { getSafeUrl } from "../../../lib/safeUrl";
@@ -19,6 +20,8 @@ const SubjectPage: NextPage<Props> = props => {
     return `${props.data.description}`;
   }, [props.data]);
 
+  const isAmp = useAmp();
+
   return (
     <>
       <NextSeo
@@ -28,18 +31,22 @@ const SubjectPage: NextPage<Props> = props => {
       />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
-      <FavoritesButton
-        storageKey="kriterie:favorites:subject"
-        code={props.data.code}
-      />
+      {!isAmp && (
+        <FavoritesButton
+          storageKey="kriterie:favorites:subject"
+          code={props.data.code}
+        />
+      )}
       <p>{props.data.description}</p>
       <h2>Kurser inom ämnet</h2>
-      <SimpleControls
-        value={showAllCourseInfo}
-        setValue={setShowAllCourseInfo}
-        label="visa detaljerad kursinformation"
-        name="info"
-      />
+      {!isAmp && (
+        <SimpleControls
+          value={showAllCourseInfo}
+          setValue={setShowAllCourseInfo}
+          label="visa detaljerad kursinformation"
+          name="info"
+        />
+      )}
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
         {props.data.courses.map(el => (
           <li key={el.code}>
@@ -142,3 +149,7 @@ SubjectPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
 });
 
 export default SubjectPage;
+
+export const config: PageConfig = {
+  amp: "hybrid"
+};

@@ -1,4 +1,5 @@
-import { NextPage } from "next";
+import { NextPage, PageConfig } from "next";
+import { useAmp } from "next/amp";
 
 import { getSafeUrl } from "../../../lib/safeUrl";
 import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
@@ -13,6 +14,8 @@ const ProgramPage: NextPage<Props> = props => {
   const description = useMemo(() => {
     return `${props.data.info.degreeObjectives[0]}`;
   }, [props.data]);
+
+  const isAmp = useAmp();
 
   return (
     <>
@@ -31,10 +34,12 @@ const ProgramPage: NextPage<Props> = props => {
           <div>{props.data.code}</div>
         </div>
       </section>
-      <FavoritesButton
-        storageKey="kriterie:favorites:program"
-        code={props.data.code}
-      />
+      {!isAmp && (
+        <FavoritesButton
+          storageKey="kriterie:favorites:program"
+          code={props.data.code}
+        />
+      )}
       <h2>Mål med examen inom programmet</h2>
       {props.data.info.degreeObjectives.map(el => (
         <p key={el}>{el}</p>
@@ -222,3 +227,7 @@ ProgramPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
 });
 
 export default ProgramPage;
+
+export const config: PageConfig = {
+  amp: "hybrid"
+};
