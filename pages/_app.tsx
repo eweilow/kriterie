@@ -34,9 +34,6 @@ export default class KriterieApp extends App {
       <>
         <Head>
           <Icons />
-          {process.env.NODE_ENV === "production" && (
-            <link rel="preload" as="fetch" href="/api/search" />
-          )}
         </Head>
         <DefaultSeo {...defaultSeoConfiguration} />
         <GlobalNavbar />

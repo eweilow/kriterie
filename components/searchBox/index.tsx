@@ -7,6 +7,7 @@ import {
   ComboboxOptionText
 } from "@reach/combobox";
 import useResizeObserver from "use-resize-observer";
+import Head from "next/head";
 
 import { useEffect, useCallback, useState, useRef } from "react";
 
@@ -164,6 +165,9 @@ export const SearchBox: React.FC<{
       onSelect={handleSelect}
       value={searchString}
     >
+      <Head>
+        <link key="searchPreload" rel="preload" as="fetch" href="/api/search" />
+      </Head>
       <div data-size={boxHeight} ref={boxRef} className="box right">
         <div className="box left">
           <ComboboxInput
