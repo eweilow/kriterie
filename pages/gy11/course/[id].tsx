@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage, PageConfig } from "next";
 
 import Link from "next/link";
 import { NextSeo } from "next-seo";
@@ -12,6 +12,7 @@ import { FavoritesButton } from "../../../components/favorites/button";
 import { isNotFoundError } from "../../../api/helpers";
 import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
+import { useAmp } from "next/amp";
 
 export async function unstable_getStaticProps({ params }) {
   try {
@@ -69,6 +70,8 @@ const CoursePage: NextPage<Props> = props => {
     );
   }
 
+  const isAmp = useAmp();
+
   return (
     <>
       <NextSeo
@@ -103,18 +106,22 @@ const CoursePage: NextPage<Props> = props => {
           <div>{props.data.points}p</div>
         </div>
       </section>
-      <FavoritesButton
-        storageKey="kriterie:favorites:course"
-        code={props.data.code}
-      />
+      {!isAmp && (
+        <FavoritesButton
+          storageKey="kriterie:favorites:course"
+          code={props.data.code}
+        />
+      )}
       <h2>Kursens omfattning av ämnets syfte</h2>
-      <SimpleControls
-        disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
-        value={showAllPurposes}
-        setValue={setShowAllPurposes}
-        label="visa hela ämnets omfattning"
-        name="dense"
-      />
+      {!isAmp && (
+        <SimpleControls
+          disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
+          value={showAllPurposes}
+          setValue={setShowAllPurposes}
+          label="visa hela ämnets omfattning"
+          name="dense"
+        />
+      )}
       <p>
         Den omfattning som listas här är en insikt i hur kursen{" "}
         {props.data.title.toLowerCase()} relaterar till syftet med ämnet{" "}
@@ -244,3 +251,10 @@ const CoursePage: NextPage<Props> = props => {
 };
 
 export default CoursePage;
+
+/*
+// AMP doesn't seem to work with unstable_getStaticProps at the moment
+export const config: PageConfig = {
+  amp: "hybrid"
+};
+*/

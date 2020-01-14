@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage, PageConfig } from "next";
 
 import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
@@ -8,6 +8,7 @@ import { Fragment, useMemo } from "react";
 import { isNotFoundError } from "../../../api/helpers";
 import { loadProgrammes } from "../../../api/load";
 import KriterieError from "../../_error";
+import { useAmp } from "next/amp";
 
 export async function unstable_getStaticProps({ params }) {
   try {
@@ -54,6 +55,7 @@ const ProgramPage: NextPage<Props> = props => {
       <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
     );
   }
+  const isAmp = useAmp();
   return (
     <>
       <NextSeo
@@ -72,10 +74,12 @@ const ProgramPage: NextPage<Props> = props => {
           <div>{props.data.code}</div>
         </div>
       </section>
-      <FavoritesButton
-        storageKey="kriterie:favorites:program"
-        code={props.data.code}
-      />
+      {!isAmp && (
+        <FavoritesButton
+          storageKey="kriterie:favorites:program"
+          code={props.data.code}
+        />
+      )}
       <h2>Mål med examen inom programmet</h2>
       {props.data.info.degreeObjectives.map(el => (
         <p key={el}>{el}</p>
@@ -254,3 +258,10 @@ const ProgramPage: NextPage<Props> = props => {
 };
 
 export default ProgramPage;
+
+/*
+// AMP doesn't seem to work with unstable_getStaticProps at the moment
+export const config: PageConfig = {
+  amp: "hybrid"
+};
+*/

@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage, PageConfig } from "next";
 
 import Link from "next/link";
 import { NextSeo } from "next-seo";
@@ -11,6 +11,7 @@ import { FavoritesButton } from "../../../components/favorites/button";
 import KriterieError from "../../_error";
 import { isNotFoundError } from "../../../api/helpers";
 import { loadSubjects } from "../../../api/load";
+import { useAmp } from "next/amp";
 
 export async function unstable_getStaticProps({ params }) {
   try {
@@ -59,6 +60,7 @@ const SubjectPage: NextPage<Props> = props => {
       <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
     );
   }
+  const isAmp = useAmp();
 
   return (
     <>
@@ -70,18 +72,22 @@ const SubjectPage: NextPage<Props> = props => {
       />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
-      <FavoritesButton
-        storageKey="kriterie:favorites:subject"
-        code={props.data.code}
-      />
+      {!isAmp && (
+        <FavoritesButton
+          storageKey="kriterie:favorites:subject"
+          code={props.data.code}
+        />
+      )}
       <p>{props.data.description}</p>
       <h2>Kurser inom ämnet</h2>
-      <SimpleControls
-        value={showAllCourseInfo}
-        setValue={setShowAllCourseInfo}
-        label="visa detaljerad kursinformation"
-        name="info"
-      />
+      {!isAmp && (
+        <SimpleControls
+          value={showAllCourseInfo}
+          setValue={setShowAllCourseInfo}
+          label="visa detaljerad kursinformation"
+          name="info"
+        />
+      )}
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
         {props.data.courses.map(el => (
           <li key={el.code}>
@@ -175,3 +181,10 @@ const SubjectPage: NextPage<Props> = props => {
 };
 
 export default SubjectPage;
+
+/*
+// AMP doesn't seem to work with unstable_getStaticProps at the moment
+export const config: PageConfig = {
+  amp: "hybrid"
+};
+*/
