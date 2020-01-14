@@ -1,7 +1,7 @@
 import { useFavorite } from "../../lib/useFavorite";
 import { getSafeUrl } from "../../lib/safeUrl";
 import { useFetch } from "../../lib/useFetch";
-import { useMemo, useLayoutEffect } from "react";
+import { useMemo } from "react";
 import { getSearchData } from "../../api/search";
 import Link from "next/link";
 
