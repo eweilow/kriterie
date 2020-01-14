@@ -1,6 +1,9 @@
 {
   "name": "kriterie",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "index.js",
   "repository": "https://github.com/eweilow/kriterie.git",
   "author": "E. Weilow <eweilow@digitalkoppar.se>",
