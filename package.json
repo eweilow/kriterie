@@ -21,18 +21,18 @@
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "0.0.1-alpha.8",
-    "@excitare/analytics": "^0.0.1-alpha.196",
-    "@mdi/js": "^4.5.95",
-    "@reach/combobox": "^0.1.1",
-    "@sentry/browser": "^5.6.3",
-    "@sentry/node": "^5.6.2",
+    "@excitare/analytics": "^0.0.1-alpha.197",
+    "@mdi/js": "^4.7.95",
+    "@reach/combobox": "^0.7.2",
+    "@sentry/browser": "^5.11.0",
+    "@sentry/node": "^5.11.0",
     "@types/use-persisted-state": "^0.3.0",
     "@zeit/next-source-maps": "^0.0.4-canary.1",
     "@zeit/next-workers": "^1.0.1-canary.1",
     "clsx": "^1.0.4",
-    "date-fns": "^2.4.1",
+    "date-fns": "^2.9.0",
     "dice-coefficient": "^1.0.4",
-    "html-react-parser": "^0.9.1",
+    "html-react-parser": "^0.10.0",
     "isomorphic-unfetch": "^3.0.0",
     "jaro-winkler": "^0.2.8",
     "next": "^9.1.7",
@@ -42,7 +42,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "seedrandom": "^3.0.5",
-    "styled-jsx": "^3.2.2",
+    "styled-jsx": "^3.2.4",
     "use-resize-observer": "^4.0.0",
     "worker-loader": "^2.0.0"
   },
@@ -60,10 +60,7 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-react": "^7.16.0",
     "prettier": "^1.18.2",
-    "puppeteer": "^1.20.0",
-    "typescript": "^3.6.3"
-  },
-  "resolutions": {
-    "**/styled-jsx": "3.2.2"
+    "puppeteer": "^2.0.0",
+    "typescript": "^3.7.4"
   }
 }
