@@ -146,9 +146,9 @@ export function useTouchResponder<
     currentTarget.current = null;
   }, []);
 
-  props.onPointerUp = props.onPointerCancel = (cancel as any) as ((
+  props.onPointerUp = props.onPointerCancel = (cancel as any) as (
     e: React.PointerEvent<TElement>
-  ) => void);
+  ) => void;
 
   return [
     props,
