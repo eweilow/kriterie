@@ -141,7 +141,7 @@ export const TouchResponse: React.FC<TouchResponseProps> = props => {
         }
 
         .ripple.vertical {
-          border-radius: 0 !important;
+          border-radius: 0;
         }
         .ripple.vertical.active {
           animation: vertical-initial ${responseEnterTime}ms forwards
@@ -170,7 +170,7 @@ export const TouchResponse: React.FC<TouchResponseProps> = props => {
         }
 
         .ripple.horizontal {
-          border-radius: 0 !important;
+          border-radius: 0;
         }
         .ripple.horizontal.active {
           animation: horizontal-initial ${responseEnterTime}ms forwards
