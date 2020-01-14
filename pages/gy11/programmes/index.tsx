@@ -1,10 +1,30 @@
 import { NextPage } from "next";
-import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
-import { getSafeUrl } from "../../../lib/safeUrl";
 import { NextSeo } from "next-seo";
 import { getAllProgrammesData } from "../../../api/allProgrammes";
 import { Fragment } from "react";
 import Link from "next/link";
+import { isNotFoundError } from "../../../api/helpers";
+
+export async function unstable_getStaticProps() {
+  try {
+    return {
+      props: {
+        data: await getAllProgrammesData()
+      },
+      revalidate: false
+    };
+  } catch (err) {
+    if (isNotFoundError(err)) {
+      return {
+        props: {
+          data: null
+        },
+        revalidate: false
+      };
+    }
+    throw err;
+  }
+}
 
 type Props = { data: ReturnType<typeof getAllProgrammesData> };
 const ProgrammesPage: NextPage<Props> = props => (
@@ -91,13 +111,5 @@ const ProgrammesPage: NextPage<Props> = props => (
     `}</style>
   </>
 );
-
-ProgrammesPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
-  const url = getSafeUrl(`/api/programmes`, ctx.req);
-  const data = await fetchAndParseJson<any>("Programmes not found", url);
-  return {
-    data
-  };
-});
 
 export default ProgrammesPage;
