@@ -40,7 +40,10 @@ const KriterieError: NextPage<
           statusCode === 404 ? "Sidan kan inte hittas" : "Ett fel har uppstått"
         }
       />
-      <NextError statusCode={statusCode} />
+      <h1>
+        {statusCode}:{" "}
+        {statusCode === 404 ? "Sidan kan inte hittas" : "Ett fel har uppstått"}
+      </h1>
     </>
   );
 };
