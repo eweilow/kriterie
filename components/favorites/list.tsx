@@ -4,6 +4,8 @@ import { useFetch } from "../../lib/useFetch";
 import { useMemo } from "react";
 import { getSearchData } from "../../api/search";
 import Link from "next/link";
+import Head from "next/head";
+import { SearchPreload } from "../searchBox/searchPreload";
 
 function useFavorites(key: string): string[] {
   const [, , , state] = useFavorite(key, "");
@@ -73,6 +75,7 @@ export const FavoritesList: React.FC = () => {
           ))}
         </ul>
       )}
+      <SearchPreload />
       <style jsx>{`
         ul {
           margin: 16px 0;

@@ -15,6 +15,7 @@ import * as ExampleWorker from "./search.worker";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 import { SearchLoadingBar } from "../loadingIndicator/searchBar";
+import { SearchPreload } from "./searchPreload";
 
 const workerCache = new Map<string, any>();
 function getWorkerByUrl(url: string) {
@@ -168,9 +169,7 @@ export const SearchBox: React.FC<{
       onSelect={handleSelect}
       // value={searchString}
     >
-      <Head>
-        <link key="searchPreload" rel="preload" as="fetch" href="/api/search" />
-      </Head>
+      <SearchPreload />
       <div data-size={boxHeight} ref={boxRef} className="box right">
         <div className="box left">
           <ComboboxInput
