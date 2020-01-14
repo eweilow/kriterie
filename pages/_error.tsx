@@ -26,9 +26,10 @@ function captureEvent(err: any, req?: any) {
 }
 
 // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/pages/_error.js
-const KriterieError: NextPage<
-  ErrorProps & { hasGetInitialPropsRun: boolean; err: any }
-> = ({ statusCode, hasGetInitialPropsRun, err }) => {
+const KriterieError: NextPage<ErrorProps & {
+  hasGetInitialPropsRun: boolean;
+  err: any;
+}> = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
     captureEvent(err);
   }
