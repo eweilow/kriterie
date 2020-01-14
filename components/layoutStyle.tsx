@@ -1,26 +1,5 @@
-import Head from "next/head";
-
 export const LayoutStyle: React.FC = () => (
   <>
-    {process.env.NODE_ENV === "production" && (
-      <Head>
-        <link
-          rel="preload"
-          href="/static/font/GlacialIndifference-Regular.woff2"
-          as="font"
-        />
-        <link
-          rel="preload"
-          href="/static/font/GlacialIndifference-Bold.woff2"
-          as="font"
-        />
-        <link
-          rel="preload"
-          href="/static/font/GlacialIndifference-Italic.woff2"
-          as="font"
-        />
-      </Head>
-    )}
     <style jsx global>{`
       @font-face {
         font-family: "GlacialIndifference";
@@ -73,8 +52,8 @@ export const LayoutStyle: React.FC = () => (
       html,
       body,
       * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-        -webkit-tap-highlight-color: transparent !important; /* For some Androids */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent; /* For some Androids */
       }
       body,
       html {
