@@ -1,19 +1,59 @@
 import { NextPage } from "next";
 
-import { getSafeUrl } from "../../../lib/safeUrl";
-import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
 import { getProgramData } from "../../../api/program";
 import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { Fragment, useMemo } from "react";
+import { isNotFoundError } from "../../../api/helpers";
+import { loadProgrammes } from "../../../api/load";
+import KriterieError from "../../_error";
+
+export async function unstable_getStaticProps({ params }) {
+  try {
+    return {
+      props: {
+        data: await getProgramData(params.id.toLowerCase())
+      },
+      revalidate: false
+    };
+  } catch (err) {
+    if (isNotFoundError(err)) {
+      return {
+        props: {
+          data: null
+        },
+        revalidate: false
+      };
+    }
+    throw err;
+  }
+}
+
+export async function unstable_getStaticPaths() {
+  const courses = loadProgrammes();
+
+  return courses.map(el => ({
+    params: {
+      id: el.code
+    }
+  }));
+}
 
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = props => {
   const description = useMemo(() => {
+    if (props.data == null) {
+      return null;
+    }
     return `${props.data.info.degreeObjectives[0]}`;
   }, [props.data]);
 
+  if (props.data == null) {
+    return (
+      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
+    );
+  }
   return (
     <>
       <NextSeo
@@ -212,14 +252,5 @@ const ProgramPage: NextPage<Props> = props => {
     </>
   );
 };
-
-ProgramPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
-  const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/program/${encodeURIComponent(id)}`, ctx.req);
-  const data = await fetchAndParseJson<any>(`Program '${id}' not found`, url);
-  return {
-    data
-  };
-});
 
 export default ProgramPage;
