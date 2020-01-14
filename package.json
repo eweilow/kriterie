@@ -20,7 +20,7 @@
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
   },
   "dependencies": {
-    "@education-data/swedish-gymnasium": "0.0.1-alpha.8",
+    "@education-data/swedish-gymnasium": "^0.0.1-alpha.9",
     "@excitare/analytics": "^0.0.1-alpha.197",
     "@mdi/js": "^4.7.95",
     "@reach/combobox": "^0.7.2",

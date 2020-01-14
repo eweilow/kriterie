@@ -870,10 +870,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@education-data/swedish-gymnasium@0.0.1-alpha.8":
-  version "0.0.1-alpha.8"
-  resolved "https://registry.yarnpkg.com/@education-data/swedish-gymnasium/-/swedish-gymnasium-0.0.1-alpha.8.tgz#8f62b77ecf45cd4f888561ac0103e7ebeff457ac"
-  integrity sha512-ypVcLcN4ZlB6Iva33sD0tKVFe/05tH8ahr1xK9iHwRgq0BSW52si8etqWtUtsbuKdm0f9JdsUNcAkMN4ue6qRg==
+"@education-data/swedish-gymnasium@^0.0.1-alpha.9":
+  version "0.0.1-alpha.9"
+  resolved "https://registry.yarnpkg.com/@education-data/swedish-gymnasium/-/swedish-gymnasium-0.0.1-alpha.9.tgz#fb95976b30f627776664d044855c0be5602f609e"
+  integrity sha512-uDklUAXzG2VV/tKr3FDimrt94cO8AgGSRANkIGCzx7fm51amKrEfWrTuFsUWl7yk9SOCthSahkqVFnqkss2rEA==
 
 "@eweilow/ikon-cli@^0.0.1-alpha.3":
   version "0.0.1-alpha.3"
