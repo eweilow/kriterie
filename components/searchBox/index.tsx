@@ -156,17 +156,21 @@ export const SearchBox: React.FC<{
     defaultHeight: 40
   });
 
+  const Text = ComboboxOptionText as any;
+
   return (
     <Combobox
+      as="div"
       openOnFocus
       className={clsx({ active, hasResults: searchResults })}
       id={id}
       onSelect={handleSelect}
-      value={searchString}
+      // value={searchString}
     >
       <div data-size={boxHeight} ref={boxRef} className="box right">
         <div className="box left">
           <ComboboxInput
+            as="input"
             autoComplete="off"
             name="search"
             type="text"
@@ -191,7 +195,7 @@ export const SearchBox: React.FC<{
                 {result.type === "course" && <i>kurs:</i>}
                 {result.type === "program" && <i>program:</i>}
                 <br />
-                <ComboboxOptionText />
+                <Text />
               </ComboboxOption>
             ))}
           </ComboboxList>

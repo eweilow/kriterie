@@ -1,8 +1,6 @@
 import { NextPage } from "next";
 
 import Link from "next/link";
-import { getSafeUrl } from "../../../lib/safeUrl";
-import { wrappedInitialProps, fetchAndParseJson } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
 import { Fragment, useState, useMemo } from "react";
 import { CourseCriteria } from "../../../components/criteria";
@@ -11,12 +9,50 @@ import { SimpleControls } from "../../../components/purposeControls";
 import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { FavoritesButton } from "../../../components/favorites/button";
+import { isNotFoundError } from "../../../api/helpers";
+import { loadCourses } from "../../../api/load";
+import KriterieError from "../../_error";
+
+export async function unstable_getStaticProps({ params }) {
+  try {
+    return {
+      props: {
+        data: await getCourseData(params.id.toLowerCase())
+      },
+      revalidate: false
+    };
+  } catch (err) {
+    if (isNotFoundError(err)) {
+      return {
+        props: {
+          data: null
+        },
+        revalidate: false
+      };
+    }
+    throw err;
+  }
+}
+
+export async function unstable_getStaticPaths() {
+  const courses = loadCourses();
+
+  return courses.map(el => ({
+    params: {
+      id: el.code
+    }
+  }));
+}
 
 type Props = { data: ReturnType<typeof getCourseData> };
 const CoursePage: NextPage<Props> = props => {
   const [showAllPurposes, setShowAllPurposes] = useState(false);
 
   const description = useMemo(() => {
+    if (props.data == null) {
+      return null;
+    }
+
     const content =
       "\n - " +
       props.data.centralContent.map(el => el[1].join("\n - ")).join("\n");
@@ -26,6 +62,12 @@ const CoursePage: NextPage<Props> = props => {
       props.data.subject.code
     }). Kursens innehåll är: ${content}`;
   }, [props.data]);
+
+  if (props.data == null) {
+    return (
+      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
+    );
+  }
 
   return (
     <>
@@ -200,14 +242,5 @@ const CoursePage: NextPage<Props> = props => {
     </>
   );
 };
-
-CoursePage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
-  const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/course/${encodeURIComponent(id)}`, ctx.req);
-  const data = await fetchAndParseJson<any>(`Course '${id}' not found`, url);
-  return {
-    data
-  };
-});
 
 export default CoursePage;

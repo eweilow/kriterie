@@ -1,8 +1,6 @@
 import { NextPage } from "next";
 
 import Link from "next/link";
-import { getSafeUrl } from "../../../lib/safeUrl";
-import { fetchAndParseJson, wrappedInitialProps } from "../../../lib/notFound";
 import { NextSeo } from "next-seo";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { getSubjectData } from "../../../api/subject";
@@ -10,14 +8,57 @@ import { SimpleControls } from "../../../components/purposeControls";
 import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { FavoritesButton } from "../../../components/favorites/button";
+import KriterieError from "../../_error";
+import { isNotFoundError } from "../../../api/helpers";
+import { loadSubjects } from "../../../api/load";
+
+export async function unstable_getStaticProps({ params }) {
+  try {
+    return {
+      props: {
+        data: await getSubjectData(params.id.toLowerCase())
+      },
+      revalidate: false
+    };
+  } catch (err) {
+    if (isNotFoundError(err)) {
+      return {
+        props: {
+          data: null
+        },
+        revalidate: false
+      };
+    }
+    throw err;
+  }
+}
+
+export async function unstable_getStaticPaths() {
+  const courses = loadSubjects();
+
+  return courses.map(el => ({
+    params: {
+      id: el.code
+    }
+  }));
+}
 
 type Props = { data: ReturnType<typeof getSubjectData> };
 const SubjectPage: NextPage<Props> = props => {
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
   const description = useMemo(() => {
+    if (props.data == null) {
+      return null;
+    }
     return `${props.data.description}`;
   }, [props.data]);
+
+  if (props.data == null) {
+    return (
+      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
+    );
+  }
 
   return (
     <>
@@ -132,14 +173,5 @@ const SubjectPage: NextPage<Props> = props => {
     </>
   );
 };
-
-SubjectPage.getInitialProps = wrappedInitialProps<Props>(async ctx => {
-  const id = (ctx.query.id as string).toLowerCase();
-  const url = getSafeUrl(`/api/subject/${encodeURIComponent(id)}`, ctx.req);
-  const data = await fetchAndParseJson<any>(`Subject '${id}' not found`, url);
-  return {
-    data
-  };
-});
 
 export default SubjectPage;
