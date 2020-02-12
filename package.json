@@ -2,7 +2,7 @@
   "name": "kriterie",
   "version": "1.0.0",
   "engines": {
-    "node": ">12.x"
+    "node": "*"
   },
   "main": "index.js",
   "repository": "https://github.com/eweilow/kriterie.git",
