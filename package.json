@@ -2,7 +2,7 @@
   "name": "kriterie",
   "version": "1.0.0",
   "engines": {
-    "node": "12.x"
+    "node": ">12.x"
   },
   "main": "index.js",
   "repository": "https://github.com/eweilow/kriterie.git",
@@ -32,6 +32,7 @@
     "clsx": "^1.0.4",
     "date-fns": "^2.9.0",
     "dice-coefficient": "^1.0.4",
+    "fathom-client": "^2.0.2",
     "html-react-parser": "^0.10.0",
     "isomorphic-unfetch": "^3.0.0",
     "jaro-winkler": "^0.2.8",
