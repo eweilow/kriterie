@@ -36,7 +36,7 @@
     "html-react-parser": "^0.10.0",
     "isomorphic-unfetch": "^3.0.0",
     "jaro-winkler": "^0.2.8",
-    "next": "^9.1.7",
+    "next": "^9.3.2",
     "next-compose-plugins": "^2.2.0",
     "next-seo": "^2.1.2",
     "next-transpile-modules": "^2.3.1",
