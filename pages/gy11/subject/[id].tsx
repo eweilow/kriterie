@@ -13,13 +13,13 @@ import { isNotFoundError } from "../../../api/helpers";
 import { loadSubjects } from "../../../api/load";
 import { useAmp } from "next/amp";
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   try {
     return {
       props: {
         data: await getSubjectData(params.id.toLowerCase())
       },
-      revalidate: false
+      unstable_revalidate: false
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -27,21 +27,26 @@ export async function unstable_getStaticProps({ params }) {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;
   }
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const courses = loadSubjects();
 
-  return courses.map(el => ({
-    params: {
-      id: el.code
-    }
-  }));
+  return {
+    paths: [
+      ...courses.map(el => ({
+        params: {
+          id: el.code
+        }
+      }))
+    ],
+    fallback: false
+  };
 }
 
 type Props = { data: ReturnType<typeof getSubjectData> };
@@ -183,7 +188,7 @@ const SubjectPage: NextPage<Props> = props => {
 export default SubjectPage;
 
 /*
-// AMP doesn't seem to work with unstable_getStaticProps at the moment
+// AMP doesn't seem to work with getStaticProps at the moment
 export const config: PageConfig = {
   amp: "hybrid"
 };

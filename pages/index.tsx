@@ -13,7 +13,7 @@ import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
 import { isNotFoundError } from "../api/helpers";
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   try {
     const programmes = loadProgrammes();
     const courses = loadCourses();
@@ -56,7 +56,7 @@ export async function unstable_getStaticProps() {
           }))
         }
       },
-      revalidate: 60 * 60 * 24
+      unstable_revalidate: 60 * 60 * 24
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -64,7 +64,7 @@ export async function unstable_getStaticProps() {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;

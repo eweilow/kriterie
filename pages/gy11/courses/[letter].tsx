@@ -7,14 +7,14 @@ import { isNotFoundError } from "../../../api/helpers";
 import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   try {
     return {
       props: {
         data: await getAllCoursesData(params.letter.toLowerCase()),
         letter: params.letter
       },
-      revalidate: false
+      unstable_revalidate: false
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -22,14 +22,14 @@ export async function unstable_getStaticProps({ params }) {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;
   }
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const courses = loadCourses();
 
   const letters = Array.from(
@@ -40,11 +40,16 @@ export async function unstable_getStaticPaths() {
   );
   letters.sort();
 
-  return letters.map(letter => ({
-    params: {
-      letter
-    }
-  }));
+  return {
+    paths: [
+      ...letters.map(letter => ({
+        params: {
+          letter
+        }
+      }))
+    ],
+    fallback: false
+  };
 }
 
 type Props = { data: ReturnType<typeof getAllCoursesData>; letter: string };

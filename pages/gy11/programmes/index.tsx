@@ -5,13 +5,13 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { isNotFoundError } from "../../../api/helpers";
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   try {
     return {
       props: {
         data: await getAllProgrammesData()
       },
-      revalidate: false
+      unstable_revalidate: false
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -19,7 +19,7 @@ export async function unstable_getStaticProps() {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;
