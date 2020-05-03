@@ -976,11 +976,6 @@
     ts-node "8.3.0"
     yargs "13.3.0"
 
-"@excitare/analytics@^0.0.1-alpha.197":
-  version "0.0.1-alpha.197"
-  resolved "https://registry.yarnpkg.com/@excitare/analytics/-/analytics-0.0.1-alpha.197.tgz#18603e68db17828ab165bb6520e1a502c872ab66"
-  integrity sha512-Dm3MlQYGarlhk3igOknJ1HLCo976qke9dD9ZtbMRwsYtS6WUKtmQx3x7cKOlv/FFRLzBaivyQvjTJ0E83/YrmA==
-
 "@jimp/bmp@^0.9.8":
   version "0.9.8"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.9.8.tgz#5933ab8fb359889bec380b0f7802163374933624"
