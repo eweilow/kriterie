@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
 
-import { TrackingQuestion } from "../components/cookieQuestion";
-
 import Icons from "../generated/icons";
 import { LayoutStyle } from "../components/layoutStyle";
 import { Column } from "../components/column";
@@ -64,7 +62,6 @@ export default class KriterieApp extends App {
         </Column>
         <LoadingBar.Wrapped />
         <GlobalFooter />
-        {typeof window !== "undefined" && <TrackingQuestion />}
         <FathomAnalytics />
         <LayoutStyle />
       </>
