@@ -40,11 +40,16 @@ export async function getStaticPaths() {
   );
   letters.sort();
 
-  return letters.map(letter => ({
-    params: {
-      letter
-    }
-  }));
+  return {
+    paths: [
+      ...letters.map(letter => ({
+        params: {
+          letter
+        }
+      }))
+    ],
+    fallback: false
+  };
 }
 
 type Props = { data: ReturnType<typeof getAllSubjectsData>; letter: string };

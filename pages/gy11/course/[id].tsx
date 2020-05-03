@@ -38,11 +38,16 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const courses = loadCourses();
 
-  return courses.map(el => ({
-    params: {
-      id: el.code
-    }
-  }));
+  return {
+    paths: [
+      ...courses.map(el => ({
+        params: {
+          id: el.code
+        }
+      }))
+    ],
+    fallback: false
+  };
 }
 
 type Props = { data: ReturnType<typeof getCourseData> };
