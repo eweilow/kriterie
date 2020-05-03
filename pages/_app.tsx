@@ -65,7 +65,6 @@ export default class KriterieApp extends App {
         <LoadingBar.Wrapped />
         <GlobalFooter />
         {typeof window !== "undefined" && <TrackingQuestion />}
-        {typeof window !== "undefined" && <PageTracking />}
         <FathomAnalytics />
         <LayoutStyle />
       </>
