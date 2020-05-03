@@ -34,11 +34,6 @@ export const GlobalFooter: React.FC = () => {
                 <a>Läs mer om sidan</a>
               </Link>
             </p>
-            <p>
-              <Link href="/cookies">
-                <a>Kakor på kriterie.se</a>
-              </Link>
-            </p>
           </div>
         </Column>
         <style jsx>{`
