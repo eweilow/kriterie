@@ -8,6 +8,7 @@ import {
 } from "@reach/combobox";
 import useResizeObserver from "use-resize-observer";
 import Head from "next/head";
+import * as Fathom from "fathom-client";
 
 import { useEffect, useCallback, useState, useRef } from "react";
 
@@ -106,6 +107,8 @@ export const SearchBox: React.FC<{
         setActive(true);
         setLoading(true);
         setSearchDisabled(true);
+
+        Fathom.trackGoal("JTEEC6YX", 0);
       }
       function waitForPromise(promise: Promise<any>) {
         promise.then(() => {

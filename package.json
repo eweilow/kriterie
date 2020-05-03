@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "^0.0.1-alpha.9",
-    "@excitare/analytics": "^0.0.1-alpha.197",
     "@mdi/js": "^5.1.45",
     "@reach/combobox": "^0.7.2",
     "@sentry/browser": "^5.11.0",
@@ -38,7 +37,6 @@
     "next": "^9.3.6",
     "next-compose-plugins": "^2.2.0",
     "next-seo": "^4.4.0",
-    "next-transpile-modules": "^2.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "seedrandom": "^3.0.5",

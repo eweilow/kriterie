@@ -5,12 +5,8 @@ import { DefaultSeo } from "next-seo";
 import * as Fathom from "fathom-client";
 import { useRouter } from "next/router";
 
-import { configureAnalytics, PageTracking } from "@excitare/analytics";
-
 import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
-
-import { TrackingQuestion } from "../components/cookieQuestion";
 
 import Icons from "../generated/icons";
 import { LayoutStyle } from "../components/layoutStyle";
@@ -19,10 +15,6 @@ import { LoadingBar } from "../components/loadingIndicator/bar";
 import * as Sentry from "@sentry/node";
 import { defaultSeoConfiguration } from "../lib/next-seo.config";
 import { useEffect } from "react";
-
-if (process.env.NODE_ENV === "production") {
-  configureAnalytics(process.env.ANALYTICS_ID);
-}
 
 function FathomAnalytics() {
   const router = useRouter();
@@ -70,8 +62,6 @@ export default class KriterieApp extends App {
         </Column>
         <LoadingBar.Wrapped />
         <GlobalFooter />
-        {typeof window !== "undefined" && <TrackingQuestion />}
-        {typeof window !== "undefined" && <PageTracking />}
         <FathomAnalytics />
         <LayoutStyle />
       </>
