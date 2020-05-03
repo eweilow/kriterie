@@ -16,7 +16,7 @@ export async function getStaticProps({ params }) {
       props: {
         data: await getProgramData(params.id.toLowerCase())
       },
-      revalidate: false
+      unstable_revalidate: false
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -24,7 +24,7 @@ export async function getStaticProps({ params }) {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;

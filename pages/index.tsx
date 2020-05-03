@@ -56,7 +56,7 @@ export async function getStaticProps() {
           }))
         }
       },
-      revalidate: 60 * 60 * 24
+      unstable_revalidate: 60 * 60 * 24
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -64,7 +64,7 @@ export async function getStaticProps() {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;

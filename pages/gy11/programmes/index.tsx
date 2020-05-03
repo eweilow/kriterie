@@ -11,7 +11,7 @@ export async function getStaticProps() {
       props: {
         data: await getAllProgrammesData()
       },
-      revalidate: false
+      unstable_revalidate: false
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -19,7 +19,7 @@ export async function getStaticProps() {
         props: {
           data: null
         },
-        revalidate: false
+        unstable_revalidate: false
       };
     }
     throw err;
