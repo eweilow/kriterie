@@ -14,7 +14,7 @@ import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
 import { useAmp } from "next/amp";
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   try {
     return {
       props: {
@@ -35,7 +35,7 @@ export async function unstable_getStaticProps({ params }) {
   }
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const courses = loadCourses();
 
   return courses.map(el => ({
@@ -253,7 +253,7 @@ const CoursePage: NextPage<Props> = props => {
 export default CoursePage;
 
 /*
-// AMP doesn't seem to work with unstable_getStaticProps at the moment
+// AMP doesn't seem to work with getStaticProps at the moment
 export const config: PageConfig = {
   amp: "hybrid"
 };

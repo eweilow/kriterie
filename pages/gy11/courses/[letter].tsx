@@ -7,7 +7,7 @@ import { isNotFoundError } from "../../../api/helpers";
 import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   try {
     return {
       props: {
@@ -29,7 +29,7 @@ export async function unstable_getStaticProps({ params }) {
   }
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const courses = loadCourses();
 
   const letters = Array.from(

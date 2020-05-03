@@ -13,7 +13,7 @@ import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
 import { isNotFoundError } from "../api/helpers";
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   try {
     const programmes = loadProgrammes();
     const courses = loadCourses();

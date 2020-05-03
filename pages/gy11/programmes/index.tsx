@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { isNotFoundError } from "../../../api/helpers";
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   try {
     return {
       props: {
