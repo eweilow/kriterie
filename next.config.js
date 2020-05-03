@@ -26,6 +26,9 @@ module.exports = withPlugins(
     ]
   ],
   {
+    experimental: {
+      modern: true
+    },
     webpack: (config, { isServer }) => {
       if (!isServer) {
         config.node = {
