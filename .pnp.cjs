@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
-            ["date-fns", "npm:2.12.0"],
+            ["date-fns", "npm:2.25.0"],
             ["dice-coefficient", "npm:1.0.5"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:11.1.2"],
@@ -2568,10 +2568,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["date-fns", [
-        ["npm:2.12.0", {
-          "packageLocation": "./.yarn/cache/date-fns-npm-2.12.0-c3ff0ea3cb-995c20c4d3.zip/node_modules/date-fns/",
+        ["npm:2.25.0", {
+          "packageLocation": "./.yarn/cache/date-fns-npm-2.25.0-fe211b387d-8896dc1dde.zip/node_modules/date-fns/",
           "packageDependencies": [
-            ["date-fns", "npm:2.12.0"]
+            ["date-fns", "npm:2.25.0"]
           ],
           "linkType": "HARD",
         }]
@@ -4737,7 +4737,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
-            ["date-fns", "npm:2.12.0"],
+            ["date-fns", "npm:2.25.0"],
             ["dice-coefficient", "npm:1.0.5"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:11.1.2"],

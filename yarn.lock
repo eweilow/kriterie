@@ -2031,10 +2031,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.12.0":
-  version: 2.12.0
-  resolution: "date-fns@npm:2.12.0"
-  checksum: 995c20c4d37ab62c6f5afb378c7c16c17f578c79c2cb7ca3665207ef49e020e9df70f3aaeb408ffa576c7732719933bc651ab3eb7e0bf840778d10f35f2754ff
+"date-fns@npm:^2.25.0":
+  version: 2.25.0
+  resolution: "date-fns@npm:2.25.0"
+  checksum: 8896dc1dde0ee5ef77616942423bfa11fa2017a5ac19457293b7aaedc8822ff94f0a14eaf93da573b09b601dc0149eb430988a046cc9f79a2eb15f8c66c9c50c
   languageName: node
   linkType: hard
 
@@ -3875,7 +3875,7 @@ fsevents@~2.3.1:
     "@types/use-persisted-state": ^0.3.0
     "@yarnpkg/sdks": ^2.5.0-rc.3
     clsx: ^1.1.1
-    date-fns: ^2.12.0
+    date-fns: ^2.25.0
     dice-coefficient: ^1.0.5
     eslint: 7
     eslint-config-next: 11.1.2
