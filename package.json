@@ -11,9 +11,7 @@
     "build": "next build",
     "start": "next start",
     "test-lint": "next lint",
-    "test-formatting": "prettier -v && prettier -c '**/*.{ts,tsx}'",
-    "ikon-dev": "ikon dev --file icon/icon.tsx",
-    "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
+    "test-formatting": "prettier -v && prettier -c '**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "^0.0.1-alpha.9",
@@ -38,8 +36,6 @@
     "use-resize-observer": "^4.0.0"
   },
   "devDependencies": {
-    "@eweilow/ikon": "^0.0.1-alpha.6",
-    "@eweilow/ikon-cli": "^0.0.1-alpha.4",
     "@types/node": "^12.7.12",
     "@types/reach__combobox": "^0.1.0",
     "@types/react": "^17.0.32",
@@ -50,7 +46,7 @@
     "eslint": "7",
     "eslint-config-next": "11.1.2",
     "prettier": "^2.4.1",
-    "puppeteer": "^2.0.0",
     "typescript": "^4.4.4"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
