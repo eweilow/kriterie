@@ -8,7 +8,6 @@ import { SimpleControls } from "../../../components/purposeControls";
 import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { FavoritesButton } from "../../../components/favorites/button";
-import KriterieError from "../../_error";
 import { loadSubjects } from "../../../api/load";
 import { useAmp } from "next/amp";
 
@@ -41,17 +40,9 @@ const SubjectPage: NextPage<Props> = (props) => {
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
   const description = useMemo(() => {
-    if (props.data == null) {
-      return null;
-    }
     return `${props.data.description}`;
   }, [props.data]);
 
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
   const isAmp = useAmp();
 
   return (

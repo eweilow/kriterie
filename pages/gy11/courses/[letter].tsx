@@ -4,7 +4,6 @@ import { getAllCoursesData } from "../../../api/allCourses";
 import { CourseList } from "../../../components/courseList";
 import { LettersList } from "../../../components/lettersList";
 import { loadCourses } from "../../../api/load";
-import KriterieError from "../../_error";
 
 export async function getStaticProps({ params }) {
   return {
@@ -41,12 +40,6 @@ export async function getStaticPaths() {
 
 type Props = { data: ReturnType<typeof getAllCoursesData>; letter: string };
 const CoursesPage: NextPage<Props> = (props) => {
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
-
   return (
     <>
       <NextSeo

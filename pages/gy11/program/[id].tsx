@@ -6,7 +6,6 @@ import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { Fragment, useMemo } from "react";
 import { loadProgrammes } from "../../../api/load";
-import KriterieError from "../../_error";
 import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
@@ -36,17 +35,9 @@ export async function getStaticPaths() {
 type Props = { data: ReturnType<typeof getProgramData> };
 const ProgramPage: NextPage<Props> = (props) => {
   const description = useMemo(() => {
-    if (props.data == null) {
-      return null;
-    }
     return `${props.data.info.degreeObjectives[0]}`;
   }, [props.data]);
 
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
   const isAmp = useAmp();
   return (
     <>

@@ -10,7 +10,6 @@ import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { loadCourses } from "../../../api/load";
-import KriterieError from "../../_error";
 import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
@@ -42,10 +41,6 @@ const CoursePage: NextPage<Props> = (props) => {
   const [showAllPurposes, setShowAllPurposes] = useState(false);
 
   const description = useMemo(() => {
-    if (props.data == null) {
-      return null;
-    }
-
     const content =
       "\n - " +
       props.data.centralContent.map((el) => el[1].join("\n - ")).join("\n");
@@ -55,12 +50,6 @@ const CoursePage: NextPage<Props> = (props) => {
       props.data.subject.code
     }). Kursens innehåll är: ${content}`;
   }, [props.data]);
-
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
 
   const isAmp = useAmp();
 
