@@ -9,11 +9,12 @@ import { GlobalNavbar } from "../components/globalNavbar";
 import { GlobalFooter } from "../components/globalFooter";
 
 import Icons from "../generated/icons";
-import { LayoutStyle } from "../components/layoutStyle";
 import { Column } from "../components/column";
 import { LoadingBar } from "../components/loadingIndicator/bar";
 import { defaultSeoConfiguration } from "../lib/next-seo.config";
 import { useEffect } from "react";
+
+import "../style/global.css";
 
 function FathomAnalytics() {
   const router = useRouter();
@@ -55,7 +56,6 @@ export default class KriterieApp extends App {
         <LoadingBar.Wrapped />
         <GlobalFooter />
         {process.env.NODE_ENV === "production" && <FathomAnalytics />}
-        <LayoutStyle />
       </>
     );
   }
