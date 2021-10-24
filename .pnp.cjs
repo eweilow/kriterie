@@ -43,7 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/reach__combobox", "npm:0.1.0"],
             ["@types/react", "npm:17.0.32"],
             ["@types/react-dom", "npm:17.0.10"],
-            ["@types/seedrandom", "npm:2.4.28"],
+            ["@types/seedrandom", "npm:3.0.1"],
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
@@ -1112,10 +1112,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/seedrandom", [
-        ["npm:2.4.28", {
-          "packageLocation": "./.yarn/cache/@types-seedrandom-npm-2.4.28-9799c28fd5-c18a6514d6.zip/node_modules/@types/seedrandom/",
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/@types-seedrandom-npm-3.0.1-bfe00cb708-d9755452f2.zip/node_modules/@types/seedrandom/",
           "packageDependencies": [
-            ["@types/seedrandom", "npm:2.4.28"]
+            ["@types/seedrandom", "npm:3.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -4716,7 +4716,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/reach__combobox", "npm:0.1.0"],
             ["@types/react", "npm:17.0.32"],
             ["@types/react-dom", "npm:17.0.10"],
-            ["@types/seedrandom", "npm:2.4.28"],
+            ["@types/seedrandom", "npm:3.0.1"],
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],

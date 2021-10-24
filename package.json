@@ -38,7 +38,7 @@
     "@types/reach__combobox": "^0.1.0",
     "@types/react": "^17.0.32",
     "@types/react-dom": "^17.0.10",
-    "@types/seedrandom": "^2.4.28",
+    "@types/seedrandom": "^3.0.1",
     "@types/use-persisted-state": "^0.3.0",
     "@yarnpkg/sdks": "^2.5.0-rc.3",
     "eslint": "7",
