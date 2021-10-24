@@ -9,13 +9,12 @@ import { CriteriaLine } from "./line";
 import { PartialGrade } from "./partialGrade";
 
 const parseOptions: HTMLReactParserOptions = {
-  replace({ name, attribs, children }) {
-    if (!attribs) return;
-
-    if (name === "strong") {
-      return <Bold>{domToReact(children, parseOptions)}</Bold>;
+  replace(node: any) {
+    if (node.type === "tag") {
+      if (node.name === "strong") {
+        return <Bold>{domToReact(node.children, parseOptions)}</Bold>;
+      }
     }
-    return <>{domToReact(children, parseOptions)}</>;
   },
 };
 
