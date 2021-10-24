@@ -156,9 +156,7 @@ export const SearchBox: React.FC<{
     setActive(false);
   }, []);
 
-  const [boxRef, , boxHeight] = useResizeObserver({
-    defaultHeight: 40,
-  });
+  const { ref: boxRef, height: boxHeight } = useResizeObserver({});
 
   const Text = ComboboxOptionText as any;
 

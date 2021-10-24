@@ -61,7 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["seedrandom", "npm:3.0.5"],
             ["styled-jsx", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.1"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"],
-            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.0"]
+            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:8.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -280,6 +280,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@humanwhocodes-object-schema-npm-1.2.0-6bc0ff9fda-40b7548037.zip/node_modules/@humanwhocodes/object-schema/",
           "packageDependencies": [
             ["@humanwhocodes/object-schema", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@juggle/resize-observer", [
+        ["npm:3.3.1", {
+          "packageLocation": "./.yarn/cache/@juggle-resize-observer-npm-3.3.1-f36d80a4f0-ddabc40442.zip/node_modules/@juggle/resize-observer/",
+          "packageDependencies": [
+            ["@juggle/resize-observer", "npm:3.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -4705,7 +4714,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["seedrandom", "npm:3.0.5"],
             ["styled-jsx", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.1"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"],
-            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.0"]
+            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:8.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -6372,15 +6381,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["resize-observer-polyfill", [
-        ["npm:1.5.1", {
-          "packageLocation": "./.yarn/cache/resize-observer-polyfill-npm-1.5.1-603120e8a0-57e7f79489.zip/node_modules/resize-observer-polyfill/",
-          "packageDependencies": [
-            ["resize-observer-polyfill", "npm:1.5.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["resolve", [
         ["patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff", {
           "packageLocation": "./.yarn/cache/resolve-patch-da1bf0dd3c-bed00be983.zip/node_modules/resolve/",
@@ -7496,22 +7496,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["use-resize-observer", [
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/use-resize-observer-npm-4.0.0-7efe32d12f-3d56d60bc0.zip/node_modules/use-resize-observer/",
+        ["npm:8.0.0", {
+          "packageLocation": "./.yarn/cache/use-resize-observer-npm-8.0.0-3d864e4f2b-944ce47811.zip/node_modules/use-resize-observer/",
           "packageDependencies": [
-            ["use-resize-observer", "npm:4.0.0"]
+            ["use-resize-observer", "npm:8.0.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.0", {
-          "packageLocation": "./.yarn/__virtual__/use-resize-observer-virtual-fd236ae9f1/0/cache/use-resize-observer-npm-4.0.0-7efe32d12f-3d56d60bc0.zip/node_modules/use-resize-observer/",
+        ["virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:8.0.0", {
+          "packageLocation": "./.yarn/__virtual__/use-resize-observer-virtual-735f93fda2/0/cache/use-resize-observer-npm-8.0.0-3d864e4f2b-944ce47811.zip/node_modules/use-resize-observer/",
           "packageDependencies": [
-            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:4.0.0"],
+            ["use-resize-observer", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:8.0.0"],
+            ["@juggle/resize-observer", "npm:3.3.1"],
             ["@types/react", "npm:17.0.32"],
             ["@types/react-dom", "npm:17.0.10"],
             ["react", "npm:17.0.2"],
-            ["react-dom", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:17.0.2"],
-            ["resize-observer-polyfill", "npm:1.5.1"]
+            ["react-dom", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:17.0.2"]
           ],
           "packagePeers": [
             "@types/react-dom",

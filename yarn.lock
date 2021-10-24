@@ -186,6 +186,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@juggle/resize-observer@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "@juggle/resize-observer@npm:3.3.1"
+  checksum: ddabc4044276a2cb57d469c4917206c7e39f2463aa8e3430e33e4eda554412afe29c22afa40e6708b49dad5d56768dc83acd68a704b1dcd49a0906bb96b991b2
+  languageName: node
+  linkType: hard
+
 "@mdi/js@npm:^6.3.95":
   version: 6.3.95
   resolution: "@mdi/js@npm:6.3.95"
@@ -3849,7 +3856,7 @@ fsevents@~2.3.1:
     seedrandom: ^3.0.5
     styled-jsx: ^4.0.1
     typescript: ^4.4.4
-    use-resize-observer: ^4.0.0
+    use-resize-observer: ^8.0.0
   languageName: unknown
   linkType: soft
 
@@ -5294,13 +5301,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "resize-observer-polyfill@npm:1.5.1"
-  checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
-  languageName: node
-  linkType: hard
-
 "resolve-alpn@npm:^1.0.0":
   version: 1.2.1
   resolution: "resolve-alpn@npm:1.2.1"
@@ -6292,15 +6292,15 @@ typescript@^4.4.4:
   languageName: node
   linkType: hard
 
-"use-resize-observer@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "use-resize-observer@npm:4.0.0"
+"use-resize-observer@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "use-resize-observer@npm:8.0.0"
   dependencies:
-    resize-observer-polyfill: ^1.5.0
+    "@juggle/resize-observer": ^3.3.1
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 3d56d60bc0e8a0c529ff417bf06167da8407227f5ef85f7fe53656a47a81af9da348716b43432afd35f934daae9f552336ac8b4e5d6d0570393970c82f06011c
+  checksum: 944ce47811f6056b481ce2f1550c2881bd5c25838cae2e0fb0bc0ed4aad7b5f2e55dcc0fc52107998ecfb602446465f94b2e728d3f3259fe8e6d4a3031cfb24a
   languageName: node
   linkType: hard
 
