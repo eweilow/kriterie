@@ -12,3 +12,5 @@ yarn-error.log
 
 # Sentry
 .sentryclirc
+
+update.md
