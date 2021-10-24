@@ -10,7 +10,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "setup": "sdks vscode",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test-lint": "eslint '**/*.{ts,tsx}'",
@@ -46,6 +47,7 @@
     "@types/react-dom": "^17.0.10",
     "@types/seedrandom": "^2.4.28",
     "@types/use-persisted-state": "^0.3.0",
+    "@yarnpkg/sdks": "^2.5.0-rc.3",
     "prettier": "^2.4.1",
     "puppeteer": "^2.0.0",
     "typescript": "^4.4.4"
