@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "@eweilow/ikon": "^0.0.1-alpha.6",
-    "@eweilow/ikon-cli": "^0.0.1-alpha.4",
+    "@eweilow/ikon-cli": "^0.0.1-alpha.8",
     "@types/node": "^16.11.4",
-    "puppeteer": "^2.0.0"
+    "puppeteer": "^10.4.0"
   },
   "packageManager": "yarn@3.0.2"
 }

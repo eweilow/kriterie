@@ -14,14 +14,14 @@
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "32x32",
-    "href": "/static/icons/favicon-32-32.png?h=2da25641"
+    "sizes": "48x48",
+    "href": "/static/icons/favicon-48-48.png?h=d5889612"
   },
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "48x48",
-    "href": "/static/icons/favicon-48-48.png?h=d5889612"
+    "sizes": "32x32",
+    "href": "/static/icons/favicon-32-32.png?h=2da25641"
   },
   {
     "rel": "icon",
@@ -38,14 +38,14 @@
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "96x96",
-    "href": "/static/icons/favicon-96-96.png?h=d98a02e8"
+    "sizes": "128x128",
+    "href": "/static/icons/favicon-128-128.png?h=f8bc7977"
   },
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "128x128",
-    "href": "/static/icons/favicon-128-128.png?h=f8bc7977"
+    "sizes": "96x96",
+    "href": "/static/icons/favicon-96-96.png?h=d98a02e8"
   },
   {
     "rel": "icon",
@@ -74,14 +74,14 @@
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "144x144",
-    "href": "/static/icons/android-chrome-144-144.png?h=3d93f1c7"
+    "sizes": "192x192",
+    "href": "/static/icons/android-chrome-192-192.png?h=5b0a5918"
   },
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "192x192",
-    "href": "/static/icons/android-chrome-192-192.png?h=d069ba84"
+    "sizes": "144x144",
+    "href": "/static/icons/android-chrome-144-144.png?h=3d93f1c7"
   },
   {
     "rel": "icon",
@@ -128,13 +128,13 @@
   },
   {
     "rel": "apple-touch-icon",
-    "sizes": "144x144",
-    "href": "/static/icons/apple-touch-icon-144-144.png?h=3d93f1c7"
+    "sizes": "120x120",
+    "href": "/static/icons/apple-touch-icon-120-120.png?h=320adbe9"
   },
   {
     "rel": "apple-touch-icon",
-    "sizes": "120x120",
-    "href": "/static/icons/apple-touch-icon-120-120.png?h=320adbe9"
+    "sizes": "144x144",
+    "href": "/static/icons/apple-touch-icon-144-144.png?h=3d93f1c7"
   },
   {
     "rel": "apple-touch-icon",
@@ -178,7 +178,7 @@
   {
     "rel": "apple-touch-icon",
     "media": "(device-width: 414) and (device-height: 896) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
-    "href": "/static/icons/apple-launch-xr-828-1792.png?h=f64bb266"
+    "href": "/static/icons/apple-launch-xr-828-1792.png?h=463c6057"
   },
   {
     "rel": "apple-touch-icon",
@@ -198,7 +198,7 @@
   {
     "rel": "apple-touch-icon",
     "media": "(device-width: 414) and (device-height: 736) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)",
-    "href": "/static/icons/apple-launch-8-plus-1242-2208.png?h=ecc89f38"
+    "href": "/static/icons/apple-launch-8-plus-1242-2208.png?h=7f1df00c"
   },
   {
     "rel": "apple-touch-icon",
@@ -211,13 +211,13 @@
   },
   {
     "rel": "apple-touch-icon",
-    "media": "(device-width: 834) and (device-height: 1112) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
-    "href": "/static/icons/apple-launch-ipad-pro-s-1668-2224.png?h=8f798b68"
+    "media": "(device-width: 834) and (device-height: 1194) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
+    "href": "/static/icons/apple-launch-ipad-pro-1668-2388.png?h=8599710c"
   },
   {
     "rel": "apple-touch-icon",
-    "media": "(device-width: 834) and (device-height: 1194) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
-    "href": "/static/icons/apple-launch-ipad-pro-1668-2388.png?h=8599710c"
+    "media": "(device-width: 834) and (device-height: 1112) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
+    "href": "/static/icons/apple-launch-ipad-pro-s-1668-2224.png?h=8f798b68"
   },
   {
     "rel": "apple-touch-icon",
