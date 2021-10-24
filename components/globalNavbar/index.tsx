@@ -4,7 +4,6 @@ import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import { TouchResponseShape } from "../touchResponder/response";
 import { SearchBox } from "../searchBox";
 import { Logo } from "./logo";
-import { useAmp } from "next/amp";
 
 const RowHeight = 40;
 export const GlobalNavbarHeight = Math.floor(RowHeight * 2) + 8;
@@ -50,8 +49,6 @@ const Navlink: React.FC<LinkProps> = (props) => {
   );
 };
 export const GlobalNavbar: React.FC = () => {
-  const isAmp = useAmp();
-
   return (
     <>
       <nav>
@@ -59,11 +56,9 @@ export const GlobalNavbar: React.FC = () => {
           <div className="rows">
             <section className="row">
               <Logo />
-              {!isAmp && (
-                <div className="searchBox">
-                  <SearchBox zIndex={20} id="searchBox2" initialSize={200} />
-                </div>
-              )}
+              <div className="searchBox">
+                <SearchBox zIndex={20} id="searchBox2" initialSize={200} />
+              </div>
             </section>
             <section className="row links">
               <Navlink href="/" as="/">

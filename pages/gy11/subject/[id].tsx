@@ -9,7 +9,6 @@ import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { loadSubjects } from "../../../api/load";
-import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
   return {
@@ -43,8 +42,6 @@ const SubjectPage: NextPage<Props> = (props) => {
     return `${props.data.description}`;
   }, [props.data]);
 
-  const isAmp = useAmp();
-
   return (
     <>
       <NextSeo
@@ -55,22 +52,18 @@ const SubjectPage: NextPage<Props> = (props) => {
       />
       <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
       <h1>{props.data.title}</h1>
-      {!isAmp && (
-        <FavoritesButton
-          storageKey="kriterie:favorites:subject"
-          code={props.data.code}
-        />
-      )}
+      <FavoritesButton
+        storageKey="kriterie:favorites:subject"
+        code={props.data.code}
+      />
       <p>{props.data.description}</p>
       <h2>Kurser inom ämnet</h2>
-      {!isAmp && (
-        <SimpleControls
-          value={showAllCourseInfo}
-          setValue={setShowAllCourseInfo}
-          label="visa detaljerad kursinformation"
-          name="info"
-        />
-      )}
+      <SimpleControls
+        value={showAllCourseInfo}
+        setValue={setShowAllCourseInfo}
+        label="visa detaljerad kursinformation"
+        name="info"
+      />
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
         {props.data.courses.map((el) => (
           <li key={el.code}>
@@ -164,10 +157,3 @@ const SubjectPage: NextPage<Props> = (props) => {
 };
 
 export default SubjectPage;
-
-/*
-// AMP doesn't seem to work with getStaticProps at the moment
-export const config: PageConfig = {
-  amp: "hybrid"
-};
-*/

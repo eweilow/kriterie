@@ -10,7 +10,6 @@ import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { loadCourses } from "../../../api/load";
-import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
   return {
@@ -51,8 +50,6 @@ const CoursePage: NextPage<Props> = (props) => {
     }). Kursens innehåll är: ${content}`;
   }, [props.data]);
 
-  const isAmp = useAmp();
-
   return (
     <>
       <NextSeo
@@ -87,22 +84,18 @@ const CoursePage: NextPage<Props> = (props) => {
           <div>{props.data.points}p</div>
         </div>
       </section>
-      {!isAmp && (
-        <FavoritesButton
-          storageKey="kriterie:favorites:course"
-          code={props.data.code}
-        />
-      )}
+      <FavoritesButton
+        storageKey="kriterie:favorites:course"
+        code={props.data.code}
+      />
       <h2>Kursens omfattning av ämnets syfte</h2>
-      {!isAmp && (
-        <SimpleControls
-          disabled={!props.data.subjectPurposes.find((el) => !el.applicable)}
-          value={showAllPurposes}
-          setValue={setShowAllPurposes}
-          label="visa hela ämnets omfattning"
-          name="dense"
-        />
-      )}
+      <SimpleControls
+        disabled={!props.data.subjectPurposes.find((el) => !el.applicable)}
+        value={showAllPurposes}
+        setValue={setShowAllPurposes}
+        label="visa hela ämnets omfattning"
+        name="dense"
+      />
       <p>
         Den omfattning som listas här är en insikt i hur kursen{" "}
         {props.data.title.toLowerCase()} relaterar till syftet med ämnet{" "}
@@ -232,10 +225,3 @@ const CoursePage: NextPage<Props> = (props) => {
 };
 
 export default CoursePage;
-
-/*
-// AMP doesn't seem to work with getStaticProps at the moment
-export const config: PageConfig = {
-  amp: "hybrid"
-};
-*/

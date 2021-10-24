@@ -6,7 +6,6 @@ import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { Fragment, useMemo } from "react";
 import { loadProgrammes } from "../../../api/load";
-import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
   return {
@@ -38,7 +37,6 @@ const ProgramPage: NextPage<Props> = (props) => {
     return `${props.data.info.degreeObjectives[0]}`;
   }, [props.data]);
 
-  const isAmp = useAmp();
   return (
     <>
       <NextSeo
@@ -57,12 +55,10 @@ const ProgramPage: NextPage<Props> = (props) => {
           <div>{props.data.code}</div>
         </div>
       </section>
-      {!isAmp && (
-        <FavoritesButton
-          storageKey="kriterie:favorites:program"
-          code={props.data.code}
-        />
-      )}
+      <FavoritesButton
+        storageKey="kriterie:favorites:program"
+        code={props.data.code}
+      />
       <h2>Mål med examen inom programmet</h2>
       {props.data.info.degreeObjectives.map((el) => (
         <p key={el}>{el}</p>
@@ -241,10 +237,3 @@ const ProgramPage: NextPage<Props> = (props) => {
 };
 
 export default ProgramPage;
-
-/*
-// AMP doesn't seem to work with getStaticProps at the moment
-export const config: PageConfig = {
-  amp: "hybrid"
-};
-*/
