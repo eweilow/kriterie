@@ -12,7 +12,6 @@ import * as Fathom from "fathom-client";
 
 import { useEffect, useCallback, useState, useRef } from "react";
 
-import * as ExampleWorker from "./search.worker";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 import { SearchLoadingBar } from "../loadingIndicator/searchBar";
@@ -24,7 +23,7 @@ function getWorkerByUrl(url: string) {
     return workerCache.get(url);
   }
 
-  const worker = new (ExampleWorker as any)();
+  const worker = new Worker(new URL("././search.worker", import.meta.url));
   worker.postMessage({
     type: "url",
     url,
