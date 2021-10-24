@@ -186,10 +186,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/js@npm:^5.1.45":
-  version: 5.1.45
-  resolution: "@mdi/js@npm:5.1.45"
-  checksum: cebc7c027a6386e6b32dbb5c941dd9bb449241c7269317b7363fec27b641d2de26fada7f55651ab4069f9e52f9de2cbfbeb49a3cad94459b600061f14c07e38d
+"@mdi/js@npm:^6.3.95":
+  version: 6.3.95
+  resolution: "@mdi/js@npm:6.3.95"
+  checksum: e0ecdf2a2b1b46ead42266cc9dcc29c08495c8d3af53314bf28e0c2b637d528e9e1d16e523c1ab678b78c8930a7d29ee91a43f35f15a4ae5aa00244bc836da54
   languageName: node
   linkType: hard
 
@@ -3970,7 +3970,7 @@ fsevents@~2.3.1:
   resolution: "kriterie@workspace:."
   dependencies:
     "@education-data/swedish-gymnasium": ^0.0.1-alpha.9
-    "@mdi/js": ^5.1.45
+    "@mdi/js": ^6.3.95
     "@reach/combobox": ^0.7.2
     "@sentry/browser": ^5.11.0
     "@sentry/nextjs": ^6.13.3

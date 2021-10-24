@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@education-data/swedish-gymnasium": "^0.0.1-alpha.9",
-    "@mdi/js": "^5.1.45",
+    "@mdi/js": "^6.3.95",
     "@reach/combobox": "^0.7.2",
     "@sentry/browser": "^5.11.0",
     "@sentry/nextjs": "^6.13.3",

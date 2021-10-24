@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.9"],
-            ["@mdi/js", "npm:5.1.45"],
+            ["@mdi/js", "npm:6.3.95"],
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.7.4"],
             ["@sentry/browser", "npm:5.15.5"],
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],
@@ -289,10 +289,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@mdi/js", [
-        ["npm:5.1.45", {
-          "packageLocation": "./.yarn/cache/@mdi-js-npm-5.1.45-3ec62e14a4-cebc7c027a.zip/node_modules/@mdi/js/",
+        ["npm:6.3.95", {
+          "packageLocation": "./.yarn/cache/@mdi-js-npm-6.3.95-2cd4e34515-e0ecdf2a2b.zip/node_modules/@mdi/js/",
           "packageDependencies": [
-            ["@mdi/js", "npm:5.1.45"]
+            ["@mdi/js", "npm:6.3.95"]
           ],
           "linkType": "HARD",
         }]
@@ -4820,7 +4820,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["kriterie", "workspace:."],
             ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.9"],
-            ["@mdi/js", "npm:5.1.45"],
+            ["@mdi/js", "npm:6.3.95"],
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.7.4"],
             ["@sentry/browser", "npm:5.15.5"],
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],
