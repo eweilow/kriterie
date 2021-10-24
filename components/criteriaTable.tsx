@@ -30,15 +30,15 @@ export const CriteriaTable: React.FC<{
       {from.map((el, i) => {
         const combined = el.join(" ");
 
-        const scores = to.map(el2 => {
+        const scores = to.map((el2) => {
           const combined2 = el2.join(" ");
           return {
             key: combined2,
-            value: distanceFn(combined, combined2)
+            value: distanceFn(combined, combined2),
           };
         });
 
-        const maxScore = Math.max(...scores.map(el => el.value));
+        const maxScore = Math.max(...scores.map((el) => el.value));
 
         const mean =
           scores.reduce((prev, curr) => prev + curr.value, 0) / scores.length;

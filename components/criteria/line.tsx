@@ -1,6 +1,6 @@
 export const CriteriaLine: React.FC<{ dense: boolean }> = ({
   dense,
-  children
+  children,
 }) => (
   <div className={dense ? "dense" : "space"}>
     {children}

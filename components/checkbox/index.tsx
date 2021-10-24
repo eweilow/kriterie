@@ -21,7 +21,7 @@ export const ToggleControl: React.FC<{
     <label className={type}>
       <input
         type={type}
-        onChange={e => props.onChange(e.target.checked)}
+        onChange={(e) => props.onChange(e.target.checked)}
         checked={props.checked}
         name={props.name}
         value={props.value}

@@ -1,6 +1,6 @@
 export const CriteriaGrade: React.FC<{ grade: string }> = ({
   grade,
-  children
+  children,
 }) => (
   <section className="criteriaGrade">
     <header>{grade}</header>

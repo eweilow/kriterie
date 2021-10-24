@@ -43,7 +43,7 @@ function FathomAnalytics() {
 // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/pages/_app.js
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
-  enabled: process.env.NODE_ENV === "production"
+  enabled: process.env.NODE_ENV === "production",
 });
 
 export default class KriterieApp extends App {

@@ -17,7 +17,7 @@ const parseOptions: HTMLReactParserOptions = {
       return <Bold>{domToReact(children, parseOptions)}</Bold>;
     }
     return <>{domToReact(children, parseOptions)}</>;
-  }
+  },
 };
 
 const Bold: React.FC = ({ children }) => <b>{children}</b>;
@@ -44,11 +44,11 @@ export const CourseCriteria: React.FC<{
       )}
       {criteria.map((el, i) => (
         <CriteriaGroup key={i}>
-          {parts.map(part => (
+          {parts.map((part) => (
             <Fragment key={part}>
               {(filter === part || filter == "alla") && (
                 <CriteriaGrade grade={part}>
-                  {el[part].map(line => (
+                  {el[part].map((line) => (
                     <CriteriaLine dense={dense} key={line}>
                       {parse(line, parseOptions)}
                     </CriteriaLine>

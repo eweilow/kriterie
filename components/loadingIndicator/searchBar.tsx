@@ -30,15 +30,15 @@ export class SearchLoadingBar extends React.Component<IProps> {
       <div
         className={classnames("progress", {
           visible,
-          exiting: !visible
+          exiting: !visible,
         })}
       >
         <LoadingTrickle trickleTime={200} factor={0.2}>
-          {progress => (
+          {(progress) => (
             <div
               className="bar"
               style={{
-                transform: `scale3d(${progress.toFixed(2)}, 1, 1)`
+                transform: `scale3d(${progress.toFixed(2)}, 1, 1)`,
               }}
             />
           )}

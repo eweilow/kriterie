@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 export const Column: React.FC<{ className?: string }> = ({
   children,
-  className
+  className,
 }) => (
   <section className={clsx("column", className)}>
     {children}

@@ -13,12 +13,12 @@ interface IState {
 
 export class LoadingTrickle extends React.PureComponent<IProps, IState> {
   static defaultProps = {
-    factor: 0.1
+    factor: 0.1,
   };
 
   state: IState = {
     progress: 0,
-    trickleTime: this.props.trickleTime // Copy at init
+    trickleTime: this.props.trickleTime, // Copy at init
   };
 
   trickleTimeout: NodeJS.Timer | null = null;
@@ -35,11 +35,11 @@ export class LoadingTrickle extends React.PureComponent<IProps, IState> {
 
   trickle = () => {
     this.setState(
-      state => {
+      (state) => {
         const remainder = 1 - state.progress;
         return {
           progress:
-            state.progress + Math.random() * remainder * this.props.factor
+            state.progress + Math.random() * remainder * this.props.factor,
         };
       },
       () => {

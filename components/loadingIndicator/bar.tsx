@@ -14,7 +14,7 @@ interface IProps {
 export class LoadingBar extends React.Component<IProps> {
   static Wrapped = () => (
     <LoadingIndicator delay={200}>
-      {loading => (
+      {(loading) => (
         <LoadingIndicatorQueue loading={loading} transitionTime={125}>
           {(visible, transitionTime) => (
             <>
@@ -32,18 +32,18 @@ export class LoadingBar extends React.Component<IProps> {
       <div
         className={classnames("progress", {
           visible,
-          exiting: !visible
+          exiting: !visible,
         })}
       >
         <LoadingTrickle trickleTime={transitionTime * 1.2}>
-          {progress => (
+          {(progress) => (
             <div className="bar left">
               <div
                 className="bar right"
                 style={{
                   transform: `translate3d(${(progress * 100 - 100).toFixed(
                     2
-                  )}%, 0, 0)`
+                  )}%, 0, 0)`,
                 }}
               />
             </div>

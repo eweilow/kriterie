@@ -9,8 +9,8 @@ function mapSubjects(
   calculateFreeChoice: boolean
 ) {
   return subjects
-    .filter(el => el.code !== "ETT")
-    .map(el => {
+    .filter((el) => el.code !== "ETT")
+    .map((el) => {
       const subjectData = loadSubjectData(el.code);
 
       const data = {
@@ -19,15 +19,15 @@ function mapSubjects(
           calculateFreeChoice && el.minPoints != null ? el.minPoints : null,
         code: subjectData.code,
         freeChoice: 0,
-        courses: el.courses.map(el2 => {
+        courses: el.courses.map((el2) => {
           const courseData = loadCourseData(el2);
 
           return {
             title: courseData.title,
             code: courseData.code,
-            points: courseData.points
+            points: courseData.points,
           };
-        })
+        }),
       };
 
       if (calculateFreeChoice) {
@@ -72,8 +72,8 @@ export function getProgramData(id: string) {
       orientation: {
         isOrientations: program.info.orientation.title === "Inriktningar",
         isProfiles: program.info.orientation.title === "Profiler",
-        lines: program.info.orientation.lines
-      }
+        lines: program.info.orientation.lines,
+      },
     },
     education: {
       mandatory: mapSubjects(program.education.mandatory.subjects, true),
@@ -82,25 +82,25 @@ export function getProgramData(id: string) {
         program.education.specialization.subjects,
         false
       ),
-      orientations: program.education.orientations.map(el => ({
+      orientations: program.education.orientations.map((el) => ({
         name: el.name,
         code: el.code,
         points: el.points,
         subjects: mapSubjects(el.subjects, true),
-        aliasSubjects: el.aliasSubjects
+        aliasSubjects: el.aliasSubjects,
       })),
-      professionalDegrees: program.education.professionalDegrees.map(el => ({
+      professionalDegrees: program.education.professionalDegrees.map((el) => ({
         name: el.name,
         code: el.code,
-        subjects: mapSubjects(el.subjects, false)
+        subjects: mapSubjects(el.subjects, false),
       })),
-      profiles: program.education.profiles.map(el => ({
+      profiles: program.education.profiles.map((el) => ({
         name: el.name,
         code: el.code,
         points: el.points,
-        subjects: mapSubjects(el.subjects, false)
-      }))
-    }
+        subjects: mapSubjects(el.subjects, false),
+      })),
+    },
     // rest: program
   };
 }

@@ -3,7 +3,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import * as Fathom from "fathom-client";
 
 export function useFavorite(key: string, code: string) {
-  const [state, setState] = useLocalStorage(key, val =>
+  const [state, setState] = useLocalStorage(key, (val) =>
     Array.isArray(val) ? val : []
   );
 
@@ -19,7 +19,7 @@ export function useFavorite(key: string, code: string) {
 
   const doUnfavorite = useCallback(() => {
     Fathom.trackGoal("L1PQNAAK", 0);
-    setState(stateRef.current.filter(el => el !== code));
+    setState(stateRef.current.filter((el) => el !== code));
   }, []);
 
   return [isFavorited, doFavorite, doUnfavorite, state] as [

@@ -3,7 +3,7 @@ import { SearchBox } from "../components/searchBox";
 import { NextPage } from "next";
 import {
   FavoritesList,
-  FavoritesListFallback
+  FavoritesListFallback,
 } from "../components/favorites/list";
 import { Suspense } from "react";
 import { NextSeo } from "next-seo";
@@ -42,29 +42,29 @@ export async function getStaticProps() {
     return {
       props: {
         data: {
-          courses: [...courseSelection].map(el => ({
+          courses: [...courseSelection].map((el) => ({
             code: el.code,
-            title: el.title
+            title: el.title,
           })),
-          subjects: [...subjectSelection].map(el => ({
+          subjects: [...subjectSelection].map((el) => ({
             code: el.code,
-            title: el.title
+            title: el.title,
           })),
-          programmes: [...programSelection].map(el => ({
+          programmes: [...programSelection].map((el) => ({
             code: el.code,
-            title: el.title
-          }))
-        }
+            title: el.title,
+          })),
+        },
       },
-      unstable_revalidate: 60 * 60 * 24
+      unstable_revalidate: 60 * 60 * 24,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -72,7 +72,7 @@ export async function getStaticProps() {
 }
 
 type Props = { data: any };
-const Page: NextPage<Props> = props => (
+const Page: NextPage<Props> = (props) => (
   <>
     <NextSeo canonical="https://kriterie.se" />
     <h1>Välkommen till kriterie.se!</h1>
@@ -110,7 +110,7 @@ const Page: NextPage<Props> = props => (
 
     <h2>Dagens slumpmässiga urval</h2>
     <h3>Kurser</h3>
-    {props.data.courses.map(el => (
+    {props.data.courses.map((el) => (
       <div key={el.code}>
         <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
           <a>{el.title}</a>
@@ -118,7 +118,7 @@ const Page: NextPage<Props> = props => (
       </div>
     ))}
     <h3>Ämnen</h3>
-    {props.data.subjects.map(el => (
+    {props.data.subjects.map((el) => (
       <div key={el.code}>
         <Link href="/gy11/subject/[id]" as={`/gy11/subject/${el.code}`}>
           <a>{el.title}</a>
@@ -126,7 +126,7 @@ const Page: NextPage<Props> = props => (
       </div>
     ))}
     <h3>Program</h3>
-    {props.data.programmes.map(el => (
+    {props.data.programmes.map((el) => (
       <div key={el.code}>
         <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
           <a>{el.title}</a>

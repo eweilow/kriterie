@@ -9,6 +9,6 @@ export const defaultSeoConfiguration = {
     type: "website",
     locale: "sv_SE",
     url: "https://kriterie.se",
-    site_name: "kriterie.se"
-  }
+    site_name: "kriterie.se",
+  },
 } as DefaultSeoProps;

@@ -15,20 +15,20 @@ export function getSubjectData(id: string) {
       ...program.education.program.courses,
       ...program.education.specialization.courses,
       ...([] as string[]).concat(
-        ...program.education.orientations.map(el => el.courses)
+        ...program.education.orientations.map((el) => el.courses)
       ),
       ...([] as string[]).concat(
-        ...program.education.professionalDegrees.map(el => el.courses)
+        ...program.education.professionalDegrees.map((el) => el.courses)
       ),
       ...([] as string[]).concat(
-        ...program.education.profiles.map(el => el.courses)
-      )
+        ...program.education.profiles.map((el) => el.courses)
+      ),
     ]);
 
     applicableProgrammes.push({
-      applicable: subject.courses.some(code => courses.has(code)),
+      applicable: subject.courses.some((code) => courses.has(code)),
       title: program.title,
-      code: program.code
+      code: program.code,
     });
   }
 
@@ -41,16 +41,16 @@ export function getSubjectData(id: string) {
     purposes: subject.purposes,
     developmentPurposes: subject.developmentPurposes,
     applicableProgrammes,
-    courses: subject.courses.map(code => {
+    courses: subject.courses.map((code) => {
       const course = loadCourseData(code);
 
       return {
         title: course.title,
         code: course.code,
-        points: course.points
+        points: course.points,
       };
     }),
-    courseInfo: subject.courseInfo
+    courseInfo: subject.courseInfo,
     // rest: subject
   };
   data.courses.sort((a: any, b: any) =>

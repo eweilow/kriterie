@@ -8,7 +8,7 @@ export function catchError(
 ) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    enabled: process.env.NODE_ENV === "production"
+    enabled: process.env.NODE_ENV === "production",
   });
   Sentry.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
   Sentry.setExtra("now-trace", req.headers["x-now-trace"]);
@@ -29,7 +29,7 @@ export function sendError(
   message: string
 ) {
   res.status(status).json({
-    error: message
+    error: message,
   });
 }
 

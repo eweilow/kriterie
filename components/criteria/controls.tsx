@@ -15,7 +15,7 @@ export const CriteriaControls: React.FC<{
       <ToggleControl
         checked={dense}
         value="enabled"
-        onChange={val => setDense(val)}
+        onChange={(val) => setDense(val)}
         color="#d44700"
         label="tätare text"
         name="dense"
@@ -23,12 +23,12 @@ export const CriteriaControls: React.FC<{
       />
     </div>
     <div className="grades">
-      {filterTypes.map(el => (
+      {filterTypes.map((el) => (
         <div key={el}>
           <ToggleControl
             checked={filter === el}
             value={el || "null"}
-            onChange={val => val && setFilter(el)}
+            onChange={(val) => val && setFilter(el)}
             color="#d44700"
             name="filter"
             icon={el}

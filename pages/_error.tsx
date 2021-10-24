@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 function captureEvent(err: any, req?: any) {
-  Sentry.withScope(scope => {
+  Sentry.withScope((scope) => {
     scope.setTag(
       "environment",
       typeof window === "undefined" ? "frontend:server" : "frontend:browser"
@@ -12,7 +12,7 @@ function captureEvent(err: any, req?: any) {
     if (req != null) {
       scope.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
       scope.setExtra("now-trace", req.headers["x-now-trace"]);
-      scope.addEventProcessor(function(event) {
+      scope.addEventProcessor(function (event) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { Handlers } = require("@sentry/node");
         return Handlers.parseRequest(event, req);
@@ -26,10 +26,12 @@ function captureEvent(err: any, req?: any) {
 }
 
 // https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/pages/_error.js
-const KriterieError: NextPage<ErrorProps & {
-  hasGetInitialPropsRun: boolean;
-  err: any;
-}> = ({ statusCode, hasGetInitialPropsRun, err }) => {
+const KriterieError: NextPage<
+  ErrorProps & {
+    hasGetInitialPropsRun: boolean;
+    err: any;
+  }
+> = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
     captureEvent(err);
   }

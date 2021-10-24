@@ -10,7 +10,7 @@ export const FavoritesButton: React.FC<{
   const [isFavorited, doFavorite, doUnfavorite] = useFavorite(storageKey, code);
 
   const setValue = useCallback(
-    val => {
+    (val) => {
       if (val) {
         doFavorite();
       } else {

@@ -20,7 +20,7 @@ export function getAllSubjectsData(letter: string) {
     .filter((subject: any) => subject.title.toLowerCase().startsWith(letter))
     .map((subject: any) => ({
       title: subject.title,
-      code: subject.code
+      code: subject.code,
       // rest: subject
     }));
 

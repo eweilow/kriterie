@@ -25,7 +25,7 @@ export enum TouchResponseShape {
   Circular = "circular",
   Horizontal = "horizontal",
   Vertical = "vertical",
-  NoRipple = "noRipple"
+  NoRipple = "noRipple",
 }
 
 const debugTimeScale = 1;
@@ -37,7 +37,7 @@ export const DefaultTouchResponseOptions: Readonly<TouchResponseOptions> = {
   minimumVisibleTime: 80 * debugTimeScale,
   opacityChangeTime: 200 * debugTimeScale,
   opacityInitialDelay: 50 * debugTimeScale,
-  shape: TouchResponseShape.Circular
+  shape: TouchResponseShape.Circular,
 };
 
 export const TouchResponseOptionsContext = React.createContext<
@@ -45,7 +45,7 @@ export const TouchResponseOptionsContext = React.createContext<
 >(DefaultTouchResponseOptions);
 TouchResponseOptionsContext.displayName = "TouchResponseOptionsContext";
 
-export const TouchResponse: React.FC<TouchResponseProps> = props => {
+export const TouchResponse: React.FC<TouchResponseProps> = (props) => {
   const {
     color,
     opacity,
@@ -54,7 +54,7 @@ export const TouchResponse: React.FC<TouchResponseProps> = props => {
     minimumVisibleTime,
     opacityChangeTime,
     opacityInitialDelay,
-    shape
+    shape,
   } = useContext(TouchResponseOptionsContext);
 
   const [canExit, setCanExit] = useState(false);
@@ -87,14 +87,14 @@ export const TouchResponse: React.FC<TouchResponseProps> = props => {
     <div
       className={classnames("ripple", shape, {
         active: props.active || !canExit,
-        actuallyActive: props.active || !canFade
+        actuallyActive: props.active || !canFade,
       })}
       style={{
         left: props.press[0] - props.press[2],
         top: props.press[1] - props.press[2],
         width: props.press[2] * 2,
         height: props.press[2] * 2,
-        borderRadius: props.press[2]
+        borderRadius: props.press[2],
       }}
     >
       <style jsx>{`

@@ -18,17 +18,17 @@ function getData(letter: string) {
   }
 
   const data = courses
-    .filter(course => course.title.toLowerCase().startsWith(letter))
-    .map(course => {
+    .filter((course) => course.title.toLowerCase().startsWith(letter))
+    .map((course) => {
       return {
         data: {
           title: course.title,
           code: course.code,
-          points: course.points
+          points: course.points,
         },
         subject: {
-          code: course.subject
-        }
+          code: course.subject,
+        },
         // rest: course
       };
     });
@@ -54,12 +54,12 @@ export function getAllCoursesData(letter: string) {
     byType.get(course.subject.code)!.push(course);
   }
 
-  const mapped = [...byType.keys()].map(code => {
+  const mapped = [...byType.keys()].map((code) => {
     const subjectData = loadSubjectData(code);
     return {
       title: subjectData.title,
       code: subjectData.code,
-      courses: byType.get(code).map(el => el.data)
+      courses: byType.get(code).map((el) => el.data),
     };
   });
 
@@ -67,6 +67,6 @@ export function getAllCoursesData(letter: string) {
 
   return {
     subjects: mapped,
-    letters
+    letters,
   };
 }

@@ -12,17 +12,17 @@ export async function getStaticProps({ params }) {
     return {
       props: {
         data: await getAllCoursesData(params.letter.toLowerCase()),
-        letter: params.letter
+        letter: params.letter,
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -42,18 +42,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...letters.map(letter => ({
+      ...letters.map((letter) => ({
         params: {
-          letter
-        }
-      }))
+          letter,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getAllCoursesData>; letter: string };
-const CoursesPage: NextPage<Props> = props => {
+const CoursesPage: NextPage<Props> = (props) => {
   if (props.data == null) {
     return (
       <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
@@ -70,15 +70,15 @@ const CoursesPage: NextPage<Props> = props => {
       <LettersList
         letters={props.data.letters}
         activeLetter={props.letter}
-        formatAs={s => `/gy11/courses/${s.toLowerCase()}`}
+        formatAs={(s) => `/gy11/courses/${s.toLowerCase()}`}
         formatHref={() => "/gy11/courses/[letter]"}
       />
       <h1>Kurser som börjar på {props.letter}</h1>
       <CourseList
-        subjects={props.data.subjects.map(el => ({
+        subjects={props.data.subjects.map((el) => ({
           ...el,
           minPoints: null,
-          freeChoice: 0
+          freeChoice: 0,
         }))}
       />
     </>

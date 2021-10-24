@@ -9,17 +9,17 @@ export async function getStaticProps() {
   try {
     return {
       props: {
-        data: await getAllProgrammesData()
+        data: await getAllProgrammesData(),
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -27,7 +27,7 @@ export async function getStaticProps() {
 }
 
 type Props = { data: ReturnType<typeof getAllProgrammesData> };
-const ProgrammesPage: NextPage<Props> = props => (
+const ProgrammesPage: NextPage<Props> = (props) => (
   <>
     <NextSeo
       noindex={true}
@@ -35,11 +35,11 @@ const ProgrammesPage: NextPage<Props> = props => (
       title={`Program`}
     />
     <h1>Alla program</h1>
-    {props.data.programmes.map(data => (
+    {props.data.programmes.map((data) => (
       <Fragment key={data.type}>
         <h2>{data.type}</h2>
         <ul>
-          {data.programmes.map(el => (
+          {data.programmes.map((el) => (
             <li key={el.code}>
               <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
                 <a>

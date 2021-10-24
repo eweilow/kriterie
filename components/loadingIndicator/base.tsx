@@ -19,7 +19,7 @@ function createDelayedTrigger() {
         clearTimeout(currentTimer);
         currentTimer = null;
       }
-    }
+    },
   };
 }
 
@@ -32,7 +32,7 @@ type State = {
 };
 export class LoadingIndicator extends React.PureComponent<Props, State> {
   state: State = {
-    isLoadingPage: false
+    isLoadingPage: false,
   };
 
   startTrigger = createDelayedTrigger();
@@ -40,7 +40,7 @@ export class LoadingIndicator extends React.PureComponent<Props, State> {
   onRouteChangeStart = () => {
     this.startTrigger.trigger(() => {
       this.setState({
-        isLoadingPage: true
+        isLoadingPage: true,
       });
     }, this.props.delay);
   };
@@ -48,14 +48,14 @@ export class LoadingIndicator extends React.PureComponent<Props, State> {
   onRouteChangeError = () => {
     this.startTrigger.untrigger();
     this.setState({
-      isLoadingPage: false
+      isLoadingPage: false,
     });
   };
 
   onRouteChangeComplete = () => {
     this.startTrigger.untrigger();
     this.setState({
-      isLoadingPage: false
+      isLoadingPage: false,
     });
   };
 

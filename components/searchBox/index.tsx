@@ -4,7 +4,7 @@ import {
   ComboboxList,
   ComboboxOption,
   ComboboxPopover,
-  ComboboxOptionText
+  ComboboxOptionText,
 } from "@reach/combobox";
 import useResizeObserver from "use-resize-observer";
 import Head from "next/head";
@@ -27,7 +27,7 @@ function getWorkerByUrl(url: string) {
   const worker = new (ExampleWorker as any)();
   worker.postMessage({
     type: "url",
-    url
+    url,
   });
   workerCache.set(url, worker);
 
@@ -52,10 +52,10 @@ export const SearchBox: React.FC<{
     function listener(msg: any) {
       if (nextString.current === msg.data.str) {
         setSearchResults(
-          msg.data.results.map(el => ({
+          msg.data.results.map((el) => ({
             code: el.obj.code,
             type: el.obj.type,
-            title: `${el.obj.title} (${el.obj.code})`
+            title: `${el.obj.title} (${el.obj.code})`,
           }))
         );
       }
@@ -77,14 +77,14 @@ export const SearchBox: React.FC<{
     } else {
       worker.current.postMessage({
         type: "search",
-        searchString: searchString.trim()
+        searchString: searchString.trim(),
       });
       nextString.current = searchString;
     }
   }, [searchString]);
 
   const handleChange = useCallback(
-    event => setSearchString(event.target.value),
+    (event) => setSearchString(event.target.value),
     [setSearchString]
   );
 
@@ -99,7 +99,7 @@ export const SearchBox: React.FC<{
   }, []);
 
   const handleSelect = useCallback(
-    value => {
+    (value) => {
       function start() {
         setSearchResults(null);
         setSearchString("");
@@ -124,7 +124,7 @@ export const SearchBox: React.FC<{
       setSearchString(value);
 
       if (searchResults != null) {
-        const found = searchResults.find(el => el.title === value);
+        const found = searchResults.find((el) => el.title === value);
         if (found.type === "program") {
           waitForPromise(
             router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
@@ -158,7 +158,7 @@ export const SearchBox: React.FC<{
   }, []);
 
   const [boxRef, , boxHeight] = useResizeObserver({
-    defaultHeight: 40
+    defaultHeight: 40,
   });
 
   const Text = ComboboxOptionText as any;

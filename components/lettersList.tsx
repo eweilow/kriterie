@@ -57,7 +57,7 @@ export const LettersList: React.FC<{
     <section className="letters">
       <header>vald bokstav:</header>
       <ul>
-        {letters.map(el => (
+        {letters.map((el) => (
           <li key={el}>
             <LetterLink
               applicable={activeLetter === el}
@@ -67,7 +67,7 @@ export const LettersList: React.FC<{
             />
           </li>
         ))}
-        {letters.map(el => (
+        {letters.map((el) => (
           <li key={el + "2"}></li>
         ))}
       </ul>

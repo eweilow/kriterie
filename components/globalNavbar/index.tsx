@@ -9,7 +9,7 @@ import { useAmp } from "next/amp";
 const RowHeight = 40;
 export const GlobalNavbarHeight = Math.floor(RowHeight * 2) + 8;
 
-const Navlink: React.FC<LinkProps> = props => {
+const Navlink: React.FC<LinkProps> = (props) => {
   const [responderProps, responder] = useTouchResponder<HTMLAnchorElement>(
     "#fff",
     0.3,

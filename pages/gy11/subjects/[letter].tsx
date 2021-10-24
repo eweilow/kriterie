@@ -12,17 +12,17 @@ export async function getStaticProps({ params }) {
     return {
       props: {
         data: await getAllSubjectsData(params.letter.toLowerCase()),
-        letter: params.letter
+        letter: params.letter,
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -42,18 +42,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...letters.map(letter => ({
+      ...letters.map((letter) => ({
         params: {
-          letter
-        }
-      }))
+          letter,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getAllSubjectsData>; letter: string };
-const SubjectsPage: NextPage<Props> = props => {
+const SubjectsPage: NextPage<Props> = (props) => {
   if (props.data == null) {
     return (
       <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
@@ -70,12 +70,12 @@ const SubjectsPage: NextPage<Props> = props => {
       <LettersList
         letters={props.data.letters}
         activeLetter={props.letter}
-        formatAs={s => `/gy11/subjects/${s.toLowerCase()}`}
+        formatAs={(s) => `/gy11/subjects/${s.toLowerCase()}`}
         formatHref={() => "/gy11/subjects/[letter]"}
       />
       <h1>Ämnen som börjar på {props.letter}</h1>
       <ul>
-        {props.data.subjects.map(subj => (
+        {props.data.subjects.map((subj) => (
           <li key={subj.code}>
             <Link href="/gy11/subject/[id]" as={`/gy11/subject/${subj.code}`}>
               <a>{subj.title}</a>

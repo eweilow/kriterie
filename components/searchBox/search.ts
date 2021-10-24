@@ -6,7 +6,7 @@ class Search {
 
   onResults: (searchString: string, results: string[]) => void;
 
-  private searchItems: Promise<any[]> = this.fetchItems().catch(err => {
+  private searchItems: Promise<any[]> = this.fetchItems().catch((err) => {
     console.error(err);
     return [];
   });
@@ -20,9 +20,9 @@ class Search {
       keywords: [
         el.code.toLowerCase().trim(),
         el.title.toLowerCase().trim(),
-        `${el.title.toLowerCase().trim()} (${el.code.toLowerCase().trim()})`
+        `${el.title.toLowerCase().trim()} (${el.code.toLowerCase().trim()})`,
       ],
-      obj: el
+      obj: el,
     }));
   }
 
@@ -101,7 +101,7 @@ class Search {
       this.queued[0] = str;
     }
 
-    this.searchItems.then(data => {
+    this.searchItems.then((data) => {
       this.data = data;
       this.searchLoop();
     });
@@ -111,7 +111,7 @@ class Search {
 export function run() {
   let search: Search;
 
-  self.addEventListener("message", event => {
+  self.addEventListener("message", (event) => {
     if (event.data.type === "url") {
       if (search != null) {
         search.onResults = null;

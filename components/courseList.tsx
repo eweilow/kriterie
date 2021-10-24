@@ -20,7 +20,7 @@ export const CourseList: React.FC<{
   }[];
 }> = ({ subjects, aliasSubjects }) => (
   <section className="courseList">
-    {subjects.map(subj => (
+    {subjects.map((subj) => (
       <div key={subj.code}>
         <header>
           {subj.minPoints != null && (
@@ -32,7 +32,7 @@ export const CourseList: React.FC<{
         </header>
         {subj.courses.length > 0 && (
           <ul>
-            {subj.courses.map(cour => (
+            {subj.courses.map((cour) => (
               <li key={cour.code}>
                 <Link href="/gy11/course/[id]" as={`/gy11/course/${cour.code}`}>
                   <a>
@@ -51,7 +51,7 @@ export const CourseList: React.FC<{
       </div>
     ))}
     {aliasSubjects != null &&
-      aliasSubjects.map(subj => (
+      aliasSubjects.map((subj) => (
         <div key={subj.code}>
           <header>
             {subj.minPoints != null && (

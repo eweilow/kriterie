@@ -17,17 +17,17 @@ export async function getStaticProps({ params }) {
   try {
     return {
       props: {
-        data: await getSubjectData(params.id.toLowerCase())
+        data: await getSubjectData(params.id.toLowerCase()),
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -39,18 +39,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...courses.map(el => ({
+      ...courses.map((el) => ({
         params: {
-          id: el.code
-        }
-      }))
+          id: el.code,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getSubjectData> };
-const SubjectPage: NextPage<Props> = props => {
+const SubjectPage: NextPage<Props> = (props) => {
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
   const description = useMemo(() => {
@@ -94,7 +94,7 @@ const SubjectPage: NextPage<Props> = props => {
         />
       )}
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
-        {props.data.courses.map(el => (
+        {props.data.courses.map((el) => (
           <li key={el.code}>
             <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
               <a>
@@ -110,7 +110,7 @@ const SubjectPage: NextPage<Props> = props => {
         ))}
       </ul>
       <h2>Ämnets syfte</h2>
-      {props.data.purposes.map(el => (
+      {props.data.purposes.map((el) => (
         <p key={el}>{el}</p>
       ))}
       <h2>Elevens utvecklingsmöjligheter inom ämnet</h2>
@@ -119,7 +119,7 @@ const SubjectPage: NextPage<Props> = props => {
         elev få möjlighet att utveckla följande:
       </p>
       <ul>
-        {props.data.developmentPurposes.map(el => (
+        {props.data.developmentPurposes.map((el) => (
           <li key={el}>{el}</li>
         ))}
       </ul>

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const waitForTime = (time: number) =>
-  new Promise<void>(resolve => setTimeout(() => resolve(), time));
+  new Promise<void>((resolve) => setTimeout(() => resolve(), time));
 
 interface IProps {
   loading: boolean;
@@ -21,11 +21,11 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
   state: IState = {
     loading: false,
     nodeAdded: false,
-    transitionTime: this.props.transitionTime // Copy at initialization
+    transitionTime: this.props.transitionTime, // Copy at initialization
   };
 
   static defaultProps = {
-    portal: true
+    portal: true,
   };
 
   currentlyRunning = Promise.resolve();
@@ -61,7 +61,7 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
       () => {
         this.setState({
           loading: true,
-          nodeAdded: true
+          nodeAdded: true,
         });
       },
       () => waitForTime(this.state.transitionTime)
@@ -72,14 +72,14 @@ export class LoadingIndicatorQueue extends React.PureComponent<IProps, IState> {
     this.enqueue(
       () => {
         this.setState({
-          loading: false
+          loading: false,
         });
       },
       () => waitForTime(this.state.transitionTime * 2)
     );
     this.enqueue(() => {
       this.setState({
-        nodeAdded: false
+        nodeAdded: false,
       });
     });
   }

@@ -18,7 +18,7 @@ export const SimpleControls: React.FC<{
   name,
   color = "#d44700",
   icon = mdiClose,
-  title = "inställningar"
+  title = "inställningar",
 }) =>
   !disabled && (
     <section className="controls">
@@ -27,7 +27,7 @@ export const SimpleControls: React.FC<{
         <ToggleControl
           checked={value}
           value="enabled"
-          onChange={val => setValue(val)}
+          onChange={(val) => setValue(val)}
           color={color}
           label={label}
           name={name}

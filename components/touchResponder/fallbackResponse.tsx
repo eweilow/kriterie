@@ -5,12 +5,12 @@ const InnerFallbackResponse: React.FC<{
   color: string;
   opacity: number;
   touching: boolean;
-}> = props => {
+}> = (props) => {
   return (
     <span
       key="touchTarget"
       className={classnames("touchTarget", {
-        touching: props.touching
+        touching: props.touching,
       })}
     >
       <style jsx>{`

@@ -18,17 +18,17 @@ export async function getStaticProps({ params }) {
   try {
     return {
       props: {
-        data: await getCourseData(params.id.toLowerCase())
+        data: await getCourseData(params.id.toLowerCase()),
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -40,18 +40,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...courses.map(el => ({
+      ...courses.map((el) => ({
         params: {
-          id: el.code
-        }
-      }))
+          id: el.code,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getCourseData> };
-const CoursePage: NextPage<Props> = props => {
+const CoursePage: NextPage<Props> = (props) => {
   const [showAllPurposes, setShowAllPurposes] = useState(false);
 
   const description = useMemo(() => {
@@ -61,7 +61,7 @@ const CoursePage: NextPage<Props> = props => {
 
     const content =
       "\n - " +
-      props.data.centralContent.map(el => el[1].join("\n - ")).join("\n");
+      props.data.centralContent.map((el) => el[1].join("\n - ")).join("\n");
     return `Gymnasiekursen ${props.data.title.toLowerCase()} (${
       props.data.points
     }p) är en kurs inom ämnet ${props.data.subject.title.toLowerCase()} (${
@@ -120,7 +120,7 @@ const CoursePage: NextPage<Props> = props => {
       <h2>Kursens omfattning av ämnets syfte</h2>
       {!isAmp && (
         <SimpleControls
-          disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
+          disabled={!props.data.subjectPurposes.find((el) => !el.applicable)}
           value={showAllPurposes}
           setValue={setShowAllPurposes}
           label="visa hela ämnets omfattning"
@@ -135,8 +135,8 @@ const CoursePage: NextPage<Props> = props => {
       </p>
       <ul>
         {props.data.subjectPurposes
-          .filter(el => showAllPurposes || el.applicable)
-          .map(el => (
+          .filter((el) => showAllPurposes || el.applicable)
+          .map((el) => (
             <li
               key={el.value}
               className={clsx({ nonApplicable: !el.applicable })}
@@ -151,11 +151,11 @@ const CoursePage: NextPage<Props> = props => {
         Detta är det innehåll som bör läras ut inom ramarna för kursen{" "}
         {props.data.title.toLowerCase()}.
       </p>
-      {props.data.centralContent.map(el => (
+      {props.data.centralContent.map((el) => (
         <Fragment key={el[0]}>
           {el[0] && <h4>{el[0]}</h4>}
           <ul>
-            {el[1].map(el => (
+            {el[1].map((el) => (
               <li key={el}>{el}</li>
             ))}
           </ul>

@@ -4,7 +4,7 @@ import { getSortableCode } from "./course";
 function getData() {
   const programmes = loadProgrammes();
 
-  const data = programmes.map(program => {
+  const data = programmes.map((program) => {
     let type: string;
     switch (program.typeOfProgram) {
       case "VOCATIONAL_PROGRAM":
@@ -28,7 +28,7 @@ function getData() {
       code: program.code,
       type,
       typeOfProgram: program.typeOfProgram,
-      typeOfSchooling: program.typeOfSchooling
+      typeOfSchooling: program.typeOfSchooling,
     };
   });
 
@@ -53,9 +53,9 @@ export function getAllProgrammesData() {
     byType.get(programme.type)!.push(programme);
   }
 
-  const mapped = [...byType.keys()].map(type => ({
+  const mapped = [...byType.keys()].map((type) => ({
     type,
-    programmes: byType.get(type)
+    programmes: byType.get(type),
   }));
 
   mapped.sort((a, b) => a.type.localeCompare(b.type));

@@ -4,7 +4,7 @@ import {
   DefaultTouchResponseOptions,
   TouchResponse,
   TouchResponseOptionsContext,
-  TouchResponseShape
+  TouchResponseShape,
 } from "./response";
 import { Press } from "./types";
 
@@ -15,7 +15,7 @@ type TouchResponderProps = {
   shape: TouchResponseShape;
 };
 
-export const TouchResponder: React.FC<TouchResponderProps> = props => {
+export const TouchResponder: React.FC<TouchResponderProps> = (props) => {
   const [presses, setPresses] = useState<
     Array<{
       press: Press;
@@ -27,12 +27,12 @@ export const TouchResponder: React.FC<TouchResponderProps> = props => {
     useLayoutEffect(() => {
       const activePress = props.activePress;
       if (activePress != null) {
-        setPresses(p => [
+        setPresses((p) => [
           ...p,
           {
             press: activePress,
-            index: indexCounter.current
-          }
+            index: indexCounter.current,
+          },
         ]);
         ++indexCounter.current;
       }
@@ -40,7 +40,7 @@ export const TouchResponder: React.FC<TouchResponderProps> = props => {
   }
 
   function onFinished(index: number) {
-    setPresses(p => p.filter(el => el.index !== index));
+    setPresses((p) => p.filter((el) => el.index !== index));
   }
 
   const ctxValue = useMemo(() => {
@@ -48,13 +48,13 @@ export const TouchResponder: React.FC<TouchResponderProps> = props => {
       ...DefaultTouchResponseOptions,
       color: props.color,
       opacity: props.opacity,
-      shape: props.shape
+      shape: props.shape,
     };
   }, [props.color, props.opacity, props.shape]);
 
   return (
     <TouchResponseOptionsContext.Provider value={ctxValue}>
-      {presses.map(el => (
+      {presses.map((el) => (
         <TouchResponse
           onFinished={() => onFinished(el.index)}
           key={el.index}

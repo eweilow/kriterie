@@ -12,12 +12,12 @@ export function useFetch<T = any>(url: string) {
       promiseRef.current = fetchCache.get(url);
     } else {
       promiseRef.current = fetch(url)
-        .then(res => res.json())
-        .then(value => {
+        .then((res) => res.json())
+        .then((value) => {
           resolvedCache.set(url, value);
           return value;
         })
-        .catch(err => {
+        .catch((err) => {
           errorCache.set(url, err);
           throw err;
         });

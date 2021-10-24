@@ -6,20 +6,20 @@ export function getSearchData() {
   const courses = loadCourses();
 
   return [
-    ...programmes.map(el => ({
+    ...programmes.map((el) => ({
       type: "program",
       title: el.title,
-      code: el.code
+      code: el.code,
     })),
-    ...subjects.map(el => ({
+    ...subjects.map((el) => ({
       type: "subject",
       title: el.title,
-      code: el.code
+      code: el.code,
     })),
-    ...courses.map(el => ({
+    ...courses.map((el) => ({
       type: "course",
       title: el.title,
-      code: el.code
-    }))
+      code: el.code,
+    })),
   ];
 }

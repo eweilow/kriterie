@@ -2,7 +2,7 @@ import React from "react";
 import { IconGenerationComponent } from "@eweilow/ikon-cli";
 import { useFileAsDataURL } from "@eweilow/ikon";
 
-const Component: IconGenerationComponent = props => {
+const Component: IconGenerationComponent = (props) => {
   let imgSrc!: string;
   if (props.type === "favicon") {
     imgSrc = useFileAsDataURL("./favicon.svg");
@@ -29,14 +29,14 @@ const Component: IconGenerationComponent = props => {
         width: "100%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
       }}
     >
       <img
         style={{
           maxWidth: 200 * props.pixelRatio,
           width: "100%",
-          height: "100%"
+          height: "100%",
         }}
         src={imgSrc}
       />

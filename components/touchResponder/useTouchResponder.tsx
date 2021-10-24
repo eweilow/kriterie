@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useLayoutEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 
 import { FallbackResponse } from "./fallbackResponse";
@@ -73,11 +73,11 @@ export function useTouchResponder<
     return [
       {
         onTouchStart,
-        onMouseDown
+        onMouseDown,
       },
       <span suppressHydrationWarning key="touchTarget">
         <FallbackResponse color={color} opacity={opacity} touching={touching} />
-      </span>
+      </span>,
     ];
   }
   const props: ReturnProps<TElement> = {};
@@ -118,7 +118,7 @@ export function useTouchResponder<
           Math.abs(e.clientX - rect.right),
           Math.abs(e.clientY - rect.bottom)
         )
-      )
+      ),
     ]);
   }, []);
 
@@ -159,6 +159,6 @@ export function useTouchResponder<
         opacity={opacity}
         activePress={activePress}
       />
-    </span>
+    </span>,
   ];
 }

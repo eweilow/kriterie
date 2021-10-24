@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 const ProgramLink: React.FC<{ code: string; applicable: boolean }> = ({
   code,
-  applicable
+  applicable,
 }) => {
   const [props, element] = useTouchResponder<HTMLAnchorElement>("#d44700", 0.2);
   return (
@@ -45,12 +45,12 @@ export const ApplicableProgrammesList: React.FC<{
   return (
     <section className="programmes">
       <ul>
-        {programmes.map(el => (
+        {programmes.map((el) => (
           <li key={el.code}>
             <ProgramLink {...el} />
           </li>
         ))}
-        {programmes.map(el => (
+        {programmes.map((el) => (
           <li key={el.code + "2"}></li>
         ))}
       </ul>

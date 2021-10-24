@@ -22,24 +22,24 @@ export const FavoritesList: React.FC = () => {
 
   const mapped = useMemo(
     () => [
-      ...courseFavorites.map(el => ({
+      ...courseFavorites.map((el) => ({
         type: "kurs",
         href: "/gy11/course/[id]",
         as: `/gy11/course/${el}`,
-        title: data.find(dEl => dEl.code === el).title as string
+        title: data.find((dEl) => dEl.code === el).title as string,
       })),
-      ...subjectFavorites.map(el => ({
+      ...subjectFavorites.map((el) => ({
         type: "ämne",
         href: "/gy11/subject/[id]",
         as: `/gy11/subject/${el}`,
-        title: data.find(dEl => dEl.code === el).title as string
+        title: data.find((dEl) => dEl.code === el).title as string,
       })),
-      ...programFavorites.map(el => ({
+      ...programFavorites.map((el) => ({
         type: "program",
         href: "/gy11/program/[id]",
         as: `/gy11/program/${el}`,
-        title: data.find(dEl => dEl.code === el).title as string
-      }))
+        title: data.find((dEl) => dEl.code === el).title as string,
+      })),
     ],
     [data, courseFavorites, subjectFavorites, programFavorites]
   );
@@ -64,7 +64,7 @@ export const FavoritesList: React.FC = () => {
 
       {mapped.length > 0 && (
         <ul>
-          {mapped.map(el => (
+          {mapped.map((el) => (
             <li key={el.as}>
               <Link href={el.href} as={el.as}>
                 <a>

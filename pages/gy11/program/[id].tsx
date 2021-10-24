@@ -14,17 +14,17 @@ export async function getStaticProps({ params }) {
   try {
     return {
       props: {
-        data: await getProgramData(params.id.toLowerCase())
+        data: await getProgramData(params.id.toLowerCase()),
       },
-      unstable_revalidate: false
+      unstable_revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
       return {
         props: {
-          data: null
+          data: null,
         },
-        unstable_revalidate: false
+        unstable_revalidate: false,
       };
     }
     throw err;
@@ -36,18 +36,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...courses.map(el => ({
+      ...courses.map((el) => ({
         params: {
-          id: el.code
-        }
-      }))
+          id: el.code,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getProgramData> };
-const ProgramPage: NextPage<Props> = props => {
+const ProgramPage: NextPage<Props> = (props) => {
   const description = useMemo(() => {
     if (props.data == null) {
       return null;
@@ -86,7 +86,7 @@ const ProgramPage: NextPage<Props> = props => {
         />
       )}
       <h2>Mål med examen inom programmet</h2>
-      {props.data.info.degreeObjectives.map(el => (
+      {props.data.info.degreeObjectives.map((el) => (
         <p key={el}>{el}</p>
       ))}
       <h2>Mål med gymnasiearbetet</h2>
@@ -95,7 +95,7 @@ const ProgramPage: NextPage<Props> = props => {
         att bland annat demonstrera att en elev har tagit till sig utbildningen.
       </p>
       <ul>
-        {props.data.info.educationObjectives.map(el => (
+        {props.data.info.educationObjectives.map((el) => (
           <li key={el}>{el}</li>
         ))}
       </ul>
@@ -121,8 +121,8 @@ const ProgramPage: NextPage<Props> = props => {
         <>
           <h3>Inriktningar</h3>
           {props.data.info.orientation.isOrientations &&
-            props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
-          {props.data.education.orientations.map(orie => (
+            props.data.info.orientation.lines.map((el) => <p key={el}>{el}</p>)}
+          {props.data.education.orientations.map((orie) => (
             <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
@@ -145,8 +145,8 @@ const ProgramPage: NextPage<Props> = props => {
         <>
           <h3>Profiler</h3>
           {props.data.info.orientation.isProfiles &&
-            props.data.info.orientation.lines.map(el => <p key={el}>{el}</p>)}
-          {props.data.education.profiles.map(orie => (
+            props.data.info.orientation.lines.map((el) => <p key={el}>{el}</p>)}
+          {props.data.education.profiles.map((orie) => (
             <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code}, {orie.points}p)
@@ -159,7 +159,7 @@ const ProgramPage: NextPage<Props> = props => {
       {props.data.education.professionalDegrees.length > 0 && (
         <>
           <h3>Yrkesutgångar</h3>
-          {props.data.education.professionalDegrees.map(orie => (
+          {props.data.education.professionalDegrees.map((orie) => (
             <Fragment key={orie.name}>
               <h4>
                 {orie.name} ({orie.code})
