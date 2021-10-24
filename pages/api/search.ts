@@ -1,9 +1,10 @@
 import { withSentry } from "@sentry/nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSearchData } from "../../../api/search";
+import { getSearchData } from "../../api/search";
 
 function search(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json(getSearchData());
+  const data = getSearchData();
+  res.status(200).json(data);
 }
 
 export default withSentry(search);
