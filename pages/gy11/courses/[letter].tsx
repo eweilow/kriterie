@@ -3,30 +3,17 @@ import { NextSeo } from "next-seo";
 import { getAllCoursesData } from "../../../api/allCourses";
 import { CourseList } from "../../../components/courseList";
 import { LettersList } from "../../../components/lettersList";
-import { isNotFoundError } from "../../../api/helpers";
 import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getAllCoursesData(params.letter.toLowerCase()),
-        letter: params.letter,
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getAllCoursesData(params.letter.toLowerCase()),
+      letter: params.letter,
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {

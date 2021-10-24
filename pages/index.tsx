@@ -11,64 +11,51 @@ import { NextSeo } from "next-seo";
 import { loadProgrammes, loadCourses, loadSubjects } from "../api/load";
 import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
-import { isNotFoundError } from "../api/helpers";
 
 export async function getStaticProps() {
-  try {
-    const programmes = loadProgrammes();
-    const courses = loadCourses();
-    const subjects = loadSubjects();
+  const programmes = loadProgrammes();
+  const courses = loadCourses();
+  const subjects = loadSubjects();
 
-    const now = new Date();
-    const seed = (+startOfDay(now) + 1).toString();
+  const now = new Date();
+  const seed = (+startOfDay(now) + 1).toString();
 
-    const rnd = seedrandom(seed);
+  const rnd = seedrandom(seed);
 
-    const courseSelection = new Set<any>();
-    while (courseSelection.size < 3) {
-      courseSelection.add(courses[Math.floor(courses.length * rnd())]);
-    }
-
-    const subjectSelection = new Set<any>();
-    while (subjectSelection.size < 3) {
-      subjectSelection.add(subjects[Math.floor(subjects.length * rnd())]);
-    }
-
-    const programSelection = new Set<any>();
-    while (programSelection.size < 3) {
-      programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
-    }
-
-    return {
-      props: {
-        data: {
-          courses: [...courseSelection].map((el) => ({
-            code: el.code,
-            title: el.title,
-          })),
-          subjects: [...subjectSelection].map((el) => ({
-            code: el.code,
-            title: el.title,
-          })),
-          programmes: [...programSelection].map((el) => ({
-            code: el.code,
-            title: el.title,
-          })),
-        },
-      },
-      revalidate: 60 * 60 * 24,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
+  const courseSelection = new Set<any>();
+  while (courseSelection.size < 3) {
+    courseSelection.add(courses[Math.floor(courses.length * rnd())]);
   }
+
+  const subjectSelection = new Set<any>();
+  while (subjectSelection.size < 3) {
+    subjectSelection.add(subjects[Math.floor(subjects.length * rnd())]);
+  }
+
+  const programSelection = new Set<any>();
+  while (programSelection.size < 3) {
+    programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
+  }
+
+  return {
+    props: {
+      data: {
+        courses: [...courseSelection].map((el) => ({
+          code: el.code,
+          title: el.title,
+        })),
+        subjects: [...subjectSelection].map((el) => ({
+          code: el.code,
+          title: el.title,
+        })),
+        programmes: [...programSelection].map((el) => ({
+          code: el.code,
+          title: el.title,
+        })),
+      },
+    },
+    revalidate: 60 * 60 * 24,
+  };
 }
 
 type Props = { data: any };

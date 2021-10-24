@@ -3,27 +3,14 @@ import { NextSeo } from "next-seo";
 import { getAllProgrammesData } from "../../../api/allProgrammes";
 import { Fragment } from "react";
 import Link from "next/link";
-import { isNotFoundError } from "../../../api/helpers";
 
 export async function getStaticProps() {
-  try {
-    return {
-      props: {
-        data: await getAllProgrammesData(),
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getAllProgrammesData(),
+    },
+    revalidate: false,
+  };
 }
 
 type Props = { data: ReturnType<typeof getAllProgrammesData> };

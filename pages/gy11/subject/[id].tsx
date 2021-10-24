@@ -9,29 +9,16 @@ import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { FavoritesButton } from "../../../components/favorites/button";
 import KriterieError from "../../_error";
-import { isNotFoundError } from "../../../api/helpers";
 import { loadSubjects } from "../../../api/load";
 import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getSubjectData(params.id.toLowerCase()),
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getSubjectData(params.id.toLowerCase()),
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {

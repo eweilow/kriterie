@@ -5,30 +5,17 @@ import { getProgramData } from "../../../api/program";
 import { CourseList } from "../../../components/courseList";
 import { FavoritesButton } from "../../../components/favorites/button";
 import { Fragment, useMemo } from "react";
-import { isNotFoundError } from "../../../api/helpers";
 import { loadProgrammes } from "../../../api/load";
 import KriterieError from "../../_error";
 import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getProgramData(params.id.toLowerCase()),
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getProgramData(params.id.toLowerCase()),
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {

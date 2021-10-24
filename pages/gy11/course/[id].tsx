@@ -9,30 +9,17 @@ import { SimpleControls } from "../../../components/purposeControls";
 import clsx from "clsx";
 import { ApplicableProgrammesList } from "../../../components/programmes";
 import { FavoritesButton } from "../../../components/favorites/button";
-import { isNotFoundError } from "../../../api/helpers";
 import { loadCourses } from "../../../api/load";
 import KriterieError from "../../_error";
 import { useAmp } from "next/amp";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getCourseData(params.id.toLowerCase()),
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getCourseData(params.id.toLowerCase()),
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {

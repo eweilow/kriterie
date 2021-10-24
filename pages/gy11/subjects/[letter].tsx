@@ -4,29 +4,16 @@ import { LettersList } from "../../../components/lettersList";
 import { getAllSubjectsData } from "../../../api/allSubjects";
 import Link from "next/link";
 import { loadSubjects } from "../../../api/load";
-import { isNotFoundError } from "../../../api/helpers";
 import KriterieError from "../../_error";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getAllSubjectsData(params.letter.toLowerCase()),
-        letter: params.letter,
-      },
-      revalidate: false,
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null,
-        },
-        revalidate: false,
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getAllSubjectsData(params.letter.toLowerCase()),
+      letter: params.letter,
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {
