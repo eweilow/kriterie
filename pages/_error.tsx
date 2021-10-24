@@ -1,39 +1,15 @@
-import { ErrorProps } from "next/error";
-import * as Sentry from "@sentry/node";
-import { NextPage } from "next";
+import NextErrorComponent from "next/error";
+
+import * as Sentry from "@sentry/nextjs";
 import { NextSeo } from "next-seo";
 
-function captureEvent(err: any, req?: any) {
-  Sentry.withScope((scope) => {
-    scope.setTag(
-      "environment",
-      typeof window === "undefined" ? "frontend:server" : "frontend:browser"
-    );
-    if (req != null) {
-      scope.setExtra("now-deployment-url", req.headers["x-now-deployment-url"]);
-      scope.setExtra("now-trace", req.headers["x-now-trace"]);
-      scope.addEventProcessor(function (event) {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const { Handlers } = require("@sentry/node");
-        return Handlers.parseRequest(event, req);
-      });
-    }
-    if (err.statusCode != null) {
-      scope.setExtra("statusCode", err.statusCode);
-    }
-    Sentry.captureException(err);
-  });
-}
-
-// https://github.com/zeit/next.js/blob/canary/examples/with-sentry-simple/pages/_error.js
-const KriterieError: NextPage<
-  ErrorProps & {
-    hasGetInitialPropsRun: boolean;
-    err: any;
-  }
-> = ({ statusCode, hasGetInitialPropsRun, err }) => {
+const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
-    captureEvent(err);
+    // getInitialProps is not called in case of
+    // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
+    // err via _app.js so it can be captured
+    Sentry.captureException(err);
+    // Flushing is not required in this case as it only happens on the client
   }
 
   return (
@@ -51,4 +27,48 @@ const KriterieError: NextPage<
   );
 };
 
-export default KriterieError;
+MyError.getInitialProps = async ({ res, err, asPath }) => {
+  const errorInitialProps = (await NextErrorComponent.getInitialProps({
+    res,
+    err,
+  } as any)) as any;
+
+  // Workaround for https://github.com/vercel/next.js/issues/8592, mark when
+  // getInitialProps has run
+  errorInitialProps.hasGetInitialPropsRun = true;
+
+  // Running on the server, the response object (`res`) is available.
+  //
+  // Next.js will pass an err on the server if a page's data fetching methods
+  // threw or returned a Promise that rejected
+  //
+  // Running on the client (browser), Next.js will provide an err if:
+  //
+  //  - a page's `getInitialProps` threw or returned a Promise that rejected
+  //  - an exception was thrown somewhere in the React lifecycle (render,
+  //    componentDidMount, etc) that was caught by Next.js's React Error
+  //    Boundary. Read more about what types of exceptions are caught by Error
+  //    Boundaries: https://reactjs.org/docs/error-boundaries.html
+
+  if (err) {
+    Sentry.captureException(err);
+
+    // Flushing before returning is necessary if deploying to Vercel, see
+    // https://vercel.com/docs/platform/limits#streaming-responses
+    await Sentry.flush(2000);
+
+    return errorInitialProps;
+  }
+
+  // If this point is reached, getInitialProps was called without any
+  // information about what the error might be. This is unexpected and may
+  // indicate a bug introduced in Next.js, so record it in Sentry
+  Sentry.captureException(
+    new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
+  );
+  await Sentry.flush(2000);
+
+  return errorInitialProps;
+};
+
+export default MyError;

@@ -24,6 +24,7 @@
     "@mdi/js": "^5.1.45",
     "@reach/combobox": "^0.7.2",
     "@sentry/browser": "^5.11.0",
+    "@sentry/nextjs": "^6.13.3",
     "@sentry/node": "^5.11.0",
     "clsx": "^1.1.0",
     "date-fns": "^2.12.0",

@@ -1,7 +1,24 @@
-module.exports = {
+const { withSentryConfig } = require("@sentry/nextjs");
+
+const config = {
   productionBrowserSourceMaps: true,
   env: {
-    SENTRY_DSN: "https://d7ba9b78b3dc4897a4cdfc8d98142cce@sentry.io/1761526",
-    FATHOM_ID: "UIRVULLC"
-  }
-}
+    FATHOM_ID: "UIRVULLC",
+  },
+};
+
+const sentryWebpackPluginOptions = {
+  // Additional config options for the Sentry Webpack plugin. Keep in mind that
+  // the following options are set automatically, and overriding them is not
+  // recommended:
+  //   release, url, org, project, authToken, configFile, stripPrefix,
+  //   urlPrefix, include, ignore
+
+  silent: true, // Suppresses all logs
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+};
+
+// Make sure adding Sentry options is the last code to run before exporting, to
+// ensure that your source maps include changes from all other Webpack plugins
+module.exports = withSentryConfig(config, sentryWebpackPluginOptions);

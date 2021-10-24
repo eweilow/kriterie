@@ -1,5 +1,4 @@
 import { NextPageContext } from "next";
-import { isNotFoundError } from "../api/helpers";
 
 export function throwNotFound(message: string) {
   const error = new Error(message);
