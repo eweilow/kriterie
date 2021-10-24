@@ -46,7 +46,7 @@ export const SearchBox: React.FC<{
   const worker = useRef<Worker>(null);
   const nextString = useRef(searchString);
   useEffect(() => {
-    worker.current = getWorkerByUrl(window.location.origin + "/api/search");
+    worker.current = getWorkerByUrl(window.location.origin + "/search.json");
 
     function listener(msg: any) {
       if (nextString.current === msg.data.str) {
@@ -223,11 +223,9 @@ export const SearchBox: React.FC<{
           border-top-left-radius: 8px;
           border-bottom-left-radius: 8px;
           background: #eb7031;
-          transform: ${
-            initialSize != null
-              ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
-              : "none"
-          };
+          transform: ${initialSize != null
+            ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
+            : "none"};
           transition: transform 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -255,7 +253,8 @@ export const SearchBox: React.FC<{
         .box.right {
           border-top-right-radius: 8px;
           border-bottom-right-radius: 8px;
-          filter: drop-shadow(0px 2px 4px #0000002b) drop-shadow(0px 0px 2px #0000001b);
+          filter: drop-shadow(0px 2px 4px #0000002b)
+            drop-shadow(0px 0px 2px #0000001b);
           transition: filter 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 

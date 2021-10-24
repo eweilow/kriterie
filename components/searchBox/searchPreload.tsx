@@ -7,7 +7,7 @@ export const SearchPreload = () => (
       key="searchPreload"
       rel="prefetch"
       as="fetch"
-      href="/api/search"
+      href="/search.json"
     />
   </Head>
 );

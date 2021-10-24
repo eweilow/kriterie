@@ -1,10 +1,8 @@
 import { useFavorite } from "../../lib/useFavorite";
-import { getSafeUrl } from "../../lib/safeUrl";
 import { useFetch } from "../../lib/useFetch";
 import { useMemo } from "react";
-import { getSearchData } from "../../api/search";
+import type { SearchData } from "../../api/search";
 import Link from "next/link";
-import Head from "next/head";
 import { SearchPreload } from "../searchBox/searchPreload";
 
 function useFavorites(key: string): string[] {
@@ -17,8 +15,7 @@ export const FavoritesList: React.FC = () => {
   const subjectFavorites = useFavorites("kriterie:favorites:subject");
   const programFavorites = useFavorites("kriterie:favorites:program");
 
-  const url = getSafeUrl("/api/search", undefined);
-  const data = useFetch<ReturnType<typeof getSearchData>>(url);
+  const data = useFetch<SearchData>("/search.json");
 
   const mapped = useMemo(
     () => [

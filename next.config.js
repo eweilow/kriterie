@@ -8,6 +8,10 @@ const config = {
   async rewrites() {
     return [
       {
+        source: "/search.json",
+        destination: "/api/search",
+      },
+      {
         source: "/sitemap.xml",
         destination: "/api/sitemap",
       },

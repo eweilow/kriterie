@@ -23,3 +23,5 @@ export function getSearchData() {
     })),
   ];
 }
+
+export type SearchData = ReturnType<typeof getSearchData>;
