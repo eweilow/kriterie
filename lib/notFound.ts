@@ -1,5 +1,4 @@
 import { NextPageContext } from "next";
-import fetch from "isomorphic-unfetch";
 import { isNotFoundError } from "../api/helpers";
 
 export function throwNotFound(message: string) {
