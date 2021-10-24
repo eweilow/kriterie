@@ -11,14 +11,21 @@ export function useFetch<T = any>(url: string) {
     if (fetchCache.has(url)) {
       promiseRef.current = fetchCache.get(url);
     } else {
-      promiseRef.current = fetch(url)
+      promiseRef.current = fetch(url, {
+        headers: {
+          accept: "application/json",
+        },
+      })
         .then((res) => {
           if (!res.ok) {
             throw new Error(
               `${url} responded not ok: ${res.status} ${res.statusText}`
             );
           }
-          if (res.headers.get("content-type") !== "application/json") {
+          if (
+            res.headers.get("content-type")?.includes("application/json") !==
+            true
+          ) {
             throw new Error(
               `${url} responded with not JSON: ${res.headers.get(
                 "content-type"
