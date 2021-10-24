@@ -20,7 +20,7 @@
     "@sentry/nextjs": "^6.13.3",
     "clsx": "^1.1.1",
     "date-fns": "^2.25.0",
-    "dice-coefficient": "^1.0.5",
+    "dice-coefficient": "^2.0.0",
     "fathom-client": "^2.0.3",
     "html-react-parser": "^0.10.3",
     "jaro-winkler": "^0.2.8",

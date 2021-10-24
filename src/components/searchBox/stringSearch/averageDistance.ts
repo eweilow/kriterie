@@ -1,6 +1,6 @@
 import { levenshteinDistance } from "./levenshtein";
-import { diceCoefficient } from "./diceCoefficient";
-import { jaroWinklerDistance } from "./jaroWinkler";
+import { diceCoefficient } from "dice-coefficient";
+import jaroWinklerDistance from "jaro-winkler";
 
 function startPosition(a: string, b: string) {
   let start = a.indexOf(b);

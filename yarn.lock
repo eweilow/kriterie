@@ -2133,14 +2133,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dice-coefficient@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "dice-coefficient@npm:1.0.5"
+"dice-coefficient@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "dice-coefficient@npm:2.0.0"
   dependencies:
-    n-gram: ^1.0.0
+    n-gram: ^2.0.0
   bin:
     dice-coefficient: cli.js
-  checksum: 86b668ded4b46f72aa30e4f5e1691878d4c9610ab9bdada108d2a94a6e73aac6a8de048e9e0ae43b88a7831054c97018ad8b7b900678e5ad2e547ca16014124d
+  checksum: b5fd84bb37988cfad8f08674783856039770704b5386fa2db739347d1162862a4db86b9e8d4b3cf3b60a1fa21d1c468d1f7e792883fc08286f2a625cdb5669eb
   languageName: node
   linkType: hard
 
@@ -3876,7 +3876,7 @@ fsevents@~2.3.1:
     "@yarnpkg/sdks": ^2.5.0-rc.3
     clsx: ^1.1.1
     date-fns: ^2.25.0
-    dice-coefficient: ^1.0.5
+    dice-coefficient: ^2.0.0
     eslint: 7
     eslint-config-next: 11.1.2
     fathom-client: ^2.0.3
@@ -4309,10 +4309,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"n-gram@npm:^1.0.0":
-  version: 1.1.2
-  resolution: "n-gram@npm:1.1.2"
-  checksum: e9f324cd4ebc57b2df927fb792c47a7d6fb65bc460d00ab8eda89d4214a15421b00c6c3415516011a7d3ce17bbf93ec787caf82eb31a4043199efcc2f716bc3f
+"n-gram@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "n-gram@npm:2.0.1"
+  checksum: 47afa15f9a679ba74d871a861bab0df0701cfc0cd94741b9630d09971e43111bb1844319b3214de032eabfd6b8cb61b8923c8988128d450bf2f07241911aa365
   languageName: node
   linkType: hard
 

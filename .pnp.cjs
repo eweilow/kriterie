@@ -48,7 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.25.0"],
-            ["dice-coefficient", "npm:1.0.5"],
+            ["dice-coefficient", "npm:2.0.0"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:11.1.2"],
             ["fathom-client", "npm:2.0.3"],
@@ -2722,11 +2722,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dice-coefficient", [
-        ["npm:1.0.5", {
-          "packageLocation": "./.yarn/cache/dice-coefficient-npm-1.0.5-3aa4bfb802-86b668ded4.zip/node_modules/dice-coefficient/",
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/dice-coefficient-npm-2.0.0-57f1593d6b-b5fd84bb37.zip/node_modules/dice-coefficient/",
           "packageDependencies": [
-            ["dice-coefficient", "npm:1.0.5"],
-            ["n-gram", "npm:1.1.2"]
+            ["dice-coefficient", "npm:2.0.0"],
+            ["n-gram", "npm:2.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -4738,7 +4738,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.25.0"],
-            ["dice-coefficient", "npm:1.0.5"],
+            ["dice-coefficient", "npm:2.0.0"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:11.1.2"],
             ["fathom-client", "npm:2.0.3"],
@@ -5214,10 +5214,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["n-gram", [
-        ["npm:1.1.2", {
-          "packageLocation": "./.yarn/cache/n-gram-npm-1.1.2-5a0a533442-e9f324cd4e.zip/node_modules/n-gram/",
+        ["npm:2.0.1", {
+          "packageLocation": "./.yarn/cache/n-gram-npm-2.0.1-7af90712fa-47afa15f9a.zip/node_modules/n-gram/",
           "packageDependencies": [
-            ["n-gram", "npm:1.1.2"]
+            ["n-gram", "npm:2.0.1"]
           ],
           "linkType": "HARD",
         }]
