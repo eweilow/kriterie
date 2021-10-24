@@ -57,18 +57,16 @@ export function useTouchResponder<
       }, [lastTouch]);
     }
 
-    const onTouchStart: (
-      e: React.TouchEvent<TElement>
-    ) => void = useCallback(() => {
-      setTouching(true);
-      setLastTouch(Date.now());
-    }, []);
-    const onMouseDown: (
-      e: React.MouseEvent<TElement>
-    ) => void = useCallback(() => {
-      setTouching(true);
-      setLastTouch(Date.now());
-    }, []);
+    const onTouchStart: (e: React.TouchEvent<TElement>) => void =
+      useCallback(() => {
+        setTouching(true);
+        setLastTouch(Date.now());
+      }, []);
+    const onMouseDown: (e: React.MouseEvent<TElement>) => void =
+      useCallback(() => {
+        setTouching(true);
+        setLastTouch(Date.now());
+      }, []);
 
     return [
       {
@@ -146,7 +144,7 @@ export function useTouchResponder<
     currentTarget.current = null;
   }, []);
 
-  props.onPointerUp = props.onPointerCancel = (cancel as any) as (
+  props.onPointerUp = props.onPointerCancel = cancel as any as (
     e: React.PointerEvent<TElement>
   ) => void;
 

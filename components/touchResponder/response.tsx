@@ -40,9 +40,8 @@ export const DefaultTouchResponseOptions: Readonly<TouchResponseOptions> = {
   shape: TouchResponseShape.Circular,
 };
 
-export const TouchResponseOptionsContext = React.createContext<
-  TouchResponseOptions
->(DefaultTouchResponseOptions);
+export const TouchResponseOptionsContext =
+  React.createContext<TouchResponseOptions>(DefaultTouchResponseOptions);
 TouchResponseOptionsContext.displayName = "TouchResponseOptionsContext";
 
 export const TouchResponse: React.FC<TouchResponseProps> = (props) => {
