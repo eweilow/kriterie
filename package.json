@@ -20,7 +20,7 @@
     "@sentry/browser": "^5.11.0",
     "@sentry/nextjs": "^6.13.3",
     "@sentry/node": "^5.11.0",
-    "clsx": "^1.1.0",
+    "clsx": "^1.1.1",
     "date-fns": "^2.12.0",
     "dice-coefficient": "^1.0.5",
     "fathom-client": "^2.0.3",

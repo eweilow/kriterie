@@ -48,7 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/seedrandom", "npm:2.4.28"],
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
-            ["clsx", "npm:1.1.0"],
+            ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.12.0"],
             ["dice-coefficient", "npm:1.0.5"],
             ["eslint", "npm:7.32.0"],
@@ -2304,10 +2304,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["clsx", [
-        ["npm:1.1.0", {
-          "packageLocation": "./.yarn/cache/clsx-npm-1.1.0-0bdbad31e3-50e889839a.zip/node_modules/clsx/",
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/clsx-npm-1.1.1-362bec0598-ff05265032.zip/node_modules/clsx/",
           "packageDependencies": [
-            ["clsx", "npm:1.1.0"]
+            ["clsx", "npm:1.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -4832,7 +4832,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/seedrandom", "npm:2.4.28"],
             ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
-            ["clsx", "npm:1.1.0"],
+            ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.12.0"],
             ["dice-coefficient", "npm:1.0.5"],
             ["eslint", "npm:7.32.0"],
