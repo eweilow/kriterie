@@ -12,14 +12,29 @@ export function useFetch<T = any>(url: string) {
       promiseRef.current = fetchCache.get(url);
     } else {
       promiseRef.current = fetch(url)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(
+              `${url} responded not ok: ${res.status} ${res.statusText}`
+            );
+          }
+          if (res.headers.get("content-type") !== "application/json") {
+            throw new Error(
+              `${url} responded with not JSON: ${res.headers.get(
+                "content-type"
+              )}`
+            );
+          }
+          return res.json();
+        })
         .then((value) => {
           resolvedCache.set(url, value);
           return value;
         })
         .catch((err) => {
-          errorCache.set(url, err);
-          throw err;
+          const mappedErr = new Error(`useFetch error: ${String(err)}`);
+          errorCache.set(url, mappedErr);
+          throw mappedErr;
         });
       fetchCache.set(url, promiseRef.current);
     }
