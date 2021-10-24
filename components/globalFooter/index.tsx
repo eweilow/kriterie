@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Column } from "../column";
 
-import { humanizedFetchTime } from "@education-data/swedish-gymnasium/out/meta.json";
+import meta from "@education-data/swedish-gymnasium/out/meta.json";
 
 export const GlobalFooterHeight = 180;
 
@@ -26,7 +26,7 @@ export const GlobalFooter: React.FC = () => {
             </p>
             <p>
               Datan är hämtad från Skolverkets öppna data{" "}
-              <b>{humanizedFetchTime}</b>.
+              <b>{meta.humanizedFetchTime}</b>.
             </p>
             <br />
             <p>
