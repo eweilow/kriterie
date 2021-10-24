@@ -14,7 +14,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test-lint": "eslint '**/*.{ts,tsx}'",
+    "test-lint": "next lint",
     "test-formatting": "prettier -v && prettier -c '**/*.{ts,tsx}'",
     "ikon-dev": "ikon dev --file icon/icon.tsx",
     "ikon-build": "ikon build --file icon/icon.tsx --outDir ./static/icons --publicPath /static/icons --generationDir ./generated"
@@ -50,6 +50,8 @@
     "@types/seedrandom": "^2.4.28",
     "@types/use-persisted-state": "^0.3.0",
     "@yarnpkg/sdks": "^2.5.0-rc.3",
+    "eslint": "7",
+    "eslint-config-next": "11.1.2",
     "prettier": "^2.4.1",
     "puppeteer": "^2.0.0",
     "typescript": "^4.4.4"

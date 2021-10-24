@@ -17,8 +17,9 @@ export const FavoritesButton: React.FC<{
         doUnfavorite();
       }
     },
-    [isFavorited]
+    [isFavorited, doFavorite, doUnfavorite]
   );
+
   return (
     <section className="favorite">
       <SimpleControls

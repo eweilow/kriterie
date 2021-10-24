@@ -17,24 +17,23 @@ import { useEffect } from "react";
 
 function FathomAnalytics() {
   const router = useRouter();
-  if (process.env.NODE_ENV === "production") {
-    useEffect(() => {
-      Fathom.load();
-      Fathom.setSiteId(process.env.FATHOM_ID);
+
+  useEffect(() => {
+    Fathom.load();
+    Fathom.setSiteId(process.env.FATHOM_ID);
+    Fathom.trackPageview();
+  }, []);
+
+  useEffect(() => {
+    function listener() {
       Fathom.trackPageview();
-    }, []);
+    }
 
-    useEffect(() => {
-      function listener() {
-        Fathom.trackPageview();
-      }
-
-      router.events.on("routeChangeComplete", listener);
-      return () => {
-        router.events.off("routeChangeComplete", listener);
-      };
-    }, [router]);
-  }
+    router.events.on("routeChangeComplete", listener);
+    return () => {
+      router.events.off("routeChangeComplete", listener);
+    };
+  }, [router]);
 
   return null;
 }
@@ -55,7 +54,7 @@ export default class KriterieApp extends App {
         </Column>
         <LoadingBar.Wrapped />
         <GlobalFooter />
-        <FathomAnalytics />
+        {process.env.NODE_ENV === "production" && <FathomAnalytics />}
         <LayoutStyle />
       </>
     );
