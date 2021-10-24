@@ -21,7 +21,7 @@
     "clsx": "^1.1.1",
     "date-fns": "^2.25.0",
     "dice-coefficient": "^2.0.0",
-    "fathom-client": "^2.0.3",
+    "fathom-client": "^3.2.0",
     "html-react-parser": "^1.4.0",
     "jaro-winkler": "^0.2.8",
     "next": "^11.1.2",

@@ -4,6 +4,7 @@ const withFonts = require("next-fonts");
 const config = {
   productionBrowserSourceMaps: true,
   env: {
+    FATHOM_URL: "https://tarsier.kriterie.se/script.js",
     FATHOM_ID: "UIRVULLC",
   },
   async rewrites() {

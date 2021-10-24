@@ -2760,10 +2760,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fathom-client@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "fathom-client@npm:2.0.3"
-  checksum: 6e30b36f4a1bda0624f415e2a8d12844f5ec3bc1a50d1fde0cf4a5db932f2be8b37af0fefd3892b920b9b04ef33f4729298389de7e29b82c3c2b7e57fbe3859d
+"fathom-client@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "fathom-client@npm:3.2.0"
+  checksum: a54952e2a9ccb87fec90023a6e622137cf15aa1b9e7f0170b2afb1e27f46dc239f9ad8ee357a32408bdf481b838e292f31f133a952a64bb3e508e49987b14ec0
   languageName: node
   linkType: hard
 
@@ -3844,7 +3844,7 @@ fsevents@~2.3.1:
     dice-coefficient: ^2.0.0
     eslint: 7
     eslint-config-next: 11.1.2
-    fathom-client: ^2.0.3
+    fathom-client: ^3.2.0
     html-react-parser: ^1.4.0
     jaro-winkler: ^0.2.8
     next: ^11.1.2

@@ -20,9 +20,9 @@ function FathomAnalytics() {
   const router = useRouter();
 
   useEffect(() => {
-    Fathom.load();
-    Fathom.setSiteId(process.env.FATHOM_ID);
-    Fathom.trackPageview();
+    Fathom.load(process.env.FATHOM_ID, {
+      url: process.env.FATHOM_URL,
+    });
   }, []);
 
   useEffect(() => {
