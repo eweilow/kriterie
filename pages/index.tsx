@@ -11,6 +11,7 @@ import { NextSeo } from "next-seo";
 import { loadProgrammes, loadCourses, loadSubjects } from "../api/load";
 import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
+import { ErrorBoundary } from "@sentry/nextjs";
 
 export async function getStaticProps() {
   const programmes = loadProgrammes();
@@ -120,11 +121,13 @@ const Page: NextPage<Props> = (props) => (
         </Link>
       </div>
     ))}
-    <h2>Dina favoriter</h2>
     {typeof window !== "undefined" ? (
-      <Suspense fallback={<FavoritesListFallback />}>
-        <FavoritesList />
-      </Suspense>
+      <ErrorBoundary fallback={<FavoritesListFallback />}>
+        <Suspense fallback={<FavoritesListFallback />}>
+          <h2>Dina favoriter</h2>
+          <FavoritesList />
+        </Suspense>
+      </ErrorBoundary>
     ) : (
       <FavoritesListFallback />
     )}
