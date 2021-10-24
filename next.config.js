@@ -20,6 +20,16 @@ const config = {
   async headers() {
     return [
       {
+        source: "/static/(.*)",
+        headers: [
+          {
+            key: "cache-control",
+            value:
+              "public, max-age=31536000, s-maxage=86400, stale-while-revalidate",
+          },
+        ],
+      },
+      {
         source: "/search.json",
         headers: [
           {
