@@ -459,32 +459,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/apm@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/apm@npm:5.15.5"
-  dependencies:
-    "@sentry/browser": 5.15.5
-    "@sentry/hub": 5.15.5
-    "@sentry/minimal": 5.15.5
-    "@sentry/types": 5.15.5
-    "@sentry/utils": 5.15.5
-    tslib: ^1.9.3
-  checksum: 8c05a6f3c5c4b1f4309c11fedf9ebc834ac67e246aac2cd09e65ebc24b0b508ef139a01398579e6a3deff73e815090658aaa4af88f5d19742a69df777b7cea96
-  languageName: node
-  linkType: hard
-
-"@sentry/browser@npm:5.15.5, @sentry/browser@npm:^5.11.0":
-  version: 5.15.5
-  resolution: "@sentry/browser@npm:5.15.5"
-  dependencies:
-    "@sentry/core": 5.15.5
-    "@sentry/types": 5.15.5
-    "@sentry/utils": 5.15.5
-    tslib: ^1.9.3
-  checksum: bcc8de52ffc6ecedc1ea44ac40305eeffe73b9acaf116f58cb60bdf7a0ba799fb4c9d59e50dbb13a54d161a6ef39c70a0dc2358941fe94cace86c9d687ad5d2d
-  languageName: node
-  linkType: hard
-
 "@sentry/browser@npm:6.13.3":
   version: 6.13.3
   resolution: "@sentry/browser@npm:6.13.3"
@@ -513,19 +487,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/core@npm:5.15.5"
-  dependencies:
-    "@sentry/hub": 5.15.5
-    "@sentry/minimal": 5.15.5
-    "@sentry/types": 5.15.5
-    "@sentry/utils": 5.15.5
-    tslib: ^1.9.3
-  checksum: 8e8bfda1d1e0ab22806873cf761e7e217c8a8ab1fd7db89d399f91fb778bf82346842ff6085d9f763fa9239113403924e8d684d26571af725860bcb501a7df33
-  languageName: node
-  linkType: hard
-
 "@sentry/core@npm:6.13.3":
   version: 6.13.3
   resolution: "@sentry/core@npm:6.13.3"
@@ -536,17 +497,6 @@ __metadata:
     "@sentry/utils": 6.13.3
     tslib: ^1.9.3
   checksum: a1bcf995136568407a6104f29fdb9c6aa3ebdb15bea41be3008f018cffcd5782c8766959bfe3605b00fc10a174f4db61856c139cebc94a1976761caeb8843d0a
-  languageName: node
-  linkType: hard
-
-"@sentry/hub@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/hub@npm:5.15.5"
-  dependencies:
-    "@sentry/types": 5.15.5
-    "@sentry/utils": 5.15.5
-    tslib: ^1.9.3
-  checksum: b762cc0ac1f0ae98f963b56a394e6a01cd3ade46e479e51b9fe95e7584120ce0e26256f316183055aec41d84b13284a53854188004be5700e31a5583d4280efd
   languageName: node
   linkType: hard
 
@@ -570,17 +520,6 @@ __metadata:
     localforage: ^1.8.1
     tslib: ^1.9.3
   checksum: 484cefd0cb176b72f963e2dd9be81434a8f0d74e5235d9479ab5100331e1f52b8df8474d1505a72c45566b7cec4019bdf6d95c985ab3d01111ff4dace8de0f23
-  languageName: node
-  linkType: hard
-
-"@sentry/minimal@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/minimal@npm:5.15.5"
-  dependencies:
-    "@sentry/hub": 5.15.5
-    "@sentry/types": 5.15.5
-    tslib: ^1.9.3
-  checksum: f9b014d72c599e3b32259f20d39344f5901be11a6049e6d723befd6373673dce9e95e07cc6d6e20fe17e136112432a73be5668ab245050b88c2ba9372ef5ecac
   languageName: node
   linkType: hard
 
@@ -631,23 +570,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:^5.11.0":
-  version: 5.15.5
-  resolution: "@sentry/node@npm:5.15.5"
-  dependencies:
-    "@sentry/apm": 5.15.5
-    "@sentry/core": 5.15.5
-    "@sentry/hub": 5.15.5
-    "@sentry/types": 5.15.5
-    "@sentry/utils": 5.15.5
-    cookie: ^0.3.1
-    https-proxy-agent: ^4.0.0
-    lru_map: ^0.3.3
-    tslib: ^1.9.3
-  checksum: 7329a14c2ead843744b5d3fc98c5954f913a34af2e54919eed4485b74b275191475b3cdefa93a59b21582bd6d81240d5311109e2408a92630e5d7950476bd063
-  languageName: node
-  linkType: hard
-
 "@sentry/react@npm:6.13.3":
   version: 6.13.3
   resolution: "@sentry/react@npm:6.13.3"
@@ -677,27 +599,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/types@npm:5.15.5"
-  checksum: 65c61e419b0c22025459223528ae2ae5cb7705f8b3223e566c33b21543c4cb0daa13cf23526a7acde8f2d60ffbe0f92670cf2aeae5adf9a4c1be1e65745c09be
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:6.13.3":
   version: 6.13.3
   resolution: "@sentry/types@npm:6.13.3"
   checksum: e5641cb0c0e4917ebc510ea74f1be501a3e34230d823b25ead36a9edb8a52dc1f08161cad43e9a18ac591b507abe78aae1ccd6a08000d0105c66c0b44125781c
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:5.15.5":
-  version: 5.15.5
-  resolution: "@sentry/utils@npm:5.15.5"
-  dependencies:
-    "@sentry/types": 5.15.5
-    tslib: ^1.9.3
-  checksum: fe8ae723bd2a86e78f1eae6738158a192cee9826391036da92741688e2ad31844f5c9b4f78bbd2b712a5a6e3b88d96fff9595b2d8f68d58f3c5420faac3a464a
   languageName: node
   linkType: hard
 
@@ -1143,13 +1048,6 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 1860f23c2107c910c6177b7b7be71be350db9e1080d814493fae143ae37605189504152d1ba8743ba3178d0b37269ce1ffc42b101547fdc1827078f82671e407
-  languageName: node
-  linkType: hard
-
-"agent-base@npm:5":
-  version: 5.1.1
-  resolution: "agent-base@npm:5.1.1"
-  checksum: 61ae789f3019f1dc10e8cba6d3ae9826949299a4e54aaa1cfa2fa37c95a108e70e95423b963bb987d7891a703fd9a5c383a506f4901819f3ee56f3147c0aa8ab
   languageName: node
   linkType: hard
 
@@ -1975,13 +1873,6 @@ __metadata:
   dependencies:
     safe-buffer: ~5.1.1
   checksum: bcd2e3ea7d37f96b85a6e362c8a89402ccc73757256e3ee53aa2c22fe915adb854c66b1f81111be815a3a6a6ce3c58e8001858e883c9d5b4fe08a853fa865967
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "cookie@npm:0.3.1"
-  checksum: 5309937344947a049283573861c24bed054fac3334ce5a0fa74b9bc6bf39bd387d3a0fca7f3ed6f4a09f112de82c00b541a0e7d6ce7a8de0f5d1301eec799730
   languageName: node
   linkType: hard
 
@@ -3427,16 +3318,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "https-proxy-agent@npm:4.0.0"
-  dependencies:
-    agent-base: 5
-    debug: 4
-  checksum: 19471d5aae3e747b1c98b17556647e2a1362e68220c6b19585a8527498f32e62e03c41d2872d059d8720d56846bd7460a80ac06f876bccfa786468ff40dd5eef
-  languageName: node
-  linkType: hard
-
 "https-proxy-agent@npm:^5.0.0":
   version: 5.0.0
   resolution: "https-proxy-agent@npm:5.0.0"
@@ -3985,9 +3866,7 @@ fsevents@~2.3.1:
     "@education-data/swedish-gymnasium": ^0.0.1-alpha.9
     "@mdi/js": ^6.3.95
     "@reach/combobox": ^0.16.3
-    "@sentry/browser": ^5.11.0
     "@sentry/nextjs": ^6.13.3
-    "@sentry/node": ^5.11.0
     "@types/node": ^12.7.12
     "@types/reach__combobox": ^0.1.0
     "@types/react": ^17.0.32
