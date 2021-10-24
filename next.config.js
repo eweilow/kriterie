@@ -5,6 +5,38 @@ const config = {
   env: {
     FATHOM_ID: "UIRVULLC",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/search.json",
+        headers: [
+          {
+            key: "cache-control",
+            value:
+              "public, max-age=3600, s-maxage=31536000, stale-while-revalidate",
+          },
+        ],
+      },
+      {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "cache-control",
+            value:
+              "public, max-age=3600, s-maxage=31536000, stale-while-revalidate",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const sentryWebpackPluginOptions = {
