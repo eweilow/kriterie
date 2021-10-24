@@ -8,14 +8,14 @@
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "32x32",
-    "href": "/static/icons/favicon-32-32.png?h=2da25641"
+    "sizes": "24x24",
+    "href": "/static/icons/favicon-24-24.png?h=6a4c59e7"
   },
   {
     "rel": "icon",
     "type": "image/png",
-    "sizes": "24x24",
-    "href": "/static/icons/favicon-24-24.png?h=6a4c59e7"
+    "sizes": "32x32",
+    "href": "/static/icons/favicon-32-32.png?h=2da25641"
   },
   {
     "rel": "icon",
@@ -193,12 +193,12 @@
   {
     "rel": "apple-touch-icon",
     "media": "(device-width: 376) and (device-height: 667) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)",
-    "href": "/static/icons/apple-launch-8-752-1334.png?h=a7d310e6"
+    "href": "/static/icons/apple-launch-8-752-1334.png?h=e3d52cf8"
   },
   {
     "rel": "apple-touch-icon",
     "media": "(device-width: 414) and (device-height: 736) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)",
-    "href": "/static/icons/apple-launch-8-plus-1242-2208.png?h=7f1df00c"
+    "href": "/static/icons/apple-launch-8-plus-1242-2208.png?h=ecc89f38"
   },
   {
     "rel": "apple-touch-icon",
