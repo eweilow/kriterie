@@ -14,7 +14,7 @@ export async function getStaticProps({ params }) {
         data: await getAllSubjectsData(params.letter.toLowerCase()),
         letter: params.letter,
       },
-      unstable_revalidate: false,
+      revalidate: false,
     };
   } catch (err) {
     if (isNotFoundError(err)) {
@@ -22,7 +22,7 @@ export async function getStaticProps({ params }) {
         props: {
           data: null,
         },
-        unstable_revalidate: false,
+        revalidate: false,
       };
     }
     throw err;
