@@ -23,7 +23,7 @@ function getWorkerByUrl(url: string) {
     return workerCache.get(url);
   }
 
-  const worker = new Worker(new URL("././search.worker", import.meta.url));
+  const worker = new Worker(new URL("./search.worker", import.meta.url));
   worker.postMessage({
     type: "url",
     url,
