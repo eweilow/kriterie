@@ -1,11 +1,11 @@
 import { NextPage, PageConfig } from "next";
 
 import { NextSeo } from "next-seo";
-import { getProgramData } from "../../../api/program";
-import { CourseList } from "../../../components/courseList";
-import { FavoritesButton } from "../../../components/favorites/button";
+import { getProgramData } from "../../../src/api/program";
+import { CourseList } from "../../../src/components/courseList";
+import { FavoritesButton } from "../../../src/components/favorites/button";
 import { Fragment, useMemo } from "react";
-import { loadProgrammes } from "../../../api/load";
+import { loadProgrammes } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
   return {

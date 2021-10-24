@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { SearchBox } from "../components/searchBox";
+import { SearchBox } from "../src/components/searchBox";
 import { NextPage } from "next";
 import {
   FavoritesList,
   FavoritesListFallback,
-} from "../components/favorites/list";
+} from "../src/components/favorites/list";
 import { Suspense } from "react";
 import { NextSeo } from "next-seo";
 
-import { loadProgrammes, loadCourses, loadSubjects } from "../api/load";
+import { loadProgrammes, loadCourses, loadSubjects } from "../src/api/load";
 import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
 import { ErrorBoundary } from "@sentry/nextjs";

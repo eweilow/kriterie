@@ -5,16 +5,16 @@ import { DefaultSeo } from "next-seo";
 import * as Fathom from "fathom-client";
 import { useRouter } from "next/router";
 
-import { GlobalNavbar } from "../components/globalNavbar";
-import { GlobalFooter } from "../components/globalFooter";
+import { GlobalNavbar } from "../src/components/globalNavbar";
+import { GlobalFooter } from "../src/components/globalFooter";
 
 import Icons from "../generated/icons";
-import { Column } from "../components/column";
-import { LoadingBar } from "../components/loadingIndicator/bar";
-import { defaultSeoConfiguration } from "../lib/next-seo.config";
+import { Column } from "../src/components/column";
+import { LoadingBar } from "../src/components/loadingIndicator/bar";
+import { defaultSeoConfiguration } from "../src/lib/next-seo.config";
 import { useEffect } from "react";
 
-import "../style/global.css";
+import "../src/style/global.css";
 
 function FathomAnalytics() {
   const router = useRouter();

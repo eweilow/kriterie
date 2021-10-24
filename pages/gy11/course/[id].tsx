@@ -3,13 +3,13 @@ import { NextPage, PageConfig } from "next";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import { Fragment, useState, useMemo } from "react";
-import { CourseCriteria } from "../../../components/criteria";
-import { getCourseData } from "../../../api/course";
-import { SimpleControls } from "../../../components/purposeControls";
+import { CourseCriteria } from "../../../src/components/criteria";
+import { getCourseData } from "../../../src/api/course";
+import { SimpleControls } from "../../../src/components/purposeControls";
 import clsx from "clsx";
-import { ApplicableProgrammesList } from "../../../components/programmes";
-import { FavoritesButton } from "../../../components/favorites/button";
-import { loadCourses } from "../../../api/load";
+import { ApplicableProgrammesList } from "../../../src/components/programmes";
+import { FavoritesButton } from "../../../src/components/favorites/button";
+import { loadCourses } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
   return {

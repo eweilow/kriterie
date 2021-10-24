@@ -1,6 +1,6 @@
 import { withSentry } from "@sentry/nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSearchData } from "../../api/search";
+import { getSearchData } from "../../src/api/search";
 
 function search(req: NextApiRequest, res: NextApiResponse) {
   const data = getSearchData();

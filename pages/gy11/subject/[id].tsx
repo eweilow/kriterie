@@ -2,13 +2,13 @@ import { NextPage, PageConfig } from "next";
 
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { ApplicableProgrammesList } from "../../../components/programmes";
-import { getSubjectData } from "../../../api/subject";
-import { SimpleControls } from "../../../components/purposeControls";
+import { ApplicableProgrammesList } from "../../../src/components/programmes";
+import { getSubjectData } from "../../../src/api/subject";
+import { SimpleControls } from "../../../src/components/purposeControls";
 import { useState, useMemo } from "react";
 import clsx from "clsx";
-import { FavoritesButton } from "../../../components/favorites/button";
-import { loadSubjects } from "../../../api/load";
+import { FavoritesButton } from "../../../src/components/favorites/button";
+import { loadSubjects } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
   return {

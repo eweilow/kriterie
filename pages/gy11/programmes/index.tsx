@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { getAllProgrammesData } from "../../../api/allProgrammes";
+import { getAllProgrammesData } from "../../../src/api/allProgrammes";
 import { Fragment } from "react";
 import Link from "next/link";
 

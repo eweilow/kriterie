@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { LettersList } from "../../../components/lettersList";
-import { getAllSubjectsData } from "../../../api/allSubjects";
+import { LettersList } from "../../../src/components/lettersList";
+import { getAllSubjectsData } from "../../../src/api/allSubjects";
 import Link from "next/link";
-import { loadSubjects } from "../../../api/load";
+import { loadSubjects } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
   return {

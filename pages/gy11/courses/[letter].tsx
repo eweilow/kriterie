@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { getAllCoursesData } from "../../../api/allCourses";
-import { CourseList } from "../../../components/courseList";
-import { LettersList } from "../../../components/lettersList";
-import { loadCourses } from "../../../api/load";
+import { getAllCoursesData } from "../../../src/api/allCourses";
+import { CourseList } from "../../../src/components/courseList";
+import { LettersList } from "../../../src/components/lettersList";
+import { loadCourses } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
   return {
