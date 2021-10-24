@@ -704,17 +704,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^16.11.4":
   version: 16.11.4
   resolution: "@types/node@npm:16.11.4"
   checksum: 96e08c0f8bb17601c18640a8eac61e2f236fe0c8a6b01a9221c10749157358fb29fdef4b5e264f72559e72f9830e6093f3ab5fef2df90afdad562ffa45ac534c
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^12.7.12":
-  version: 12.12.37
-  resolution: "@types/node@npm:12.12.37"
-  checksum: 9d5e0982ce2a48accad13a42babc6655a2cdd39dc91f7d4b38d5546544a98f4ba2c8f2e27f183e906ff7d6585b934e0a781f6161369453675a68a5c2b5b7d418
   languageName: node
   linkType: hard
 
@@ -729,15 +722,6 @@ __metadata:
   version: 15.7.3
   resolution: "@types/prop-types@npm:15.7.3"
   checksum: 41831d53c44c9eeafdaf9762bcb4553c13a3bbf990745ed9065a1cc3581b80633113b53fd49b202bf51731b258da5d0a9aa09c9035d5af7f78b0f6bc273f1325
-  languageName: node
-  linkType: hard
-
-"@types/reach__combobox@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@types/reach__combobox@npm:0.1.0"
-  dependencies:
-    "@types/react": "*"
-  checksum: 353a1c4d0d6fb435cf415def34a48278b3c2a29757e812ade34ea3581ca09225ab86dcff7bf83994277885303932cda76f0840b0e179f29b87d9c8a9169ffa15
   languageName: node
   linkType: hard
 
@@ -805,15 +789,6 @@ __metadata:
   version: 1.0.0
   resolution: "@types/treeify@npm:1.0.0"
   checksum: 1b2397030d13beee7f82b878ca80feeddb0d550a6b00d8be30082a370c0ac5985ecf7b9378cf93ea278ff00c3e900b416ae8d9379f2c7e8caecdece1dfc77380
-  languageName: node
-  linkType: hard
-
-"@types/use-persisted-state@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@types/use-persisted-state@npm:0.3.0"
-  dependencies:
-    "@types/react": "*"
-  checksum: d4048bbd49e82ccff62af9ef60214a1f3aee726744a77d730cfbe7d2ed26e1896b058973964b60fb3c4b7ae42320cdaac483d434c44bb8b164920c2f3b5e8b06
   languageName: node
   linkType: hard
 
@@ -3852,12 +3827,10 @@ fsevents@~2.3.1:
     "@mdi/js": ^6.3.95
     "@reach/combobox": ^0.16.3
     "@sentry/nextjs": ^6.13.3
-    "@types/node": ^12.7.12
-    "@types/reach__combobox": ^0.1.0
+    "@types/node": ^16.11.4
     "@types/react": ^17.0.32
     "@types/react-dom": ^17.0.10
     "@types/seedrandom": ^3.0.1
-    "@types/use-persisted-state": ^0.3.0
     "@yarnpkg/sdks": ^2.5.0-rc.3
     clsx: ^1.1.1
     date-fns: ^2.25.0

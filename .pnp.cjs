@@ -39,12 +39,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mdi/js", "npm:6.3.95"],
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.16.3"],
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],
-            ["@types/node", "npm:12.12.37"],
-            ["@types/reach__combobox", "npm:0.1.0"],
+            ["@types/node", "npm:16.11.4"],
             ["@types/react", "npm:17.0.32"],
             ["@types/react-dom", "npm:17.0.10"],
             ["@types/seedrandom", "npm:3.0.1"],
-            ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.25.0"],
@@ -1020,13 +1018,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:12.12.37", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-12.12.37-dad81ce65d-9d5e0982ce.zip/node_modules/@types/node/",
-          "packageDependencies": [
-            ["@types/node", "npm:12.12.37"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:13.13.52", {
           "packageLocation": "./.yarn/cache/@types-node-npm-13.13.52-95159539bb-8f1afff497.zip/node_modules/@types/node/",
           "packageDependencies": [
@@ -1047,16 +1038,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-prop-types-npm-15.7.3-084e0015c6-41831d53c4.zip/node_modules/@types/prop-types/",
           "packageDependencies": [
             ["@types/prop-types", "npm:15.7.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/reach__combobox", [
-        ["npm:0.1.0", {
-          "packageLocation": "./.yarn/cache/@types-reach__combobox-npm-0.1.0-dc9562d091-353a1c4d0d.zip/node_modules/@types/reach__combobox/",
-          "packageDependencies": [
-            ["@types/reach__combobox", "npm:0.1.0"],
-            ["@types/react", "npm:16.9.34"]
           ],
           "linkType": "HARD",
         }]
@@ -1134,16 +1115,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-treeify-npm-1.0.0-b5e04e9cd3-1b2397030d.zip/node_modules/@types/treeify/",
           "packageDependencies": [
             ["@types/treeify", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/use-persisted-state", [
-        ["npm:0.3.0", {
-          "packageLocation": "./.yarn/cache/@types-use-persisted-state-npm-0.3.0-435857f7c1-d4048bbd49.zip/node_modules/@types/use-persisted-state/",
-          "packageDependencies": [
-            ["@types/use-persisted-state", "npm:0.3.0"],
-            ["@types/react", "npm:16.9.34"]
           ],
           "linkType": "HARD",
         }]
@@ -4712,12 +4683,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mdi/js", "npm:6.3.95"],
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.16.3"],
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],
-            ["@types/node", "npm:12.12.37"],
-            ["@types/reach__combobox", "npm:0.1.0"],
+            ["@types/node", "npm:16.11.4"],
             ["@types/react", "npm:17.0.32"],
             ["@types/react-dom", "npm:17.0.10"],
             ["@types/seedrandom", "npm:3.0.1"],
-            ["@types/use-persisted-state", "npm:0.3.0"],
             ["@yarnpkg/sdks", "npm:2.5.0-rc.3"],
             ["clsx", "npm:1.1.1"],
             ["date-fns", "npm:2.25.0"],
