@@ -1,5 +1,5 @@
 import { getCourseData } from "../../api/course";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useCallback } from "react";
 import { CriteriaControls } from "./controls";
 
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
@@ -28,6 +28,16 @@ export const CourseCriteria: React.FC<{
 
   const parts: Array<"E" | "C" | "A"> = ["E", "C", "A"];
 
+  const [hovering, setHovering] = useState<string>(null);
+
+  const onHoverIn = useCallback((index: string) => {
+    setHovering(index);
+  }, []);
+
+  const onHoverOut = useCallback((index: string) => {
+    setHovering(null);
+  }, []);
+
   return (
     <>
       <CriteriaControls
@@ -36,21 +46,30 @@ export const CourseCriteria: React.FC<{
         filter={filter}
         setFilter={setFilter}
       />
-      {criteria.map((el, i) => (
-        <CriteriaGroup key={i}>
+      {criteria.map((el, groupIndex) => (
+        <CriteriaGroup key={groupIndex}>
           {parts.map((part) => (
             <Fragment key={part}>
               {(filter === part || filter == "alla") && (
                 <CriteriaGrade grade={part}>
-                  {el[part].map((line) => (
-                    <Fragment key={line}>
-                      {line != null && (
-                        <CriteriaLine dense={dense}>
-                          {parse(line, parseOptions)}
-                        </CriteriaLine>
-                      )}
-                    </Fragment>
-                  ))}
+                  {el[part].map((line, partIndex) => {
+                    const index = `group-${groupIndex}-part-${partIndex}`;
+                    return (
+                      <Fragment key={line}>
+                        {line != null && (
+                          <CriteriaLine
+                            onHoverIn={onHoverIn}
+                            onHoverOut={onHoverOut}
+                            index={index}
+                            isHovering={hovering === index}
+                            dense={dense}
+                          >
+                            {parse(line, parseOptions)}
+                          </CriteriaLine>
+                        )}
+                      </Fragment>
+                    );
+                  })}
                 </CriteriaGrade>
               )}
             </Fragment>

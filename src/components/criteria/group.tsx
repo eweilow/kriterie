@@ -7,7 +7,7 @@ export const CriteriaGroup: React.FC = ({ children }) => (
       }
 
       :global(.criteriaGroup) + .criteriaGroup {
-        margin-top: 16px;
+        margin-top: 32px;
       }
     `}</style>
   </section>
