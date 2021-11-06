@@ -43,9 +43,13 @@ export const CourseCriteria: React.FC<{
               {(filter === part || filter == "alla") && (
                 <CriteriaGrade grade={part}>
                   {el[part].map((line) => (
-                    <CriteriaLine dense={dense} key={line}>
-                      {parse(line, parseOptions)}
-                    </CriteriaLine>
+                    <Fragment key={line}>
+                      {line != null && (
+                        <CriteriaLine dense={dense}>
+                          {parse(line, parseOptions)}
+                        </CriteriaLine>
+                      )}
+                    </Fragment>
                   ))}
                 </CriteriaGrade>
               )}

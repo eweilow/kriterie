@@ -1,16 +1,16 @@
-import { loadSubjects, loadProgrammes, loadCourses } from "./load";
+import { loadSubjects, loadCourses } from "./load";
 
 export function getSearchData() {
-  const programmes = loadProgrammes();
+  // const programmes = loadProgrammes();
   const subjects = loadSubjects();
   const courses = loadCourses();
 
   return [
-    ...programmes.map((el) => ({
-      type: "program",
-      title: el.title,
-      code: el.code,
-    })),
+    // ...programmes.map((el) => ({
+    //   type: "program",
+    //   title: el.title,
+    //   code: el.code,
+    // })),
     ...subjects.map((el) => ({
       type: "subject",
       title: el.title,

@@ -7,7 +7,7 @@ import { CourseCriteria } from "../../../src/components/criteria";
 import { getCourseData } from "../../../src/api/course";
 import { SimpleControls } from "../../../src/components/purposeControls";
 import clsx from "clsx";
-import { ApplicableProgrammesList } from "../../../src/components/programmes";
+// import { ApplicableProgrammesList } from "../../../src/components/programmes";
 import { FavoritesButton } from "../../../src/components/favorites/button";
 import { loadCourses } from "../../../src/api/load";
 
@@ -58,7 +58,7 @@ const CoursePage: NextPage<Props> = (props) => {
         canonical={`https://kriterie.se/gy11/course/${props.data.code}`}
         title={props.data.title}
       />
-      <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
+      {/* <ApplicableProgrammesList programmes={props.data.applicableProgrammes} /> */}
       <h1>{props.data.title}</h1>
       <section className="summary">
         <div>

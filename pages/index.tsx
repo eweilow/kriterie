@@ -8,13 +8,13 @@ import {
 import { Suspense } from "react";
 import { NextSeo } from "next-seo";
 
-import { loadProgrammes, loadCourses, loadSubjects } from "../src/api/load";
+import { loadCourses, loadSubjects } from "../src/api/load";
 import { startOfDay } from "date-fns";
 import seedrandom from "seedrandom";
 import { ErrorBoundary } from "@sentry/nextjs";
 
 export async function getStaticProps() {
-  const programmes = loadProgrammes();
+  // const programmes = loadProgrammes();
   const courses = loadCourses();
   const subjects = loadSubjects();
 
@@ -33,10 +33,10 @@ export async function getStaticProps() {
     subjectSelection.add(subjects[Math.floor(subjects.length * rnd())]);
   }
 
-  const programSelection = new Set<any>();
-  while (programSelection.size < 3) {
-    programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
-  }
+  // const programSelection = new Set<any>();
+  // while (programSelection.size < 3) {
+  //   programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
+  // }
 
   return {
     props: {
@@ -49,10 +49,10 @@ export async function getStaticProps() {
           code: el.code,
           title: el.title,
         })),
-        programmes: [...programSelection].map((el) => ({
-          code: el.code,
-          title: el.title,
-        })),
+        // programmes: [...programSelection].map((el) => ({
+        //   code: el.code,
+        //   title: el.title,
+        // })),
       },
     },
     revalidate: 60 * 60 * 24,
@@ -65,9 +65,12 @@ const Page: NextPage<Props> = (props) => (
     <NextSeo canonical="https://kriterie.se" />
     <h1>Välkommen till kriterie.se!</h1>
     <p>
-      Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser,
+      {/* Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser,
       ämnen och program presenteras i ett lättåtkomligt format. Vad vill du veta
-      mer om idag?
+      mer om idag? */}
+      Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser och
+      ämnen presenteras i ett lättåtkomligt format. Vad vill du veta mer om
+      idag?
     </p>
     <div>
       <SearchBox id="homeSearchBox" />
@@ -91,10 +94,10 @@ const Page: NextPage<Props> = (props) => (
     <Link href="/gy11/subjects/[letter]" as="/gy11/subjects/b">
       <a>alla ämnen</a>
     </Link>
-    <br />
+    {/* <br />
     <Link href="/gy11/programmes">
       <a>alla program</a>
-    </Link>
+    </Link> */}
 
     <h2>Dagens slumpmässiga urval</h2>
     <h3>Kurser</h3>
@@ -113,14 +116,14 @@ const Page: NextPage<Props> = (props) => (
         </Link>
       </div>
     ))}
-    <h3>Program</h3>
+    {/* <h3>Program</h3>
     {props.data.programmes.map((el) => (
       <div key={el.code}>
         <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
           <a>{el.title}</a>
         </Link>
       </div>
-    ))}
+    ))} */}
     {typeof window !== "undefined" ? (
       <ErrorBoundary fallback={<FavoritesListFallback />}>
         <Suspense fallback={<FavoritesListFallback />}>

@@ -70,9 +70,9 @@ export const GlobalNavbar: React.FC = () => {
               <Navlink href="/gy11/subjects/[letter]" as="/gy11/subjects/a">
                 ämnen
               </Navlink>
-              <Navlink href="/gy11/programmes" as="/gy11/programmes">
+              {/* <Navlink href="/gy11/programmes" as="/gy11/programmes">
                 program
-              </Navlink>
+              </Navlink> */}
             </section>
           </div>
         </Column>

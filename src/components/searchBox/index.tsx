@@ -124,12 +124,12 @@ export const SearchBox: React.FC<{
 
       if (searchResults != null) {
         const found = searchResults.find((el) => el.title === value);
-        if (found.type === "program") {
-          waitForPromise(
-            router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
-          );
-          start();
-        }
+        // if (found.type === "program") {
+        //   waitForPromise(
+        //     router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
+        //   );
+        //   start();
+        // }
         if (found.type === "course") {
           waitForPromise(
             router.push("/gy11/course/[id]", "/gy11/course/" + found.code)
@@ -183,7 +183,7 @@ export const SearchBox: React.FC<{
             disabled={searchDisabled}
             aria-label="Innehållssök"
             onChange={handleChange}
-            placeholder="sök efter något"
+            placeholder="sök efter något? :)"
           />
           <div className="background" />
           <SearchLoadingBar.Wrapped loading={loading} />
@@ -196,7 +196,7 @@ export const SearchBox: React.FC<{
               <ComboboxOption key={index} value={`${result.title}`}>
                 {result.type === "subject" && <i>ämne:</i>}
                 {result.type === "course" && <i>kurs:</i>}
-                {result.type === "program" && <i>program:</i>}
+                {/* {result.type === "program" && <i>program:</i>} */}
                 <br />
                 <Text />
               </ComboboxOption>

@@ -1,6 +1,6 @@
 import courses from "@education-data/swedish-gymnasium/out/courses.json";
 import subjects from "@education-data/swedish-gymnasium/out/subjects.json";
-import programs from "@education-data/swedish-gymnasium/out/programmes.json";
+// import programs from "@education-data/swedish-gymnasium/out/programmes.json";
 
 // import { fetchTime } from "@education-data/swedish-gymnasium/out/meta.json";
 
@@ -42,13 +42,13 @@ function sitemap(req: NextApiRequest, res: NextApiResponse) {
     );
   }
 
-  for (const program of programs) {
-    pushPage(
-      `https://kriterie.se/gy11/program/${program.code}`,
-      0.6,
-      fetchDate
-    );
-  }
+  // for (const program of programs) {
+  //   pushPage(
+  //     `https://kriterie.se/gy11/program/${program.code}`,
+  //     0.6,
+  //     fetchDate
+  //   );
+  // }
 
   xml.unshift(
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">`

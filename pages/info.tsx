@@ -16,7 +16,8 @@ export default function InfoPage() {
         data om gymnasiets kurser från Skolverkets hemsida. Med tanke på hur
         ostrukturerad datan var presenterad på Skolverkets hemsida skapades
         kriterie.se som ett lättillgängligt alternativ. Här finns både den
-        relevanta informationen om gymnasiets kurser, ämnen och program, men
+        relevanta informationen om gymnasiets kurser och ämnen, men
+        {/* relevanta informationen om gymnasiets kurser, ämnen och program, men */}
         även också funktionalitet som underlättar studietiden både för elever
         och lärare.
       </p>

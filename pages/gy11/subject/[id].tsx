@@ -2,7 +2,7 @@ import { NextPage, PageConfig } from "next";
 
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { ApplicableProgrammesList } from "../../../src/components/programmes";
+// import { ApplicableProgrammesList } from "../../../src/components/programmes";
 import { getSubjectData } from "../../../src/api/subject";
 import { SimpleControls } from "../../../src/components/purposeControls";
 import { useState, useMemo } from "react";
@@ -50,7 +50,7 @@ const SubjectPage: NextPage<Props> = (props) => {
         canonical={`https://kriterie.se/gy11/subject/${props.data.code}`}
         title={props.data.title}
       />
-      <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
+      {/* <ApplicableProgrammesList programmes={props.data.applicableProgrammes} /> */}
       <h1>{props.data.title}</h1>
       <FavoritesButton
         storageKey="kriterie:favorites:subject"

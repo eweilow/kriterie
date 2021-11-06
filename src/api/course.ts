@@ -1,4 +1,4 @@
-import { loadCourseData, loadSubjectData, loadProgrammes } from "./load";
+import { loadCourseData, loadSubjectData } from "./load";
 
 export function getSortableCode(code: string) {
   return code.replace("00S", "0S0");
@@ -8,35 +8,35 @@ export function getCourseData(id: string) {
   const course = loadCourseData(id);
   const subject = loadSubjectData(course.code.slice(0, 3));
 
-  const applicableProgrammes: Array<{
-    applicable: boolean;
-    title: string;
-    code: string;
-  }> = [];
-  for (const program of loadProgrammes()) {
-    const courses = new Set([
-      ...program.education.mandatory.courses,
-      ...program.education.program.courses,
-      ...program.education.specialization.courses,
-      ...([] as string[]).concat(
-        ...program.education.orientations.map((el) => el.courses)
-      ),
-      ...([] as string[]).concat(
-        ...program.education.professionalDegrees.map((el) => el.courses)
-      ),
-      ...([] as string[]).concat(
-        ...program.education.profiles.map((el) => el.courses)
-      ),
-    ]);
+  // const applicableProgrammes: Array<{
+  //   applicable: boolean;
+  //   title: string;
+  //   code: string;
+  // }> = [];
+  // for (const program of loadProgrammes()) {
+  //   const courses = new Set([
+  //     ...program.education.mandatory.courses,
+  //     ...program.education.program.courses,
+  //     ...program.education.specialization.courses,
+  //     ...([] as string[]).concat(
+  //       ...program.education.orientations.map((el) => el.courses)
+  //     ),
+  //     ...([] as string[]).concat(
+  //       ...program.education.professionalDegrees.map((el) => el.courses)
+  //     ),
+  //     ...([] as string[]).concat(
+  //       ...program.education.profiles.map((el) => el.courses)
+  //     ),
+  //   ]);
 
-    applicableProgrammes.push({
-      applicable: courses.has(course.code),
-      title: program.title,
-      code: program.code,
-    });
-  }
+  //   applicableProgrammes.push({
+  //     applicable: courses.has(course.code),
+  //     title: program.title,
+  //     code: program.code,
+  //   });
+  // }
 
-  applicableProgrammes.sort((a, b) => a.code.localeCompare(b.code));
+  // applicableProgrammes.sort((a, b) => a.code.localeCompare(b.code));
 
   return {
     title: course.title,
@@ -46,7 +46,7 @@ export function getCourseData(id: string) {
       title: subject.title,
       code: subject.code,
     },
-    applicableProgrammes,
+    // applicableProgrammes,
     subjectPurposes: subject.developmentPurposes.map((el, i) => {
       return {
         value: el,

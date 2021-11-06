@@ -111,10 +111,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@education-data/swedish-gymnasium@npm:^0.0.1-alpha.9":
-  version: 0.0.1-alpha.9
-  resolution: "@education-data/swedish-gymnasium@npm:0.0.1-alpha.9"
-  checksum: 53a478fd80d62642f1bb89b0314cea61146b70cfc217179811adede66bb825cdeca7fbc881fcdc181872225959cd7717e810bb1480b291ecb1d5e5f958732cdd
+"@education-data/swedish-gymnasium@npm:^0.0.1-alpha.10":
+  version: 0.0.1-alpha.10
+  resolution: "@education-data/swedish-gymnasium@npm:0.0.1-alpha.10"
+  checksum: 249b684785b4edfc406fb3924708302f6151a70b2aad40c5c8233bcbc34ba1748347aee2e676ab011740955b1b5da784e8a37f77912b190bddbcaf27764edb7f
   languageName: node
   linkType: hard
 
@@ -3830,7 +3830,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "kriterie@workspace:."
   dependencies:
-    "@education-data/swedish-gymnasium": ^0.0.1-alpha.9
+    "@education-data/swedish-gymnasium": ^0.0.1-alpha.10
     "@mdi/js": ^6.3.95
     "@reach/combobox": ^0.16.3
     "@sentry/nextjs": ^6.13.3
