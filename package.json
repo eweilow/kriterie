@@ -14,7 +14,7 @@
     "test-formatting": "prettier -v && prettier -c '**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@education-data/swedish-gymnasium": "^0.0.1-alpha.12",
+    "@education-data/swedish-gymnasium": "^0.0.1-alpha.13",
     "@mdi/js": "^6.3.95",
     "@reach/combobox": "^0.16.3",
     "@sentry/nextjs": "^6.13.3",
@@ -44,5 +44,5 @@
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.2.0"
 }
