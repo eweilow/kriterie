@@ -1,0 +1,23 @@
+{
+  "name": "kriterie-icon",
+  "version": "1.0.0",
+  "repository": "https://github.com/eweilow/kriterie.git",
+  "author": "E. Weilow <eweilow@digitalkoppar.se>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "ikon dev --file src/icon.tsx",
+    "build": "ikon build --file src/icon.tsx --outDir ../public/static/icons --publicPath /static/icons --generationDir ../generated"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@eweilow/ikon": "^0.0.1-alpha.6",
+    "@eweilow/ikon-cli": "^0.0.1-alpha.8",
+    "@types/node": "^16.11.4",
+    "puppeteer": "^10.4.0"
+  },
+  "packageManager": "yarn@3.0.2"
+}

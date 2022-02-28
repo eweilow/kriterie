@@ -1,32 +1,18 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { getAllCoursesData } from "../../../api/allCourses";
-import { CourseList } from "../../../components/courseList";
-import { LettersList } from "../../../components/lettersList";
-import { isNotFoundError } from "../../../api/helpers";
-import { loadCourses } from "../../../api/load";
-import KriterieError from "../../_error";
+import { getAllCoursesData } from "../../../src/api/allCourses";
+import { CourseList } from "../../../src/components/courseList";
+import { LettersList } from "../../../src/components/lettersList";
+import { loadCourses } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getAllCoursesData(params.letter.toLowerCase()),
-        letter: params.letter
-      },
-      unstable_revalidate: false
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null
-        },
-        unstable_revalidate: false
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getAllCoursesData(params.letter.toLowerCase()),
+      letter: params.letter,
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {
@@ -42,24 +28,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...letters.map(letter => ({
+      ...letters.map((letter) => ({
         params: {
-          letter
-        }
-      }))
+          letter,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getAllCoursesData>; letter: string };
-const CoursesPage: NextPage<Props> = props => {
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
-
+const CoursesPage: NextPage<Props> = (props) => {
   return (
     <>
       <NextSeo
@@ -70,15 +50,15 @@ const CoursesPage: NextPage<Props> = props => {
       <LettersList
         letters={props.data.letters}
         activeLetter={props.letter}
-        formatAs={s => `/gy11/courses/${s.toLowerCase()}`}
+        formatAs={(s) => `/gy11/courses/${s.toLowerCase()}`}
         formatHref={() => "/gy11/courses/[letter]"}
       />
       <h1>Kurser som börjar på {props.letter}</h1>
       <CourseList
-        subjects={props.data.subjects.map(el => ({
+        subjects={props.data.subjects.map((el) => ({
           ...el,
           minPoints: null,
-          freeChoice: 0
+          freeChoice: 0,
         }))}
       />
     </>

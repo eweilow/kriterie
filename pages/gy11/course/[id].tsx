@@ -3,36 +3,21 @@ import { NextPage, PageConfig } from "next";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import { Fragment, useState, useMemo } from "react";
-import { CourseCriteria } from "../../../components/criteria";
-import { getCourseData } from "../../../api/course";
-import { SimpleControls } from "../../../components/purposeControls";
+import { CourseCriteria } from "../../../src/components/criteria";
+import { getCourseData } from "../../../src/api/course";
+import { SimpleControls } from "../../../src/components/purposeControls";
 import clsx from "clsx";
-import { ApplicableProgrammesList } from "../../../components/programmes";
-import { FavoritesButton } from "../../../components/favorites/button";
-import { isNotFoundError } from "../../../api/helpers";
-import { loadCourses } from "../../../api/load";
-import KriterieError from "../../_error";
-import { useAmp } from "next/amp";
+// import { ApplicableProgrammesList } from "../../../src/components/programmes";
+import { FavoritesButton } from "../../../src/components/favorites/button";
+import { loadCourses } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getCourseData(params.id.toLowerCase())
-      },
-      unstable_revalidate: false
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null
-        },
-        unstable_revalidate: false
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getCourseData(params.id.toLowerCase()),
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {
@@ -40,42 +25,30 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...courses.map(el => ({
+      ...courses.map((el) => ({
         params: {
-          id: el.code
-        }
-      }))
+          id: el.code,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getCourseData> };
-const CoursePage: NextPage<Props> = props => {
+const CoursePage: NextPage<Props> = (props) => {
   const [showAllPurposes, setShowAllPurposes] = useState(false);
 
   const description = useMemo(() => {
-    if (props.data == null) {
-      return null;
-    }
-
     const content =
       "\n - " +
-      props.data.centralContent.map(el => el[1].join("\n - ")).join("\n");
+      props.data.centralContent.map((el) => el[1].join("\n - ")).join("\n");
     return `Gymnasiekursen ${props.data.title.toLowerCase()} (${
       props.data.points
     }p) är en kurs inom ämnet ${props.data.subject.title.toLowerCase()} (${
       props.data.subject.code
     }). Kursens innehåll är: ${content}`;
   }, [props.data]);
-
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
-
-  const isAmp = useAmp();
 
   return (
     <>
@@ -85,7 +58,7 @@ const CoursePage: NextPage<Props> = props => {
         canonical={`https://kriterie.se/gy11/course/${props.data.code}`}
         title={props.data.title}
       />
-      <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
+      {/* <ApplicableProgrammesList programmes={props.data.applicableProgrammes} /> */}
       <h1>{props.data.title}</h1>
       <section className="summary">
         <div>
@@ -111,22 +84,18 @@ const CoursePage: NextPage<Props> = props => {
           <div>{props.data.points}p</div>
         </div>
       </section>
-      {!isAmp && (
-        <FavoritesButton
-          storageKey="kriterie:favorites:course"
-          code={props.data.code}
-        />
-      )}
+      <FavoritesButton
+        storageKey="kriterie:favorites:course"
+        code={props.data.code}
+      />
       <h2>Kursens omfattning av ämnets syfte</h2>
-      {!isAmp && (
-        <SimpleControls
-          disabled={!props.data.subjectPurposes.find(el => !el.applicable)}
-          value={showAllPurposes}
-          setValue={setShowAllPurposes}
-          label="visa hela ämnets omfattning"
-          name="dense"
-        />
-      )}
+      <SimpleControls
+        disabled={!props.data.subjectPurposes.find((el) => !el.applicable)}
+        value={showAllPurposes}
+        setValue={setShowAllPurposes}
+        label="visa hela ämnets omfattning"
+        name="dense"
+      />
       <p>
         Den omfattning som listas här är en insikt i hur kursen{" "}
         {props.data.title.toLowerCase()} relaterar till syftet med ämnet{" "}
@@ -135,8 +104,8 @@ const CoursePage: NextPage<Props> = props => {
       </p>
       <ul>
         {props.data.subjectPurposes
-          .filter(el => showAllPurposes || el.applicable)
-          .map(el => (
+          .filter((el) => showAllPurposes || el.applicable)
+          .map((el) => (
             <li
               key={el.value}
               className={clsx({ nonApplicable: !el.applicable })}
@@ -151,11 +120,11 @@ const CoursePage: NextPage<Props> = props => {
         Detta är det innehåll som bör läras ut inom ramarna för kursen{" "}
         {props.data.title.toLowerCase()}.
       </p>
-      {props.data.centralContent.map(el => (
+      {props.data.centralContent.map((el) => (
         <Fragment key={el[0]}>
           {el[0] && <h4>{el[0]}</h4>}
           <ul>
-            {el[1].map(el => (
+            {el[1].map((el) => (
               <li key={el}>{el}</li>
             ))}
           </ul>
@@ -256,10 +225,3 @@ const CoursePage: NextPage<Props> = props => {
 };
 
 export default CoursePage;
-
-/*
-// AMP doesn't seem to work with getStaticProps at the moment
-export const config: PageConfig = {
-  amp: "hybrid"
-};
-*/

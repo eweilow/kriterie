@@ -1,32 +1,18 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { LettersList } from "../../../components/lettersList";
-import { getAllSubjectsData } from "../../../api/allSubjects";
+import { LettersList } from "../../../src/components/lettersList";
+import { getAllSubjectsData } from "../../../src/api/allSubjects";
 import Link from "next/link";
-import { loadSubjects } from "../../../api/load";
-import { isNotFoundError } from "../../../api/helpers";
-import KriterieError from "../../_error";
+import { loadSubjects } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getAllSubjectsData(params.letter.toLowerCase()),
-        letter: params.letter
-      },
-      unstable_revalidate: false
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null
-        },
-        unstable_revalidate: false
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getAllSubjectsData(params.letter.toLowerCase()),
+      letter: params.letter,
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {
@@ -42,24 +28,18 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...letters.map(letter => ({
+      ...letters.map((letter) => ({
         params: {
-          letter
-        }
-      }))
+          letter,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getAllSubjectsData>; letter: string };
-const SubjectsPage: NextPage<Props> = props => {
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
-
+const SubjectsPage: NextPage<Props> = (props) => {
   return (
     <>
       <NextSeo
@@ -70,12 +50,12 @@ const SubjectsPage: NextPage<Props> = props => {
       <LettersList
         letters={props.data.letters}
         activeLetter={props.letter}
-        formatAs={s => `/gy11/subjects/${s.toLowerCase()}`}
+        formatAs={(s) => `/gy11/subjects/${s.toLowerCase()}`}
         formatHref={() => "/gy11/subjects/[letter]"}
       />
       <h1>Ämnen som börjar på {props.letter}</h1>
       <ul>
-        {props.data.subjects.map(subj => (
+        {props.data.subjects.map((subj) => (
           <li key={subj.code}>
             <Link href="/gy11/subject/[id]" as={`/gy11/subject/${subj.code}`}>
               <a>{subj.title}</a>

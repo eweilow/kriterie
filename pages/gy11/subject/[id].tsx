@@ -2,36 +2,21 @@ import { NextPage, PageConfig } from "next";
 
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { ApplicableProgrammesList } from "../../../components/programmes";
-import { getSubjectData } from "../../../api/subject";
-import { SimpleControls } from "../../../components/purposeControls";
+// import { ApplicableProgrammesList } from "../../../src/components/programmes";
+import { getSubjectData } from "../../../src/api/subject";
+import { SimpleControls } from "../../../src/components/purposeControls";
 import { useState, useMemo } from "react";
 import clsx from "clsx";
-import { FavoritesButton } from "../../../components/favorites/button";
-import KriterieError from "../../_error";
-import { isNotFoundError } from "../../../api/helpers";
-import { loadSubjects } from "../../../api/load";
-import { useAmp } from "next/amp";
+import { FavoritesButton } from "../../../src/components/favorites/button";
+import { loadSubjects } from "../../../src/api/load";
 
 export async function getStaticProps({ params }) {
-  try {
-    return {
-      props: {
-        data: await getSubjectData(params.id.toLowerCase())
-      },
-      unstable_revalidate: false
-    };
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return {
-        props: {
-          data: null
-        },
-        unstable_revalidate: false
-      };
-    }
-    throw err;
-  }
+  return {
+    props: {
+      data: getSubjectData(params.id.toLowerCase()),
+    },
+    revalidate: false,
+  };
 }
 
 export async function getStaticPaths() {
@@ -39,33 +24,23 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      ...courses.map(el => ({
+      ...courses.map((el) => ({
         params: {
-          id: el.code
-        }
-      }))
+          id: el.code,
+        },
+      })),
     ],
-    fallback: false
+    fallback: false,
   };
 }
 
 type Props = { data: ReturnType<typeof getSubjectData> };
-const SubjectPage: NextPage<Props> = props => {
+const SubjectPage: NextPage<Props> = (props) => {
   const [showAllCourseInfo, setShowAllCourseInfo] = useState(false);
 
   const description = useMemo(() => {
-    if (props.data == null) {
-      return null;
-    }
     return `${props.data.description}`;
   }, [props.data]);
-
-  if (props.data == null) {
-    return (
-      <KriterieError err={null} hasGetInitialPropsRun={true} statusCode={404} />
-    );
-  }
-  const isAmp = useAmp();
 
   return (
     <>
@@ -75,26 +50,22 @@ const SubjectPage: NextPage<Props> = props => {
         canonical={`https://kriterie.se/gy11/subject/${props.data.code}`}
         title={props.data.title}
       />
-      <ApplicableProgrammesList programmes={props.data.applicableProgrammes} />
+      {/* <ApplicableProgrammesList programmes={props.data.applicableProgrammes} /> */}
       <h1>{props.data.title}</h1>
-      {!isAmp && (
-        <FavoritesButton
-          storageKey="kriterie:favorites:subject"
-          code={props.data.code}
-        />
-      )}
+      <FavoritesButton
+        storageKey="kriterie:favorites:subject"
+        code={props.data.code}
+      />
       <p>{props.data.description}</p>
       <h2>Kurser inom ämnet</h2>
-      {!isAmp && (
-        <SimpleControls
-          value={showAllCourseInfo}
-          setValue={setShowAllCourseInfo}
-          label="visa detaljerad kursinformation"
-          name="info"
-        />
-      )}
+      <SimpleControls
+        value={showAllCourseInfo}
+        setValue={setShowAllCourseInfo}
+        label="visa detaljerad kursinformation"
+        name="info"
+      />
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
-        {props.data.courses.map(el => (
+        {props.data.courses.map((el) => (
           <li key={el.code}>
             <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
               <a>
@@ -110,7 +81,7 @@ const SubjectPage: NextPage<Props> = props => {
         ))}
       </ul>
       <h2>Ämnets syfte</h2>
-      {props.data.purposes.map(el => (
+      {props.data.purposes.map((el) => (
         <p key={el}>{el}</p>
       ))}
       <h2>Elevens utvecklingsmöjligheter inom ämnet</h2>
@@ -119,7 +90,7 @@ const SubjectPage: NextPage<Props> = props => {
         elev få möjlighet att utveckla följande:
       </p>
       <ul>
-        {props.data.developmentPurposes.map(el => (
+        {props.data.developmentPurposes.map((el) => (
           <li key={el}>{el}</li>
         ))}
       </ul>
@@ -186,10 +157,3 @@ const SubjectPage: NextPage<Props> = props => {
 };
 
 export default SubjectPage;
-
-/*
-// AMP doesn't seem to work with getStaticProps at the moment
-export const config: PageConfig = {
-  amp: "hybrid"
-};
-*/
