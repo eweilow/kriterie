@@ -24,7 +24,7 @@
     "fathom-client": "^3.2.0",
     "html-react-parser": "^1.4.0",
     "jaro-winkler": "^0.2.8",
-    "next": "^11.1.2",
+    "next": "^12.1.0",
     "next-fonts": "^1.5.1",
     "next-seo": "^4.28.1",
     "react": "^17.0.2",
