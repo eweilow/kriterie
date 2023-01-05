@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.13"],\
+            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.14"],\
             ["@mdi/js", "npm:7.1.96"],\
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.18.0"],\
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],\
@@ -196,10 +196,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@education-data/swedish-gymnasium", [\
-        ["npm:0.0.1-alpha.13", {\
-          "packageLocation": "./.yarn/cache/@education-data-swedish-gymnasium-npm-0.0.1-alpha.13-2420dacd3b-e86f5f108b.zip/node_modules/@education-data/swedish-gymnasium/",\
+        ["npm:0.0.1-alpha.14", {\
+          "packageLocation": "./.yarn/cache/@education-data-swedish-gymnasium-npm-0.0.1-alpha.14-315387b22a-f810c5c64a.zip/node_modules/@education-data/swedish-gymnasium/",\
           "packageDependencies": [\
-            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.13"]\
+            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.14"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4748,7 +4748,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["kriterie", "workspace:."],\
-            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.13"],\
+            ["@education-data/swedish-gymnasium", "npm:0.0.1-alpha.14"],\
             ["@mdi/js", "npm:7.1.96"],\
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.18.0"],\
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:6.13.3"],\
