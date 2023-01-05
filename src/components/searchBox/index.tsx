@@ -234,7 +234,7 @@ export const SearchBox = ({
         }
 
         :global(#${id}.active) .box.left,
-        :global(#${id}[aria-expanded="true"].hasResults) .box.left {
+        :global(#${id}[aria-expanded="true"].hasResults .box.left) {
           transform: none;
         }
 
@@ -262,8 +262,8 @@ export const SearchBox = ({
           transition: filter 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        :global(#${id}.active) .box.right,
-        :global(#${id}[aria-expanded="true"].hasResults) .box.right {
+        :global(#${id}.active .box.right),
+        :global(#${id}[aria-expanded="true"].hasResults .box.right) {
           filter: drop-shadow(0px 4px 8px #0000002a)
             drop-shadow(0px 2px 2px #0000002b);
         }
@@ -299,12 +299,12 @@ export const SearchBox = ({
           padding: 4px 8px;
           outline: none !important;
         }
+        
         :global(#${id} [data-reach-combobox-input]),
-        :global(#${id} [data-reach-combobox-input])::placeholder {
+        :global(#${id} [data-reach-combobox-input]::placeholder) {
           color: #4d1a00;
           font-size: 16px;
-          font-family: "GlacialIndifference", "Roboto", -apple-system,
-            "Trebuchet MS", Helvetica, sans-serif;
+          font-family: inherit;
           font-weight: bold;
         }
 
@@ -363,8 +363,9 @@ export const SearchBox = ({
           background: hsl(20, 100%, 68%);
         }
 
-        :global(#${id + "Popover"}
-            [data-reach-combobox-option][aria-selected="true"]:hover) {
+        :global(#${
+          id + "Popover"
+        } [data-reach-combobox-option][aria-selected="true"]:hover) {
           background: hsl(20, 100%, 66%);
         }
 
