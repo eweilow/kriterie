@@ -130,9 +130,9 @@ const CoursePage: NextPage<Props> = (props) => {
           </ul>
         </Fragment>
       ))}
-      <h2>Kunskapskrav</h2>
+      <h2>Betygskriterier</h2>
       <p>
-        Dessa är kraven för olika betyg i kursen{" "}
+        Dessa är kriterier för olika betyg i kursen{" "}
         {props.data.title.toLowerCase()}.
       </p>
       <CourseCriteria criteria={props.data.criteria} />

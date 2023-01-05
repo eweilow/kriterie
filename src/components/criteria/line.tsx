@@ -9,11 +9,11 @@ export const CriteriaLine: React.FC<{
   index?: string;
 }> = ({ onHoverIn, isHovering, onHoverOut, dense, index, children }) => {
   const onHoverInCb = useCallback(() => {
-    onHoverIn(index ?? null);
+    onHoverIn?.(index ?? null);
   }, [onHoverIn, index]);
 
   const onHoverOutCb = useCallback(() => {
-    onHoverOut(index ?? null);
+    onHoverOut?.(index ?? null);
   }, [onHoverOut, index]);
 
   return (
