@@ -14,7 +14,6 @@ import seedrandom from "seedrandom";
 import { ErrorBoundary } from "@sentry/nextjs";
 
 export async function getStaticProps() {
-  // const programmes = loadProgrammes();
   const courses = loadCourses();
   const subjects = loadSubjects();
 
@@ -33,11 +32,6 @@ export async function getStaticProps() {
     subjectSelection.add(subjects[Math.floor(subjects.length * rnd())]);
   }
 
-  // const programSelection = new Set<any>();
-  // while (programSelection.size < 3) {
-  //   programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
-  // }
-
   return {
     props: {
       data: {
@@ -49,10 +43,6 @@ export async function getStaticProps() {
           code: el.code,
           title: el.title,
         })),
-        // programmes: [...programSelection].map((el) => ({
-        //   code: el.code,
-        //   title: el.title,
-        // })),
       },
     },
     revalidate: 60 * 60 * 24,
@@ -65,26 +55,12 @@ const Page: NextPage<Props> = (props) => (
     <NextSeo canonical="https://kriterie.se" />
     <h1>Välkommen till kriterie.se!</h1>
     <p>
-      {/* Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser,
-      ämnen och program presenteras i ett lättåtkomligt format. Vad vill du veta
-      mer om idag? */}
       Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser och
       ämnen presenteras i ett lättåtkomligt format. Vad vill du veta mer om
       idag?
     </p>
-    <div>
+    <div className="md:h-14 h-12">
       <SearchBox id="homeSearchBox" />
-      <style jsx>{`
-        div {
-          height: 56px;
-          width: 100%;
-        }
-        @media (max-width: 800px) {
-          div {
-            height: 48px;
-          }
-        }
-      `}</style>
     </div>
     <p>eller:</p>
     <Link href="/gy11/courses/a">alla kurser</Link>

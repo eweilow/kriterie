@@ -4,6 +4,7 @@ import { LettersList } from "../../../src/components/lettersList";
 import { getAllSubjectsData } from "../../../src/api/allSubjects";
 import Link from "next/link";
 import { loadSubjects } from "../../../src/api/load";
+import { BulletList } from "../../../src/components/BulletList";
 
 export async function getStaticProps({ params }) {
   return {
@@ -53,52 +54,17 @@ const SubjectsPage: NextPage<Props> = (props) => {
         formatHref={(s) => `/gy11/subjects/${s.toLowerCase()}`}
       />
       <h1>Ämnen som börjar på {props.letter}</h1>
-      <ul>
+      <BulletList className="columns-2xs mb-8">
         {props.data.subjects.map((subj) => (
-          <li key={subj.code}>
-            <Link href={`/gy11/subject/${subj.code}`}>{subj.title}</Link>
-          </li>
+          <Link
+            key={subj.code}
+            href={`/gy11/subject/${subj.code}`}
+            className="underline"
+          >
+            {subj.title}
+          </Link>
         ))}
-      </ul>
-      <style jsx>{`
-        ul {
-          margin: 4px 0 12px 0;
-          padding: 0 0 0 20px;
-          columns: 3;
-        }
-
-        @media (max-width: 750px) {
-          ul {
-            columns: 2;
-          }
-        }
-
-        @media (max-width: 500px) {
-          ul {
-            columns: 1;
-          }
-        }
-        li {
-          list-style: none;
-          position: relative;
-          line-height: 20px;
-        }
-        li + li {
-          margin-top: 10px;
-        }
-        li::before {
-          content: "";
-          position: absolute;
-          left: -10px;
-          top: 10px;
-          -khtml-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          width: 4px;
-          height: 4px;
-          background: #d44700;
-        }
-      `}</style>
+      </BulletList>
     </>
   );
 };

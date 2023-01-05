@@ -79,6 +79,7 @@ export default class KriterieApp extends App {
         <LoadingBar.Wrapped />
         <GlobalFooter />
         {process.env.NODE_ENV === "production" && <FathomAnalytics />}
+
         <style jsx global>{`
         html {
           font-family: ${glacialIndifference.style.fontFamily};
