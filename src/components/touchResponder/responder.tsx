@@ -15,7 +15,7 @@ type TouchResponderProps = {
   shape: TouchResponseShape;
 };
 
-export const TouchResponder: React.FC<TouchResponderProps> = (props) => {
+export const TouchResponder = (props: TouchResponderProps) => {
   const [presses, setPresses] = useState<
     Array<{
       press: Press;

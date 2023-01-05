@@ -33,11 +33,15 @@ function getWorkerByUrl(url: string) {
   return worker;
 }
 
-export const SearchBox: React.FC<{
+export const SearchBox = ({
+  id,
+  initialSize = null,
+  zIndex = 1,
+}: {
   zIndex?: number;
   id: string;
   initialSize?: number;
-}> = ({ id, initialSize = null, zIndex = 1 }) => {
+}) => {
   const [searchDisabled, setSearchDisabled] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [loadingString, setLoadingString] = useState("");
@@ -221,9 +225,11 @@ export const SearchBox: React.FC<{
           border-top-left-radius: 8px;
           border-bottom-left-radius: 8px;
           background: #eb7031;
-          transform: ${initialSize != null
-            ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
-            : "none"};
+          transform: ${
+            initialSize != null
+              ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
+              : "none"
+          };
           transition: transform 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 

@@ -50,16 +50,13 @@ const SubjectsPage: NextPage<Props> = (props) => {
       <LettersList
         letters={props.data.letters}
         activeLetter={props.letter}
-        formatAs={(s) => `/gy11/subjects/${s.toLowerCase()}`}
-        formatHref={() => "/gy11/subjects/[letter]"}
+        formatHref={(s) => `/gy11/subjects/${s.toLowerCase()}`}
       />
       <h1>Ämnen som börjar på {props.letter}</h1>
       <ul>
         {props.data.subjects.map((subj) => (
           <li key={subj.code}>
-            <Link href="/gy11/subject/[id]" as={`/gy11/subject/${subj.code}`}>
-              <a>{subj.title}</a>
-            </Link>
+            <Link href={`/gy11/subject/${subj.code}`}>{subj.title}</Link>
           </li>
         ))}
       </ul>

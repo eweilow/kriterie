@@ -44,7 +44,7 @@ export const TouchResponseOptionsContext =
   React.createContext<TouchResponseOptions>(DefaultTouchResponseOptions);
 TouchResponseOptionsContext.displayName = "TouchResponseOptionsContext";
 
-export const TouchResponse: React.FC<TouchResponseProps> = (props) => {
+export const TouchResponse = (props: TouchResponseProps) => {
   const {
     color,
     opacity,

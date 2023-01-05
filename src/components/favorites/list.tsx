@@ -10,7 +10,7 @@ function useFavorites(key: string): string[] {
 
   return state as string[];
 }
-export const FavoritesList: React.FC = () => {
+export const FavoritesList = () => {
   const courseFavorites = useFavorites("kriterie:favorites:course");
   const subjectFavorites = useFavorites("kriterie:favorites:subject");
   // const programFavorites = useFavorites("kriterie:favorites:program");
@@ -133,6 +133,4 @@ export const FavoritesList: React.FC = () => {
   );
 };
 
-export const FavoritesListFallback: React.FC = () => (
-  <div style={{ height: 200 }} />
-);
+export const FavoritesListFallback = () => <div style={{ height: 200 }} />;

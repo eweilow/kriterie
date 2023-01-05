@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-export const CourseList: React.FC<{
+export const CourseList = ({
+  subjects,
+  aliasSubjects,
+}: {
   subjects: {
     title: string;
     minPoints: number | null;
@@ -18,7 +21,7 @@ export const CourseList: React.FC<{
     minPoints: boolean;
     optional: boolean;
   }[];
-}> = ({ subjects, aliasSubjects }) => (
+}) => (
   <section className="courseList">
     {subjects.map((subj) => (
       <div key={subj.code}>
@@ -34,10 +37,8 @@ export const CourseList: React.FC<{
           <ul>
             {subj.courses.map((cour) => (
               <li key={cour.code}>
-                <Link href="/gy11/course/[id]" as={`/gy11/course/${cour.code}`}>
-                  <a>
-                    {cour.title} ({cour.points}p)
-                  </a>
+                <Link href={`/gy11/course/${cour.code}`}>
+                  {cour.title} ({cour.points}p)
                 </Link>
               </li>
             ))}

@@ -4,11 +4,12 @@ import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import { TouchResponseShape } from "../touchResponder/response";
 import { SearchBox } from "../searchBox";
 import { Logo } from "./logo";
+import { PropsWithChildren } from "react";
 
 const RowHeight = 40;
 export const GlobalNavbarHeight = Math.floor(RowHeight * 2) + 8;
 
-const Navlink: React.FC<LinkProps> = (props) => {
+const Navlink = (props: PropsWithChildren<LinkProps>) => {
   const [responderProps, responder] = useTouchResponder<HTMLAnchorElement>(
     "#fff",
     0.3,
@@ -16,39 +17,37 @@ const Navlink: React.FC<LinkProps> = (props) => {
   );
 
   return (
-    <Link {...props}>
-      <a {...responderProps}>
-        {responder}
-        {props.children}
-        <style jsx>{`
-          a {
-            position: relative;
-            overflow: hidden;
+    <Link {...props} className="link" {...responderProps}>
+      {responder}
+      {props.children}
+      <style jsx>{`
+        .link {
+          position: relative;
+          overflow: hidden;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px 8px;
-            text-decoration: none;
-            color: inherit;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 4px 8px;
+          text-decoration: none;
+          color: inherit;
 
-            font-weight: bold;
+          font-weight: bold;
 
-            border-radius: 8px;
+          border-radius: 8px;
 
-            height: ${RowHeight}px;
-            box-sizing: border-box;
+          height: ${RowHeight}px;
+          box-sizing: border-box;
 
-            opacity: 1;
-            transform: none;
-            z-index: 1;
-          }
-        `}</style>
-      </a>
+          opacity: 1;
+          transform: none;
+          z-index: 1;
+        }
+      `}</style>
     </Link>
   );
 };
-export const GlobalNavbar: React.FC = () => {
+export const GlobalNavbar = () => {
   return (
     <>
       <nav>
@@ -70,9 +69,6 @@ export const GlobalNavbar: React.FC = () => {
               <Navlink href="/gy11/subjects/[letter]" as="/gy11/subjects/a">
                 ämnen
               </Navlink>
-              {/* <Navlink href="/gy11/programmes" as="/gy11/programmes">
-                program
-              </Navlink> */}
             </section>
           </div>
         </Column>

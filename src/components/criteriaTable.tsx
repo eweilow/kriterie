@@ -14,11 +14,15 @@ function computeProbability(x: number, mu: number, sigma: number) {
   return sum;
 }
 
-export const CriteriaTable: React.FC<{
+export const CriteriaTable = ({
+  from,
+  to,
+  distanceFn,
+}: {
   from: string[][];
   to: string[][];
   distanceFn: (a: string, b: string) => number;
-}> = ({ from, to, distanceFn }) => {
+}) => {
   return (
     <table>
       <tr>

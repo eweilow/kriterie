@@ -1,5 +1,4 @@
 const { withSentryConfig } = require("@sentry/nextjs");
-const withFonts = require("next-fonts");
 
 const config = {
   productionBrowserSourceMaps: true,
@@ -55,8 +54,6 @@ const config = {
   },
 };
 
-const baseConfig = withFonts(config);
-
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
@@ -73,5 +70,5 @@ const sentryWebpackPluginOptions = {
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports =
   process.env.SENTRY_BUILD === "1"
-    ? withSentryConfig(baseConfig, sentryWebpackPluginOptions)
-    : baseConfig;
+    ? withSentryConfig(config, sentryWebpackPluginOptions)
+    : config;

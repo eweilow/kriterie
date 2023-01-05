@@ -4,52 +4,37 @@ import React from "react";
 import { LoadingTrickle } from "./trickle";
 import { LoadingIndicatorQueue } from "./queue";
 
-interface IProps {
+export function SearchLoadingBar({
+  visible,
+  transitionTime,
+}: {
   visible: boolean;
   transitionTime: number;
-}
-
-export class SearchLoadingBar extends React.Component<IProps> {
-  static Wrapped: React.FC<{ loading: boolean }> = ({ loading }) => (
-    <LoadingIndicatorQueue
-      portal={false}
-      loading={loading}
-      transitionTime={195}
+}) {
+  return (
+    <div
+      className={classnames("progress", {
+        visible,
+        exiting: !visible,
+      })}
     >
-      {(visible, transitionTime) => (
-        <>
-          <SearchLoadingBar visible={visible} transitionTime={transitionTime} />
-        </>
-      )}
-    </LoadingIndicatorQueue>
-  );
-
-  render() {
-    const { visible, transitionTime } = this.props;
-    return (
-      <div
-        className={classnames("progress", {
-          visible,
-          exiting: !visible,
-        })}
-      >
-        <LoadingTrickle trickleTime={200} factor={0.2}>
-          {(progress) => (
-            <div
-              className="bar"
-              style={{
-                transform: `scale3d(${progress.toFixed(2)}, 1, 1)`,
-              }}
-            />
-          )}
-        </LoadingTrickle>
-        <style jsx>{`
+      <LoadingTrickle trickleTime={200} factor={0.2}>
+        {(progress) => (
+          <div
+            className="bar"
+            style={{
+              transform: `scale3d(${progress.toFixed(2)}, 1, 1)`,
+            }}
+          />
+        )}
+      </LoadingTrickle>
+      <style jsx>{`
           .bar {
             transition: transform ${transitionTime}ms ease-in-out,
               opacity ${transitionTime}ms ease-in-out;
           }
         `}</style>
-        <style jsx>{`
+      <style jsx>{`
           .progress {
             z-index: 10001;
 
@@ -77,7 +62,16 @@ export class SearchLoadingBar extends React.Component<IProps> {
             background: rgba(255, 255, 255, 0.25);
           }
         `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
 }
+
+SearchLoadingBar.Wrapped = ({ loading }: { loading: boolean }) => (
+  <LoadingIndicatorQueue portal={false} loading={loading} transitionTime={195}>
+    {(visible, transitionTime) => (
+      <>
+        <SearchLoadingBar visible={visible} transitionTime={transitionTime} />
+      </>
+    )}
+  </LoadingIndicatorQueue>
+);

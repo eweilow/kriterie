@@ -1,11 +1,11 @@
 import classnames from "clsx";
 import React from "react";
 
-const InnerFallbackResponse: React.FC<{
+const InnerFallbackResponse = (props: {
   color: string;
   opacity: number;
   touching: boolean;
-}> = (props) => {
+}) => {
   return (
     <span
       key="touchTarget"

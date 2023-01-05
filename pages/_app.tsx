@@ -16,6 +16,29 @@ import { useEffect } from "react";
 
 import "../src/style/global.css";
 
+import localFont from "@next/font/local";
+
+// config your font
+const glacialIndifference = localFont({
+  src: [
+    {
+      weight: "bold",
+      path: "./font/GlacialIndifference-Bold.woff2",
+      style: "normal",
+    },
+    {
+      weight: "normal",
+      path: "./font/GlacialIndifference-Italic.woff2",
+      style: "italic",
+    },
+    {
+      weight: "normal",
+      path: "./font/GlacialIndifference-Regular.woff2",
+      style: "normal",
+    },
+  ],
+});
+
 function FathomAnalytics() {
   const router = useRouter();
 
@@ -50,12 +73,17 @@ export default class KriterieApp extends App {
         </Head>
         <DefaultSeo {...defaultSeoConfiguration} />
         <GlobalNavbar />
-        <Column className="root">
+        <Column className={"root"}>
           <Component {...{ ...pageProps, err: (this.props as any).err }} />
         </Column>
         <LoadingBar.Wrapped />
         <GlobalFooter />
         {process.env.NODE_ENV === "production" && <FathomAnalytics />}
+        <style jsx global>{`
+        html {
+          font-family: ${glacialIndifference.style.fontFamily};
+        }
+      `}</style>
       </>
     );
   }

@@ -3,10 +3,13 @@ import { SimpleControls } from "../purposeControls";
 import { mdiHeart } from "@mdi/js";
 import { useCallback } from "react";
 
-export const FavoritesButton: React.FC<{
+export const FavoritesButton = ({
+  storageKey,
+  code,
+}: {
   storageKey: string;
   code: string;
-}> = ({ storageKey, code }) => {
+}) => {
   const [isFavorited, doFavorite, doUnfavorite] = useFavorite(storageKey, code);
 
   const setValue = useCallback(

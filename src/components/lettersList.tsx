@@ -4,20 +4,22 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
-const LetterLink: React.FC<{
+const LetterLink = ({
+  letter,
+  href,
+  applicable,
+}: {
   letter: string;
   href: string;
-  as: string;
   applicable: boolean;
-}> = ({ letter, href, as, applicable }) => {
+}) => {
   const [props, element] = useTouchResponder<HTMLAnchorElement>("#d44700", 0.2);
   return (
-    <Link href={href} as={as}>
-      <a {...props} className={clsx({ applicable })}>
-        {letter}
-        {element}
-        <style jsx>{`
-          a {
+    <Link {...props} className={clsx("link", { applicable })} href={href}>
+      {letter}
+      {element}
+      <style jsx>{`
+          .link {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,26 +35,28 @@ const LetterLink: React.FC<{
             position: relative;
             box-sizing: border-box;
           }
-          a:not(.applicable) {
+          .link:not(.applicable) {
             color: #d4470048;
           }
 
-          a.applicable {
+          .link.applicable {
             border: 2px solid currentColor;
             border-radius: 4px;
           }
         `}</style>
-      </a>
     </Link>
   );
 };
 
-export const LettersList: React.FC<{
+export const LettersList = ({
+  letters,
+  activeLetter,
+  formatHref,
+}: {
   letters: string[];
   activeLetter: string;
   formatHref: (letter: string) => string;
-  formatAs: (letter: string) => string;
-}> = ({ letters, activeLetter, formatHref, formatAs }) => {
+}) => {
   return (
     <section className="letters">
       <header>vald bokstav:</header>
@@ -62,7 +66,6 @@ export const LettersList: React.FC<{
             <LetterLink
               applicable={activeLetter === el}
               letter={el.toUpperCase()}
-              as={formatAs(el)}
               href={formatHref(el)}
             />
           </li>

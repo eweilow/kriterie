@@ -1,9 +1,10 @@
 import clsx from "clsx";
+import { PropsWithChildren } from "react";
 
-export const Column: React.FC<{ className?: string }> = ({
+export const Column = ({
   children,
   className,
-}) => (
+}: PropsWithChildren<{ className?: string }>) => (
   <section className={clsx("column", className)}>
     {children}
     <style jsx>{`

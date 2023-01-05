@@ -1,12 +1,11 @@
 import { getCourseData } from "../../api/course";
-import { useState, Fragment, useCallback } from "react";
+import { useState, Fragment, useCallback, PropsWithChildren } from "react";
 import { CriteriaControls } from "./controls";
 
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { CriteriaGroup } from "./group";
 import { CriteriaGrade } from "./grade";
 import { CriteriaLine } from "./line";
-import { PartialGrade } from "./partialGrade";
 
 const parseOptions: HTMLReactParserOptions = {
   replace(node: any) {
@@ -18,11 +17,13 @@ const parseOptions: HTMLReactParserOptions = {
   },
 };
 
-const Bold: React.FC = ({ children }) => <b>{children}</b>;
+const Bold = ({ children }: PropsWithChildren<{}>) => <b>{children}</b>;
 
-export const CourseCriteria: React.FC<{
+export const CourseCriteria = ({
+  criteria,
+}: PropsWithChildren<{
   criteria: ReturnType<typeof getCourseData>["criteria"];
-}> = ({ criteria }) => {
+}>) => {
   const [dense, setDense] = useState(false);
   const [filter, setFilter] = useState<"E" | "C" | "A" | "alla">("alla");
 

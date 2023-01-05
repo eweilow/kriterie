@@ -1,7 +1,12 @@
 import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import clsx from "clsx";
 
-export const ToggleControl: React.FC<{
+export const ToggleControl = ({
+  type = "checkbox",
+  icon,
+  iconType = "svg",
+  ...props
+}: {
   type?: "radio" | "checkbox";
   name: string;
   label?: string;
@@ -11,7 +16,7 @@ export const ToggleControl: React.FC<{
   icon?: string;
   iconType?: "text" | "svg";
   onChange: (value: boolean) => void;
-}> = ({ type = "checkbox", icon, iconType = "svg", ...props }) => {
+}) => {
   const [responderProps, responderElement] = useTouchResponder<HTMLDivElement>(
     "currentColor",
     0.2

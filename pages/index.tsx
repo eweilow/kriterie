@@ -87,43 +87,23 @@ const Page: NextPage<Props> = (props) => (
       `}</style>
     </div>
     <p>eller:</p>
-    <Link href="/gy11/courses/[letter]" as="/gy11/courses/a">
-      <a>alla kurser</a>
-    </Link>
+    <Link href="/gy11/courses/a">alla kurser</Link>
     <br />
-    <Link href="/gy11/subjects/[letter]" as="/gy11/subjects/b">
-      <a>alla ämnen</a>
-    </Link>
-    {/* <br />
-    <Link href="/gy11/programmes">
-      <a>alla program</a>
-    </Link> */}
+    <Link href="/gy11/subjects/a">alla ämnen</Link>
 
     <h2>Dagens slumpmässiga urval</h2>
     <h3>Kurser</h3>
     {props.data.courses.map((el) => (
       <div key={el.code}>
-        <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
-          <a>{el.title}</a>
-        </Link>
+        <Link href={`/gy11/course/${el.code}`}>{el.title}</Link>
       </div>
     ))}
     <h3>Ämnen</h3>
     {props.data.subjects.map((el) => (
       <div key={el.code}>
-        <Link href="/gy11/subject/[id]" as={`/gy11/subject/${el.code}`}>
-          <a>{el.title}</a>
-        </Link>
+        <Link href={`/gy11/subject/${el.code}`}>{el.title}</Link>
       </div>
     ))}
-    {/* <h3>Program</h3>
-    {props.data.programmes.map((el) => (
-      <div key={el.code}>
-        <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
-          <a>{el.title}</a>
-        </Link>
-      </div>
-    ))} */}
     {typeof window !== "undefined" ? (
       <ErrorBoundary fallback={<FavoritesListFallback />}>
         <Suspense fallback={<FavoritesListFallback />}>
