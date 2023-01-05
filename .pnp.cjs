@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mdi/js", "npm:7.1.96"],\
             ["@next/font", "npm:13.1.1"],\
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.18.0"],\
+            ["@sentry/browser", "npm:7.29.0"],\
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:7.29.0"],\
             ["@types/node", "npm:16.11.4"],\
             ["@types/react", "npm:18.0.26"],\
@@ -4398,6 +4399,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mdi/js", "npm:7.1.96"],\
             ["@next/font", "npm:13.1.1"],\
             ["@reach/combobox", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:0.18.0"],\
+            ["@sentry/browser", "npm:7.29.0"],\
             ["@sentry/nextjs", "virtual:961a95ebbff3b3d6d824f96c1bdc12ba57e889ec58c8d3792cbb68c88d60dda7b2a70d13a980cc4e91cf213879da6d664488c09a87ef6c978c52ffd501aa1b6c#npm:7.29.0"],\
             ["@types/node", "npm:16.11.4"],\
             ["@types/react", "npm:18.0.26"],\

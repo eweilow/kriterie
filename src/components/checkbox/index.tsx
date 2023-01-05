@@ -1,4 +1,3 @@
-import { useTouchResponder } from "../touchResponder/useTouchResponder";
 import clsx from "clsx";
 
 export const ToggleControl = ({
@@ -17,11 +16,6 @@ export const ToggleControl = ({
   iconType?: "text" | "svg";
   onChange: (value: boolean) => void;
 }) => {
-  const [responderProps, responderElement] = useTouchResponder<HTMLDivElement>(
-    "currentColor",
-    0.2
-  );
-
   return (
     <label className={type}>
       <input
@@ -31,11 +25,7 @@ export const ToggleControl = ({
         name={props.name}
         value={props.value}
       />
-      <div
-        className={clsx("box", { checked: props.checked })}
-        {...responderProps}
-      >
-        {responderElement}
+      <div className={clsx("box", { checked: props.checked })}>
         {icon && iconType === "text" && <span>{icon}</span>}
         {icon && iconType === "svg" && (
           <svg viewBox="0 0 24 24">

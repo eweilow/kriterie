@@ -18,6 +18,7 @@
     "@mdi/js": "^7.1.96",
     "@next/font": "^13.1.1",
     "@reach/combobox": "^0.18.0",
+    "@sentry/browser": "^7.29.0",
     "@sentry/nextjs": "^7.29.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",

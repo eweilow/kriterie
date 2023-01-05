@@ -450,7 +450,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.29.0":
+"@sentry/browser@npm:7.29.0, @sentry/browser@npm:^7.29.0":
   version: 7.29.0
   resolution: "@sentry/browser@npm:7.29.0"
   dependencies:
@@ -3545,6 +3545,7 @@ __metadata:
     "@mdi/js": ^7.1.96
     "@next/font": ^13.1.1
     "@reach/combobox": ^0.18.0
+    "@sentry/browser": ^7.29.0
     "@sentry/nextjs": ^7.29.0
     "@types/node": ^16.11.4
     "@types/react": ^18.0.26

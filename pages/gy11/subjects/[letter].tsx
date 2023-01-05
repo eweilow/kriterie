@@ -54,7 +54,7 @@ const SubjectsPage: NextPage<Props> = (props) => {
         formatHref={(s) => `/gy11/subjects/${s.toLowerCase()}`}
       />
       <h1>Ämnen som börjar på {props.letter}</h1>
-      <BulletList className="columns-2xs mb-8">
+      <BulletList className="columns-2xs">
         {props.data.subjects.map((subj) => (
           <Link
             key={subj.code}

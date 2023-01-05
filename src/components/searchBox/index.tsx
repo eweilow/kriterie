@@ -7,7 +7,6 @@ import {
   ComboboxOptionText,
 } from "@reach/combobox";
 import useResizeObserver from "use-resize-observer";
-import Head from "next/head";
 import * as Fathom from "fathom-client";
 
 import { useEffect, useCallback, useState, useRef } from "react";
@@ -128,12 +127,6 @@ export const SearchBox = ({
 
       if (searchResults != null) {
         const found = searchResults.find((el) => el.title === value);
-        // if (found.type === "program") {
-        //   waitForPromise(
-        //     router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
-        //   );
-        //   start();
-        // }
         if (found.type === "course") {
           waitForPromise(
             router.push("/gy11/course/[id]", "/gy11/course/" + found.code)
@@ -171,6 +164,8 @@ export const SearchBox = ({
       className={clsx({ active, hasResults: searchResults })}
       id={id}
       onSelect={handleSelect}
+      onFocus={setFocused}
+      onBlur={setUnfocused}
       // value={searchString}
     >
       <SearchPreload />
@@ -181,8 +176,6 @@ export const SearchBox = ({
             autoComplete="off"
             name="search"
             type="text"
-            onFocus={setFocused}
-            onBlur={setUnfocused}
             value={loading ? loadingString : searchString}
             disabled={searchDisabled}
             aria-label="Innehållssök"

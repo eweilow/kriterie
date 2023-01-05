@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { SearchBox } from "../src/components/searchBox";
 import { NextPage } from "next";
-import {
-  FavoritesList,
-  FavoritesListFallback,
-} from "../src/components/favorites/list";
 import { Suspense } from "react";
 import { NextSeo } from "next-seo";
+
+import dynamic from "next/dynamic";
+
+const FavoritesList = dynamic(
+  () => import("../src/components/favorites/list").then((m) => m.FavoritesList),
+  { ssr: false }
+);
 
 import { loadCourses, loadSubjects } from "../src/api/load";
 import { startOfDay } from "date-fns";
@@ -80,16 +83,12 @@ const Page: NextPage<Props> = (props) => (
         <Link href={`/gy11/subject/${el.code}`}>{el.title}</Link>
       </div>
     ))}
-    {typeof window !== "undefined" ? (
-      <ErrorBoundary fallback={<FavoritesListFallback />}>
-        <Suspense fallback={<FavoritesListFallback />}>
-          <h2>Dina favoriter</h2>
-          <FavoritesList />
-        </Suspense>
-      </ErrorBoundary>
-    ) : (
-      <FavoritesListFallback />
-    )}
+
+    <ErrorBoundary fallback={<div className="h-52" />}>
+      <Suspense fallback={<div className="h-52" />}>
+        <FavoritesList />
+      </Suspense>
+    </ErrorBoundary>
   </>
 );
 

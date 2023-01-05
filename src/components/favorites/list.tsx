@@ -44,41 +44,43 @@ export const FavoritesList = () => {
   mapped.sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <div className="favorites">
-      {mapped.length === 0 && (
-        <p key="info">
-          {/* Du har ännu inte lagt till något som dina favoriter. Detta gör du
+    <>
+      <div className="favorites">
+        <h2>Dina favoriter</h2>
+        {mapped.length === 0 && (
+          <p key="info">
+            {/* Du har ännu inte lagt till något som dina favoriter. Detta gör du
           genom att trycka på favoritmarkera-knappen på sidorna för kurser,
           ämnen och program! */}
-          Du har ännu inte lagt till något som dina favoriter. Detta gör du
-          genom att trycka på favoritmarkera-knappen på sidorna för kurser och
-          ämnen!
-        </p>
-      )}
-      {mapped.length > 0 && (
-        <p key="info">
-          {/* Du kan lägga till fler favoriter genom att trycka på
+            Du har ännu inte lagt till något som dina favoriter. Detta gör du
+            genom att trycka på favoritmarkera-knappen på sidorna för kurser och
+            ämnen!
+          </p>
+        )}
+        {mapped.length > 0 && (
+          <p key="info">
+            {/* Du kan lägga till fler favoriter genom att trycka på
           favoritmarkera-knappen på sidorna för kurser, ämnen och program! */}
-          Du kan lägga till fler favoriter genom att trycka på
-          favoritmarkera-knappen på sidorna för kurser och ämnen!
-        </p>
-      )}
+            Du kan lägga till fler favoriter genom att trycka på
+            favoritmarkera-knappen på sidorna för kurser och ämnen!
+          </p>
+        )}
 
-      {mapped.length > 0 && (
-        <ul>
-          {mapped.map((el) => (
-            <li key={el.as}>
-              <Link href={el.href} as={el.as}>
-                <a>
-                  <b>{el.type}</b>: {el.title}
-                </a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-      <SearchPreload />
-      <style jsx>{`
+        {mapped.length > 0 && (
+          <ul>
+            {mapped.map((el) => (
+              <li key={el.as}>
+                <Link href={el.href} as={el.as}>
+                  <a>
+                    <b>{el.type}</b>: {el.title}
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        <SearchPreload />
+        <style jsx>{`
         ul {
           margin: 16px 0;
           padding: 0 0 0 20px;
@@ -129,8 +131,7 @@ export const FavoritesList = () => {
           }
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 };
-
-export const FavoritesListFallback = () => <div style={{ height: 200 }} />;

@@ -73,7 +73,7 @@ export default class KriterieApp extends App {
         </Head>
         <DefaultSeo {...defaultSeoConfiguration} />
         <GlobalNavbar />
-        <Column className={"root"}>
+        <Column className={"mt-16 mb-16"}>
           <Component {...{ ...pageProps, err: (this.props as any).err }} />
         </Column>
         <LoadingBar.Wrapped />

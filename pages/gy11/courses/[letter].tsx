@@ -54,7 +54,7 @@ const CoursesPage: NextPage<Props> = (props) => {
         formatHref={(s) => `/gy11/courses/${s.toLowerCase()}`}
       />
       <h1>Kurser som börjar på {props.letter}</h1>
-      <div className="columns-md mb-8">
+      <div className="columns-md">
         {props.data.subjects.map((subj) => (
           <div key={subj.code} className="break-inside-avoid-column mb-2">
             <header className="text-gray-700 font-bold">{subj.title}</header>
