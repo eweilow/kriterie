@@ -10,14 +10,14 @@
     "build": "ikon build --file src/icon.tsx --outDir ../public/static/icons --publicPath /static/icons --generationDir ../generated"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@eweilow/ikon": "^0.0.1-alpha.6",
-    "@eweilow/ikon-cli": "^0.0.1-alpha.8",
-    "@types/node": "^16.11.4",
-    "puppeteer": "^10.4.0"
+    "@eweilow/ikon": "^0.0.1-alpha.10",
+    "@eweilow/ikon-cli": "^0.0.1-alpha.10",
+    "@types/node": "^18.11.18",
+    "puppeteer": "^19.4.1"
   },
   "packageManager": "yarn@3.0.2"
 }
