@@ -1,9 +1,24 @@
-import { useState, useMemo, useLayoutEffect, useCallback } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 export function useLocalStorage<T>(key: string, transform: (val: any) => T) {
-  const [stringValue, setStringValue] = useState<string>(null);
+  const stringValue = useSyncExternalStore(
+    (onChange) => {
+      const changed = () => onChange();
 
-  const transformedValue = (() => {
+      window.addEventListener("storage", changed);
+      return function unsubscribe() {
+        window.removeEventListener("storage", changed);
+      };
+    },
+    function getSnapshot() {
+      return localStorage.getItem(key);
+    },
+    function getServerSnapshot() {
+      return null;
+    }
+  );
+
+  const value = (() => {
     try {
       return transform(JSON.parse(stringValue));
     } catch (err) {
@@ -11,28 +26,13 @@ export function useLocalStorage<T>(key: string, transform: (val: any) => T) {
     }
   })();
 
-  if (typeof window !== "undefined") {
-    useLayoutEffect(() => {
-      setStringValue(localStorage.getItem(key));
-      function onStorageEvent(evt: StorageEvent) {
-        if (evt.key === key) {
-          setStringValue(evt.newValue);
-        }
-      }
-      window.addEventListener("storage", onStorageEvent);
-      return () => {
-        window.removeEventListener("storage", onStorageEvent);
-      };
-    }, [key]);
-  }
-
   const updateValue = useCallback(
     (val: T) => {
       localStorage.setItem(key, JSON.stringify(val));
-      setStringValue(JSON.stringify(val));
+      window.dispatchEvent(new Event("storage"));
     },
-    [setStringValue, key]
+    [key]
   );
 
-  return [transformedValue as T, updateValue] as [T, (val: T) => void];
+  return [value as T, updateValue] as [T, (val: T) => void];
 }
