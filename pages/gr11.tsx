@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import Link from "next/link";
 
 export default function Gr11Page() {
   return (
@@ -22,19 +21,6 @@ export default function Gr11Page() {
         Skolverkets öppna data till det formatet och den standard som det
         presenteras med här.
       </p>
-      <p>
-        Om det är så att du haft nytta av grundskoleinformation på kriterie.se
-        och önskar att åter igen hitta den här kan du dela med dig av ditt
-        intresse i nedanstående formulär:
-      </p>
-      <Link
-        className="link"
-        href="https://docs.google.com/forms/d/e/1FAIpQLScqlbajJ2iTmAAtXRrGCOX1feQg17Cj25QJpyb8SjkgE4lYQA/viewform"
-      >
-        <a rel="noreferrer noopener" target="_blank">
-          Extern länk (Google Forms)
-        </a>
-      </Link>
     </>
   );
 }

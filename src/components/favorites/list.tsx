@@ -64,9 +64,7 @@ export const FavoritesList = () => {
             {mapped.map((el) => (
               <li key={el.as}>
                 <Link className="link" href={el.href} as={el.as}>
-                  <a>
-                    <b>{el.type}</b>: {el.title}
-                  </a>
+                  <b>{el.type}</b>: {el.title}
                 </Link>
               </li>
             ))}
