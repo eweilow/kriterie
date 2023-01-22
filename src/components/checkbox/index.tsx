@@ -25,7 +25,12 @@ export const ToggleControl = ({
         name={props.name}
         value={props.value}
       />
-      <div className={clsx("box", { checked: props.checked })}>
+      <div
+        className={clsx("box", {
+          checked: props.checked,
+          svg: iconType === "svg",
+        })}
+      >
         {icon && iconType === "text" && <span>{icon}</span>}
         {icon && iconType === "svg" && (
           <svg viewBox="0 0 24 24">
@@ -40,7 +45,7 @@ export const ToggleControl = ({
       <style jsx>{`
         .box {
           height: 24px;
-          width: 24px;
+          min-width: 24px;
           overflow: hidden;
           position: relative;
           border-radius: 4px;
@@ -49,6 +54,10 @@ export const ToggleControl = ({
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .box.svg {
+          width: 24px;
         }
 
         .box:not(.checked) svg {
