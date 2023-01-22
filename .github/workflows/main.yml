@@ -16,15 +16,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install
-        run: yarn
+      - name: pnpm install
+        run: pnpm
         env:
           CI: true
-      - name: yarn test-lint
-        run: yarn test-lint
+      - name: pnpm test-lint
+        run: pnpm test-lint
         env:
           CI: true
-      - name: yarn test-formatting
-        run: yarn test-formatting
+      - name: pnpm test-formatting
+        run: pnpm test-formatting
         env:
           CI: true

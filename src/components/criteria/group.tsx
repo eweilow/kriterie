@@ -1,4 +1,6 @@
-export const CriteriaGroup: React.FC = ({ children }) => (
+import { PropsWithChildren } from "react";
+
+export const CriteriaGroup = ({ children }: PropsWithChildren<{}>) => (
   <section className="criteriaGroup">
     {children}
     <style jsx>{`

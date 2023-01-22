@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { SearchBox } from "../src/components/searchBox";
 import { NextPage } from "next";
-import {
-  FavoritesList,
-  FavoritesListFallback,
-} from "../src/components/favorites/list";
 import { Suspense } from "react";
 import { NextSeo } from "next-seo";
+
+import dynamic from "next/dynamic";
+
+const FavoritesList = dynamic(
+  () => import("../src/components/favorites/list").then((m) => m.FavoritesList),
+  { ssr: false }
+);
 
 import { loadCourses, loadSubjects } from "../src/api/load";
 import { startOfDay } from "date-fns";
@@ -14,7 +17,6 @@ import seedrandom from "seedrandom";
 import { ErrorBoundary } from "@sentry/nextjs";
 
 export async function getStaticProps() {
-  // const programmes = loadProgrammes();
   const courses = loadCourses();
   const subjects = loadSubjects();
 
@@ -33,11 +35,6 @@ export async function getStaticProps() {
     subjectSelection.add(subjects[Math.floor(subjects.length * rnd())]);
   }
 
-  // const programSelection = new Set<any>();
-  // while (programSelection.size < 3) {
-  //   programSelection.add(programmes[Math.floor(programmes.length * rnd())]);
-  // }
-
   return {
     props: {
       data: {
@@ -49,10 +46,6 @@ export async function getStaticProps() {
           code: el.code,
           title: el.title,
         })),
-        // programmes: [...programSelection].map((el) => ({
-        //   code: el.code,
-        //   title: el.title,
-        // })),
       },
     },
     revalidate: 60 * 60 * 24,
@@ -65,75 +58,45 @@ const Page: NextPage<Props> = (props) => (
     <NextSeo canonical="https://kriterie.se" />
     <h1>Välkommen till kriterie.se!</h1>
     <p>
-      {/* Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser,
-      ämnen och program presenteras i ett lättåtkomligt format. Vad vill du veta
-      mer om idag? */}
       Kriterie.se är en webbsida där Skolverkets data om gymnasiets kurser och
       ämnen presenteras i ett lättåtkomligt format. Vad vill du veta mer om
       idag?
     </p>
-    <div>
+    <div className="md:h-14 h-12">
       <SearchBox id="homeSearchBox" />
-      <style jsx>{`
-        div {
-          height: 56px;
-          width: 100%;
-        }
-        @media (max-width: 800px) {
-          div {
-            height: 48px;
-          }
-        }
-      `}</style>
     </div>
     <p>eller:</p>
-    <Link href="/gy11/courses/[letter]" as="/gy11/courses/a">
-      <a>alla kurser</a>
+    <Link className="link" href="/gy11/courses/a">
+      alla kurser
     </Link>
     <br />
-    <Link href="/gy11/subjects/[letter]" as="/gy11/subjects/b">
-      <a>alla ämnen</a>
+    <Link className="link" href="/gy11/subjects/a">
+      alla ämnen
     </Link>
-    {/* <br />
-    <Link href="/gy11/programmes">
-      <a>alla program</a>
-    </Link> */}
 
     <h2>Dagens slumpmässiga urval</h2>
     <h3>Kurser</h3>
     {props.data.courses.map((el) => (
       <div key={el.code}>
-        <Link href="/gy11/course/[id]" as={`/gy11/course/${el.code}`}>
-          <a>{el.title}</a>
+        <Link className="link" href={`/gy11/course/${el.code}`}>
+          {el.title}
         </Link>
       </div>
     ))}
     <h3>Ämnen</h3>
     {props.data.subjects.map((el) => (
       <div key={el.code}>
-        <Link href="/gy11/subject/[id]" as={`/gy11/subject/${el.code}`}>
-          <a>{el.title}</a>
+        <Link className="link" href={`/gy11/subject/${el.code}`}>
+          {el.title}
         </Link>
       </div>
     ))}
-    {/* <h3>Program</h3>
-    {props.data.programmes.map((el) => (
-      <div key={el.code}>
-        <Link href="/gy11/program/[id]" as={`/gy11/program/${el.code}`}>
-          <a>{el.title}</a>
-        </Link>
-      </div>
-    ))} */}
-    {typeof window !== "undefined" ? (
-      <ErrorBoundary fallback={<FavoritesListFallback />}>
-        <Suspense fallback={<FavoritesListFallback />}>
-          <h2>Dina favoriter</h2>
-          <FavoritesList />
-        </Suspense>
-      </ErrorBoundary>
-    ) : (
-      <FavoritesListFallback />
-    )}
+
+    <ErrorBoundary fallback={<div className="h-52" />}>
+      <Suspense fallback={<div className="h-52" />}>
+        <FavoritesList />
+      </Suspense>
+    </ErrorBoundary>
   </>
 );
 

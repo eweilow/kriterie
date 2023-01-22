@@ -5,7 +5,7 @@ import meta from "@education-data/swedish-gymnasium/out/meta.json";
 
 export const GlobalFooterHeight = 180;
 
-export const GlobalFooter: React.FC = () => {
+export const GlobalFooter = () => {
   return (
     <>
       <footer>
@@ -30,8 +30,8 @@ export const GlobalFooter: React.FC = () => {
             </p>
             <br />
             <p>
-              <Link href="/info">
-                <a>Läs mer om sidan</a>
+              <Link className="link" href="/info">
+                Läs mer om sidan
               </Link>
             </p>
           </div>

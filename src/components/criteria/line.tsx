@@ -1,19 +1,26 @@
 import clsx from "clsx";
-import { useCallback } from "react";
+import { PropsWithChildren, useCallback } from "react";
 
-export const CriteriaLine: React.FC<{
+export const CriteriaLine = ({
+  onHoverIn,
+  isHovering,
+  onHoverOut,
+  dense,
+  index,
+  children,
+}: PropsWithChildren<{
   dense: boolean;
   onHoverIn?: (index: string | null) => void;
   onHoverOut?: (index: string | null) => void;
   isHovering?: boolean;
   index?: string;
-}> = ({ onHoverIn, isHovering, onHoverOut, dense, index, children }) => {
+}>) => {
   const onHoverInCb = useCallback(() => {
-    onHoverIn(index ?? null);
+    onHoverIn?.(index ?? null);
   }, [onHoverIn, index]);
 
   const onHoverOutCb = useCallback(() => {
-    onHoverOut(index ?? null);
+    onHoverOut?.(index ?? null);
   }, [onHoverOut, index]);
 
   return (

@@ -1,7 +1,9 @@
-export const CriteriaGrade: React.FC<{ grade: string }> = ({
+import { PropsWithChildren } from "react";
+
+export const CriteriaGrade = ({
   grade,
   children,
-}) => (
+}: PropsWithChildren<{ grade: any }>) => (
   <section className="criteriaGrade">
     <header>{grade}</header>
     <div>{children}</div>

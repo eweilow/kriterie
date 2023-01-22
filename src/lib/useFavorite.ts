@@ -15,12 +15,12 @@ export function useFavorite(key: string, code: string) {
   const doFavorite = useCallback(() => {
     Fathom.trackGoal("FWI8FJXC", 0);
     setState([...stateRef.current, code]);
-  }, []);
+  }, [code, setState]);
 
   const doUnfavorite = useCallback(() => {
     Fathom.trackGoal("L1PQNAAK", 0);
     setState(stateRef.current.filter((el) => el !== code));
-  }, []);
+  }, [code, setState]);
 
   return [isFavorited, doFavorite, doUnfavorite, state] as [
     boolean,

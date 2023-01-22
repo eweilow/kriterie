@@ -1,7 +1,5 @@
 import { throwNotFound } from "../lib/notFound";
-import { CourseData, ProgramData, SubjectData } from "./types";
-
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { CourseData, SubjectData } from "./types";
 
 let courseCodeToNameMappingCache: Map<string, string> | null = null;
 function getCourseCodeToNameMapping() {
@@ -64,34 +62,3 @@ export function loadSubjectData(id: string): SubjectData {
   const data = require("@education-data/swedish-gymnasium/out/" + name);
   return data;
 }
-
-// let programCodeToNameMappingCache: Map<string, string> | null = null;
-// function getProgramCodeToNameMapping() {
-//   if (programCodeToNameMappingCache != null) {
-//     return programCodeToNameMappingCache;
-//   }
-
-//   const map = new Map<string, string>();
-//   const programs = require("@education-data/swedish-gymnasium/out/programmes.json");
-
-//   for (const program of programs) {
-//     map.set(program.code.toLowerCase(), program.file.slice(2));
-//   }
-
-//   programCodeToNameMappingCache = map;
-//   return programCodeToNameMappingCache;
-// }
-
-// export function loadProgrammes(): ProgramData[] {
-//   const codes = Array.from(getProgramCodeToNameMapping().keys());
-//   return codes.map((el: any) => loadProgramData(el));
-// }
-
-// export function loadProgramData(id: string): ProgramData {
-//   const name = getProgramCodeToNameMapping().get(id.toLowerCase());
-//   if (name == null) {
-//     throwNotFound(`Program with id '${id}' could not be found`);
-//   }
-//   const data = require("@education-data/swedish-gymnasium/out/" + name);
-//   return data;
-// }

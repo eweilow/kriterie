@@ -1,16 +1,7 @@
 import { mdiClose } from "@mdi/js";
 import { ToggleControl } from "./checkbox";
 
-export const SimpleControls: React.FC<{
-  disabled?: boolean;
-  value: boolean;
-  label: string;
-  name: string;
-  icon?: string;
-  title?: string;
-  color?: string;
-  setValue: (val: boolean) => void;
-}> = ({
+export const SimpleControls = ({
   disabled,
   value,
   setValue,
@@ -19,6 +10,15 @@ export const SimpleControls: React.FC<{
   color = "#d44700",
   icon = mdiClose,
   title = "inställningar",
+}: {
+  disabled?: boolean;
+  value: boolean;
+  label: string;
+  name: string;
+  icon?: string;
+  title?: string;
+  color?: string;
+  setValue: (val: boolean) => void;
 }) =>
   !disabled && (
     <section className="controls">

@@ -3,12 +3,17 @@ import { mdiClose } from "@mdi/js";
 
 const filterTypes: Array<"E" | "C" | "A" | "alla"> = ["E", "C", "A", "alla"];
 
-export const CriteriaControls: React.FC<{
+export const CriteriaControls = ({
+  dense,
+  setDense,
+  filter,
+  setFilter,
+}: {
   dense: boolean;
   setDense: (val: boolean) => void;
   filter: "E" | "C" | "A" | "alla";
   setFilter: (val: "E" | "C" | "A" | "alla") => void;
-}> = ({ dense, setDense, filter, setFilter }) => (
+}) => (
   <section className="controls">
     <aside>inställningar:</aside>
     <div className="dense">

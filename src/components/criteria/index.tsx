@@ -1,12 +1,11 @@
 import { getCourseData } from "../../api/course";
-import { useState, Fragment, useCallback } from "react";
+import { useState, Fragment, useCallback, PropsWithChildren } from "react";
 import { CriteriaControls } from "./controls";
 
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { CriteriaGroup } from "./group";
 import { CriteriaGrade } from "./grade";
 import { CriteriaLine } from "./line";
-import { PartialGrade } from "./partialGrade";
 
 const parseOptions: HTMLReactParserOptions = {
   replace(node: any) {
@@ -18,11 +17,13 @@ const parseOptions: HTMLReactParserOptions = {
   },
 };
 
-const Bold: React.FC = ({ children }) => <b>{children}</b>;
+const Bold = ({ children }: PropsWithChildren<{}>) => <b>{children}</b>;
 
-export const CourseCriteria: React.FC<{
+export const CourseCriteria = ({
+  criteria,
+}: PropsWithChildren<{
   criteria: ReturnType<typeof getCourseData>["criteria"];
-}> = ({ criteria }) => {
+}>) => {
   const [dense, setDense] = useState(false);
   const [filter, setFilter] = useState<"E" | "C" | "A" | "alla">("alla");
 
@@ -76,11 +77,71 @@ export const CourseCriteria: React.FC<{
           ))}
         </CriteriaGroup>
       ))}
-      {filter == "alla" && (
-        <>
-          <PartialGrade dense={dense} grade="B" lower="C" upper="A" />
-          <PartialGrade dense={dense} grade="D" lower="E" upper="C" />
-        </>
+      {(filter === "E" || filter == "alla") && (
+        <CriteriaGroup>
+          <CriteriaGrade grade={"E"}>
+            <CriteriaLine dense={dense}>
+              <i>
+                {`"För godkända betyg måste elevens kunskaper motsvara minst
+                samtliga delar av betygskriterierna för betyget E eller samtliga
+                delar av betygskriterierna för betyget godkänt inom
+                vuxenutbildningen."`}
+              </i>
+            </CriteriaLine>
+            <CriteriaLine dense={dense}>
+              För mer information, se{" "}
+              <a
+                href="https://www.skolverket.se/undervisning/gymnasieskolan/aktuella-forandringar-pa-gymnasial-niva/andringar-i-hur-betyg-ska-sattas-och-nya-allmanna-rad"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {`Skolverkets material om "Ändringar i hur betyg ska sättas och nya allmänna råd"`}
+              </a>
+              .
+            </CriteriaLine>
+          </CriteriaGrade>
+        </CriteriaGroup>
+      )}
+      {(filter === "C" || filter === "A" || filter == "alla") && (
+        <CriteriaGroup>
+          <CriteriaGrade
+            grade={
+              <>
+                A<br />B<br />C<br />D
+              </>
+            }
+          >
+            <CriteriaLine dense={dense}>
+              <i>
+                {`"Läraren sätter det betyg som sammantaget bäst motsvarar elevens
+                kunskaper. Även om elevens kunskaper varierar något inom spannet
+                E-A, så är det den sammantaget bäst motsvarande nivån som också
+                är den som blir betyget. Läraren sätter betyget C eller A när
+                elevens kunskaper sammantaget bäst motsvarar betygskriterierna
+                för något av dessa betyg."`}
+              </i>
+            </CriteriaLine>
+            <CriteriaLine dense={dense}>
+              <i>
+                {`"Läraren sätter betyget B eller D om den sammantagna bedömningen
+                är att elevens kunskaper bäst motsvarar en nivå mellan betygen A
+                och C eller C och E."`}
+              </i>
+            </CriteriaLine>
+            <CriteriaLine dense={dense}>
+              För mer information, se{" "}
+              <a
+                href="https://www.skolverket.se/undervisning/gymnasieskolan/aktuella-forandringar-pa-gymnasial-niva/andringar-i-hur-betyg-ska-sattas-och-nya-allmanna-rad"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {`Skolverkets material om "Ändringar i hur betyg ska sättas och
+                nya allmänna råd"`}
+              </a>
+              .
+            </CriteriaLine>
+          </CriteriaGrade>
+        </CriteriaGroup>
       )}
     </>
   );

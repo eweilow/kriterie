@@ -7,7 +7,6 @@ import {
   ComboboxOptionText,
 } from "@reach/combobox";
 import useResizeObserver from "use-resize-observer";
-import Head from "next/head";
 import * as Fathom from "fathom-client";
 
 import { useEffect, useCallback, useState, useRef } from "react";
@@ -33,11 +32,15 @@ function getWorkerByUrl(url: string) {
   return worker;
 }
 
-export const SearchBox: React.FC<{
+export const SearchBox = ({
+  id,
+  initialSize = null,
+  zIndex = 1,
+}: {
   zIndex?: number;
   id: string;
   initialSize?: number;
-}> = ({ id, initialSize = null, zIndex = 1 }) => {
+}) => {
   const [searchDisabled, setSearchDisabled] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [loadingString, setLoadingString] = useState("");
@@ -124,12 +127,6 @@ export const SearchBox: React.FC<{
 
       if (searchResults != null) {
         const found = searchResults.find((el) => el.title === value);
-        // if (found.type === "program") {
-        //   waitForPromise(
-        //     router.push("/gy11/program/[id]", "/gy11/program/" + found.code)
-        //   );
-        //   start();
-        // }
         if (found.type === "course") {
           waitForPromise(
             router.push("/gy11/course/[id]", "/gy11/course/" + found.code)
@@ -167,6 +164,8 @@ export const SearchBox: React.FC<{
       className={clsx({ active, hasResults: searchResults })}
       id={id}
       onSelect={handleSelect}
+      onFocus={setFocused}
+      onBlur={setUnfocused}
       // value={searchString}
     >
       <SearchPreload />
@@ -177,8 +176,6 @@ export const SearchBox: React.FC<{
             autoComplete="off"
             name="search"
             type="text"
-            onFocus={setFocused}
-            onBlur={setUnfocused}
             value={loading ? loadingString : searchString}
             disabled={searchDisabled}
             aria-label="Innehållssök"
@@ -221,14 +218,16 @@ export const SearchBox: React.FC<{
           border-top-left-radius: 8px;
           border-bottom-left-radius: 8px;
           background: #eb7031;
-          transform: ${initialSize != null
-            ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
-            : "none"};
+          transform: ${
+            initialSize != null
+              ? `translate3d(calc(100% - ${initialSize}px), 0, 0)`
+              : "none"
+          };
           transition: transform 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :global(#${id}.active) .box.left,
-        :global(#${id}[aria-expanded="true"].hasResults) .box.left {
+        :global(#${id}[aria-expanded="true"].hasResults .box.left) {
           transform: none;
         }
 
@@ -256,8 +255,8 @@ export const SearchBox: React.FC<{
           transition: filter 195ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        :global(#${id}.active) .box.right,
-        :global(#${id}[aria-expanded="true"].hasResults) .box.right {
+        :global(#${id}.active .box.right),
+        :global(#${id}[aria-expanded="true"].hasResults .box.right) {
           filter: drop-shadow(0px 4px 8px #0000002a)
             drop-shadow(0px 2px 2px #0000002b);
         }
@@ -293,12 +292,12 @@ export const SearchBox: React.FC<{
           padding: 4px 8px;
           outline: none !important;
         }
+        
         :global(#${id} [data-reach-combobox-input]),
-        :global(#${id} [data-reach-combobox-input])::placeholder {
+        :global(#${id} [data-reach-combobox-input]::placeholder) {
           color: #4d1a00;
           font-size: 16px;
-          font-family: "GlacialIndifference", "Roboto", -apple-system,
-            "Trebuchet MS", Helvetica, sans-serif;
+          font-family: inherit;
           font-weight: bold;
         }
 
@@ -357,8 +356,9 @@ export const SearchBox: React.FC<{
           background: hsl(20, 100%, 68%);
         }
 
-        :global(#${id + "Popover"}
-            [data-reach-combobox-option][aria-selected="true"]:hover) {
+        :global(#${
+          id + "Popover"
+        } [data-reach-combobox-option][aria-selected="true"]:hover) {
           background: hsl(20, 100%, 66%);
         }
 
