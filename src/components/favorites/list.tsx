@@ -13,7 +13,6 @@ function useFavorites(key: string): string[] {
 export const FavoritesList = () => {
   const courseFavorites = useFavorites("kriterie:favorites:course");
   const subjectFavorites = useFavorites("kriterie:favorites:subject");
-  // const programFavorites = useFavorites("kriterie:favorites:program");
 
   const data = useFetch<SearchData>("/search.json");
 
@@ -31,12 +30,6 @@ export const FavoritesList = () => {
         as: `/gy11/subject/${el}`,
         title: data.find((dEl) => dEl.code === el).title as string,
       })),
-      // ...programFavorites.map((el) => ({
-      //   type: "program",
-      //   href: "/gy11/program/[id]",
-      //   as: `/gy11/program/${el}`,
-      //   title: data.find((dEl) => dEl.code === el).title as string,
-      // })),
     ],
     [data, courseFavorites, subjectFavorites]
   );
