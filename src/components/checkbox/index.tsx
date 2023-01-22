@@ -40,7 +40,7 @@ export const ToggleControl = ({
       <style jsx>{`
         .box {
           height: 24px;
-          min-width: 24px;
+          width: 24px;
           overflow: hidden;
           position: relative;
           border-radius: 4px;

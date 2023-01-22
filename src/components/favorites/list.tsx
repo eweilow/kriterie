@@ -70,7 +70,7 @@ export const FavoritesList = () => {
           <ul>
             {mapped.map((el) => (
               <li key={el.as}>
-                <Link href={el.href} as={el.as}>
+                <Link className="link" href={el.href} as={el.as}>
                   <a>
                     <b>{el.type}</b>: {el.title}
                   </a>
@@ -81,56 +81,56 @@ export const FavoritesList = () => {
         )}
         <SearchPreload />
         <style jsx>{`
-        ul {
-          margin: 16px 0;
-          padding: 0 0 0 20px;
-        }
-        li {
-          list-style: none;
-          position: relative;
-          line-height: 20px;
-        }
-
-        li + li {
-          margin-top: 10px;
-        }
-
-        li.nonApplicable {
-          color: #666;
-        }
-
-        li::before {
-          content: "";
-          position: absolute;
-          left: -10px;
-          top: 10px;
-          -khtml-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          width: 4px;
-          height: 4px;
-          background: #d44700;
-        }
-
-        .favorites {
-          animation: enter 200ms forwards;
-          min-height: 200px;
-        }
-
-        p {
-          padding-top: 0.5em;
-          margin: 0;
-        }
-
-        @keyframes enter {
-          from {
-            opacity: 0;
+          ul {
+            margin: 16px 0;
+            padding: 0 0 0 20px;
           }
-          to {
-            opacity: 1;
+          li {
+            list-style: none;
+            position: relative;
+            line-height: 20px;
           }
-        }
-      `}</style>
+
+          li + li {
+            margin-top: 10px;
+          }
+
+          li.nonApplicable {
+            color: #666;
+          }
+
+          li::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 10px;
+            -khtml-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #d44700;
+          }
+
+          .favorites {
+            animation: enter 200ms forwards;
+            min-height: 200px;
+          }
+
+          p {
+            padding-top: 0.5em;
+            margin: 0;
+          }
+
+          @keyframes enter {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        `}</style>
       </div>
     </>
   );

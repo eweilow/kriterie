@@ -30,7 +30,9 @@ export const GlobalFooter = () => {
             </p>
             <br />
             <p>
-              <Link href="/info">Läs mer om sidan</Link>
+              <Link className="link" href="/info">
+                Läs mer om sidan
+              </Link>
             </p>
           </div>
         </Column>

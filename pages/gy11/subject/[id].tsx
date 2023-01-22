@@ -67,7 +67,7 @@ const SubjectPage: NextPage<Props> = (props) => {
       <ul className={clsx({ wrap: !showAllCourseInfo })}>
         {props.data.courses.map((el) => (
           <li key={el.code}>
-            <Link href={`/gy11/course/${el.code}`}>
+            <Link className="link" href={`/gy11/course/${el.code}`}>
               {showAllCourseInfo && props.data.courseInfo[el.code]}
               {!showAllCourseInfo && (
                 <>

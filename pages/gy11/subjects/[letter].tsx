@@ -59,7 +59,7 @@ const SubjectsPage: NextPage<Props> = (props) => {
           <Link
             key={subj.code}
             href={`/gy11/subject/${subj.code}`}
-            className="underline"
+            className="link"
           >
             {subj.title}
           </Link>

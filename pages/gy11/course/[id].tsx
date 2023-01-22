@@ -67,7 +67,10 @@ const CoursePage: NextPage<Props> = (props) => {
         <div>
           <header>Ämne</header>
           <div>
-            <Link href={`/gy11/subject/${props.data.subject.code}`}>
+            <Link
+              className="link"
+              href={`/gy11/subject/${props.data.subject.code}`}
+            >
               {props.data.subject.title}
             </Link>
           </div>

@@ -66,21 +66,29 @@ const Page: NextPage<Props> = (props) => (
       <SearchBox id="homeSearchBox" />
     </div>
     <p>eller:</p>
-    <Link href="/gy11/courses/a">alla kurser</Link>
+    <Link className="link" href="/gy11/courses/a">
+      alla kurser
+    </Link>
     <br />
-    <Link href="/gy11/subjects/a">alla ämnen</Link>
+    <Link className="link" href="/gy11/subjects/a">
+      alla ämnen
+    </Link>
 
     <h2>Dagens slumpmässiga urval</h2>
     <h3>Kurser</h3>
     {props.data.courses.map((el) => (
       <div key={el.code}>
-        <Link href={`/gy11/course/${el.code}`}>{el.title}</Link>
+        <Link className="link" href={`/gy11/course/${el.code}`}>
+          {el.title}
+        </Link>
       </div>
     ))}
     <h3>Ämnen</h3>
     {props.data.subjects.map((el) => (
       <div key={el.code}>
-        <Link href={`/gy11/subject/${el.code}`}>{el.title}</Link>
+        <Link className="link" href={`/gy11/subject/${el.code}`}>
+          {el.title}
+        </Link>
       </div>
     ))}
 

@@ -27,7 +27,10 @@ export default function Gr11Page() {
         och önskar att åter igen hitta den här kan du dela med dig av ditt
         intresse i nedanstående formulär:
       </p>
-      <Link href="https://docs.google.com/forms/d/e/1FAIpQLScqlbajJ2iTmAAtXRrGCOX1feQg17Cj25QJpyb8SjkgE4lYQA/viewform">
+      <Link
+        className="link"
+        href="https://docs.google.com/forms/d/e/1FAIpQLScqlbajJ2iTmAAtXRrGCOX1feQg17Cj25QJpyb8SjkgE4lYQA/viewform"
+      >
         <a rel="noreferrer noopener" target="_blank">
           Extern länk (Google Forms)
         </a>

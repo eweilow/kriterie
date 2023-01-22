@@ -73,3 +73,8 @@ h5 {
   @apply mt-6 mb-4;
   @apply text-kt-800;
 }
+
+
+.link {
+  @apply underline;
+}
