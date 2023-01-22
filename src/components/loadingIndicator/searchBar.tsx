@@ -29,49 +29,59 @@ export function SearchLoadingBar({
         )}
       </LoadingTrickle>
       <style jsx>{`
-          .bar {
-            transition: transform ${transitionTime}ms ease-in-out,
-              opacity ${transitionTime}ms ease-in-out;
-          }
-        `}</style>
+        .bar {
+          transition: transform ${transitionTime}ms ease-in-out,
+            opacity ${transitionTime}ms ease-in-out;
+        }
+      `}</style>
       <style jsx>{`
-          .progress {
-            z-index: 10001;
+        .progress {
+          z-index: 10001;
 
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            right: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
 
-            max-width: 100%;
-            width: 1200px;
-            margin: 0 auto;
+          max-width: 100%;
+          width: 1200px;
+          margin: 0 auto;
 
-            pointer-events: none;
-          }
+          pointer-events: none;
+        }
 
-          .progress.exiting .bar {
-            transform: scale3d(1, 1, 1) !important;
-            opacity: 0;
-          }
+        .progress.exiting .bar {
+          transform: scale3d(1, 1, 1) !important;
+          opacity: 0;
+        }
 
-          .bar {
-            height: 100%;
-            transform-origin: left center;
-            background: rgba(255, 255, 255, 0.25);
-          }
-        `}</style>
+        .bar {
+          height: 100%;
+          transform-origin: left center;
+          background: rgba(255, 255, 255, 0.25);
+        }
+      `}</style>
     </div>
   );
 }
 
-SearchLoadingBar.Wrapped = ({ loading }: { loading: boolean }) => (
-  <LoadingIndicatorQueue portal={false} loading={loading} transitionTime={195}>
-    {(visible, transitionTime) => (
-      <>
-        <SearchLoadingBar visible={visible} transitionTime={transitionTime} />
-      </>
-    )}
-  </LoadingIndicatorQueue>
-);
+SearchLoadingBar.Wrapped = function SearchLoadingBarWrapped({
+  loading,
+}: {
+  loading: boolean;
+}) {
+  return (
+    <LoadingIndicatorQueue
+      portal={false}
+      loading={loading}
+      transitionTime={195}
+    >
+      {(visible, transitionTime) => (
+        <>
+          <SearchLoadingBar visible={visible} transitionTime={transitionTime} />
+        </>
+      )}
+    </LoadingIndicatorQueue>
+  );
+};

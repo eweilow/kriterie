@@ -82,10 +82,10 @@ export const CourseCriteria = ({
           <CriteriaGrade grade={"E"}>
             <CriteriaLine dense={dense}>
               <i>
-                "För godkända betyg måste elevens kunskaper motsvara minst
+                {`"För godkända betyg måste elevens kunskaper motsvara minst
                 samtliga delar av betygskriterierna för betyget E eller samtliga
                 delar av betygskriterierna för betyget godkänt inom
-                vuxenutbildningen."
+                vuxenutbildningen."`}
               </i>
             </CriteriaLine>
             <CriteriaLine dense={dense}>
@@ -95,8 +95,7 @@ export const CourseCriteria = ({
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Skolverkets material om "Ändringar i hur betyg ska sättas och
-                nya allmänna råd"
+                {`Skolverkets material om "Ändringar i hur betyg ska sättas och nya allmänna råd"`}
               </a>
               .
             </CriteriaLine>
@@ -114,19 +113,19 @@ export const CourseCriteria = ({
           >
             <CriteriaLine dense={dense}>
               <i>
-                "Läraren sätter det betyg som sammantaget bäst motsvarar elevens
+                {`"Läraren sätter det betyg som sammantaget bäst motsvarar elevens
                 kunskaper. Även om elevens kunskaper varierar något inom spannet
                 E-A, så är det den sammantaget bäst motsvarande nivån som också
                 är den som blir betyget. Läraren sätter betyget C eller A när
                 elevens kunskaper sammantaget bäst motsvarar betygskriterierna
-                för något av dessa betyg."
+                för något av dessa betyg."`}
               </i>
             </CriteriaLine>
             <CriteriaLine dense={dense}>
               <i>
-                "Läraren sätter betyget B eller D om den sammantagna bedömningen
+                {`"Läraren sätter betyget B eller D om den sammantagna bedömningen
                 är att elevens kunskaper bäst motsvarar en nivå mellan betygen A
-                och C eller C och E."
+                och C eller C och E."`}
               </i>
             </CriteriaLine>
             <CriteriaLine dense={dense}>
@@ -136,8 +135,8 @@ export const CourseCriteria = ({
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Skolverkets material om "Ändringar i hur betyg ska sättas och
-                nya allmänna råd"
+                {`Skolverkets material om "Ändringar i hur betyg ska sättas och
+                nya allmänna råd"`}
               </a>
               .
             </CriteriaLine>

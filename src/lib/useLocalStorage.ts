@@ -3,13 +3,13 @@ import { useState, useMemo, useLayoutEffect, useCallback } from "react";
 export function useLocalStorage<T>(key: string, transform: (val: any) => T) {
   const [stringValue, setStringValue] = useState<string>(null);
 
-  const transformedValue = useMemo(() => {
+  const transformedValue = (() => {
     try {
       return transform(JSON.parse(stringValue));
     } catch (err) {
       return transform(null);
     }
-  }, [stringValue]);
+  })();
 
   if (typeof window !== "undefined") {
     useLayoutEffect(() => {
@@ -23,7 +23,7 @@ export function useLocalStorage<T>(key: string, transform: (val: any) => T) {
       return () => {
         window.removeEventListener("storage", onStorageEvent);
       };
-    });
+    }, [key]);
   }
 
   const updateValue = useCallback(
@@ -31,7 +31,7 @@ export function useLocalStorage<T>(key: string, transform: (val: any) => T) {
       localStorage.setItem(key, JSON.stringify(val));
       setStringValue(JSON.stringify(val));
     },
-    [setStringValue]
+    [setStringValue, key]
   );
 
   return [transformedValue as T, updateValue] as [T, (val: T) => void];
