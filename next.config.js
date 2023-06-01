@@ -3,7 +3,7 @@ const { withSentryConfig } = require("@sentry/nextjs");
 const config = {
   productionBrowserSourceMaps: true,
   env: {
-    FATHOM_URL: "https://tarsier.kriterie.se/script.js",
+    FATHOM_URL: "https://cdn-eu.usefathom.com/script.js",
     FATHOM_ID: "UIRVULLC",
   },
   async rewrites() {
